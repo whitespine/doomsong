@@ -20,10 +20,10 @@ export default defineConfig({
     emptyOutDir: false,
     sourcemap: true,
     lib: {
-      name: "doomsong",
-      entry: "src/doomsong.js",
+      name: "system",
+      entry: "src/system.js",
       formats: ["es"],
-      fileName: "doomsong"
+      fileName: "system"
     }
   },
 });
