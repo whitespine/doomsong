@@ -1,3 +1,5 @@
+import './system.scss';
+
 Hooks.once('init', async function() {
 
 });

@@ -85,6 +85,12 @@ jobs:
         uses: battila7/get-version-action@v2
 
 
+      # Run our b      
+      - name: Create System Files
+        run: |
+          npm ci 
+          npx vite build
+
       # Modify "system.json" with values specific to the release.
       # Since the values for the "version" and "url" keys aren't known ahead of
       # time, the manifest file in the repository is updated with these values.
@@ -95,7 +101,7 @@ jobs:
         id: sub_manifest_link_version
         uses: cschleiden/replace-tokens@v1
         with:
-          files: 'system.json'
+          files: 'dist/system.json'
         env:
           VERSION: ${{steps.get_version.outputs.version-without-v}}
           URL: ${{ env.project_url }}
@@ -110,24 +116,8 @@ jobs:
         run: |
           # Note that `zip` will only emit warnings when a file or directory
           # doesn't exist, it will not fail.
-          zip                                    \
-            `# Options`                          \
-            --recurse-paths                      \
-            `# The name of the output file`      \
-             ./system.zip                        \
-            `# The files that will be included.` \
-            system.json                          \
-            README.md                            \
-            LICENSE                              \
-            templates                            \
-            scripts/                             \
-            styles/                              \
-            packs/                               \
-            language/                            \
-            lang/
-          # Don't forget to add a backslash at the end of the line for any
-          # additional files or directories!
-
+          cd dist
+          zip --recurse-paths ../system.zip *
 
       # Update the GitHub release with the manifest and system archive files.
       - name: Update Release With Files

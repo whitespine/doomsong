@@ -1,0 +1,23 @@
+{
+  "name": "doomsong",
+  "version": "1.0.0",
+  "description": "Doomsong implementation for FoundryVTT",
+  "main": "scripts/system.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whitespine/doomsong.git"
+  },
+  "author": "WHITESPINE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whitespine/doomsong/issues"
+  },
+  "homepage": "https://github.com/whitespine/doomsong#readme",
+  "devDependencies": {
+    "sass-embedded": "^1.90.0",
+    "vite": "^7.1.1"
+  }
+}
