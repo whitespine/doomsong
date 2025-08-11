@@ -1,7 +1,7 @@
 {
-  "id": "module",
-  "title": "New Module",
-  "description": "",
+  "id": "doomsong",
+  "title": "Doomsong",
+  "description": "A crude PDF based implementation of the doomsong rpg",
   "version": "#{VERSION}#",
   "library": "false",
   "manifestPlusVersion": "1.2.0",

@@ -1,4 +1,4 @@
-# GitHub Actions workflow for creating a new FoundryVTT module release.
+# GitHub Actions workflow for creating a new FoundryVTT system release.
 #
 # Useful References:
 #   - https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
@@ -6,17 +6,17 @@
 #   - https://docs.github.com/en/actions/learn-github-actions/environment-variables
 #
 # Troubleshooting Checklist:
-#   - Is the module's manifest file valid JSON?
+#   - Is the system's manifest file valid JSON?
 #     You can test your manifest file using https://jsonlint.com/.
 #
-#   - Does the module's manifest have all the required keys?
-#     See https://foundryvtt.com/article/module-development/#manifest for more
+#   - Does the system's manifest have all the required keys?
+#     See https://foundryvtt.com/article/system-development/#manifest for more
 #     information.
 #
 #   - Are all the proper files and directories being included in the release's
-#     module archive ("module.zip")?
+#     system archive ("system.zip")?
 #     Check that the correct files are being passed to the `zip` command run
-#     in the "Create Module Archive" step below.
+#     in the "Create System Archive" step below.
 #
 #   - Is the release tag the proper format?
 #     See the comments for the "Extract Version From Tag" step below.
@@ -27,25 +27,25 @@
 #     (by default) create a repository tag, a repository tag will not create
 #     or publish a GitHub release.
 #
-#   - Has the module's entry on FoundryVTT's module administration site
+#   - Has the system's entry on FoundryVTT's system administration site
 #     (https://foundryvtt.com/admin) been updated?
 #
-name: Create Module Files For GitHub Release
+name: Create System Files For GitHub Release
 
 
 env:
-  # The URL used for the module's "Project URL" link on FoundryVTT's website.
+  # The URL used for the system's "Project URL" link on FoundryVTT's website.
   project_url: "https://github.com/${{github.repository}}"
 
   # A URL that will always point to the latest manifest.
-  # FoundryVTT uses this URL to check whether the current module version that
+  # FoundryVTT uses this URL to check whether the current system version that
   # is installed is the latest version. This URL should NOT change,
   # otherwise FoundryVTT won't be able to perform this check.
-  latest_manifest_url: "https://github.com/${{github.repository}}/releases/latest/download/module.json"
+  latest_manifest_url: "https://github.com/${{github.repository}}/releases/latest/download/system.json"
 
-  # The URL to the module archive associated with the module release being
+  # The URL to the system archive associated with the system release being
   # processed by this workflow.
-  release_module_url: "https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.zip"
+  release_system_url: "https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/system.zip"
 
 
 on:
@@ -79,34 +79,34 @@ jobs:
       #   - "<major>.<minor>.<patch>"  (e.g., "1.2.3")
       #
       # The version will be used by later steps to fill in the value for the
-      # "version" key required for a valid module manifest.
+      # "version" key required for a valid system manifest.
       - name: Extract Version From Tag
         id: get_version
         uses: battila7/get-version-action@v2
 
 
-      # Modify "module.json" with values specific to the release.
+      # Modify "system.json" with values specific to the release.
       # Since the values for the "version" and "url" keys aren't known ahead of
       # time, the manifest file in the repository is updated with these values.
       #
       # While this does modify the manifest file in-place, the changes are not
       # commited to the repository, and only exist in the action's filesystem.
-      - name: Modify Module Manifest With Release-Specific Values
+      - name: Modify System Manifest With Release-Specific Values
         id: sub_manifest_link_version
         uses: cschleiden/replace-tokens@v1
         with:
-          files: 'module.json'
+          files: 'system.json'
         env:
           VERSION: ${{steps.get_version.outputs.version-without-v}}
           URL: ${{ env.project_url }}
           MANIFEST: ${{ env.latest_manifest_url }}
-          DOWNLOAD: ${{ env.release_module_url }}
+          DOWNLOAD: ${{ env.release_system_url }}
 
 
-      # Create a "module.zip" archive containing all the module's required files.
+      # Create a "system.zip" archive containing all the system's required files.
       # If you have other directories or files that will need to be added to
-      # your packaged module, add them here.
-      - name: Create Module Archive
+      # your packaged system, add them here.
+      - name: Create System Archive
         run: |
           # Note that `zip` will only emit warnings when a file or directory
           # doesn't exist, it will not fail.
@@ -114,9 +114,9 @@ jobs:
             `# Options`                          \
             --recurse-paths                      \
             `# The name of the output file`      \
-             ./module.zip                        \
+             ./system.zip                        \
             `# The files that will be included.` \
-            module.json                          \
+            system.json                          \
             README.md                            \
             LICENSE                              \
             templates                            \
@@ -129,7 +129,7 @@ jobs:
           # additional files or directories!
 
 
-      # Update the GitHub release with the manifest and module archive files.
+      # Update the GitHub release with the manifest and system archive files.
       - name: Update Release With Files
         id: create_version_release
         uses: ncipollo/release-action@v1
@@ -139,6 +139,6 @@ jobs:
           draft: ${{ github.event.release.unpublished }}
           prerelease: ${{ github.event.release.prerelease }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: './module.json, ./module.zip'
+          artifacts: './system.json, ./system.zip'
           tag: ${{ github.event.release.tag_name }}
           body: ${{ github.event.release.body }}
