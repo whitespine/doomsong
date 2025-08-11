@@ -22,13 +22,13 @@
     "requires": []
   },
   "esmodules": [
-    "scripts/module.js"
+    "scripts/system.js"
   ],
   "scripts": [
     "scripts/lib/lib.js"
   ],
   "styles": [
-    "styles/module.css"
+    "styles/system.css"
   ],
   "languages": [
     {
