@@ -3,7 +3,6 @@
   "title": "Doomsong",
   "description": "A crude PDF based implementation of the doomsong rpg",
   "version": "#{VERSION}#",
-  "manifestPlusVersion": "1.2.0",
   "compatibility": {
     "minimum": 10,
     "verified": 10,
@@ -21,7 +20,7 @@
     "requires": []
   },
   "esmodules": [
-    "system.js"
+    "system.mjs"
   ],
   "scripts": [
   ],

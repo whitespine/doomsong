@@ -89,7 +89,7 @@ jobs:
       - name: Create System Files
         run: |
           npm ci 
-          npx vite build
+          npm run build
 
       # Modify "system.json" with values specific to the release.
       # Since the values for the "version" and "url" keys aren't known ahead of
