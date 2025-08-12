@@ -1,3 +1,5 @@
+import { DOOMSONG } from "./consts";
+
 /**
  * Registers all system settings
  */

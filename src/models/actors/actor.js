@@ -1,4 +1,4 @@
-import { DoomsongDataModel } from "../base";
+import { ControlledLengthArrayField, DoomsongDataModel } from "../base";
 
 export const fields = foundry.data.fields;
 
@@ -20,7 +20,7 @@ export class ActorModel extends DoomsongDataModel {
                 new fields.ArrayField(
                     new fields.StringField({ nullable: false})
                 )
-            , 6),
+            , {nullable: false, length: 6}),
 
             // Descriptions etc
             traits: new fields.ArrayField(new fields.StringField({ nullable: false }))

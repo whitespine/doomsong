@@ -7,12 +7,13 @@ export default defineConfig({
   base: "/systems/doomsong/",
   root: "src/",
   server: {
-    port: 30001,
+    port: 20001,
     open: "/",
     proxy: {
-      "^(?!/systems/doomsong)": "http://localhost:30000/",
+      "^/systems/doomsong/languages": "http://localhost:20000",
+      "^(?!/systems/doomsong)": "http://localhost:20000",
       "/socket.io": {
-        target: "ws://localhost:30000",
+        target: "ws://localhost:20000",
         ws: true,
       },
     }
@@ -24,7 +25,7 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       name: "system",
-      entry: "src/system.js",
+      entry: "system.mjs",
       formats: ["es"],
       fileName: "system"
     }
