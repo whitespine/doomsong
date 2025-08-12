@@ -47,6 +47,7 @@
   "download": "#{DOWNLOAD}#",
   "license": "LICENSE",
   "readme": "README.md",
+  "socket": true,
   "media": [
     {
       "type": "icon",

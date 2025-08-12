@@ -1,0 +1,12 @@
+{
+    "Actor": {
+        "types": ["player", "npc"],
+        "htmlFields": ["notes"],
+        "player": {},
+        "npc": {}
+    },
+    "Item": {
+        "types": [],
+        "htmlFields": []
+    }
+}

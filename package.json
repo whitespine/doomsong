@@ -5,7 +5,7 @@
   "main": "scripts/system.js",
   "scripts": {
     "build": "vite build",
-    "dev": "vite serve"
+    "dev": "vite"
   },
   "repository": {
     "type": "git",
