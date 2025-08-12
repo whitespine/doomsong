@@ -4,7 +4,8 @@
   "description": "Doomsong implementation for FoundryVTT",
   "main": "scripts/system.js",
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "dev": "vite serve"
   },
   "repository": {
     "type": "git",
