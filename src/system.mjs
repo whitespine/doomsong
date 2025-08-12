@@ -14,9 +14,10 @@ Hooks.once('init', async function() {
 
 Hooks.once('ready', async function() {
   // Setup calendar
-  if (!game.settings.get(game.system.id, DOOMSONG.settings.init.calendar)) {
-    initCalendar().then(() => {
-      game.settings.set(game.system.id, DOOMSONG.settings.init.calendar, true);
+  let need_init_calendar = !game.settings.get(game.system.id, DOOMSONG.settings.init.calendar)
+  if (need_init_calendar) {
+    await initCalendar().then(async () => {
+      await game.settings.set(game.system.id, DOOMSONG.settings.init.calendar, true);
       ui.notifications.info("Initialized calendar");
     });
   }
