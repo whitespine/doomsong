@@ -3,9 +3,9 @@ import { replaceInFileSync } from 'replace-in-file'
 
 
 export default defineConfig({
-  publicDir: "public", // This is the default
   base: "/systems/doomsong/",
   root: "src/",
+  publicDir: "../public", 
   server: {
     port: 20001,
     open: "/",
@@ -20,7 +20,7 @@ export default defineConfig({
   },
   esbuild: { keepNames: true },
   build: {
-    outDir: "dist", // This is the default
+    outDir: "../dist",
     emptyOutDir: false,
     sourcemap: true,
     lib: {
