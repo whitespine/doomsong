@@ -84,13 +84,6 @@ jobs:
         id: get_version
         uses: battila7/get-version-action@v2
 
-
-      # Run our b      
-      - name: Create System Files
-        run: |
-          npm ci 
-          npm run build
-
       # Modify "system.json" with values specific to the release.
       # Since the values for the "version" and "url" keys aren't known ahead of
       # time, the manifest file in the repository is updated with these values.
@@ -101,13 +94,19 @@ jobs:
         id: sub_manifest_link_version
         uses: cschleiden/replace-tokens@v1
         with:
-          files: 'dist/system.json'
+          files: 'public/system.json'
         env:
           VERSION: ${{steps.get_version.outputs.version-without-v}}
           URL: ${{ env.project_url }}
           MANIFEST: ${{ env.latest_manifest_url }}
           DOWNLOAD: ${{ env.release_system_url }}
 
+      # Run our build. 
+      # This will copy our now-modified system.json to dist as well
+      - name: Create System Files
+        run: |
+          npm ci 
+          npm run build
 
       # Create a "system.zip" archive containing all the system's required files.
       # If you have other directories or files that will need to be added to
