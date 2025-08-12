@@ -38,12 +38,13 @@ function fixSystemJson() {
 
     buildEnd(options) {
       const replace_options = {
-        files: 'dist/system.json',
+        files: 'system.json',
         from: "#{VERSION}#",
+        getTargetFile: src => `dist/${src}`,
         to: '0.0.0',
       };
 
-      replaceInFileSync(replace_options);
+      console.log(replaceInFileSync(replace_options));
     }
   }
 }
