@@ -1,0 +1,10 @@
+{
+    "playerSheet": "systems/doomsong/character_sheet.pdf",
+    "hideFieldBg": true,
+    "hideFieldBorder": true,
+    "noSpellCheck": true,
+    "formFillPdf": true,
+    "actorConfig": {
+        "Text112": "name"
+    }
+}
