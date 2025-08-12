@@ -5,7 +5,7 @@
   "main": "scripts/system.js",
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite --strictPort"
   },
   "repository": {
     "type": "git",

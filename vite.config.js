@@ -5,6 +5,7 @@ import { replaceInFileSync } from 'replace-in-file'
 export default defineConfig({
   publicDir: "public", // This is the default
   base: "/systems/doomsong/",
+  root: "src/",
   server: {
     port: 30001,
     open: "/",
