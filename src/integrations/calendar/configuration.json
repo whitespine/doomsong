@@ -1,0 +1,420 @@
+{
+    "id": "default",
+    "name": "Painyme",
+    "currentDate": {
+        "year": 541,
+        "month": 0,
+        "day": 4,
+        "seconds": 43200
+    },
+    "general": {
+        "gameWorldTimeIntegration": "self",
+        "showClock": true,
+        "noteDefaultVisibility": false,
+        "postNoteRemindersOnFoundryLoad": true,
+        "pf2eSync": true,
+        "dateFormat": {
+            "date": "dddd [of] MMMM, YA YYYY",
+            "time": "HH:mm:ss",
+            "monthYear": "MMMM, YYYY",
+            "chatTime": "HH:mm, dddd [of] MMMM, YA YYYY "
+        },
+        "compactViewOptions": {
+            "controlLayout": "full"
+        }
+    },
+    "leapYear": {
+        "id": "f5b01da5",
+        "rule": "none",
+        "customMod": 0,
+        "startingYear": 0
+    },
+    "months": [
+        {
+            "id": "96868abb",
+            "name": "Chance",
+            "description": "",
+            "abbreviation": "Jan",
+            "numericRepresentation": 1,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 31,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "fb0e1628",
+            "name": "Justice",
+            "description": "",
+            "abbreviation": "Feb",
+            "numericRepresentation": 2,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 29,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "5a2452fc",
+            "name": "Perception",
+            "description": "",
+            "abbreviation": "Mar",
+            "numericRepresentation": 3,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 31,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "284d738e",
+            "name": "Oblivion",
+            "description": "",
+            "abbreviation": "Apr",
+            "numericRepresentation": 4,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 30,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "4849f72b",
+            "name": "Joy",
+            "description": "",
+            "abbreviation": "May",
+            "numericRepresentation": 5,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 31,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "f3b5d6cd",
+            "name": "Frenzy",
+            "description": "",
+            "abbreviation": "Jun",
+            "numericRepresentation": 6,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 30,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "a3287a9f",
+            "name": "Fecundity",
+            "description": "",
+            "abbreviation": "Jul",
+            "numericRepresentation": 7,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 31,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "7868fa2d",
+            "name": "Feast",
+            "description": "",
+            "abbreviation": "Aug",
+            "numericRepresentation": 8,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 31,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "3281691",
+            "name": "Toil",
+            "description": "",
+            "abbreviation": "Sep",
+            "numericRepresentation": 9,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 30,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "72d7c0e2",
+            "name": "Rot",
+            "description": "",
+            "abbreviation": "Oct",
+            "numericRepresentation": 10,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 31,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "3e3cffe9",
+            "name": "Honour",
+            "description": "",
+            "abbreviation": "Hon",
+            "numericRepresentation": 11,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 30,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "1d9e6960",
+            "name": "Panic",
+            "description": "",
+            "abbreviation": "Dec",
+            "numericRepresentation": 12,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 31,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "7608071e",
+            "name": "Hope",
+            "description": "",
+            "abbreviation": "",
+            "numericRepresentation": 13,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 30,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "fbfa7f3f",
+            "name": "Voracity",
+            "description": "",
+            "abbreviation": "",
+            "numericRepresentation": 14,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 30,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "651713fa",
+            "name": "Languor",
+            "description": "",
+            "abbreviation": "",
+            "numericRepresentation": 15,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 30,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        },
+        {
+            "id": "2eda9031",
+            "name": "The Grimme",
+            "description": "",
+            "abbreviation": "",
+            "numericRepresentation": 16,
+            "numericRepresentationOffset": 0,
+            "numberOfDays": 5,
+            "numberOfLeapYearDays": 30,
+            "intercalary": false,
+            "intercalaryInclude": false,
+            "startingWeekday": 1
+        }
+    ],
+    "moons": [],
+    "noteCategories": [
+        {
+            "name": "Ecclesiastic Holiday",
+            "textColor": "#FFFFFF",
+            "color": "#148e94"
+        },
+        {
+            "name": "Occult Holiday",
+            "textColor": "#FFFFFF",
+            "color": "#3871f7ff"
+        },
+        {
+            "id": "ae119f71",
+            "name": "Lunar Event",
+            "textColor": "#000000",
+            "color": "#f2e10d"
+        },
+        {
+            "id": "70ac93fa",
+            "name": "Ecological Event",
+            "textColor": "#FFFFFF",
+            "color": "#82e956"
+        }
+    ],
+    "seasons": [
+        {
+            "id": "2985bc0e",
+            "name": "Fortune, Spring",
+            "description": "",
+            "startingMonth": 0,
+            "startingDay": 0,
+            "color": "#c0c0c0",
+            "icon": "spring",
+            "sunriseTime": 26100,
+            "sunsetTime": 59400
+        },
+        {
+            "id": "27ab562b",
+            "name": "Sleep, Spring",
+            "description": "",
+            "startingMonth": 2,
+            "startingDay": 0,
+            "color": "#c0c0c0",
+            "icon": "spring",
+            "sunriseTime": 25200,
+            "sunsetTime": 60300
+        },
+        {
+            "id": "f7742258",
+            "name": "Ecstasy, Summer",
+            "description": "",
+            "startingMonth": 4,
+            "startingDay": 0,
+            "color": "#c0c0c0",
+            "icon": "summer",
+            "sunriseTime": 24300,
+            "sunsetTime": 61200
+        },
+        {
+            "id": "e2b63af5",
+            "name": "Life, Summer",
+            "description": "",
+            "startingMonth": 6,
+            "startingDay": 0,
+            "color": "#c0c0c0",
+            "icon": "summer",
+            "sunriseTime": 23400,
+            "sunsetTime": 62100
+        },
+        {
+            "id": "323018c0",
+            "name": "Pestilence, Autumn",
+            "description": "",
+            "startingMonth": 8,
+            "startingDay": 0,
+            "color": "#000000",
+            "icon": "fall",
+            "sunriseTime": 22500,
+            "sunsetTime": 63000
+        },
+        {
+            "id": "95dbe71",
+            "name": "Conquest, Autumn",
+            "description": "",
+            "startingMonth": 10,
+            "startingDay": 0,
+            "color": "#000000",
+            "icon": "fall",
+            "sunriseTime": 23400,
+            "sunsetTime": 62100
+        },
+        {
+            "id": "a355b359",
+            "name": "Famine, Winter",
+            "description": "",
+            "startingMonth": 12,
+            "startingDay": 0,
+            "color": "#000000",
+            "icon": "winter",
+            "sunriseTime": 24300,
+            "sunsetTime": 61200
+        },
+        {
+            "id": "bcf82a09",
+            "name": "Death, Winter",
+            "description": "",
+            "startingMonth": 14,
+            "startingDay": 0,
+            "color": "#000000",
+            "icon": "winter",
+            "sunriseTime": 25200,
+            "sunsetTime": 60300
+        }
+    ],
+    "time": {
+        "id": "1837c3cb",
+        "hoursInDay": 24,
+        "minutesInHour": 60,
+        "secondsInMinute": 60,
+        "gameTimeRatio": 1,
+        "unifyGameAndClockPause": true,
+        "updateFrequency": 1
+    },
+    "weekdays": [
+        {
+            "abbreviation": "Px",
+            "id": "e8af94ba",
+            "name": "Dies Pontifex",
+            "description": "",
+            "numericRepresentation": 1,
+            "restday": false
+        },
+        {
+            "abbreviation": "Pr",
+            "id": "53e87c1b",
+            "name": "Dies Primus",
+            "description": "",
+            "numericRepresentation": 2,
+            "restday": false
+        },
+        {
+            "abbreviation": "Sec",
+            "id": "281d448e",
+            "name": "Dies Secundus",
+            "description": "",
+            "numericRepresentation": 3,
+            "restday": false
+        },
+        {
+            "abbreviation": "Ter",
+            "id": "97ae1682",
+            "name": "Dies Tertius",
+            "description": "",
+            "numericRepresentation": 4,
+            "restday": false
+        },
+        {
+            "abbreviation": "Qua",
+            "id": "855fc849",
+            "name": "Dies Quartius",
+            "description": "",
+            "numericRepresentation": 5,
+            "restday": false
+        }
+    ],
+    "year": {
+        "id": "e8befa31",
+        "numericRepresentation": 541,
+        "prefix": "Assartum",
+        "postfix": "",
+        "showWeekdayHeadings": true,
+        "firstWeekday": 0,
+        "yearZero": 541,
+        "yearNames": [],
+        "yearNamingRule": "default",
+        "yearNamesStart": 0
+    }
+}

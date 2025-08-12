@@ -1,0 +1,1488 @@
+[
+    {
+        "title": "Icelorn",
+        "content": "<p>Icelorn. The clans of Acheron toast their Queen and their Chosen, who are by now ice-locked</p><p>within Castle Acheron. Communal howling continues long into the evening.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 12,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Week of Feast/Fast",
+        "content": "<p>Week of Feast/Fast.</p><p>Week of Feast/Fast. Devout followers of the Divine Corpse abstain from eating while the</p><p>sign of Feast is in the sky. Heretical followers of Feast secretly gorge themselves all week.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 7,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Burning Moon",
+        "content": "<p>Visible for 5 nights during the Sign of Perception. This moon glows pellucid and white, so luminous the world is denied full darkness for an entire week.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 2,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 2,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Lunar Event"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Astrologer\u2019s Vigil",
+        "content": "<p>Followers of Perception prepare for a night of star-gazing. On this evening,</p><p>the burning glory of the night sky reveals truths not usually discernible to the naked eye.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 2,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 2,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Bautenmoot",
+        "content": "<p>All bautenlobbe travel to a secret location deep within the Weald. The reason for this meeting is unknown, but their collective effort to attend makes clear its importance.</p>",
+        "startDate": {
+            "year": 542,
+            "month": 0,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 542,
+            "month": 0,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Ecological Event"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Mass Pontifex - Sanctum Votum",
+        "content": "<p>Sanctum Votum. The devout meditate on the sin of Bliss. This Mass Pontifex is the only</p><p>day on which nobles can marry. Villagers will have a lot to say about which wedding was best.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 6,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 6,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "The Ecclesiarch\u2019s Largesse",
+        "content": "<p>The Ecclesiarch\u2019s Largesse. Each officially recognised Guildhall receives a shipment of</p><p>goods and supplies from the Ecclesiarch, intended as a thanks for services rendered.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 14,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 14,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Feast of the Wicker King.",
+        "content": "<p></p><p>Feast of the Wicker King. Followers of Feast construct a fat wicker figure holding a carved</p><p>wooden bowl. The bowl is filled with food and the figure burnt.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 7,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Sign of Rot.",
+        "content": "<p></p><p>Sign of Rot. At dawn, all unharvested crops wither and rot in their fields. Nothing edible</p><p>remains. Villagers across the land hold a harvest festival to celebrate the end of their labours.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 9,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday",
+            "Ecological Event"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Day of Murmurs",
+        "content": "<p>Followers of Justice air their grievances publicly, making their grudges known verbally to those who have wronged them.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 1,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 1,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "F\u00e6dernich",
+        "content": "<p></p><p>F\u00e6dernicht. Farmers sacrifice an adult male animal to Fecundity, praying for virile livestock</p><p>in the next breeding season.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 6,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 6,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Blessing of the Keys",
+        "content": "<p>Blessing of the Keys. Members of the clergy go house to house in villages, saying prayers</p><p>over any keys found within.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 15,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 15,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Repentance",
+        "content": "<p>The Wyccefinders\u2019 Guild empties its dungeons and commences a day of trials.</p><p>The day closes with a mass pyre; in Assartum, these can fill entire city squares.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 4,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Feast of Twelve Families",
+        "content": "<p>Feast of Twelve Families. Noble houses lay a table with 12 place settings: 5 are provided with</p><p>food and drink, 7 are left empty. Nobles are expected to show generosity toward their lessers</p>",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 12,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "The March",
+        "content": "<p>The March. Soldiers chosen for winter leave begin the march homewards from Wealdean</p><p>fronts. All roads leading to Assartum fill with regiments of happy foot soldiers.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 11,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "The March",
+        "content": "<p>Soldiers on winter leave return to one of several Wealdean fronts. This begins as a parade through Assartum and descends into the gruelling march it actually is.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 1,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 1,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Thieves\u2019 Banquet",
+        "content": "<p>Thieves\u2019 Banquet. Followers of Voracity steal something they do not want or need, only to</p><p>hide it somewhere they will forget, dotting the countryside with hidden caches of valuables.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 13,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 13,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Mort-Aux-Rats",
+        "content": "<p></p><p>Mort-Aux-Rats. A ratcatching holiday. Peasants are given one obol for every rat they kill (as</p><p>counted in tails) and present to the Ratcatchers\u2019 Guild.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 13,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 13,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Investiture",
+        "content": "<p>New Ecclesiarchs are officially crowned on this day, while reigning Ecclesiarchs</p><p>celebrate their official birthday instead. Feasts and banquets are held throughout the land.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 4,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Singing Grindstones",
+        "content": "<p>Singing Grindstones. Members of the Woodcutters\u2019 Guild return to the Weald. They stop</p><p>in villages and get their axes sharpened. Blacksmiths do not charge for this service today.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 15,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 15,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Lytlingnicht",
+        "content": "<p>Lytlingnicht. Farmers sacrifice a young animal to Fecundity, praying for healthy offspring</p><p>in the next breeding season</p>",
+        "startDate": {
+            "year": 541,
+            "month": 6,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 6,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Ossein Moon",
+        "content": "<p>Visible for 3 nights during the Sign of Frenzy. This moon glows bone yellow and its rising marks the beginning of opiri feeding frenzies (opiri, p. 259).</p><p></p><p>Dies primus - Long-dormant opiri nests burst into activity. Entire settlements perish in a jubilant rush of hungry wings. The night is thick with the sound of feeding opiri-gara.</p><p>Dies Secundus - Opiri emerge again, returning to devastated towns in search of survivors. Frenzy\u2019s favoured seethe across ruined, hollow places.</p><p>Dies tertius - On the final night of the full moon, the hunger of the opiri drives them further afield. They scour forests and villages, searching for fresh meat and marrow</p>",
+        "startDate": {
+            "year": 541,
+            "month": 5,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 5,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Lunar Event"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Famished Moon",
+        "content": "<p>Visible for 3 nights during the Sign of Voracity. This moon is noticably smaller than any other, and consequently much darker. Any who eat under its light will find themselves ever-hungry.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 13,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 13,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Lunar Event"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Deliverance",
+        "content": "<p>Assartum\u2019s stocks, pillories and holding cells are emptied; their contents</p><p>brought before the Justiciers and declared guilty. The day closes with mass executions.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 4,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Duellist's Moon",
+        "content": "<p>Visible for 3 nights during the Signs of Honour and Panic. This moon glows the crimson of fresh-spilt blood. There are many theories about the hole at its centre.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 10,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 11,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Lunar Event"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Laceworker Egg Hatching",
+        "content": "<p>On this evening, any unhatched laceworkers spill out of their egg cases. The night crawls with colour.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 0,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Ecological Event"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Wende-withers.",
+        "content": "<p></p><p>Wende-withers. As the sign of Rot gives way to that of Honour, any unharvested wendeworts</p><p>begin to shrivel and die. The hollow trees in which they grew begin to disintegrate.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 9,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Ecological Event",
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "New Moon (ROT)",
+        "content": "<p>As the new moon creeps across the land, bultchlings emerge from putrid crops and plant wendeworts (p. 287) in hollow trees.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 9,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Lunar Event",
+            "Ecological Event"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Death of Joy",
+        "content": "<p>On this day the Sublime Joy was torn from the skies and murdered by Templar.</p><p>Ever since, it has been darkened by a solar eclipse. A matching eclipse occurs on Dies Quartius.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 5,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 5,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday",
+            "Lunar Event"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Laceworker Egg Laying",
+        "content": "<p>Laceworker Egg Laying. Glutted on the insects attracted by Blighted Moon, the</p><p>laceworkers begin laying eggs in earnest. These remain dormant until the following spring.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 8,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Ecological Event"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Sanctum Ablutio",
+        "content": "<p>On this Mass Pontifex, the devout meditate on the sin of Exultation.</p><p>Children who have reached 8 years of age are baptised in running water.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 2,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 2,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Day of Deals.",
+        "content": "<p></p><p>Day of Deals. Both the Ecclesiastical devout and the heretical followers of Honour regard</p><p>deals and promises made on this day to be \u2018more binding\u2019 than on any other.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 10,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 10,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Obsequies",
+        "content": "<p>Following the week of revelry, the Gravediggers\u2019 Guild inter the deceased. Each</p><p>of the dead receives burial rites, an individual grave and a copper key.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 4,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Day of Wagers",
+        "content": "<p>It is tradition to make a wager with a friend, to be paid before the dawning of Dies Tertius. Those who do not pay up are called \u2018ballycur\u2019 until they do.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 0,
+            "hour": 0,
+            "minute": 2,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 0,
+            "day": 0,
+            "hour": 0,
+            "minute": 2,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Mass Pontifex - Sanctum Profundio",
+        "content": "<p>Sanctum Profundio. The devout meditate on the sin on Woe. The Ecclesiarch prays with the</p><p>living, then descends to the Sepulchre Reverentia\u2019s catacombs and prays with the dead.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 14,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 14,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "New Year\u2019s Eve",
+        "content": "<p>New Year\u2019s Eve. Throughout the land, all able-bodied villagers enter forests and fields to</p><p>seek out clutches of laceworker eggs, to destroy them before they can hatch in spring.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 15,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 15,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "The Dancing Eclipse",
+        "content": "<p>The Dancing Eclipse. Worshippers of Ecstasy, Joy and Frenzy celebrate by dancing. As little</p><p>as a hop, skip or twirl in front of the wrong person can be enough to get burnt as a wycce.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 5,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 5,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday",
+            "Lunar Event"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Mass Pontifex - Sanctum Ostentatio.",
+        "content": "<p></p><p>Sanctum Ostentatio. The devout meditate on the sin of Lamentation. Saints and martyrs</p><p>are paraded around a settlement\u2019s outer walls, then ceremonially cast out</p>",
+        "startDate": {
+            "year": 541,
+            "month": 10,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 10,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Mother's Moon",
+        "content": "<p>Visible for 3 nights during the Signs of the Grimme and Chance. This moon glows orange; its caress causes laceworker eggs to begin hatching en masse.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 15,
+            "day": 4,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 542,
+            "month": 0,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Lunar Event"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Triumph",
+        "content": "<p>The entire city of Assartum celebrates the Ecclesiarch\u2019s official birthday, starting</p><p>with a grand parade of Templar.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 4,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Troth-Plight.",
+        "content": "<p></p><p>Troth-Plight. Royal knights must deliver news of all proposed noble betrothals to the</p><p>Ecclesiarch, in person. Betrothal feasts are held in relevant bordercastles.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 8,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Maker\u2019s Day.",
+        "content": "<p></p><p>Maker\u2019s Day. Followers of Toil glorify their patron by destroying either their most recent</p><p>or their finest mannekin.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 8,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Hot Obol Day",
+        "content": "<p>Local nobles gather on balconies to hurl scalding obols into the crowds gathered</p><p>below. They watch with glee as the poor scrabble to pick up these heated metal coins.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 3,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 3,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Day of Blows",
+        "content": "<p>Unless appeased the day before, followers of Justice can seek retribution for grudges aired on the Day of Murmurs. It is a day of sudden violence and mysterious corpses.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 1,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 1,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "S\u00e9ance of the Sleepless",
+        "content": "<p>S\u00e9ance of the Sleepless. Followers of Languor burn asphodel, synchronising so they can</p><p>become one with Languor, the long-dead and each other all at the same time.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 14,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 14,
+            "day": 1,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Offre Men",
+        "content": "<p></p><p>Offre Men. Fearful devout construct offre men to put in front of their dwellings. Cults of Panic</p><p>are so active this week that, sometimes, the only way to save a house is to offer a straw substitute.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 11,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Mass Pontifex",
+        "content": "",
+        "startDate": {
+            "year": 542,
+            "month": 2,
+            "day": 0,
+            "hour": 0,
+            "minute": 2,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 542,
+            "month": 2,
+            "day": 0,
+            "hour": 0,
+            "minute": 2,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 0,
+        "categories": [],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Day of Appeals",
+        "content": "<p>Those who have been murmured against can seek forgiveness from those</p><p>they\u2019ve wronged. Alternatively, they can report them to the Church or the wyccefinders.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 1,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 1,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Blighted Moon",
+        "content": "<p>Visible for 3 nights during the Sign of Toil. This moon glows corpse grey and sheds tiny flakes of luminescent powder, the rot of stars. Insects emerge in droves to consume this substance.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 8,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Lunar Event"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    },
+    {
+        "title": "Tongueless Truths",
+        "content": "<p>Followers of Oblivion write down secrets and hurl them into the sea, in</p><p>glass bottles. Monks and scribes earn good money writing secrets for the illiterate.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 3,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 3,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Procession of the Forlorn.",
+        "content": "<p></p><p>Procession of the Forlorn. Followers of Hope ritualistically blind one of their own, believing</p><p>their hope will bring back the sun. Every year, the sight of the blinded is restored at dawn.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 12,
+            "day": 0,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Modranich",
+        "content": "<p></p><p>Modranicht. Farmers sacrifice an adult female animal to Fecundity, praying for the safe birth of livestock in the next birthing season.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 6,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 6,
+            "day": 2,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [],
+        "remindUsers": null
+    },
+    {
+        "title": "Panic\u2019s Night.",
+        "content": "<p></p><p>Panic\u2019s Night. Panic makes his influence known in the world; crime and heresy abound. All</p><p>who are accosted by the authorities say they couldn\u2019t help themselves \u2013 Panic made them do it.</p>",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 11,
+            "day": 3,
+            "hour": 0,
+            "minute": 0,
+            "seconds": 0
+        },
+        "allDay": true,
+        "repeats": 3,
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ],
+        "remindUsers": null
+    }
+]
