@@ -10,4 +10,6 @@ export async function initPdfPager() {
         }
         await game.settings.set(module_id, key, value);
     }
+
+    await game.settings.set("core", "sheetClasses", {"Actor":{"player":"pdf-pager.PDFActorSheet"}});
 }
