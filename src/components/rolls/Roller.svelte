@@ -67,7 +67,7 @@
             [`flags.${game.system.id}`]: {
                 type: "roll",
                 roll_type: roll_type_key,
-                flipped: false,
+                coin_result: 0,
                 difficulty: difficulty,
                 category: "standard",
             },

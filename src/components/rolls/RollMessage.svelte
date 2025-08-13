@@ -1,48 +1,57 @@
 <script>
     import roll_types from "./roll_types.json";
-    let {
-        author,
-        speaker,
-        flags,
-        rolls
-    } = $props();
+    let { author, speaker, flags, rolls } = $props();
     let ds_data = $derived(flags[game.system.id]);
     let roll = $derived(Roll.fromJSON(rolls[0]));
     let die_results = $derived(roll.dice[0].results);
-    let modifiers = $derived(roll.total - roll.dice[0].total);  // Dumb hack, easier
-    let roll_type = $derived(roll_types[ds_data.roll_type] || roll_types["STANDARD"]);
+    let modifiers = $derived(roll.total - roll.dice[0].total); // Dumb hack, easier
+    let roll_type = $derived(
+        roll_types[ds_data.roll_type] || roll_types["STANDARD"],
+    );
+    let roll_result = $derived.by(() => {
+        let total = roll.total;
+        let difficulty = ds_data.difficulty;
+        let base;
+        if (total < difficulty) {
+            base = 1;
+        } else if (total == difficulty) {
+            base = 2;
+        } else {
+            base = 3;
+        }
+        let final_result = base + ds_data.coin_result;
+        return ["skull", "under", "equal", "over", "crest"][final_result];
+    })
     let speaker_actor = $derived(ChatMessage.getSpeakerActor(speaker));
-    // let author_user = $derived(User.get(author));
-
-    // let author_user = $derived(gam)
 </script>
 
 <h2>
     <span>{roll_type.label} - {speaker_actor?.name}</span>
-    <i class="fas fa-coin doomcoin"></i>
+    {#if ds_data.coin_result == 0}
+        <i class="fas fa-coin doomcoin"></i>
+    {/if}
 </h2>
-<div class="results">
+<div class="dice">
     {#each die_results as die, index}
-        <span class={{discarded: die.discarded}}>{die.result}</span>
+        <span class={{ discarded: die.discarded }}>{die.result}</span>
     {/each}
     <span>+</span>
     <span>{modifiers}</span>
     <span>→</span>
     <span>{roll.total}</span>
 </div>
-
+<div class="results">
+    {#each Object.entries(roll_type["results"]) as [result_key, result_text]}
+        <span>
+            {result_key}
+        </span>
+        <span class={{chosen: result_key == roll_result}}>
+            {result_text} 
+        </span>
+    {/each}
+</div>
 
 <style lang="scss">
-    .container {
-        background-image: url("ui/parchment.jpg");
-        padding: 5px;
-        margin-right: 10px;
-        display: flex;
-        flex-direction: column;
-        z-index: calc(var(--z-index-ui) + 10);
-        pointer-events: all;
-    }
-
     h2 {
         display: flex;
         flex-direction: row;
@@ -57,14 +66,13 @@
         }
     }
 
-    .discarded {
-        text-decoration: line-through;
-    }
-
-    .results {
+    .dice {
         display: flex;
         flex-direction: row;
 
+        .discarded {
+            text-decoration: line-through;
+        }
         span {
             font-size: x-large;
             font-weight: bold;
@@ -72,4 +80,22 @@
         }
     }
 
+    .results {
+        display: grid;
+        grid-template: 1fr / 50px 1fr;
+        //align-items: center;
+        align-content: center;
+        background-color: black;
+        gap: 1px;
+        
+        > * {
+            height: 100%;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .chosen {
+            background-color: gray;
+        }
+    }
 </style>
