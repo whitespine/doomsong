@@ -46,10 +46,9 @@ Hooks.once('ready', async function() {
 
 // Mount our ui components
 Hooks.once('ready', async function() {
-  let ui_bottom = document.querySelector("#ui-bottom");
-  let flex_bottom = ui_bottom.children[0];
+  let ui = document.querySelector("#ui-bottom");
   mount(Roller, {
-    target: flex_bottom
+    target: ui
   });
 })
 
