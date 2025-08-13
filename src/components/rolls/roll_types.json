@@ -1,6 +1,6 @@
 {
     "STANDARD": {
-        "label": "Standard Check",
+        "label": "Standard",
         "tooltip": "Suitable for most challenges",
         "default_difficulty": 5,
         "difficulty_tooltip": "Opposed Checks.  Opposed Checks. If a check is directly opposed by another character, the difficulty should be increased by 2 if the opponent has a useful trait. For example, if a player tries to convince a heretic they worship the same god, you might increase the difficulty to 7 if the heretic has the Suspicious trait.  The same is true for the opposite situation, reducing the difficulty to 3 if they are Naive.",
@@ -31,11 +31,11 @@
         "default_difficulty": 5,
         "difficulty_tooltip": "Always set by the effect that triggered the corruption.",
         "results": {
-            "skull": "You suffer from the corruption. Dice rolled while resolving this corruption are rolled twice, taking the worse value.",
-            "under": "You suffer from the corruption.",
-            "equal": "You suffer no ill effects from the corruption but gain the Furious, Exhausted, Bleeding or Uneasy condition.",
-            "over": "You suffer no ill effects from the corruption.",
-            "crest": "You are immune to this specific corruption for D6 days."
+            "skull": "Critical: You suffer from the corruption. Dice rolled while resolving this corruption are rolled twice, taking the worse value.",
+            "under": "Failure: You suffer from the corruption.",
+            "equal": "Imbalance: You suffer no ill effects from the corruption but gain the Furious, Exhausted, Bleeding or Uneasy condition.",
+            "over": "Shrug It Off: You suffer no ill effects from the corruption.",
+            "crest": "Immunity: You are immune to this specific corruption for D6 days."
         }
     },
     "DEATH": {
@@ -44,11 +44,11 @@
         "default_difficulty": 3,
         "difficulty_tooltip": "Increase the difficulty by 2 if the target has already resisted death since dawn.",
         "results": {
-            "skull": "You die instantly.",
-            "under": "You lose all toughness and fall unconscious. At dawn, flip the Doomcoin.  On a crest, you gain +1 toughness; on a skull, you die.",
-            "equal": "If you have two action dice, lose an action die. Increase the difficulty of all attempts to resist [death] by 1 until dawn.",
-            "over": "If you have two action dice, lose an action die.",
-            "crest": "If you have one action die, gain an action die."
+            "skull": "Death: You die instantly.",
+            "under": "Dying: You lose all toughness and fall unconscious. At dawn, flip the Doomcoin.  On a crest, you gain +1 toughness; on a skull, you die.",
+            "equal": "Hold Out: If you have two action dice, lose an action die. Increase the difficulty of all attempts to resist [death] by 1 until dawn.",
+            "over": "Not Today: If you have two action dice, lose an action die.",
+            "crest": "Heroic Effort: If you have one action die, gain an action die."
         }
     }
 }
