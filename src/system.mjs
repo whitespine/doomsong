@@ -7,8 +7,9 @@ import { setupDocuments } from './documents/config';
 import { initPdfPager } from './integrations/pdf/pager';
 import { retry, sleep } from './utils/time';
 import { mount } from 'svelte';
-import Roller from "./components/Roller.svelte";
-import { DoomsongCombatTracker } from './combat/DoomsongCombatTracker.svelte';
+import Roller from "./components/rolls/Roller.svelte";
+import { DoomsongCombatTracker } from './overrides/DoomsongCombatTracker.svelte';
+import { DoomsongChatMessage } from './overrides/DoomsongChatMessage.svelte';
 
 Hooks.once('init', async function() {
   console.log("Initializing DOOMSONG RPG")

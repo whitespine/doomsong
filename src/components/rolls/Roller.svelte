@@ -64,6 +64,15 @@
         }[mode];
         let roll = await new Roll(formula).roll();
         ui.notifications.info(roll.total);
+        ChatMessage.create({
+            rolls: [roll],
+            // Doomsong specific sauce
+            [`flags.${game.system.id}`]: {
+                type: "roll",
+                flipped: false,
+                category: "standard"
+            }
+        })
     }
 </script>
 
