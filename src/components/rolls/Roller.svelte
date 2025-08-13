@@ -5,7 +5,7 @@
     function valueTooltip(value) {
         return {
             "-1": "Hindering",
-            "0": "Irrelevant",
+            "0": "Incidental",
             "1": "Helpful",
             "2": "Perfect",
             "3": "Perfect and Defining",
@@ -62,9 +62,11 @@
         // Send to chat
         await ChatMessage.create({
             rolls: [roll],
+            speaker: ChatMessage.getSpeaker(),
             // Doomsong specific sauce
             [`flags.${game.system.id}`]: {
                 type: "roll",
+                roll_type: roll_type_key,
                 flipped: false,
                 difficulty: difficulty,
                 category: "standard",
@@ -97,11 +99,11 @@
                 {:else}
                     <!-- Pardon my ugly svelte -->
                     {#if category == "Gear"}
-                        <button onclick={() => difficulty++}>+</button>
+                        <button class="add" onclick={() => difficulty++}>+</button>
                     {:else if category == "Conditions"}
-                        <span>{difficulty}</span>
+                        <span class="difficulty" data-tooltip="Difficulty">{difficulty}</span>
                     {:else if category == "Allies"}
-                        <button onclick={() => difficulty--}>-</button>
+                        <button class="subtract" onclick={() => difficulty--}>-</button>
                     {/if}
                 {/if}
             {/each}
@@ -148,5 +150,18 @@
     .roll-buttons {
         display: flex;
         flex-direction: row;
+    }
+
+    .add {
+        background-color: orange;
+    }
+
+    .difficulty {
+        font-weight: bolder;
+        font-size: x-large;
+    }
+    
+    .subtract {
+        background-color: teal;
     }
 </style>
