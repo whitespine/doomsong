@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { replaceInFileSync } from 'replace-in-file'
+import { svelte } from '@sveltejs/vite-plugin-svelte';
 
 
 export default defineConfig({
@@ -30,7 +31,10 @@ export default defineConfig({
       fileName: "system"
     }
   },
-  plugins: [fixSystemJson()]
+  plugins: [
+    fixSystemJson(),
+    svelte()
+  ]
 });
 
 // Handles not release versions

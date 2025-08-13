@@ -6,7 +6,8 @@ import { setupModels } from './models/config';
 import { setupDocuments } from './documents/config';
 import { initPdfPager } from './integrations/pdf/pager';
 import { retry, sleep } from './utils/time';
-import { sleep } from './utils/time';
+import { mount } from 'svelte';
+import Roller from "./components/roller.svelte";
 
 Hooks.once('init', async function() {
   console.log("Initializing DOOMSONG RPG")
@@ -43,6 +44,14 @@ Hooks.once('ready', async function() {
   }, 1000, 10);
 });
 
+// Mount our ui components
+Hooks.once('ready', async function() {
+  let ui_bottom = document.querySelector("#ui-bottom");
+  let flex_bottom = ui_bottom.children[0];
+  mount(Roller, {
+    target: flex_bottom
+  });
+})
 
 // HMR reload of various components
 if (import.meta.hot) {
