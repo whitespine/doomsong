@@ -7,13 +7,15 @@ import { setupDocuments } from './documents/config';
 import { initPdfPager } from './integrations/pdf/pager';
 import { retry, sleep } from './utils/time';
 import { mount } from 'svelte';
-import Roller from "./components/roller.svelte";
+import Roller from "./components/Roller.svelte";
+import { DoomsongCombatTracker } from './combat/DoomsongCombatTracker.svelte';
 
 Hooks.once('init', async function() {
   console.log("Initializing DOOMSONG RPG")
   setupDocuments();
   setupModels();
   setupSettings();
+  CONFIG.ui.combat = DoomsongCombatTracker;
   // CONFIG.debug.hooks = true;
 });
 
@@ -32,7 +34,6 @@ Hooks.once('simple-calendar-ready', async function() {
 Hooks.once('ready', async function() {
   await retry(async () => {
     let need_init_pdf = !game.settings.get(game.system.id, DOOMSONG.settings.init.pdf);
-    console.error("NEED INIT", need_init_pdf);
     if (need_init_pdf) {
       await initPdfPager().then(async () => {
         await game.settings.set(game.system.id, DOOMSONG.settings.init.pdf, true);
@@ -46,9 +47,9 @@ Hooks.once('ready', async function() {
 
 // Mount our ui components
 Hooks.once('ready', async function() {
-  let ui = document.querySelector("#ui-bottom");
+  let ui_bottom = document.querySelector("#ui-bottom");
   mount(Roller, {
-    target: ui
+    target: ui_bottom
   });
 })
 

@@ -17,6 +17,11 @@
             {/each} 
         {/each}
     </div>
+    <div class="roll-buttons"> 
+        <button onclick={() => roll("hasty")}>Hasty</button>
+        <button onclick={() => roll("standard")}>Standard</button>
+        <button onclick={() => roll("focused")}>Focused</button>
+    </div>
 </div>
 
 <script>
@@ -31,19 +36,35 @@
         }[value];
     }
 
+    // Our default choices
+    function defaultChoices() {
+        return {
+            "Traits": 0, 
+            "Gear": 0, 
+            "Conditions": 0, 
+            "Allies": 0
+        }
+    }
+
     // Our currently selected options
-    let choices = $state({
-        "Traits": 0, 
-        "Gear": 0, 
-        "Conditions": 0, 
-        "Allies": 0
-    });
+    let choices = $state(defaultChoices());
 
     // Button callback
     function changeChoice(category, value) {
         choices[category] = value;
     }
-    $inspect(choices);
+
+    // Roll handler
+    async function roll(mode) {
+        let total_bonuses = Object.values(choices).reduce((x, y) => x + y, 0);
+        let formula = {
+            hasty: `2d6kl1 + ${total_bonuses}`,
+            standard: `1d6 + ${total_bonuses}`,
+            focused: `2d6kh1 + ${total_bonuses}`
+        }[mode];
+        let roll = await new Roll(formula).roll();
+        ui.notifications.info(roll.total);
+    }
 </script>
 
 <style lang="scss">
@@ -70,5 +91,10 @@
                 border-color: black;
             }
         }
+    }
+
+    .roll-buttons {
+        display: flex;
+        flex-direction: row;
     }
 </style>
