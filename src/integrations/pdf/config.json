@@ -5,6 +5,11 @@
     "noSpellCheck": true,
     "formFillPdf": true,
     "actorConfig": {
-        "Text112": "name"
+        "Text112": "name",
+        "Text5": "system.max_toughness",
+        "Text6": "system.toughness",
+        "Text7": "system.max_footing",
+        "Text8": "system.footing",
+        "Text9": "system.protection"
     }
 }
