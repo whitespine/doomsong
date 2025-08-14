@@ -49,18 +49,16 @@ Hooks.on("deleteChatMessage", (message) => {
     }
 });
 
-let at_bottom = false;
 Hooks.on("diceSoNiceRollStart", (message_id) => {
     let message = game.messages.get(message_id);
     if(message._svelte_props) {
-        message._svelte_props["dice_so_nice"] = "rolling"; 
-        at_bottom
+        message._svelte_props["dsn_roll"] = "rolling"; 
     }
 });
 
 Hooks.on("diceSoNiceRollComplete", (message_id) => {
     let message = game.messages.get(message_id);
     if(message._svelte_props) {
-        message._svelte_props["dice_so_nice"] = "rolled"; 
+        message._svelte_props["dsn_roll"] = "rolled"; 
     }
 });
