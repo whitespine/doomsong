@@ -1,6 +1,6 @@
 <script>
     import roll_types from "./roll_types.json";
-    let { author, speaker, flags, rolls, dsn_roll } = $props();
+    let { _id: id, author, speaker, flags, rolls, dsn_roll } = $props();
     let ds_data = $derived(flags[game.system.id]);
     let roll = $derived(Roll.fromJSON(rolls[0]));
     let die_results = $derived(roll.dice[0].results);
@@ -23,12 +23,29 @@
         return ["skull", "under", "equal", "over", "crest"][final_result];
     });
     let speaker_actor = $derived(ChatMessage.getSpeakerActor(speaker));
+
+    async function flipDoomcoin() {
+        // Moves the result up or down by one
+        console.log("Flippy");
+        let doomcoin = await new Roll("1d2").roll();
+        let flip_value = doomcoin.total == 2 ? 1 : -1;
+        let dsn_promise = game.dice3d ?  game.dice3d.showForRoll(doomcoin, game.user, true) : Promise.resolve(true);
+        dsn_promise.then(() => {
+            return game.messages.get(id).update({
+                [`flags.${game.system.id}.coin_result`]: flip_value
+            });
+        });
+    }
 </script>
 
 <h2>
     <span>{roll_type.label} - {speaker_actor?.name}</span>
     {#if ds_data.coin_result == 0}
-        <i class="fas fa-coin doomcoin"></i>
+       <a class="doomcoin" onclick={flipDoomcoin} aria-label="Flip Doomcoin"><i  class="fas fa-coin"></i></a>
+    {:else if ds_data.coin_result == 1}
+        <i class="fas fa-crown doomcoin"></i>
+    {:else if ds_data.coin_result == -1}
+        <i class="fas fa-skull doomcoin"></i>
     {/if}
 </h2>
 <div class={["dice", {rolling: dsn_roll == "rolling", flipping: dsn_roll == "flipping" }]}>

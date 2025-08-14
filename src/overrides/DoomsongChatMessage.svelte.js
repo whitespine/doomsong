@@ -7,7 +7,6 @@ export class DoomsongChatMessage extends ChatMessage {
     // Populate this as the specified component. Cannot be changed once populated
     async populateAsComponent(component) {
         const data = this.toObject(false);
-        console.error(data);
         if (this._svelte_wrapper) {
             // Update props, no other action necessary
             Object.assign(this._svelte_props, data);
@@ -51,14 +50,14 @@ Hooks.on("deleteChatMessage", (message) => {
 
 Hooks.on("diceSoNiceRollStart", (message_id) => {
     let message = game.messages.get(message_id);
-    if(message._svelte_props) {
+    if(message?._svelte_props) {
         message._svelte_props["dsn_roll"] = "rolling"; 
     }
 });
 
 Hooks.on("diceSoNiceRollComplete", (message_id) => {
     let message = game.messages.get(message_id);
-    if(message._svelte_props) {
+    if(message?._svelte_props) {
         message._svelte_props["dsn_roll"] = "rolled"; 
     }
 });
