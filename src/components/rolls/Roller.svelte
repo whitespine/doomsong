@@ -24,8 +24,6 @@
 
     // Callback for setting a roll type
     function selectRollType(evt) {
-        console.warn(evt.target.value);
-        console.warn(roll_types);
         roll_type_key = evt.target.value;
         difficulty = roll_type.default_difficulty;
     }
@@ -77,13 +75,19 @@
 </script>
 
 <div class="doomsong container">
-    <h1>
+    <div class="header">
         <select onchange={selectRollType}>
             {#each Object.entries(roll_types) as [key, type]}
                 <option value={key}>{type.label}</option>
             {/each}
         </select>
-    </h1>
+        <span class="difficulty">Difficulty:</span>
+        <button class="add" onclick={() => difficulty++}>+</button>
+        <span class="difficulty value" data-tooltip="Difficulty"
+            >{difficulty}</span
+        >
+        <button class="subtract" onclick={() => difficulty--}>-</button>
+    </div>
     <div class="roll-options">
         {#each ["Traits", "Gear", "Conditions", "Allies"] as category}
             <span>{category}</span>
@@ -99,11 +103,11 @@
                 {:else}
                     <!-- Pardon my ugly svelte -->
                     {#if category == "Gear"}
-                        <button class="add" onclick={() => difficulty++}>+</button>
+                        <div></div>
                     {:else if category == "Conditions"}
-                        <span class="difficulty" data-tooltip="Difficulty">{difficulty}</span>
+                        <div></div>
                     {:else if category == "Allies"}
-                        <button class="subtract" onclick={() => difficulty--}>-</button>
+                        <div></div>
                     {/if}
                 {/if}
             {/each}
@@ -125,6 +129,37 @@
         flex-direction: column;
         z-index: calc(var(--z-index-ui) + 10);
         pointer-events: all;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        select {
+            flex-grow: 1;
+            margin-right: 30px;
+            font-size: larger;
+        }
+
+        button {
+            width: 30px;
+
+            &.add {
+                background-color: orange;
+            }
+
+            &.subtract {
+                background-color: teal;
+            }
+        }
+
+        .difficulty {
+            padding-left: 5px;
+            padding-right: 5px;
+            font-weight: bolder;
+            font-size: x-large;
+        }
     }
 
     select {
@@ -150,18 +185,5 @@
     .roll-buttons {
         display: flex;
         flex-direction: row;
-    }
-
-    .add {
-        background-color: orange;
-    }
-
-    .difficulty {
-        font-weight: bolder;
-        font-size: x-large;
-    }
-    
-    .subtract {
-        background-color: teal;
     }
 </style>
