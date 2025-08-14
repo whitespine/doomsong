@@ -1,6 +1,6 @@
 <script>
     import roll_types from "./roll_types.json";
-    let { author, speaker, flags, rolls } = $props();
+    let { author, speaker, flags, rolls, dice_so_nice } = $props();
     let ds_data = $derived(flags[game.system.id]);
     let roll = $derived(Roll.fromJSON(rolls[0]));
     let die_results = $derived(roll.dice[0].results);
@@ -31,25 +31,27 @@
         <i class="fas fa-coin doomcoin"></i>
     {/if}
 </h2>
-<div class="dice">
-    {#each die_results as die, index}
-        <span class={{ discarded: die.discarded }}>{die.result}</span>
-    {/each}
-    <span>+</span>
-    <span>{modifiers}</span>
-    <span>→</span>
-    <span>{roll.total}</span>
-</div>
-<div class="results">
-    {#each Object.entries(roll_type["results"]) as [result_key, result_text]}
-        <span>
-            {result_key}
-        </span>
-        <span class={{chosen: result_key == roll_result}}>
-            {result_text} 
-        </span>
-    {/each}
-</div>
+{#if dice_so_nice != "rolling"}
+    <div class="dice">
+        {#each die_results as die, index}
+            <span class={{ discarded: die.discarded }}>{die.result}</span>
+        {/each}
+        <span>+</span>
+        <span>{modifiers}</span>
+        <span>→</span>
+        <span>{roll.total}</span>
+    </div>
+    <div class="results">
+        {#each Object.entries(roll_type["results"]) as [result_key, result_text]}
+            <span>
+                {result_key}
+            </span>
+            <span class={{chosen: result_key == roll_result}}>
+                {result_text} 
+            </span>
+        {/each}
+    </div>
+{/if}
 
 <style lang="scss">
     h2 {

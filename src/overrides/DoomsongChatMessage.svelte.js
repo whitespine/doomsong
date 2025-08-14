@@ -1,4 +1,4 @@
-import { mount } from 'svelte';
+import { mount, unmount } from 'svelte';
 import RollMessage from '../components/rolls/RollMessage.svelte'
 import { sleep } from '../utils/time';
 
@@ -14,9 +14,10 @@ export class DoomsongChatMessage extends ChatMessage {
         } else {
             // Instantiate props
             let props = $state(data);
+            this._svelte_props = props;
             this._svelte_wrapper = document.createElement("li");
             this._svelte_wrapper.classList.add("chat-message")
-            mount(component, { props: props, target: this._svelte_wrapper })
+            this._svelte_component = mount(component, { props: props, target: this._svelte_wrapper })
         }
 
         // Expects jquery format
@@ -39,3 +40,27 @@ export class DoomsongChatMessage extends ChatMessage {
         }
     }
 }
+
+// Create a cleanup hook
+Hooks.on("deleteChatMessage", (message) => {
+    if(message._svelte_component) {
+        unmount(message._svelte_component);
+        globalThis.$(message._svelte_wrapper).remove();
+    }
+});
+
+let at_bottom = false;
+Hooks.on("diceSoNiceRollStart", (message_id) => {
+    let message = game.messages.get(message_id);
+    if(message._svelte_props) {
+        message._svelte_props["dice_so_nice"] = "rolling"; 
+        at_bottom
+    }
+});
+
+Hooks.on("diceSoNiceRollComplete", (message_id) => {
+    let message = game.messages.get(message_id);
+    if(message._svelte_props) {
+        message._svelte_props["dice_so_nice"] = "rolled"; 
+    }
+});
