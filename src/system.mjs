@@ -10,6 +10,8 @@ import { mount } from 'svelte';
 import Roller from "./components/rolls/Roller.svelte";
 import { DoomsongCombatTracker } from './overrides/DoomsongCombatTracker.svelte';
 import { DoomsongChatMessage } from './overrides/DoomsongChatMessage.svelte';
+import { DoomsongActor } from './documents/actor';
+import { DoomsongTokenDocument } from './documents/token';
 
 Hooks.once('init', async function() {
   console.log("Initializing DOOMSONG RPG")
@@ -19,6 +21,16 @@ Hooks.once('init', async function() {
   CONFIG.ui.combat = DoomsongCombatTracker;
   // CONFIG.debug.hooks = true;
   document.documentElement.style.setProperty("--font-primary", `"IM Fell Double Pica", serif `);
+
+  // Also setup a doomsong namespace for macros to use
+  game.doomsong = {
+    combat: {},
+    documents: {
+      actor: DoomsongActor,
+      message: DoomsongChatMessage,
+      token: DoomsongTokenDocument
+    }
+  };
 });
 
 // Setup tokens

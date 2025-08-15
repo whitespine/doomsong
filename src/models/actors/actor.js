@@ -14,13 +14,14 @@ export class ActorModel extends DoomsongDataModel {
             max_footing: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
 
             // Combat moves
-            action_dice: new fields.NumberField({ nullable: false, integer: true, min: 1, initial: 1 }),
+            action_dice: new fields.NumberField({ nullable: false, integer: true, min: 1, initial: 1 }), // How many ya got?
             // A fixed length array of arrays. Each sub-array is the actions possible at that act
             moves: new ControlledLengthArrayField(
                 new fields.ArrayField(
                     new fields.StringField({ nullable: false})
                 )
             , {nullable: false, length: 6}),
+            set_dice: new fields.ArrayField(new fields.NumberField({nullable: false, integer: true, min: 1, max: 6})),
 
             // Descriptions etc
             traits: new fields.ArrayField(new fields.StringField({ nullable: false }))

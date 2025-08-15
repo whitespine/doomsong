@@ -126,7 +126,7 @@
                         {:else if category == "Conditions"}
                         <div class="extra mid" data-tooltip="Other bonuses">
                             <span>
-                                {choices.Extra > 0 ? "+" : ""}{choices.Extra}
+                                Bonus: {choices.Extra > 0 ? "+" : ""}{choices.Extra}
                             </span>
                         </div>
                     {:else if category == "Allies"}
