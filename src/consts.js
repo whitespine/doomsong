@@ -7,7 +7,8 @@ export const DOOMSONG = {
     settings: {
         init: {
             calendar: "init_calendar",
-            pdf: "init_pdf"
+            pdf: "init_pdf",
+            tokens: "init_tokens"
         }
     }
 }

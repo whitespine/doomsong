@@ -11,6 +11,11 @@ export class DoomsongActor extends Actor {
      * @param options
      */
     async update(data, options = {}) {
+        // Handle token updates
+        if(data["system.footing_bar.value"]) data["system.footing"] = data["system.footing_bar.value"];
+        if(data["system.toughness_bar.value"]) data["system.toughness"] = data["system.toughness_bar.value"];
+
+        // Fix array updates then delegate to super
         data = this.system.fullUpdateData(data);
         return super.update(data, options);
     }
@@ -22,29 +27,29 @@ export class DoomsongActor extends Actor {
     async _preCreate(...[data, options, user]) {
         await super._preCreate(data, options, user);
 
-        // Give a decent default icon
-        // let img = data.img ?? defaultImage({ type: data.type, name: data.name });
-
         // Set default link status
         let actorLink = data.prototypeToken?.actorLink ?? (data.type === "player");
 
-        let bar1 = data.prototypeToken?.bar1 ?? {
-            attribute: "toughness",
-        };
-        let bar2 = data.prototypeToken?.bar2 ?? {
-            attribute: "footing",
-        };
-
         // Put in the basics
         this.updateSource({
-            // img,
             prototypeToken: {
                 actorLink,
-                displayName: CONST.TOKEN_DISPLAY_MODES.HOVER,
-                bar1,
-                bar2
             },
         });
     }
 
+    prepareDerivedData() {
+        // Combat stats shared by all actors
+        this.system.toughness_bar = {
+            min: 0,
+            max: this.system.max_toughness,
+            value: this.system.toughness
+        }
+        this.system.footing_bar = {
+            min: 0,
+            max: this.system.max_footing,
+            value: this.system.footing
+        }
+        this.system.attack_difficulty = this.system.toughness + this.system.protection;
+    }
 }

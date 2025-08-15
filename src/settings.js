@@ -13,6 +13,15 @@ export function setupSettings() {
         default: false,
     });    
 
+    // Have we succesfully initialized token bars?
+    game.settings.register(game.system.id, DOOMSONG.settings.init.tokens, {
+        name: "Initialize Tokens",
+        scope: "world",
+        config: false,
+        type: Boolean,
+        default: false,
+    });    
+
     // Have we succesfully initialized pdf pager?
     game.settings.register(game.system.id, DOOMSONG.settings.init.pdf, {
         name: "Initialize PDF",

@@ -3,7 +3,7 @@ import { setupSettings } from './settings';
 import { DOOMSONG } from './consts';
 import { initCalendar } from './integrations/calendar/calendar';
 import { setupModels } from './models/config';
-import { setupDocuments } from './documents/config';
+import { initTokenSettings, setupDocuments } from './documents/config';
 import { initPdfPager } from './integrations/pdf/pager';
 import { retry, sleep } from './utils/time';
 import { mount } from 'svelte';
@@ -19,6 +19,17 @@ Hooks.once('init', async function() {
   CONFIG.ui.combat = DoomsongCombatTracker;
   // CONFIG.debug.hooks = true;
 });
+
+// Setup tokens
+Hooks.once("ready", async function() {
+  let need_init_tokens = !game.settings.get(game.system.id, DOOMSONG.settings.init.tokens);
+  if (need_init_tokens) {
+    await initTokenSettings().then(async () => {
+      await game.settings.set(game.system.id, DOOMSONG.settings.init.tokens, true);
+      ui.notifications.info("Initialized tokens");
+    });
+  }
+})
 
 // Setup calendar
 Hooks.once('simple-calendar-ready', async function() {
