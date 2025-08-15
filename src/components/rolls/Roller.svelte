@@ -98,7 +98,9 @@
     </div>
     <div class="roll-options">
         {#each ["Traits", "Gear", "Conditions", "Allies"] as category}
-            <span>{category}</span>
+            <div>
+                <span>{category}:</span>
+            </div>
             {#each [-1, 0, 1, 2, 3] as value}
                 {#if value <= 2 || category == "Traits"}
                     <button
@@ -144,14 +146,17 @@
         flex-direction: row;
         align-items: center;
 
+        // Our difficulty selector
         select {
             flex-grow: 1;
             margin-right: 30px;
             font-size: larger;
         }
 
+        // Our difficulty buttons
         button {
             width: 30px;
+            font-size: x-large;
 
             &.add {
                 background-color: orange;
@@ -177,22 +182,50 @@
 
     .roll-options {
         display: grid;
-        grid-template: 1fr / 2fr repeat(5, 1fr);
+        grid-template: 1fr / 2fr repeat(4, 1fr) 2fr;
         align-items: center;
         justify-items: center;
 
+        // Center text for modifiers
+        div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+
+            span {
+                font-weight: bold;
+            }
+        }
+
+        // Buttons we want to be flush, like in the book
         button {
             cursor: pointer;
             font-size: large;
-            font-weight: bolder;
-            // border-width: 0px;
+            font-weight: normal;
+            box-shadow: none;
+
+
+            outline: none;
             border-radius: 0px;
-            margin: 0px;
-            padding: 0px;
+            border: none;
+            padding: 0;
+            background: none;
             &.active {
-                border-width: 2px;
-                border-color: black;
+                box-shadow: inset 0 0 0 2px black;
+                font-weight: bolder;
             }
+        }
+
+        // Alternate rows
+        > *:nth-child(12n+1),
+        > *:nth-child(12n+2),
+        > *:nth-child(12n+3),
+        > *:nth-child(12n+4),
+        > *:nth-child(12n+5),
+        > *:nth-child(12n+6) {
+            background: grey;
         }
     }
 
@@ -200,4 +233,60 @@
         display: flex;
         flex-direction: row;
     }
+
+    /*
+    .roll-options {
+        display: grid;
+        grid-template: 1fr / 2fr repeat(4, 1fr) 2fr;
+        align-items: center;
+        justify-items: center;
+
+        // Center text for modifiers
+        div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+
+            span {
+                font-weight: bold;
+            }
+        }
+
+        // Buttons we want to be flush, like in the book
+        button {
+            cursor: pointer;
+            font-size: large;
+            font-weight: normal;
+            box-shadow: none;
+
+
+            outline: none;
+            border-radius: 0px;
+            border: none;
+            padding: 0;
+            background: none;
+            &.active {
+                box-shadow: inset 0 0 0 2px black;
+                font-weight: bolder;
+            }
+        }
+
+        // Alternate rows
+        > *:nth-child(12n+1),
+        > *:nth-child(12n+2),
+        > *:nth-child(12n+3),
+        > *:nth-child(12n+4),
+        > *:nth-child(12n+5),
+        > *:nth-child(12n+6) {
+            background: grey;
+        }
+    }
+
+    .roll-buttons {
+        display: flex;
+        flex-direction: row;
+    }
+        */
 </style>
