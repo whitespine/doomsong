@@ -1,5 +1,7 @@
 <script>
-    import roll_types from "./roll_types.json";
+    import Dice from "./Dice.svelte";
+import roll_types from "./roll_types.json";
+    import RollingDice from "./RollingDice.svelte";
     let { _id: id, author, speaker, flags, rolls, dsn_roll } = $props();
     let ds_data = $derived(flags[game.system.id]);
     let roll = $derived(Roll.fromJSON(rolls[0]));
@@ -48,14 +50,18 @@
         <i class="fas fa-skull doomcoin"></i>
     {/if}
 </h2>
-<div class={["dice", {rolling: dsn_roll == "rolling", flipping: dsn_roll == "flipping" }]}>
+<div class="dice">
     {#each die_results as die, index}
-        <span class={["die", { discarded: die.discarded }]}>{die.result}</span>
+        {#if dsn_roll == "rolling"}
+            <RollingDice />
+        {:else}
+            <Dice value={die.result} discarded={die.discarded} />
+        {/if}
     {/each}
     <span>+</span>
     <span>{modifiers}</span>
     <span>→</span>
-    <span class="result">{roll.total}</span>
+    <span class={["result", {rolling: dsn_roll == "rolling"}]}>{roll.total}</span>
 </div>
 <div class={["results", {certain: dsn_roll != "rolling"}]}>
     {#each Object.entries(roll_type["results"]) as [result_key, result_text]}
@@ -87,8 +93,7 @@
         display: flex;
         flex-direction: row;
 
-        &.rolling .die,
-        &.rolling .result {
+        .rolling.result {
             opacity: 0%;
         }
 
