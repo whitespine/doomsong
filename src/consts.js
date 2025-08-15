@@ -10,5 +10,16 @@ export const DOOMSONG = {
             pdf: "init_pdf",
             tokens: "init_tokens"
         }
+    },
+
+    // Keys for combat status flags
+    combat: {
+        phases: {
+            begin: "Round Begins",
+            set: "Set Action Dice",
+            acts: "Acts",
+            retreat: "Retreat",
+            end: "End of Round"
+        }
     }
 }
