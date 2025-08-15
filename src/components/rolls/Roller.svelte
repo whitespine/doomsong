@@ -20,6 +20,7 @@
             Gear: 0,
             Conditions: 0,
             Allies: 0,
+            Extra: 0,
         };
     }
 
@@ -37,7 +38,7 @@
     let choices = $state(defaultChoices());
     // let difficulty = $state(5);
     let difficulty = $derived.by(() => {
-        if(targeted_tokens.length == 1) {
+        if (targeted_tokens.length == 1) {
             // Use their toughness + protection instead
             return targeted_tokens[0].actor.system.attack_difficulty;
         }
@@ -108,16 +109,36 @@
                         data-tooltip={valueTooltip(value)}
                         class={{ active: choices[category] == value }}
                     >
-                        {value}
+                        {value > 0 ? "+" : ""}{value}
                     </button>
                 {:else}
                     <!-- Pardon my ugly svelte -->
                     {#if category == "Gear"}
-                        <div></div>
-                    {:else if category == "Conditions"}
-                        <div></div>
+                        <div class="extra top">
+                            <button
+                                aria-label="Increase extra bonus"
+                                onclick={() =>
+                                    changeChoice("Extra", choices.Extra + 1)}
+                            >
+                                <i class="fas fa-caret-up"></i>
+                            </button>
+                            </div>
+                        {:else if category == "Conditions"}
+                        <div class="extra mid" data-tooltip="Other bonuses">
+                            <span>
+                                {choices.Extra > 0 ? "+" : ""}{choices.Extra}
+                            </span>
+                        </div>
                     {:else if category == "Allies"}
-                        <div></div>
+                        <div class="extra bottom">
+                            <button
+                                aria-label="Decrease extra bonus"
+                                onclick={() =>
+                                    changeChoice("Extra", choices.Extra - 1)}
+                            >
+                                <i class="fas fa-caret-down"></i>
+                            </button>
+                        </div>
                     {/if}
                 {/if}
             {/each}
@@ -145,6 +166,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        border-bottom: 1px black solid;
 
         // Our difficulty selector
         select {
@@ -199,13 +221,30 @@
             }
         }
 
+        // Our extra bonus modifier zone
+        .extra {
+            &.top, &.mid, &.bottom {
+                border-left: 1px solid black;
+                border-right: 1px solid black;
+            }
+            &.mid {
+                justify-content: center; 
+                font-size: large;
+            }
+            &.top {
+                border-top: 1px solid black;
+            }
+            &.bottom {
+                border-bottom: 1px solid black;
+            }
+        }
+
         // Buttons we want to be flush, like in the book
         button {
             cursor: pointer;
             font-size: large;
             font-weight: normal;
             box-shadow: none;
-
 
             outline: none;
             border-radius: 0px;
@@ -219,6 +258,7 @@
         }
 
         // Alternate rows
+        /*
         > *:nth-child(12n+1),
         > *:nth-child(12n+2),
         > *:nth-child(12n+3),
@@ -227,6 +267,7 @@
         > *:nth-child(12n+6) {
             background: grey;
         }
+        */
     }
 
     .roll-buttons {
