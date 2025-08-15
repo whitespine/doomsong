@@ -1,8 +1,14 @@
 <script>
-    let { value, discarded } = $props();
+    let { value, discarded, size: raw_size } = $props();
+    let size = $derived((raw_size || "32px").toString());
 </script>
 
-<img class={{discarded: !!discarded}} src={`systems/doomsong/assets/dice/${value}.png`} alt={value} />
+<img
+    style={{ width: size, height: size }}
+    class={{ discarded: !!discarded }}
+    src={`systems/doomsong/assets/dice/${value}.png`}
+    alt={value}
+/>
 
 <style lang="scss">
     img {
