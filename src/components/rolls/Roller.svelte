@@ -1,5 +1,6 @@
 <script>
     import roll_types from "./roll_types.json";
+    import { targeted_tokens } from "../../utils/target.svelte";
 
     // Gives tooltips for a given value
     function valueTooltip(value) {
@@ -34,7 +35,14 @@
         roll_types[roll_type_key] || roll_types["STANDARD"],
     );
     let choices = $state(defaultChoices());
-    let difficulty = $state(5);
+    // let difficulty = $state(5);
+    let difficulty = $derived.by(() => {
+        if(targeted_tokens.length == 1) {
+            // Use their toughness + protection instead
+            return targeted_tokens[0].actor.system.attack_difficulty;
+        }
+        return 5;
+    });
 
     // Reset the above two to their default values
     function reset() {

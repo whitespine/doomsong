@@ -1,6 +1,5 @@
 <script>
     let props = $props();
-    $inspect(props);
 </script>
 
 <div>
