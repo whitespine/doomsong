@@ -177,12 +177,18 @@
 
     .roll-options {
         display: grid;
-        grid-template: repeat(4, 1fr) / repeat(6, 1fr);
+        grid-template: 1fr / 2fr repeat(5, 1fr);
         align-items: center;
         justify-items: center;
 
         button {
             cursor: pointer;
+            font-size: large;
+            font-weight: bolder;
+            // border-width: 0px;
+            border-radius: 0px;
+            margin: 0px;
+            padding: 0px;
             &.active {
                 border-width: 2px;
                 border-color: black;

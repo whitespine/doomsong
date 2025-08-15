@@ -18,6 +18,7 @@ Hooks.once('init', async function() {
   setupSettings();
   CONFIG.ui.combat = DoomsongCombatTracker;
   // CONFIG.debug.hooks = true;
+  document.documentElement.style.setProperty("--font-primary", `"IM Fell Double Pica", serif `);
 });
 
 // Setup tokens
