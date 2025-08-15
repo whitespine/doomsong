@@ -1,6 +1,6 @@
 <script>
     import Dice from "./Dice.svelte";
-import roll_types from "./roll_types.json";
+    import roll_types from "./roll_types.json";
     import RollingDice from "./RollingDice.svelte";
     let { _id: id, author, speaker, flags, rolls, dsn_roll } = $props();
     let ds_data = $derived(flags[game.system.id]);
@@ -31,26 +31,38 @@ import roll_types from "./roll_types.json";
         console.log("Flippy");
         let doomcoin = await new Roll("1d2").roll();
         let flip_value = doomcoin.total == 2 ? 1 : -1;
-        let dsn_promise = game.dice3d ?  game.dice3d.showForRoll(doomcoin, game.user, true) : Promise.resolve(true);
+        let dsn_promise = game.dice3d
+            ? game.dice3d.showForRoll(doomcoin, game.user, true)
+            : Promise.resolve(true);
         dsn_promise.then(() => {
             return game.messages.get(id).update({
-                [`flags.${game.system.id}.coin_result`]: flip_value
+                [`flags.${game.system.id}.coin_result`]: flip_value,
             });
         });
     }
 </script>
 
-<h2>
+<h2 class="doomsong">
     <span>{roll_type.label} - {speaker_actor?.name}</span>
     {#if ds_data.coin_result == 0}
-       <a class="doomcoin" onclick={flipDoomcoin} aria-label="Flip Doomcoin"><i  class="fas fa-coin"></i></a>
+        <a class="doomcoin unflipped" onclick={flipDoomcoin} aria-label="Flip Doomcoin"
+            ><i class="fas fa-coin"></i></a
+        >
     {:else if ds_data.coin_result == 1}
-        <i class="fas fa-crown doomcoin"></i>
+        <img
+            class="doomcoin flipped"
+            src="systems/doomsong/assets/icons/crest.png"
+            alt="Crest"
+        />
     {:else if ds_data.coin_result == -1}
-        <i class="fas fa-skull doomcoin"></i>
+        <img
+            class="doomcoin flipped"
+            src="systems/doomsong/assets/icons/skull.png"
+            alt="Skull"
+        />
     {/if}
 </h2>
-<div class="dice">
+<div class="doomsong dice">
     {#each die_results as die, index}
         {#if dsn_roll == "rolling"}
             <RollingDice />
@@ -61,16 +73,36 @@ import roll_types from "./roll_types.json";
     <span>+</span>
     <span>{modifiers}</span>
     <span>→</span>
-    <span class={["result", {rolling: dsn_roll == "rolling"}]}>{roll.total}</span>
+    <span class={["result", { rolling: dsn_roll == "rolling" }]}
+        >{roll.total}</span
+    >
 </div>
-<div class={["results", {certain: dsn_roll != "rolling"}]}>
+<div class={["doomsong", "results", { certain: dsn_roll != "rolling" }]}>
     {#each Object.entries(roll_type["results"]) as [result_key, result_text]}
-        <span>
-            {result_key}
-        </span>
-        <span class={{ chosen: result_key == roll_result }}>
-            {result_text}
-        </span>
+        <div>
+            {#if result_key == "crest"}
+                <img
+                    class="critical"
+                    src="systems/doomsong/assets/icons/crest.png"
+                    alt="Crest"
+                />
+            {:else if result_key == "skull"}
+                <img
+                    class="critical"
+                    src="systems/doomsong/assets/icons/skull.png"
+                    alt="Skull"
+                />
+            {:else}
+                <span>
+                    {result_key.toLocaleUpperCase()}
+                </span>
+            {/if}
+        </div>
+        <div class={{ chosen: result_key == roll_result }}>
+            <span>
+                {result_text}
+            </span>
+        </div>
     {/each}
 </div>
 
@@ -85,7 +117,15 @@ import roll_types from "./roll_types.json";
 
         .doomcoin {
             justify-self: flex-end;
-            cursor: pointer;
+
+            &.unflipped {
+                cursor: pointer;
+            }
+
+            &.flipped {
+                width: 1em;
+                height: 1em;
+            }
         }
     }
 
@@ -97,9 +137,6 @@ import roll_types from "./roll_types.json";
             opacity: 0%;
         }
 
-        .discarded {
-            text-decoration: line-through;
-        }
         span {
             font-size: x-large;
             font-weight: bold;
@@ -109,16 +146,25 @@ import roll_types from "./roll_types.json";
 
     .results {
         display: grid;
-        grid-template: 1fr / 50px 1fr;
+        grid-template: 1fr / 70px 1fr;
         //align-items: center;
         align-content: center;
         background-color: black;
         gap: 1px;
 
-        > * {
+        // Force critical icons to be centered
+        div {
             height: 100%;
+            width: 100%;
             background-color: white;
             padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .critical {
+                width: 2em;
+                height: 2em;
+            }
         }
 
         &.certain .chosen {
