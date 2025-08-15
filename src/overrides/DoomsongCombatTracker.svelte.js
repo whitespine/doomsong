@@ -1,5 +1,5 @@
 import { mount } from 'svelte';
-import DoomsongCombatTrackerComponent from '../components/CombatTracker.svelte'
+import DoomsongCombatTrackerComponent from '../components/combat/CombatTracker.svelte'
 
 export class DoomsongCombatTracker extends CombatTracker {
     async _render(force=false, options={}) {
@@ -66,7 +66,7 @@ export class DoomsongCombatTracker extends CombatTracker {
                 this._injectHTML(outer);
             } else {
                 // Add the HTML to the DOM and record the element
-                let wrapper = document.createElement("template");
+                let wrapper = document.createElement("div");
                 mount(DoomsongCombatTrackerComponent, {
                     target: wrapper,
                     props: this._svelte_props
