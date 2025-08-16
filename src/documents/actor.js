@@ -53,29 +53,4 @@ export class DoomsongActor extends Actor {
         this.system.attack_difficulty = this.system.toughness + this.system.protection;
     }
 
-    ////////////////////////////////////////////////////////////
-    // Combat utilities
-    ////////////////////////////////////////////////////////////
-    // Set a dice with a particular value
-    setDice(value) {
-        if(this.system.set_dice.length >= this.system.action_dice) {
-            ui.notifications.warn(`Already set ${this.system.set_dice.length} dice`);
-            return;
-        }
-        return this.update({
-            "system.set_dice": [...this.system.set_dice, value]
-        });
-    }
-
-    // Set a random dice, for if you're lazy / running a bestial npc / that's how that npc works
-    setRandomDice() {
-        return this.setDice(Math.ceil(Math.random * 6));
-    }
-
-    // Clear all set dice
-    clearDice() {
-        return this.update({
-            "system.set_dice": []
-        });
-    }
 }

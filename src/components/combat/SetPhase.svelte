@@ -1,16 +1,13 @@
 <script>
     import SetPlanner from "./SetPlanner.svelte";
+    import { mimic } from "../../utils/mimic";
     let { cc } = $props();
-    let all_combatants = $derived(cc.val.combatants.contents);
-      /*
-    {#each all_combatants as combatant}
-        <SetPlanner {cc} {combatant}> </SetPlanner>
-    {/each}
-    */
+    let combatants = $derived(cc.combatants.map(c => mimic(c)));
 </script>
 
 
-<h1>Set Dice</h1>
 <div class="flexcol">
-
+    {#each combatants as combatant}
+        <SetPlanner {combatant}> </SetPlanner>
+    {/each}
 </div>

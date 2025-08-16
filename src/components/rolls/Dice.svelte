@@ -1,11 +1,23 @@
 <script>
-    let { value, discarded, size: raw_size } = $props();
-    let size = $derived((raw_size || "32px").toString());
+    import { fixClasses } from "../../utils/classes";
+
+    let {
+        value,
+        discarded,
+        class: className,
+        ...restProps
+    } = $props();
+    let fullClasses = $derived.by(() => {
+        return {
+            discarded: !!discarded,
+            ...fixClasses(className),
+        };
+    });
 </script>
 
 <img
-    style={{ width: size, height: size }}
-    class={{ discarded: !!discarded }}
+    {...restProps}
+    class={fullClasses}
     src={`systems/doomsong/assets/dice/${value}.png`}
     alt={value}
 />
