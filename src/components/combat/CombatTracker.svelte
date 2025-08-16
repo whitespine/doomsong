@@ -41,20 +41,15 @@
     {#if cc == null}
         <span>No current combat. TODO: Add a button here to add one</span>
     {:else}
-        <div class="phase">
-            {#if cc.system.phase == "begin"}
-                <span>begin</span>
-            {:else if cc.system.phase == "set"}
-                <h1>Set Dice</h1>
-                <SetPhase {cc} />
-            {:else if cc.system.phase == "acts"}
-                <h1>Perform Acts</h1>
-                <ActsPhase {cc} />
-            {:else if cc.system.phase == "retreat"}
-                <span>Retreat</span>
-            {:else if cc.system.phase == "end"}
-                <span>End</span>
-            {/if}
+        <h1>{game.i18n.localize(`DS.combat.phase.${cc.system.phase}`)}</h1>
+        <div class="content">
+            <div class="phase">
+                {#if cc.system.phase == "begin"}{:else if cc.system.phase == "set"}
+                    <SetPhase {cc} />
+                {:else if cc.system.phase == "acts"}
+                    <ActsPhase {cc} />
+                {:else if cc.system.phase == "retreat"}{:else if cc.system.phase == "end"}{/if}
+            </div>
         </div>
         <nav class="phase-controls">
             <!-- Buttons to control combat -->
@@ -70,10 +65,18 @@
         flex-direction: column;
         background-color: white;
         color: black;
+        height: 100%;
+        overflow: hidden auto;
     }
 
     .phase {
-        flex: 1 0 auto;
+        height: 1px; // Trust me bro
+    }
+
+    .content {
+        flex: 1;
+        display: flex;
+        overflow: hidden auto;
     }
 
     .phase-controls {
@@ -84,10 +87,5 @@
         > * {
             flex-grow: 1;
         }
-    }
-
-    img {
-        max-width: 64px;
-        max-height: 64px;
     }
 </style>
