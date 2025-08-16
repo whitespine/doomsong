@@ -22,7 +22,6 @@ export class DoomsongCombatTracker extends CombatTracker {
         options.focus ??= force;
 
         // Get the existing HTML element and application data used for rendering
-        const element = this.element;
         // this.appId = element.data("appid") ?? ++_appId;
         if (this.popOut) ui.windows[this.appId] = this;
         const data = await this.getData(this.options);
@@ -44,25 +43,21 @@ export class DoomsongCombatTracker extends CombatTracker {
         }
 
         // If the application already exists in the DOM, ~~replace the inner content~~ update its props
-        if (element.length) {
-            if (!this._mounted) {
-                mount(DoomsongCombatTrackerComponent, {
-                    target: element[0],
-                    props: this._svelte_props
-                });
-                this._mounted = true;
-            }
-            // this._replaceHTML(element, html);
-            // Otherwise render a new app
-        } else {
+        if (!this._svelte_component) {
             // Wrap a popOut application in an outer frame
             if (this.popOut) {
                 let outer = await this._renderOuter();
                 this._svelte_wrapper = outer.find(".window-content")[0];
                 this._injectHTML(outer);
             } else {
-                this._svelte_wrapper = document.createElement("div");
-                this._injectHTML(globalThis.$(wrapper));
+                this._svelte_wrapper = document.createElement("section");
+                this._svelte_wrapper.id = "combat";
+                for(let c of ["tab", "sidebar-tab", "combat-sidebar"]) {
+                    this._svelte_wrapper.classList.add(c);
+                }
+                this._svelte_wrapper.setAttribute("data-tab", "combat");
+                globalThis.$("template#combat").replaceWith(this._svelte_wrapper);
+                console.log(this._svelte_wrapper);
             }
             this._svelte_component = mount(DoomsongCombatTrackerComponent, {
                 target: this._svelte_wrapper,
