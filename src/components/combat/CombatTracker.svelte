@@ -50,7 +50,6 @@
     {#if cc == null}
         <span>No current combat. TODO: Add a button here to add one</span>
     {:else}
-        <span>{[...cc.val.combatants.keys()]}</span>
         <div class="phase">
             {#if cc.val.system.phase == "begin"}
                 <span>begin</span>
