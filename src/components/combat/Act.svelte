@@ -1,6 +1,6 @@
 <script>
     import Die from "../rolls/Dice.svelte";
-    let { act, combat } = $props();
+    let { act, cc } = $props();
 </script>
 
 <div>
