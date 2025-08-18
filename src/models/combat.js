@@ -12,6 +12,7 @@ export class CombatModel extends DoomsongDataModel {
                 initial: "begin",
                 choices: ["begin", "set", "acts", "retreat", "end"]
             }),
+            act: new fields.NumberField({ nullable: false, integer: true, min: 1, initial: 1, max: 6})
         };
     }
 }

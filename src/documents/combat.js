@@ -11,7 +11,8 @@ export class DoomsongCombat extends Combat {
             "end": "begin",
         }[this.system.phase] || "begin";
         return this.update({
-            "system.phase": next
+            "system.phase": next,
+            "system.act": 1 // Changing phase always resets act
         });
     }
 
@@ -25,7 +26,8 @@ export class DoomsongCombat extends Combat {
             "begin": "end",
         }[this.system.phase] || "begin";
         return this.update({
-            "system.phase": prev
+            "system.phase": prev,
+            "system.act": 1 // Changing phase always resets act
         });
     }
 }
