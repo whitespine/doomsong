@@ -12,12 +12,14 @@ import { DoomsongCombatTracker } from './overrides/DoomsongCombatTracker.svelte'
 import { DoomsongChatMessage } from './overrides/DoomsongChatMessage.svelte';
 import { DoomsongActor } from './documents/actor';
 import { DoomsongTokenDocument } from './documents/token';
+import { setupSheets } from './sheets/config';
 
 Hooks.once('init', async function() {
   console.log("Initializing DOOMSONG RPG")
   setupDocuments();
   setupModels();
   setupSettings();
+  setupSheets();
   CONFIG.ui.combat = DoomsongCombatTracker;
   // CONFIG.debug.hooks = true;
   document.documentElement.style.setProperty("--font-primary", `"IM Fell Double Pica", serif `);
