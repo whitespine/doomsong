@@ -78,7 +78,7 @@
 </div>
 <div class={["doomsong", "results", { certain: dsn_roll != "rolling" }]}>
     {#each Object.entries(roll_type["results"]) as [result_key, result_text]}
-        <div>
+        <div class="result-key">
             {#if result_key == "crest"}
                 <img
                     class="critical"
@@ -159,10 +159,17 @@
             padding: 5px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            &.result-key {
+                justify-content: center;
+            }
+
             .critical {
                 width: 2em;
                 height: 2em;
+            }
+
+            .description {
+                justify-content: start;
             }
         }
 
