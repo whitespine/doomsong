@@ -75,6 +75,7 @@
 
     .phase {
         height: 1px; // Trust me bro
+        width: 100%;
     }
 
     h1 {

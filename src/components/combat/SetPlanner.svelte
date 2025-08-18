@@ -18,15 +18,29 @@
 </script>
 
 <div class="planner">
-    <img class="thumbnail" src={thumbnail} alt={combatant.name} data-tooltip={combatant.name} />
+    <img
+        class="thumbnail"
+        src={thumbnail}
+        alt={combatant.name}
+        data-tooltip={combatant.name}
+    />
+    <h2>{combatant.name}</h2>
     <div class="dice-box">
         {#each [1, 2, 3, 4, 5, 6] as value}
-            <Die style={`cursor: ${add_die_cursor}`} {value} onclick={() => combatant.setDice(value)} />
+            <Die
+                style={`cursor: ${add_die_cursor}`}
+                {value}
+                onclick={() => combatant.setDice(value)}
+            />
         {/each}
     </div>
     <div class="plan-box">
         {#each combatant.system.set_dice as value}
-            <Die {value} style="cursor: pointer" onclick={() => combatant.unsetDie(value)}/>
+            <Die
+                {value}
+                style="cursor: pointer"
+                onclick={() => combatant.unsetDie(value)}
+            />
         {/each}
     </div>
 </div>
@@ -34,27 +48,38 @@
 <style lang="scss">
     .planner {
         display: grid;
-        grid-template: 1fr / 64px 1fr 64px;
-    }
+        grid-template:
+            "t h p" 20px
+            "t d p" 1fr / 64px 1fr 64px;
+        border-bottom: 1px solid black;
 
-    .thumbnail {
-        max-width: 64px;
-        max-height: 64px;
-        background-color: black;
-    }
+        .thumbnail {
+            max-width: 64px;
+            max-height: 64px;
+            background-color: black;
+            grid-area: t;
+        }
 
-    .dice-box {
-        display: grid;
-        grid-template: 1fr / repeat(6, 1fr);
-        justify-content: center;
-        align-items: center;
-        border-right: 1px solid black;
-    }
+        .dice-box {
+            display: grid;
+            grid-template: 1fr / repeat(6, 1fr);
+            justify-content: center;
+            align-items: center;
+            grid-area: d;
+        }
 
-    .plan-box {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        h2 {
+            grid-area: h;
+            border-bottom: none;
+        }
+
+        .plan-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            grid-area: p;
+            border-left: 1px solid black;
+        }
     }
 </style>

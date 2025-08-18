@@ -25,7 +25,7 @@
                 alt={c.combatant.name}
                 data-tooltip={c.combatant.name}
             />
-            <div class="flexcol">
+            <div class="flexcol detail">
                 <h2>{c.combatant.name} - Choose {c.actions}</h2>
                 <ul>
                     {#if !c.combatant.hasMovesDefined}
@@ -47,6 +47,7 @@
     .combatants {
         display: flex;
         flex-direction: column;
+        width: 100%;
     }
 
     .combatant {
@@ -55,6 +56,10 @@
 
         h2 {
             margin-bottom: 3px;
+        }
+
+        .detail {
+            flex-grow: 1;
         }
     }
 
