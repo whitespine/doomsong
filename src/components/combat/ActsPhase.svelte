@@ -11,7 +11,6 @@
         //if ( combatant._thumb ) return combatant._thumb;
         //return combatant._thumb = await game.video.createThumbnail(combatant._videoSrc, {width: 100, height: 100});
         //}
-        console.log(combatant);
         return combatant.img ?? CONST.DEFAULT_TOKEN;
     }
 </script>

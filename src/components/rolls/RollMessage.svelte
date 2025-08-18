@@ -28,7 +28,6 @@
 
     async function flipDoomcoin() {
         // Moves the result up or down by one
-        console.log("Flippy");
         let doomcoin = await new Roll("1d2").roll();
         let flip_value = doomcoin.total == 2 ? 1 : -1;
         let dsn_promise = game.dice3d
