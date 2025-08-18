@@ -1,13 +1,17 @@
 {
-    "combat": {
-        "phase": {
-            "begin": "Begin Rount",
-            "set": "Set Dice",
-            "acts": "Perform Acts"
-        },
-        "control": {
-            "next": "Next Phase",
-            "prev": "Previous Phase"
+    "DS": {
+        "combat": {
+            "phase": {
+                "begin": "Begin Round",
+                "set": "Set Dice",
+                "acts": "Perform Acts",
+                "retreat": "Retreat",
+                "end": "End of Round"
+            },
+            "control": {
+                "next": "Next Phase",
+                "prev": "Previous Phase"
+            }
         }
     }
 }

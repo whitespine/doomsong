@@ -3,11 +3,10 @@
     import SetPhase from "./SetPhase.svelte";
     import ActsPhase from "./ActsPhase.svelte";
     import { mimic } from "../../utils/mimic";
+    import Die from "../rolls/Dice.svelte";
 
     // A clunky bit of state, stands for current combat. Needed to get past svelte "optimization" until theres a proper invalidate rune
     let cc = $state.raw(mimic(game.combat));
-
-    $inspect(cc);
 
     // Make a hook on mount to track any changes to combatants. TODO - fix updateCombat to not potentially thrash?
     let combat_hooks = [];
@@ -41,7 +40,12 @@
     {#if cc == null}
         <span>No current combat. TODO: Add a button here to add one</span>
     {:else}
-        <h1>{game.i18n.localize(`DS.combat.phase.${cc.system.phase}`)}</h1>
+        <h1>
+            <span>{game.i18n.localize(`DS.combat.phase.${cc.system.phase}`)}</span>
+            {#if cc.system.phase == "acts"}
+                <Die value={cc.system.act} />
+            {/if}
+        </h1>
         <div class="content">
             <div class="phase">
                 {#if cc.system.phase == "begin"}{:else if cc.system.phase == "set"}
@@ -71,6 +75,12 @@
 
     .phase {
         height: 1px; // Trust me bro
+    }
+
+    h1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
 
     .content {

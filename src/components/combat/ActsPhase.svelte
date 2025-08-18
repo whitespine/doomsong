@@ -1,10 +1,66 @@
 <script>
-    import Act from "./Act.svelte";
     let { cc } = $props();
+    let act = $derived(cc.system.act);
+
+    // An array containing [{combatant: combatant, actions: actions}] they can do in this act}
+    let combatant_actions = $derived(cc.combatantsByAct[act]);
+
+    // Get a thumbnail for a combatant
+    function thumbnail(combatant) {
+        //if ( combatant._videoSrc && !combatant.img ) {
+        //if ( combatant._thumb ) return combatant._thumb;
+        //return combatant._thumb = await game.video.createThumbnail(combatant._videoSrc, {width: 100, height: 100});
+        //}
+        console.log(combatant);
+        return combatant.img ?? CONST.DEFAULT_TOKEN;
+    }
 </script>
 
-<div class="flexcol">
-    {#each [1, 2, 3, 4, 5, 6] as act}
-        <Act {act} {cc}></Act>
+<div class="combatants">
+    {#each combatant_actions as c}
+        <div class="combatant">
+            <img
+                class="thumbnail"
+                src={thumbnail(c.combatant)}
+                alt={c.combatant.name}
+                data-tooltip={c.combatant.name}
+            />
+            <div class="flexcol">
+                <h2>{c.combatant.name} - Choose {c.actions}</h2>
+                <ul>
+                    {#if !c.combatant.hasMovesDefined}
+                        <li>Consult book</li> 
+                    {:else if c.combatant.actor.system.moves[act-1].length > 0}
+                        {#each c.combatant.actor.system.moves[act-1] as move}
+                            <li>{move}</li>
+                        {/each}
+                    {:else}
+                        <li>No actions possible</li>
+                    {/if}
+                </ul>
+            </div>
+        </div>
     {/each}
 </div>
+
+<style lang="scss">
+    .combatants {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .combatant {
+        display: flex;
+        flex-direction: row;
+
+        h2 {
+            margin-bottom: 3px;
+        }
+    }
+
+    .thumbnail {
+        max-width: 64px;
+        max-height: 64px;
+        background-color: black;
+    }
+</style>

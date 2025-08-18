@@ -15,7 +15,6 @@
         let can_set = combatant.canSetDie() ? "pointer" : "default";
         return owns && can_set;
     });
-    $inspect(combatant);
 </script>
 
 <div class="planner">
