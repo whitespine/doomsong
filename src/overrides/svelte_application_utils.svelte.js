@@ -34,7 +34,7 @@ export async function svelte_render_override(app, component, create_wrapper, for
     // let _appId = ++globalThis._appId;
     app.appId = ++globalThis._appId;
   }
-  if (app.popOut) ui.windows[app.appId] = this;
+  if (app.popOut) ui.windows[app.appId] = app;
   const data = await app.getData(app.options);
 
   // Instantiate, or update, props
@@ -75,7 +75,7 @@ export async function svelte_render_override(app, component, create_wrapper, for
   }
 
   // TODO: re-implement resizability. Should be called on the result of create_wrapper I guess
-  if (!app.popOut && app.options.resizable) new Draggable(this, this.element, false, this.options.resizable);
+  if (!app.popOut && app.options.resizable) new Draggable(app, app.element, false, app.options.resizable);
 
   // Set the application position (if it's not currently minimized)
   if (!app._minimized) {

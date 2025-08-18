@@ -3,6 +3,7 @@ import { svelte_render_override } from './svelte_application_utils.svelte';
 
 export class DoomsongCombatTracker extends CombatTracker {
     async _render(force = false, options = {}) {
+        options.resizable ??= this.popOut;
         await svelte_render_override(this, DoomsongCombatTrackerComponent, () => {
             let wrapper = document.createElement("section");
             wrapper.id = "combat";
