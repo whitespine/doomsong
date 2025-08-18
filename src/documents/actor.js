@@ -1,3 +1,4 @@
+import PlayerDefaultMoves from "./player_moves.json"
 
 /**
  * Our custom class for Icon Actors
@@ -27,15 +28,22 @@ export class DoomsongActor extends Actor {
     async _preCreate(...[data, options, user]) {
         await super._preCreate(data, options, user);
 
+        let mods = {};
+
         // Set default link status
         let actorLink = data.prototypeToken?.actorLink ?? (data.type === "player");
+        mods.prototypeToken = {
+            actorLink
+        };
+
+        // Add default moves
+        if(data.type === "player") {
+            console.log(PlayerDefaultMoves);
+            mods["system.moves"] = PlayerDefaultMoves;
+        }
 
         // Put in the basics
-        this.updateSource({
-            prototypeToken: {
-                actorLink,
-            },
-        });
+        this.updateSource(mods);
     }
 
     prepareDerivedData() {

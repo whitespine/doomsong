@@ -56,7 +56,7 @@
         .thumbnail {
             max-width: 64px;
             max-height: 64px;
-            background-color: black;
+            // background-color: black;
             grid-area: t;
         }
 

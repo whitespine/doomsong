@@ -1,0 +1,26 @@
+[
+    [
+        "Aid. Ready this die. You may spend it to add +1 to an ally’s check.",
+        "Draw. Draw or stow up to two pieces of ready gear, or draw one piece of nearby gear."
+    ],
+    [
+        "Dash. Move a short distance (in addition to the free move at the start of the Act).",
+        "Hasty Action. Perform an open action (ds:91). If it requires a check, it is hasty."
+    ],
+    [
+        "Light Strike. Make a hasty [attack] with a non-heavy weapon (ds:96).",
+        "Recover. Gain +2 footing. +1 if not adjacent to an enemy, +1/2 with useful/perfect trait."
+    ],
+    [
+        "Standard Strike. Make an [attack] as discussed on page 96 of the Doomsong corebook.",
+        "Standard Action. Perform an open action (ds:91). If it requires a check, it is standard."
+    ],
+    [
+        "Heavy Strike. Make a focused [attack] with a non-light weapon (ds:96).",
+        "Set Up. Ready this die and state a trigger. If met, spend to take a free [Act 4] action."
+    ],
+    [
+        "Focused Action. Perform an open action. If it requires a check, it is focused.",
+        "Withdraw. Ready this die. Spend it to make a focused [retreat] in the next phase (ds:101)."
+    ]
+]
