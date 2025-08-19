@@ -2,7 +2,7 @@
 
 export class DoomsongCombat extends Combat {
     // Advance this combat to the previous phase, or act within a phase
-    nextPhase(skipEmptyActs = true) {
+    async nextPhase(skipEmptyActs = true) {
         if (this.system.phase == "acts") {
             // Advance within acts, if there are remaining 
             let new_act = this.system.act + 1;
@@ -14,7 +14,7 @@ export class DoomsongCombat extends Combat {
             }
 
             // If new_act is now 7+, change phase to retreat instead. Leave act unchanged
-            if(new_act > 6) {
+            if (new_act > 6) {
                 return this.update({
                     "system.phase": "retreat"
                 });
@@ -37,13 +37,22 @@ export class DoomsongCombat extends Combat {
             };
 
             // Reset act to 1 if we're entering acts (or the first empty)
-            if(next == "acts") {
-                if(skipEmptyActs) {
+            if (next == "acts") {
+                if (skipEmptyActs) {
                     let cba = this.combatantsByAct;
-                    update["system.act"] = [1,2,3,4,5,6].find(act => cba[act].length != 0) || 1; // it doesn't really matter what act we end up on if literally nobody has any dice. Just do 1
+                    update["system.act"] = [1, 2, 3, 4, 5, 6].find(act => cba[act].length != 0) || 1; // it doesn't really matter what act we end up on if literally nobody has any dice. Just do 1
                 } else {
                     update["system.act"] = 1; // Just do the first
                 }
+            }
+
+            // Reset all combatant dice if entering "begin"
+            if (next == "begin") {
+                let updates = this.combatants.contents.map(c => ({
+                    _id: c._id,
+                    "system.set_dice": []
+                }));
+                await DoomsongCombatant.updateDocuments(updates, { parent: this });
             }
 
             // Finally perform our update
@@ -52,7 +61,7 @@ export class DoomsongCombat extends Combat {
     }
 
     // Unadvance this combat to the previous phase
-    prevPhase(skipEmptyActs=true) {
+    prevPhase(skipEmptyActs = true) {
         if (this.system.phase == "acts") {
             // Regress within acts, if there are remaining 
             let new_act = this.system.act - 1;
@@ -64,7 +73,7 @@ export class DoomsongCombat extends Combat {
             }
 
             // If new_act is now <= 0, change phase to set instead. Leave act unchanged - it'll just be overridden when we jump back
-            if(new_act <= 0) {
+            if (new_act <= 0) {
                 return this.update({
                     "system.phase": "set"
                 });
@@ -110,12 +119,6 @@ export class DoomsongCombat extends Combat {
             result[act] = all_this_act;
         }
         return result;
-    }
-
-    prevAct(skipEmpty = false) {
-        return this.update({
-            "system.act": this.system.act - 1
-        });
     }
 }
 
