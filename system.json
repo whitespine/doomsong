@@ -47,6 +47,7 @@
   "scripts": [
   ],
   "styles": [
+    "system.css"
   ],
   "languages": [
     {
