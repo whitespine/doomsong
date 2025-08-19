@@ -167,10 +167,6 @@
                 width: 2em;
                 height: 2em;
             }
-
-            .description {
-                justify-content: start;
-            }
         }
 
         &.certain .chosen {

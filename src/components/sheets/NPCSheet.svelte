@@ -75,7 +75,7 @@
                                 onclick={() => deleteMove(act_index, move_index)}
                                 aria-label={`Delete move: ${move}`}
                             >
-                                <i class="fas fa-trash" />
+                                <i class="fas fa-trash"></i>
                             </a>
                         </div>
                     {/each}
