@@ -18,6 +18,31 @@ export class DoomsongActorSheet extends ActorSheet {
         throw new TypeError("Do not instantiate this class directly");
     }
 
+    // Helper for setting an image that also hits token
+    async setImage(img) {
+        const mm = "icons/svg/mystery-man.svg";
+        let current_token;
+        let update = {
+            img: img
+        };
+        if(this.actor.token) {
+            current_token = this.actor.token.texture.src;
+        } else {
+            current_token = this.actor.prototypeToken.texture.src;
+        }
+        let sync = this.actor.img == current_token || current_token == mm;
+        if(!sync) {
+            return this.actor.update(update);
+        } else if(this.actor.token) {
+            return this.actor.update(update).then(() => this.actor.token.update({
+                "texture.src": img
+            }));
+        } else {
+            // Sync em up
+            update["prototypeToken.texture.src"] = img;
+            return this.actor.update(update);
+        }
+    }
 
     // Stolen from foundry, modified
     async editImage(attr) {
@@ -29,11 +54,7 @@ export class DoomsongActorSheet extends ActorSheet {
             current,
             type: "image",
             redirectToRoot: defaultImage ? [defaultImage] : [],
-            callback: path => {
-                this.document.update({
-                    [attr]: path
-                });
-            },
+            callback: path => this.setImage(path),
             position: {
                 top: this.position.top + 40,
                 left: this.position.left + 10
