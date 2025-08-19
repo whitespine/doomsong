@@ -48,11 +48,17 @@
         </h1>
         <div class="content">
             <div class="phase">
-                {#if cc.system.phase == "begin"}{:else if cc.system.phase == "set"}
+                {#if cc.system.phase == "begin"}
+                    {@html game.i18n.localize("DS.combat.phase_detail.begin")}
+                {:else if cc.system.phase == "set"}
                     <SetPhase {cc} />
                 {:else if cc.system.phase == "acts"}
                     <ActsPhase {cc} />
-                {:else if cc.system.phase == "retreat"}{:else if cc.system.phase == "end"}{/if}
+                {:else if cc.system.phase == "retreat"}
+                    {@html game.i18n.localize("DS.combat.phase_detail.retreat")}
+                {:else if cc.system.phase == "end"}
+                    {@html game.i18n.localize("DS.combat.phase_detail.end")}
+                {/if}
             </div>
         </div>
         <nav class="phase-controls">

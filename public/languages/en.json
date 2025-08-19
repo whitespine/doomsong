@@ -8,6 +8,13 @@
                 "retreat": "Retreat",
                 "end": "End of Round"
             },
+            "phase_detail": {
+                "begin": "<p>Each PC gains 2 action dice (minus any that have been lost or readied).  Each NPC gains 1 action die.</p>",
+                "set": "<p>First, the GM examines the relevant NPC action blocks and sets each NPC’s die to match the numbered segments containing something they would like that NPC to do during the round. Alternatively, they can roll the dice and randomly assign one to each NPC (this can be good for animal NPCs or speeding up less important combatants).</p> <p>Then, players discuss what they would like to accomplish as a party during the round. Each player sets their available action dice to the number(s) that match the desired segments in the PC action block found on their character sheet.</p>",
+                "acts": "<p>The GM declares the start of Act 1.  Players who have selected [1 pip die] may move a short distance (p. 92) then spend the die to perform one action found in that segment. If they have two dice set to the same value, they perform both actions.</p><p>If more than one PC has selected , they may proceed in any order they wish. Once all PC dice showing a have been spent, the GM does the same for NPC action dice set to , moving each corresponding NPC and resolving an action found in that segment of their action block.</p><p>This is repeated for Acts 2-6, for dice showing all other faces</p>",
+                "retreat": "<p>The GM decides if any NPCs are going to either surrender or attempt a [retreat] by making the check on page 101. If all NPCs do, the combat immediately ends.</p> <p>Then, any or all PCs may surrender or [retreat] by making the check on page 101. If all PCs do, combat ends.</p> <p>If the party retreats, they may not be out of danger entirely. A new combat begins if they re-encounter the enemy or tensions flare anew.</p>",
+                "end": "<p>At this time, resolve any effects that occur at the end of the round. Any effects that occur ‘in 1 round’ resolve now, and any effects that occur ‘in x rounds’ have x reduced by 1.</p><p>If any characters have footing higher than their max footing value, it is now reduced down to their max footing.</p><p> If there are any PCs or NPCs not in the combat, they may move a long distance and take a single non-[attack] action that involves a check. If a character’s out-of- combat movement brings them close to the combat (or the combat shifts closer to their location), they will be included in the next round of combat. That character gains up to their max footing.</p>"
+            },
             "control": {
                 "next": "Next Phase",
                 "prev": "Previous Phase"
