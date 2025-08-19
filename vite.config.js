@@ -42,14 +42,14 @@ function fixSystemJson() {
     name: 'fix-system-json',
 
     buildEnd(options) {
+      const fs = require('fs');
+      fs.mkdirSync("dist", { recursive: true })
       const replace_options = {
         files: 'system.json',
         from: "#{VERSION}#",
         getTargetFile: src => `dist/${src}`,
         to: '0.0.0',
       };
-
-      console.log(replaceInFileSync(replace_options));
     }
   }
 }
