@@ -3,7 +3,7 @@ import { formatDotpath } from "../utils/paths";
 // Establish a shorthand
 export const fields = foundry.data.fields;
 
-export class DoomsongDataModel extends foundry.abstract.DataModel {
+export class DoomsongDataModel extends foundry.abstract.TypeDataModel {
   // To enable cool shit, universally
 
   /**
@@ -100,14 +100,14 @@ export class ControlledLengthArrayField extends fields.ArrayField {
   constructor(element, options) {
     super(element, options);
     if (!Number.isInteger(options.length)) {
-        throw new TypeError("ControlledLengthArrayField requires an integer 'length' option!");
+      throw new TypeError("ControlledLengthArrayField requires an integer 'length' option!");
     }
   }
 
   _cast(value) {
     value = super._cast(value);
     if (!Array.isArray(value)) {
-        return value;
+      return value;
     } // Give up early
 
     // Extend or contract as appropriate
@@ -116,7 +116,7 @@ export class ControlledLengthArrayField extends fields.ArrayField {
       value.push(foundry.utils.duplicate(new_elt));
     }
     if (!this.options.overflow && value.length > this.options.length) {
-        value = value.slice(0, this.options.length);
+      value = value.slice(0, this.options.length);
     }
     return value;
   }

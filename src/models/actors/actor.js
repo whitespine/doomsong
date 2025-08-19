@@ -26,4 +26,19 @@ export class ActorModel extends DoomsongDataModel {
             traits: new fields.ArrayField(new fields.StringField({ nullable: false }))
         };
     }
+
+    prepareDerivedData() {
+        // Combat stats shared by all actors
+        this.toughness_bar = {
+            min: 0,
+            max: this.max_toughness,
+            value: this.toughness
+        }
+        this.footing_bar = {
+            min: 0,
+            max: this.max_footing,
+            value: this.footing
+        }
+        this.attack_difficulty = Math.max(this.toughness + this.protection, this.min_difficulty || 0);
+    }
 }
