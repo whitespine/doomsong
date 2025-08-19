@@ -11,7 +11,6 @@ export default defineConfig({
     port: 20001,
     open: "/",
     proxy: {
-      "^/systems/doomsong/languages": "http://localhost:20000",
       "^(?!/systems/doomsong)": "http://localhost:20000",
       "/socket.io": {
         target: "ws://localhost:20000",

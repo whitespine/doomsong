@@ -3,6 +3,24 @@
     import Dice from "../rolls/Dice.svelte";
     let props = $props();
     $inspect(props);
+
+    // Add a new basic move
+    function addMove(act_index) {
+        props.actor.update({
+            [`system.moves.${act_index}`]: props.actor.system.moves[
+                act_index
+            ].concat([""]),
+        });
+    }
+
+    // Remove the specified move
+    function deleteMove(act_index, move_index) {
+        let new_move_array = [...props.actor.system.moves[act_index]];
+        new_move_array.splice(move_index, 1);
+        props.actor.update({
+            [`system.moves.${act_index}`]: new_move_array,
+        });
+    }
 </script>
 
 <div class="npc-sheet">
@@ -14,27 +32,54 @@
     />
     <div class="stats">
         {#snippet field(key, label, path)}
-        <div>
-            <label for={key}>{label}:</label>
-            <UpdateTextField name={key} document={props.actor} path={path} type="text" />
-        </div>
+            <div>
+                <label for={key}>{label}:</label>
+                <UpdateTextField
+                    name={key}
+                    document={props.actor}
+                    {path}
+                    type="text"
+                />
+            </div>
         {/snippet}
         {@render field("name", "Name", "name")}
-        {@render field("max_toughness", "Max Toughness", "system.max_toughness")}
+        {@render field(
+            "max_toughness",
+            "Max Toughness",
+            "system.max_toughness",
+        )}
         {@render field("toughness", "Toughness", "system.toughness")}
         {@render field("protection", "Protection", "system.protection")}
         {@render field("max_footing", "Max Footing", "system.max_footing")}
         {@render field("footing", "Footing", "system.footing")}
     </div>
     <div class="moves">
-        <span>Moves</span>
-        {#each [1,2,3,4,5,6] as act}
-        <div class="move-options">
-            <Dice value={act} style="width: 32px; height: 32px" />
-            <div class="flexcol">
-
+        {#each props.data.system.moves as act_moves, act_index}
+            <div class="act-body">
+                <Dice
+                    value={act_index + 1}
+                    style="width: 32px; height: 32px; grid-area: die"
+                />
+                <div class="move-options">
+                    {#each act_moves as move, move_index}
+                        <div class="move">
+                            <UpdateTextField
+                                document={props.actor}
+                                path={`system.moves.${act_index}.${move_index}`}
+                            />
+                            <a
+                                onclick={() => deleteMove(act_index, move_index)}
+                                aria-label={`Delete move: ${move}`}
+                            >
+                                <i class="fas fa-trash" />
+                            </a>
+                        </div>
+                    {/each}
+                </div>
+                <a class="add-move" onclick={() => addMove(act_index)} aria-label={`add move to act ${act_index + 1}`}>
+                    <i class="fas fa-plus"></i>
+                </a>
             </div>
-        </div>
         {/each}
     </div>
 
@@ -43,7 +88,7 @@
     </div>
 </div>
 
-<style lang="scss">
+<style lang="scss" module>
     .npc-sheet {
         display: grid;
         grid-template:
@@ -64,10 +109,38 @@
 
         .moves {
             grid-area: m;
+            border: 1px solid black;
+            margin: 10px 15px;
 
-            .move-options {
-                display: flex;
-                flex-direction: row;
+            .act-body {
+                display: grid;
+                grid-template:
+                    "die moves" 1fr
+                    "null add" 32px / 50px 1fr;
+                align-items: center;
+                justify-items: center;
+
+                .move-options {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    grid-area: moves;
+
+                    .move {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                        input {
+                            flex-grow: 1;
+                        }
+                    }
+                }
+
+                .add-move {
+                    grid-area: add;
+                    border-radius: 10%;
+                }
             }
         }
 
