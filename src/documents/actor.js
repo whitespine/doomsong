@@ -58,7 +58,7 @@ export class DoomsongActor extends Actor {
             max: this.system.max_footing,
             value: this.system.footing
         }
-        this.system.attack_difficulty = this.system.toughness + this.system.protection;
+        this.system.attack_difficulty = Math.max(this.system.toughness + this.system.protection, this.system.min_difficulty || 0);
     }
 
 }

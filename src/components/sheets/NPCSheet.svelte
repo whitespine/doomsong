@@ -52,6 +52,8 @@
         {@render field("protection", "Protection", "system.protection")}
         {@render field("max_footing", "Max Footing", "system.max_footing")}
         {@render field("footing", "Footing", "system.footing")}
+        {@render field("min_difficulty", "Minimum Difficulty", "system.min_difficulty")}
+        {@render field("action_dice", "Action Dice", "system.base_action_dice")}
     </div>
     <div class="moves">
         {#each props.data.system.moves as act_moves, act_index}
@@ -104,7 +106,7 @@
         .stats {
             grid-area: s;
             display: grid;
-            grid-template: 1fr / repeat(3, 1fr);
+            grid-template: 1fr / repeat(4, 1fr);
         }
 
         .moves {

@@ -7,13 +7,4 @@ export class PlayerModel extends ActorModel {
             ...super.defineSchema(),
         }
     }
-
-    toPDFData() {
-
-    }
-
-    // From the fillable character sheet, emit an object that is more compatible with this actor
-    fromPDFData(pdfData) {
-
-    }
 }

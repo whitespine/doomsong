@@ -1,6 +1,6 @@
 import { ControlledLengthArrayField, DoomsongDataModel } from "../base";
 
-export const fields = foundry.data.fields;
+const fields = foundry.data.fields;
 
 export class ActorModel extends DoomsongDataModel {
     // Some schema elements are consistent across all actor types. Define them here
