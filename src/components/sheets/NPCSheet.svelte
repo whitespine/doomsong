@@ -1,5 +1,5 @@
 <script>
-    import UpdateTextField from "../fields/UpdateInput.svelte";
+    import UpdateInput from "../fields/UpdateInput.svelte";
     import Dice from "../rolls/Dice.svelte";
     let props = $props();
     $inspect(props);
@@ -34,8 +34,9 @@
         {#snippet field(key, label, path)}
             <div>
                 <label for={key}>{label}:</label>
-                <UpdateTextField
+                <UpdateInput
                     name={key}
+                    data={props.data}
                     document={props.actor}
                     {path}
                     type="text"
@@ -65,8 +66,9 @@
                 <div class="move-options">
                     {#each act_moves as move, move_index}
                         <div class="move">
-                            <UpdateTextField
+                            <UpdateInput
                                 document={props.actor}
+                                data={props.data}
                                 path={`system.moves.${act_index}.${move_index}`}
                             />
                             <a

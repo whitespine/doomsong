@@ -2,13 +2,14 @@
     import { resolveDotpath } from "../../utils/paths";
     let {
         document,
+        data,
         path,
         debounce = 200,
         class: className,
         ...restProps
     } = $props();
 
-    let cv = $derived(resolveDotpath(document, path, ""));
+    let cv = $derived(resolveDotpath(data, path, ""));
 
     function onChange(evt) {
         cv = evt.target.value;
