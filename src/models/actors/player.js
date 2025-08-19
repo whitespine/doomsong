@@ -12,7 +12,9 @@ export class PlayerModel extends ActorModel {
  async _preCreate(data, options, user) {
         await super._preCreate(data, options, user);
 
-        let mods = {};
+        let mods = {
+            base_action_dice: 2 // Players are "major"
+        };
         // Add default moves
         if(!data["moves"]) {
             mods["moves"] = PlayerDefaultMoves;

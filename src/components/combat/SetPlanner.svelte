@@ -9,9 +9,15 @@
         //}
         return combatant.img ?? CONST.DEFAULT_TOKEN;
     });
+    let can_see_moves = $derived(
+        combatant.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER,
+    );
+    let can_edit = $derived(
+        combatant.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
+    );
 
     let add_die_cursor = $derived.by(() => {
-        let owns = true; // TODO implement
+        let owns = can_edit; 
         let can_set = combatant.canSetDie() ? "pointer" : "default";
         return owns && can_set;
     });
@@ -33,20 +39,23 @@
                 style={`cursor: ${add_die_cursor}`}
                 value={act}
                 onclick={() => combatant.setDice(act)}
-                data-tooltip={combatant.actor.actTooltip(act)}
+                data-tooltip={ can_see_moves ? combatant.actor.actTooltip(act) : "This creature's capabilities are a mystery"}
             />
         {/each}
     </div>
     <div class="plan-box">
-        {#each combatant.system.set_dice as act}
-            <Die
-                value={act}
-                style="cursor: pointer"
-                onclick={() => combatant.unsetDie(act)}
-                oncontextmenu={() => combatant.unsetDie(act)}
-                data-tooltip={combatant.actor.actTooltip(act)}
-            />
-        {/each}
+        {#if can_see_moves}
+            {#each combatant.system.set_dice as act}
+                <Die
+                    value={act}
+                    style="cursor: pointer"
+                    onclick={() => combatant.unsetDie(act)}
+                    oncontextmenu={() => combatant.unsetDie(act)}
+                />
+            {/each}
+        {:else}
+            <span class="unknown">???</span>
+        {/if}
     </div>
 </div>
 
@@ -86,6 +95,10 @@
             align-items: center;
             grid-area: p;
             border-left: 1px solid black;
+
+            .unknown {
+                font-size: xx-large;
+            }
         }
     }
 </style>
