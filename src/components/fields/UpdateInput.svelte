@@ -4,7 +4,7 @@
         document,
         data,
         path,
-        debounce = 200,
+        debounce = 1000,
         class: className,
         ...restProps
     } = $props();

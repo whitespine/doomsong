@@ -66,6 +66,7 @@ export class DoomsongActorSheet extends ActorSheet {
     async getData(options={}) {
         let base = await super.getData();
         base.app = this;
+        base.data = foundry.utils.duplicate(base.data);
         return base;
     }
 }
