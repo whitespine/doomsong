@@ -26,20 +26,22 @@
     />
     <h2>{combatant.name}</h2>
     <div class="dice-box">
-        {#each [1, 2, 3, 4, 5, 6] as value}
+        {#each [1, 2, 3, 4, 5, 6] as act}
             <Die
                 style={`cursor: ${add_die_cursor}`}
-                {value}
-                onclick={() => combatant.setDice(value)}
+                value={act}
+                onclick={() => combatant.setDice(act)}
+                data-tooltip={combatant.actor.actTooltip(act)}
             />
         {/each}
     </div>
     <div class="plan-box">
-        {#each combatant.system.set_dice as value}
+        {#each combatant.system.set_dice as act}
             <Die
-                {value}
+                value={act}
                 style="cursor: pointer"
-                onclick={() => combatant.unsetDie(value)}
+                onclick={() => combatant.unsetDie(act)}
+                data-tooltip={combatant.actor.actTooltip(act)}
             />
         {/each}
     </div>
