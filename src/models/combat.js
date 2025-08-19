@@ -36,4 +36,11 @@ export class CombatantModel extends DoomsongDataModel {
             available_dice: new fields.NumberField({ nullable: false, integer: true, min: 1, initial: 2, max: 2 }), 
         };
     }
+
+    async _preCreate(data, options, user) {
+        await super._preCreate(data, options, user);
+        this.updateSource({
+            available_dice: this.parent.actor.system.base_action_dice
+        });
+    }
 }

@@ -23,6 +23,8 @@
         src={thumbnail}
         alt={combatant.name}
         data-tooltip={combatant.name}
+        onclick={() => combatant.actor.sheet.render(true)}
+        oncontextmenu={() => combatant.delete()}
     />
     <h2>{combatant.name}</h2>
     <div class="dice-box">
@@ -41,6 +43,7 @@
                 value={act}
                 style="cursor: pointer"
                 onclick={() => combatant.unsetDie(act)}
+                oncontextmenu={() => combatant.unsetDie(act)}
                 data-tooltip={combatant.actor.actTooltip(act)}
             />
         {/each}
@@ -60,6 +63,7 @@
             max-height: 64px;
             // background-color: black;
             grid-area: t;
+            cursor: pointer;
         }
 
         .dice-box {
