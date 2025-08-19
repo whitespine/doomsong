@@ -13,32 +13,41 @@
         //}
         return combatant.img ?? CONST.DEFAULT_TOKEN;
     }
+
+    const canSeeMoves = (combatant) =>
+        combatant.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER;
+    const canSee = (combatant) =>
+        combatant.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.LIMITED;
 </script>
 
 <div class="combatants">
     {#each combatant_actions as c}
-        <div class="combatant">
-            <img
-                class="thumbnail"
-                src={thumbnail(c.combatant)}
-                alt={c.combatant.name}
-                data-tooltip={c.combatant.name}
-            />
-            <div class="flexcol detail">
-                <h2>{c.combatant.name} - Choose {c.actions}</h2>
-                <ul>
-                    {#if !c.combatant.hasMovesDefined}
-                        <li>Consult book</li> 
-                    {:else if c.combatant.actor.system.moves[act-1].length > 0}
-                        {#each c.combatant.actor.system.moves[act-1] as move}
-                            <li>{move}</li>
-                        {/each}
-                    {:else}
-                        <li>No actions possible</li>
-                    {/if}
-                </ul>
+        {#if canSee(c.combatant)}
+            <div class="combatant">
+                <img
+                    class="thumbnail"
+                    src={thumbnail(c.combatant)}
+                    alt={c.combatant.name}
+                    data-tooltip={c.combatant.name}
+                />
+                <div class="flexcol detail">
+                    <h2>{c.combatant.name} - Choose {c.actions}</h2>
+                    <ul>
+                        {#if !canSeeMoves(c.combatant)}
+                            <li>This combatant's capabilities are a mystery</li>
+                        {:else if !c.combatant.hasMovesDefined}
+                            <li>Consult book</li>
+                        {:else if c.combatant.actor.system.moves[act - 1].length > 0}
+                            {#each c.combatant.actor.system.moves[act - 1] as move}
+                                <li>{move}</li>
+                            {/each}
+                        {:else}
+                            <li>No actions possible</li>
+                        {/if}
+                    </ul>
+                </div>
             </div>
-        </div>
+        {/if}
     {/each}
 </div>
 
