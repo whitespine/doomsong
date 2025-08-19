@@ -51,10 +51,14 @@
         )}
         {@render field("toughness", "Toughness", "system.toughness")}
         {@render field("protection", "Protection", "system.protection")}
+        {@render field("action_dice", "Action Dice", "system.base_action_dice")}
         {@render field("max_footing", "Max Footing", "system.max_footing")}
         {@render field("footing", "Footing", "system.footing")}
-        {@render field("min_difficulty", "Minimum Difficulty", "system.min_difficulty")}
-        {@render field("action_dice", "Action Dice", "system.base_action_dice")}
+        {@render field(
+            "min_difficulty",
+            "Minimum Difficulty",
+            "system.min_difficulty",
+        )}
     </div>
     <div class="moves">
         {#each props.data.system.moves as act_moves, act_index}
@@ -72,7 +76,8 @@
                                 path={`system.moves.${act_index}.${move_index}`}
                             />
                             <a
-                                onclick={() => deleteMove(act_index, move_index)}
+                                onclick={() =>
+                                    deleteMove(act_index, move_index)}
                                 aria-label={`Delete move: ${move}`}
                             >
                                 <i class="fas fa-trash"></i>
@@ -80,7 +85,11 @@
                         </div>
                     {/each}
                 </div>
-                <a class="add-move" onclick={() => addMove(act_index)} aria-label={`add move to act ${act_index + 1}`}>
+                <a
+                    class="add-move"
+                    onclick={() => addMove(act_index)}
+                    aria-label={`add move to act ${act_index + 1}`}
+                >
                     <i class="fas fa-plus"></i>
                 </a>
             </div>
@@ -138,6 +147,10 @@
                         input {
                             flex-grow: 1;
                         }
+                    }
+
+                    i {
+                        padding: 10px;
                     }
                 }
 

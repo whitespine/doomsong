@@ -1,32 +1,33 @@
 <script>
     import { resolveDotpath } from "../../utils/paths";
-    let {
-        document,
-        data,
-        path,
-        debounce = 1000,
-        class: className,
-        ...restProps
-    } = $props();
+    let { document, data, path, class: className, ...restProps } = $props();
 
-    let cv = $derived(resolveDotpath(data, path, ""));
+    let value = $state(resolveDotpath(data, path, ""));
 
-    function onChange(evt) {
-        cv = evt.target.value;
-        update_callback();
+    let change_timeout = null;
+    function commit(new_value, delay) {
+        value = new_value;
+        if (change_timeout) {
+            clearTimeout(change_timeout);
+            change_timeout = null;
+        }
+        let update = () => {
+            document.update({
+                [path]: new_value,
+            });
+        };
+        if (delay > 0) {
+            change_timeout = setTimeout(update, delay);
+        } else {
+            update();
+        }
     }
-
-    let update_callback = foundry.utils.debounce(() => {
-        document.update({
-            [path]: cv,
-        });
-    }, debounce);
 </script>
 
 <input
-    onchange={onChange}
-    oninput={onChange}
+    onchange={(e) => commit(e.target.value, 0)}
+    oninput={(e) => commit(e.target.value, 1000)}
     {...restProps}
     class={className}
-    value={cv}
+    {value}
 />
