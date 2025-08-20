@@ -45,20 +45,24 @@
         {/each}
     </div>
     <div class="plan-box">
-        {#if can_see_moves}
-            {#each combatant.system.set_dice as act}
+        {#each { length: combatant.system.available_dice }, set_index}
+            {#if can_see_moves && combatant.system.set_dice[set_index]}
                 <Die
-                    value={act}
+                    value={combatant.system.set_dice[set_index]}
                     style="cursor: pointer"
-                    onclick={() => combatant.unsetDie(act)}
-                    oncontextmenu={() => combatant.unsetDie(act)}
-                    data-tooltip={ combatant.actor.actTooltip(act) }
+                    onclick={() => combatant.unsetDie(combatant.system.set_dice[set_index])}
+                    oncontextmenu={() => combatant.unsetDie(combatant.system.set_dice[set_index])}
+                    data-tooltip={ combatant.actor.actTooltip(combatant.system.set_dice[set_index]) }
                     data-tooltip-class="doomsong actions"
                 />
-            {/each}
-        {:else}
-            <span class="unknown">???</span>
-        {/if}
+            {:else}
+                <RollingDie
+                    discarded={true}
+                    data-tooltip="Intentions Unknown"
+                    data-tooltip-class="doomsong actions"
+                />
+            {/if}
+        {/each}
     </div>
 </div>
 
