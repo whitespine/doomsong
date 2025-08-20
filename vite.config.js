@@ -50,6 +50,7 @@ function fixSystemJson() {
         getTargetFile: src => `dist/${src}`,
         to: '0.0.0',
       };
+      replaceInFileSync(replace_options);
     }
   }
 }
