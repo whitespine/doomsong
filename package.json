@@ -19,7 +19,6 @@
   "homepage": "https://github.com/whitespine/doomsong#readme",
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^6.1.1",
-    "replace-in-file": "^8.3.0",
     "sass-embedded": "^1.90.0",
     "svelte-preprocess-cssmodules": "^3.0.1",
     "vite": "^7.1.1"

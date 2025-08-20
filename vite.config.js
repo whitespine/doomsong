@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite';
-import { replaceInFileSync } from 'replace-in-file'
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 
 
 export default defineConfig({
   base: "/systems/doomsong/",
   root: "src/",
-  publicDir: "../public", 
+  publicDir: "../public",
   server: {
+    host: "www.worthy-opponents.com",
     port: 20001,
     open: "/",
     proxy: {
@@ -44,13 +44,10 @@ function fixSystemJson() {
     buildEnd(options) {
       const fs = require('fs');
       fs.mkdirSync("dist", { recursive: true })
-      const replace_options = {
-        files: 'system.json',
-        from: "#{VERSION}#",
-        getTargetFile: src => `dist/${src}`,
-        to: '0.0.0',
-      };
-      replaceInFileSync(replace_options);
+      let system_json = fs.readFileSync("./system.json", { encoding: 'utf8', flag: 'r' });
+      // This only matters if we're not in the ci pipeline
+      system_json = system_json.replace("#{VERSION}#", "0.0.0");
+      fs.writeFileSync("./dist/system.json", system_json);
     }
   }
 }
