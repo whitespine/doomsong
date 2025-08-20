@@ -1,5 +1,6 @@
 <script>
-    import Die from "../rolls/Dice.svelte";
+    import Die from "../rolls/Die.svelte";
+    import RollingDie from "../rolls/RollingDie.svelte";
     let { combatant } = $props();
 
     let thumbnail = $derived.by(() => {

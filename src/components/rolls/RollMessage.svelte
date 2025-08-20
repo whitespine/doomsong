@@ -1,7 +1,7 @@
 <script>
-    import Dice from "./Dice.svelte";
+    import Die from "./Die.svelte";
     import roll_types from "./roll_types.json";
-    import RollingDice from "./RollingDice.svelte";
+    import RollingDie from "./RollingDie.svelte";
     let { _id: id, author, speaker, flags, rolls, dsn_roll } = $props();
     let ds_data = $derived(flags[game.system.id]);
     let roll = $derived(Roll.fromJSON(rolls[0]));
@@ -44,8 +44,10 @@
 <h2 class="doomsong">
     <span>{roll_type.label} - {speaker_actor?.name}</span>
     {#if ds_data.coin_result == 0}
-        <a class="doomcoin unflipped" onclick={flipDoomcoin} aria-label="Flip Doomcoin"
-            ><i class="fas fa-coin"></i></a
+        <a
+            class="doomcoin unflipped"
+            onclick={flipDoomcoin}
+            aria-label="Flip Doomcoin"><i class="fas fa-coin"></i></a
         >
     {:else if ds_data.coin_result == 1}
         <img
@@ -64,9 +66,9 @@
 <div class="doomsong dice">
     {#each die_results as die, index}
         {#if dsn_roll == "rolling"}
-            <RollingDice />
+            <RollingDie />
         {:else}
-            <Dice value={die.result} discarded={die.discarded} />
+            <Die value={die.result} discarded={die.discarded} />
         {/if}
     {/each}
     <span>+</span>

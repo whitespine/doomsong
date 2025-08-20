@@ -3,7 +3,7 @@
     import SetPhase from "./SetPhase.svelte";
     import ActsPhase from "./ActsPhase.svelte";
     import { mimic } from "../../utils/mimic";
-    import Die from "../rolls/Dice.svelte";
+    import Die from "../rolls/Die.svelte";
 
     // A clunky bit of state, stands for current combat. Needed to get past svelte "optimization" until theres a proper invalidate rune
     let cc = $state.raw(mimic(game.combat));

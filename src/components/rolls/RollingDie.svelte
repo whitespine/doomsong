@@ -1,8 +1,9 @@
 <script>
-    import Dice from "./Dice.svelte";
+    import Die from "./Die.svelte";
     import { onMount, onDestroy } from "svelte";
 
-    let value = 1;
+    let props = $props();
+    let value = $state(1);
     let interval;
     onMount(() => {
         interval = setInterval(() => {
@@ -17,4 +18,4 @@
     });
 </script>
 
-<Dice {value} />
+<Die {value} {...props} />

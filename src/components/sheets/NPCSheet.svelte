@@ -1,6 +1,6 @@
 <script>
     import UpdateInput from "../fields/UpdateInput.svelte";
-    import Dice from "../rolls/Dice.svelte";
+    import Die from "../rolls/Die.svelte";
     let props = $props();
     $inspect(props);
 
@@ -63,7 +63,7 @@
     <div class="moves">
         {#each props.data.system.moves as act_moves, act_index}
             <div class="act-body">
-                <Dice
+                <Die
                     value={act_index + 1}
                     style="width: 32px; height: 32px; grid-area: die"
                 />
