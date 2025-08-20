@@ -7,7 +7,11 @@
     let interval;
     onMount(() => {
         interval = setInterval(() => {
-            value = Math.ceil(Math.random() * 6);
+            let new_value = Math.ceil(Math.random() * 6);
+            if(new_value == value) {
+                new_value = (value % 6) + 1;
+            }
+            value = new_value;
         }, 100);
     });
 
