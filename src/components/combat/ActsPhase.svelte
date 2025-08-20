@@ -24,28 +24,29 @@
     {#each combatant_actions as c}
         {#if canSee(c.combatant)}
             <div class="combatant">
-                <img
-                    class="thumbnail"
-                    src={thumbnail(c.combatant)}
-                    alt={c.combatant.name}
-                    data-tooltip={c.combatant.name}
-                />
-                <div class="flexcol detail">
-                    <h2>{c.combatant.name} - Choose {c.actions}</h2>
-                    <ul>
-                        {#if !canSeeMoves(c.combatant)}
-                            <li>This combatant's capabilities are a mystery</li>
-                        {:else if !c.combatant.hasMovesDefined}
-                            <li>Consult book</li>
-                        {:else if c.combatant.actor.system.moves[act - 1].length > 0}
-                            {#each c.combatant.actor.system.moves[act - 1] as move}
-                                <li>{move}</li>
-                            {/each}
-                        {:else}
-                            <li>No actions possible</li>
-                        {/if}
-                    </ul>
+                <div class="thumbnail">
+                    <img
+                        src={thumbnail(c.combatant)}
+                        alt={c.combatant.name}
+                    />
                 </div>
+                <div class="header">
+                    <h2>{c.combatant.name}</h2>
+                    <h3>Move a short distance and perform {c.actions} action{c.actions > 1 ? "s" : ""}</h3>
+                </div>
+                <ul class="actions">
+                    {#if !canSeeMoves(c.combatant)}
+                        <li>This combatant's capabilities are a mystery</li>
+                    {:else if !c.combatant.hasMovesDefined}
+                        <li>Consult book</li>
+                    {:else if c.combatant.actor.system.moves[act - 1].length > 0}
+                        {#each c.combatant.actor.system.moves[act - 1] as move}
+                            <li>{move}</li>
+                        {/each}
+                    {:else}
+                        <li>No actions possible</li>
+                    {/if}
+                </ul>
             </div>
         {/if}
     {/each}
@@ -59,21 +60,34 @@
     }
 
     .combatant {
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template:
+            "portrait header" 76px
+            "actions actions" 1fr / 76px 1fr;
 
-        h2 {
+        h2,h3 {
             margin-bottom: 3px;
+            border-bottom: none;
         }
 
-        .detail {
-            flex-grow: 1;
+        .thumbnail {
+            img {
+                max-width: 76px;
+                max-height: 74px;
+            }
+            grid-area: portrait;
+            border-bottom: 1px solid black;
+            border-top: 1px solid black;
         }
-    }
 
-    .thumbnail {
-        max-width: 64px;
-        max-height: 64px;
-        // background-color: black;
+        .header {
+            grid-area: header;
+            border-bottom: 1px solid black;
+            border-top: 1px solid black;
+        }
+
+        .actions {
+            grid-area: actions;
+        }
     }
 </style>

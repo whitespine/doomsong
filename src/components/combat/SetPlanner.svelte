@@ -28,7 +28,6 @@
         class="thumbnail"
         src={thumbnail}
         alt={combatant.name}
-        data-tooltip={combatant.name}
         onclick={() => combatant.actor.sheet.render(true)}
         oncontextmenu={() => combatant.delete()}
     />
@@ -40,6 +39,7 @@
                 value={act}
                 onclick={() => combatant.setDice(act)}
                 data-tooltip={ can_see_moves ? combatant.actor.actTooltip(act) : "This creature's capabilities are a mystery"}
+                data-tooltip-class="doomsong actions"
             />
         {/each}
     </div>
@@ -51,6 +51,8 @@
                     style="cursor: pointer"
                     onclick={() => combatant.unsetDie(act)}
                     oncontextmenu={() => combatant.unsetDie(act)}
+                    data-tooltip={ combatant.actor.actTooltip(act) }
+                    data-tooltip-class="doomsong actions"
                 />
             {/each}
         {:else}
