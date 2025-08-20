@@ -38,6 +38,9 @@ export class DoomsongCombat extends Combat {
 
             // Reset act to 1 if we're entering acts (or the first empty)
             if (next == "acts") {
+                // Before skipping any acts, we first randomize unset npc actions
+                await this.randomizeNPCActions();
+
                 if (skipEmptyActs) {
                     let cba = this.combatantsByAct;
                     update["system.act"] = [1, 2, 3, 4, 5, 6].find(act => cba[act].length != 0) || 1; // it doesn't really matter what act we end up on if literally nobody has any dice. Just do 1
@@ -48,11 +51,7 @@ export class DoomsongCombat extends Combat {
 
             // Reset all combatant dice if entering "begin"
             if (next == "begin") {
-                let updates = this.combatants.contents.map(c => ({
-                    _id: c._id,
-                    "system.set_dice": []
-                }));
-                await DoomsongCombatant.updateDocuments(updates, { parent: this });
+                await this.clearSetDice();
             }
 
             // Finally perform our update
@@ -98,6 +97,30 @@ export class DoomsongCombat extends Combat {
                 "system.phase": prev
             });
         }
+    }
+
+    // Clear all combatant actions
+    async clearSetDice() {
+        let updates = this.combatants.contents.map(c => ({
+            _id: c._id,
+            "system.set_dice": []
+        }));
+        await DoomsongCombatant.updateDocuments(updates, { parent: this });
+    }
+
+    // Randomize all non-player unset actions
+    async randomizeNPCActions() {
+        let updates = [];
+        this.combatants.contents.forEach(c => {
+            if(c.actor.type == "npc" && c.system.set_dice.length < c.system.available_dice) {
+                let new_set = [...c.system.set_dice, ...c.randomDice(c.system.available_dice - c.system.set_dice.length)];
+                updates.push({
+                    "_id": c._id,
+                    "system.set_dice": new_set
+                });
+            }
+        })
+        await DoomsongCombatant.updateDocuments(updates, { parent: this });
     }
 
     // Returns an Object<ActNumber, Array<[combatant, dice_this_act]>>
@@ -146,9 +169,23 @@ export class DoomsongCombatant extends Combatant {
     }
 
     // Generate a random dice value
-    // TODO: make sure we have an action for it, maybe?
-    randomDie() {
-        return Math.ceil(Math.random * 6);
+    randomDice(count=1) {
+        let dice = [];
+        // Create an array of [action_count, act]. Need to know action_count to filter empty acts
+        let valid_acts = this.actor.system.moves.map((act_moves, act_index) => [act_moves.length, act_index + 1]);
+        while(dice.length < count) {
+            let remaining_valid_acts = valid_acts.filter(x => x[0] > 0).map(x => x[1]);
+            if(remaining_valid_acts.length == 0) {
+                // Just roll randomly - they'll get to move, at least!
+                return Math.ceil(Math.random() * 6);
+            } else {
+                // Roll within valid
+                let act = remaining_valid_acts[Math.floor(Math.random() * remaining_valid_acts.length)];
+                valid_acts[act-1][0]--; // Deduct
+                dice.push(act);
+            }
+        }
+        return dice;
     }
 
     // Unset a die with the given number
@@ -162,15 +199,6 @@ export class DoomsongCombatant extends Combatant {
                 "system.set_dice": nv
             });
         }
-    }
-
-    // Set remaining dice as random, for if you're lazy / running a bestial npc / that's how that npc works
-    fillRandomDice() {
-        let to_add = [];
-        for (let i = this.system.set_dice.length; i < this.system.available_dice; i++) {
-            to_add.push(this.randomDie());
-        }
-        return this.setDice(...to_add);
     }
 
     // Clear all set dice
