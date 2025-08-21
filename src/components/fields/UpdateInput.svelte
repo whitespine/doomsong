@@ -1,6 +1,6 @@
 <script>
     import { resolveDotpath } from "../../utils/paths";
-    let { document, data, path, class: className, ...restProps } = $props();
+    let { tag="input", document, data, path, class: className, ...restProps } = $props();
 
     let value = $state(resolveDotpath(data, path, ""));
 
@@ -24,7 +24,7 @@
     }
 </script>
 
-<input
+<svelte:element this={tag}
     onchange={(e) => commit(e.target.value, 0)}
     oninput={(e) => commit(e.target.value, 1000)}
     {...restProps}

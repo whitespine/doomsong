@@ -76,9 +76,11 @@
                     {#each act_moves as move, move_index}
                         <div class="move">
                             <UpdateInput
+                                tag="textarea"
                                 document={props.actor}
                                 data={props.data}
                                 path={`system.moves.${act_index}.${move_index}`}
+                                style="resize: vertical"
                             />
                             <a
                                 onclick={() =>
