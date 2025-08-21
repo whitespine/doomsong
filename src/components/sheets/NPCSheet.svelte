@@ -65,9 +65,14 @@
             <div class="act-body">
                 <Die
                     value={act_index + 1}
-                    style="width: 32px; height: 32px; grid-area: die"
+                    style="width: 32px; height: 32px; cursor: pointer"
+                    onclick={() => addMove(act_index)}
+                    data-tooltip="Add a move to this act"
                 />
                 <div class="move-options">
+                    {#if act_moves.length == 0}
+                        <span>Click the die to add a move. Otherwise, this creature will be unable to do much in this act.</span>
+                    {/if}
                     {#each act_moves as move, move_index}
                         <div class="move">
                             <UpdateInput
@@ -85,13 +90,6 @@
                         </div>
                     {/each}
                 </div>
-                <a
-                    class="add-move"
-                    onclick={() => addMove(act_index)}
-                    aria-label={`add move to act ${act_index + 1}`}
-                >
-                    <i class="fas fa-plus"></i>
-                </a>
             </div>
         {/each}
     </div>
@@ -126,17 +124,16 @@
             margin: 10px 15px;
 
             .act-body {
-                display: grid;
-                grid-template:
-                    "die moves" 1fr
-                    "null add" 32px / 50px 1fr;
+                display: flex;
+                flex-direction: row;
                 align-items: center;
                 justify-items: center;
+                padding: 5px 0px; // Give a bit of spacing on the top and bottom
 
                 .move-options {
                     display: flex;
                     flex-direction: column;
-                    width: 100%;
+                    flex-grow: 1;
                     grid-area: moves;
 
                     .move {
@@ -150,13 +147,8 @@
                     }
 
                     i {
-                        padding: 10px;
+                        padding: 0px 10px;
                     }
-                }
-
-                .add-move {
-                    grid-area: add;
-                    border-radius: 10%;
                 }
             }
         }

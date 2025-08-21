@@ -15,4 +15,11 @@ export class DoomsongCombatTracker extends CombatTracker {
             return wrapper
         }, force, options);
     }
+
+    /*
+    async getData(options={}) {
+        console.log(options);
+        super.getData(options);
+    }
+    */
 }
