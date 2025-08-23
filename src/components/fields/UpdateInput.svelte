@@ -1,6 +1,6 @@
 <script>
     import { resolveDotpath } from "../../utils/paths";
-    let { tag="input", document, data, path, class: className, ...restProps } = $props();
+    let { tag="input", doc, data, path, class: className, ...restProps } = $props();
 
     let value = $state(resolveDotpath(data, path, ""));
 
@@ -12,7 +12,7 @@
             change_timeout = null;
         }
         let update = () => {
-            document.update({
+            doc.update({
                 [path]: new_value,
             });
         };

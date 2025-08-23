@@ -125,3 +125,31 @@ export function resolveDotpath(obj, path, default_ = undefined, opts = null) {
   }
   return item.val === undefined ? default_ : item.val;
 }
+
+/**
+ * @typedef {object} SpliceArrayResult
+ *
+ * @property {string} [array_path] The given path, truncated to point at the array
+ * @property {Array} [modified_array] The array from the object, with the path'd item removed
+ */
+
+/**
+ * 
+ * @param {any} obj The object to manipulate
+ * @param {string} path The path to drill down to in the document
+ * @returns {SpliceArrayResult}
+ */
+export function spliceArrayItem(obj, path) {
+    let path_resolves = stepwiseResolveDotpath(obj, path);
+    // Cut off the start, don't care about the "root"
+    path_resolves.splice(0, 1);
+    let [terminus] = path_resolves.splice(-1,  1); // Cut off the end, keep it
+    let index = Number.parseInt(terminus.pathlet); // Turn its pathlet into an index
+    let array_path = path_resolves.map(x => x.pathlet).join("."); // Recombine the path
+    let modified_array = [...path_resolves[path_resolves.length - 1].val]; // Grab the ending array
+    modified_array.splice(index, 1);
+    return {
+      array_path,
+      modified_array
+    }
+}

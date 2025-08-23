@@ -1,46 +1,75 @@
 <script>
+    import TraitTag from "../fields/TraitTag.svelte";
     import UpdateInput from "../fields/UpdateInput.svelte";
     import Die from "../rolls/Die.svelte";
-    let props = $props();
-    $inspect(props);
+    let { data, actor, app } = $props();
+    $inspect(data);
 
     // Add a new basic move
     function addMove(act_index) {
-        props.actor.update({
-            [`system.moves.${act_index}`]: props.actor.system.moves[
-                act_index
-            ].concat([""]),
+        actor.update({
+            [`system.moves.${act_index}`]: actor.system.moves[act_index].concat(
+                [""],
+            ),
         });
     }
 
     // Remove the specified move
     function deleteMove(act_index, move_index) {
-        let new_move_array = [...props.actor.system.moves[act_index]];
+        let new_move_array = [...actor.system.moves[act_index]];
         new_move_array.splice(move_index, 1);
-        props.actor.update({
+        actor.update({
             [`system.moves.${act_index}`]: new_move_array,
         });
+    }
+
+    // Add a new tag
+    function addTag() {
+        const callback = (form, prefix) => {
+            let tag = new FormData(globalThis.$(form).find("form")[0]).get("tag");
+            let existing_tags = [...actor.system.tags];
+            existing_tags.push(`${prefix}${tag}`);
+            actor.update({
+                "system.tags": existing_tags
+            });
+        };
+        let d = new Dialog({
+            title: "Add a Tag",
+            content: `<form><input type="text" name="tag"></input></form>`,
+            buttons: {
+                add: {
+                    label: "Add",
+                    callback: (f) => callback(f, "")
+                },
+                add_defining: {
+                    label: "Defining",
+                    callback: (f) => callback(f, "+")
+                },
+                add_super: {
+                    label: "Epitome",
+                    callback: (f) => callback(f, "++"),
+                },
+            },
+            default: "add",
+        });
+        return d.render(true);
     }
 </script>
 
 <div class="npc-sheet">
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
     <img
         class="portrait"
-        src={props.data.img}
+        src={data.img}
         alt="potrait"
-        onclick={() => props.app.editImage("img")}
+        onclick={() => app.editImage("img")}
     />
     <div class="stats">
         {#snippet field(key, label, path)}
             <div>
                 <label for={key}>{label}:</label>
-                <UpdateInput
-                    name={key}
-                    data={props.data}
-                    document={props.actor}
-                    {path}
-                    type="text"
-                />
+                <UpdateInput name={key} {data} {actor} {path} type="text" />
             </div>
         {/snippet}
         {@render field("name", "Name", "name")}
@@ -59,9 +88,29 @@
             "Minimum Difficulty",
             "system.min_difficulty",
         )}
+
+        <UpdateInput
+            class="vibes"
+            name="vibes"
+            placeholder="put, some, descriptors, here"
+            {data}
+            doc={actor}
+            path="system.vibes"
+            type="text"
+        />
+        <div class="tags">
+            {#if data.system.tags.length == 0}
+                Add a tag!
+            {:else}
+                {#each data.system.tags as tag, index}
+                    <TraitTag doc={actor} {data} path={`system.tags.${index}`} />
+                {/each}
+            {/if}
+            <button onclick={addTag}>Add Tag</button>
+        </div>
     </div>
     <div class="moves">
-        {#each props.data.system.moves as act_moves, act_index}
+        {#each data.system.moves as act_moves, act_index}
             <div class="act-body">
                 <Die
                     value={act_index + 1}
@@ -71,17 +120,23 @@
                 />
                 <div class="move-options">
                     {#if act_moves.length == 0}
-                        <span>Click the die to add a move. Otherwise, this creature will be unable to do much in this act.</span>
+                        <span
+                            >Click the die to add a move. Otherwise, this
+                            creature will be unable to do much in this act.</span
+                        >
                     {/if}
                     {#each act_moves as move, move_index}
                         <div class="move">
                             <UpdateInput
                                 tag="textarea"
-                                document={props.actor}
-                                data={props.data}
+                                doc={actor}
+                                {data}
                                 path={`system.moves.${act_index}.${move_index}`}
                                 style="resize: vertical"
                             />
+                            <!-- svelte-ignore a11y_click_events_have_key_events -->
+                            <!-- svelte-ignore a11y_no_static_element_interactions -->
+                            <!-- svelte-ignore a11y_missing_attribute -->
                             <a
                                 onclick={() =>
                                     deleteMove(act_index, move_index)}
@@ -105,9 +160,9 @@
     .npc-sheet {
         display: grid;
         grid-template:
-            "p s" 128px
+            "p s" 150px
             "m m" 1fr
-            "b b" 1fr / 128px 1fr;
+            "b b" 1fr / 150px 1fr;
 
         .portrait {
             grid-area: p;
@@ -117,7 +172,22 @@
         .stats {
             grid-area: s;
             display: grid;
-            grid-template: 1fr / repeat(4, 1fr);
+            grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+
+            .vibes,
+            .tags {
+                grid-column: 1 / 5;
+            }
+
+            .vibes {
+                font-style: italic;
+            }
+
+            .tags {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
         }
 
         .moves {

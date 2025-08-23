@@ -26,9 +26,9 @@ class IterableWeakSet {
 }
 
 // Create a store around a document that updates whenever the document updates
-export function watch(document) {
+export function watch(doc) {
     // Check if we need to set a hook
-    let document_name = document.documentName;
+    let document_name = doc.documentName;
     if(!set_hooks.has(document_name)) {
         Hooks.on(`update${document_name}`, (doc, delta, _meta) => {
             let relevant_stores = watches.get(doc.uuid);
@@ -42,13 +42,13 @@ export function watch(document) {
     }
 
     // Get our current array, creating it if necessary
-    let set = watches.get(document.uuid) || new IterableWeakSet();
+    let set = watches.get(doc.uuid) || new IterableWeakSet();
 
     // Create the writeable
-    let store = writeable(document);
+    let store = writeable(doc);
     set.add(store);
 
     // Make sure we save the watch if this is the first time the array has been 
-    watches.set(document.uuid, set);
+    watches.set(doc.uuid, set);
     return set;
 }
