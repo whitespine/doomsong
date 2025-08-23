@@ -187,6 +187,10 @@
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                button {
+                    margin-left: auto;
+                    max-width: 60px;
+                }
             }
         }
 
