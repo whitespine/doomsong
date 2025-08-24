@@ -102,10 +102,6 @@
             align-items: center;
             grid-area: p;
             border-left: 1px solid black;
-
-            .unknown {
-                font-size: xx-large;
-            }
         }
     }
 </style>

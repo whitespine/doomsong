@@ -40,7 +40,7 @@
     }
 </script>
 
-<div on:click={cycle} on:contextmenu={remove} class={clazz}>
+<div onclick={cycle} oncontextmenu={remove} class={clazz}>
     {clean_value}
 </div>
 <!-- svelte-ignore a11y_click_events_have_key_events -->
