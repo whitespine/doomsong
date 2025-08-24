@@ -1,7 +1,39 @@
 [
     {
-        "title": "Day of Wagers",
-        "content": "<p>It is tradition to make a wager with a friend, to be paid before the dawning of Dies Tertius. Those who do not pay up are called \u2018ballycur\u2019 until they do.</p>",
+        "title": "The Sign of Chance",
+        "content": "During this week, followers of Chance (wycces, cultists, husks and laceworkers) may decide, after flipping the Doomcoin, to ignore the skull result.",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 0,
+            "day": 4
+        },
+        "categories": [
+            "Sign"
+        ]
+    },
+    {
+        "title": "The Week's Prayer",
+        "content": "Steel oneself against the coming of the season, for winter’s end brings tempting warmth.",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 0
+        },
+        "categories": [
+            "Prayer"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "The Vernal Equinox",
+        "content": "The first day of spring; this day and night are exactly the same length.",
         "startDate": {
             "year": 541,
             "month": 0,
@@ -15,15 +47,137 @@
         ]
     },
     {
-        "title": "Laceworker Egg Hatching",
-        "content": "<p>On this evening, any unhatched laceworkers spill out of their egg cases. The night crawls with colour.</p>",
+        "title": "Day of Wagers",
+        "content": "It is tradition to make a wager with a friend, to be paid by the end of Saive (4).",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 0
+        },
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Mother's Moon [1]",
+        "content": "The soothing orange light of Mother’s Moon tints the land a strange amber colour. All who sleep beneath this full moon do so with the soundness of babes, unlikely to wake even in the event of danger.",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 0
+        },
+        "categories": [
+            "Lunar"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Giving up the Bell",
+        "content": "Throughout Painyme, town criers return their bells to the town hall. A secret vote is then held to determine whether the villagers consider them a trustworthy servant of the community who should return to their duties. If not, the leader of village selects a new town crier.",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 1
+        },
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Mother's Moon [2]",
+        "content": "The amber glow of the full moon is noticeably dimmer than on previous evenings. Fields and forests fill with the scratching noise of laceworker hatchlings still within their pearlescent egg casings.",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 1
+        },
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Bautenmoot",
+        "content": "The bautenlobbe travel to a secret location deep within the Weald. The purpose of this gathering is unknown to humanfolk, but their collective effort to attend makes clear its importance.",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 2
+        },
+        "categories": [
+            "Ecological"
+        ]
+    },
+    {
+        "title": "Bautenmoot's End",
+        "content": "The bautenlobbe end their secret ceremony with a collective bellow. Anyone within the Weald can hear this roaring and know great numbers of bautenlobbe will soon be returning to their home dens.",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 2
+        },
+        "categories": [
+            "Ecological"
+        ]
+    },
+    {
+        "title": "Saive!",
+        "content": "Up and down the coast, sailors raise a toast to a day of safe sailing. Ex-sailors uphold the tradition as a toast of good luck. On this day, most taverns will provide a free tot of grog to passing mariners, hoping to benefit from a portion of that luck.",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 3
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Wager's Won",
+        "content": "All bets made at the start of the week must be paid in full by midnight. It is tradition to call anyone who cannot pay a ‘ballycur’ until such a time as they can settle up.",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 3
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Spither Hymn",
+        "content": "If laceworkers have not yet hatched (see Result 6 on the Weather Table), those cults who worship Chance will gather in lonely, wild places to chant soft songs to their patron. The most devoted remain behind so as to provide sustenance for the newly hatched.",
         "startDate": {
             "year": 541,
             "month": 0,
             "day": 4
         },
         "categories": [
-            "Ecological Event"
+            "Ecological",
+            "Holiday",
+            "Occult"
+        ]
+    },
+    {
+        "title": "Laceworker Egg Hatching",
+        "content": "Unless the weather has been warm during the previous week, on this night all laceworkers hatch en masse. Colourful swarms of tiny laceworkers scurry to and fro beneath the moonlight.",
+        "startDate": {
+            "year": 541,
+            "month": 0,
+            "day": 4
+        },
+        "categories": [
+            "Ecological"
         ]
     },
     {
@@ -89,7 +243,7 @@
             "day": 0
         },
         "categories": [
-            "Lunar Event"
+            "Lunar"
         ]
     },
     {
@@ -231,7 +385,7 @@
         },
         "categories": [
             "Holiday",
-            "Lunar Event"
+            "Lunar"
         ],
         "userVisibility": [
             "default"
@@ -246,7 +400,7 @@
             "day": 1
         },
         "categories": [
-            "Lunar Event"
+            "Lunar"
         ],
         "userVisibility": [
             "default"
@@ -262,7 +416,7 @@
         },
         "categories": [
             "Holiday",
-            "Lunar Event"
+            "Lunar"
         ]
     },
     {
@@ -361,7 +515,7 @@
             "day": 0
         },
         "categories": [
-            "Lunar Event"
+            "Lunar"
         ],
         "userVisibility": [
             "default"
@@ -388,7 +542,7 @@
             "day": 3
         },
         "categories": [
-            "Ecological Event"
+            "Ecological"
         ]
     },
     {
@@ -401,7 +555,7 @@
         },
         "categories": [
             "Holiday",
-            "Ecological Event"
+            "Ecological"
         ],
         "userVisibility": [
             "default"
@@ -416,8 +570,8 @@
             "day": 1
         },
         "categories": [
-            "Lunar Event",
-            "Ecological Event"
+            "Lunar",
+            "Ecological"
         ]
     },
     {
@@ -429,7 +583,7 @@
             "day": 4
         },
         "categories": [
-            "Ecological Event",
+            "Ecological",
             "Holiday"
         ],
         "userVisibility": [
@@ -460,7 +614,7 @@
             "day": 3
         },
         "categories": [
-            "Lunar Event"
+            "Lunar"
         ]
     },
     {
@@ -583,7 +737,7 @@
             "day": 1
         },
         "categories": [
-            "Lunar Event"
+            "Lunar"
         ],
         "userVisibility": [
             "default"
@@ -688,7 +842,7 @@
             "day": 4
         },
         "categories": [
-            "Lunar Event"
+            "Lunar"
         ],
         "userVisibility": [
             "default"
