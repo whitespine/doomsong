@@ -5,28 +5,19 @@
         "startDate": {
             "year": 541,
             "month": 12,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
         "endDate": {
             "year": 541,
             "month": 12,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Week of Feast/Fast",
@@ -34,26 +25,16 @@
         "startDate": {
             "year": 541,
             "month": 7,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 7,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Burning Moon",
@@ -61,26 +42,16 @@
         "startDate": {
             "year": 541,
             "month": 2,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 2,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Lunar Event"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Astrologer\u2019s Vigil",
@@ -88,26 +59,16 @@
         "startDate": {
             "year": 541,
             "month": 2,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
         "endDate": {
             "year": 541,
             "month": 2,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Bautenmoot",
@@ -115,26 +76,16 @@
         "startDate": {
             "year": 542,
             "month": 0,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
         "endDate": {
             "year": 542,
             "month": 0,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Ecological Event"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Mass Pontifex - Sanctum Votum",
@@ -142,26 +93,16 @@
         "startDate": {
             "year": 541,
             "month": 6,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 6,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "The Ecclesiarch\u2019s Largesse",
@@ -169,26 +110,16 @@
         "startDate": {
             "year": 541,
             "month": 14,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
         "endDate": {
             "year": 541,
             "month": 14,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Feast of the Wicker King.",
@@ -196,26 +127,16 @@
         "startDate": {
             "year": 541,
             "month": 7,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
         "endDate": {
             "year": 541,
             "month": 7,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Sign of Rot.",
@@ -223,29 +144,20 @@
         "startDate": {
             "year": 541,
             "month": 9,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 9,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday",
             "Ecological Event"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Day of Murmurs",
@@ -253,26 +165,16 @@
         "startDate": {
             "year": 541,
             "month": 1,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
         "endDate": {
             "year": 541,
             "month": 1,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "F\u00e6dernich",
@@ -280,26 +182,16 @@
         "startDate": {
             "year": 541,
             "month": 6,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
         "endDate": {
             "year": 541,
             "month": 6,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Blessing of the Keys",
@@ -307,28 +199,19 @@
         "startDate": {
             "year": 541,
             "month": 15,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 15,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Repentance",
@@ -336,28 +219,19 @@
         "startDate": {
             "year": 541,
             "month": 4,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
         "endDate": {
             "year": 541,
             "month": 4,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Feast of Twelve Families",
@@ -365,26 +239,16 @@
         "startDate": {
             "year": 541,
             "month": 12,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
         "endDate": {
             "year": 541,
             "month": 12,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "The March",
@@ -392,26 +256,16 @@
         "startDate": {
             "year": 541,
             "month": 11,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
         "endDate": {
             "year": 541,
             "month": 11,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "The March",
@@ -419,28 +273,19 @@
         "startDate": {
             "year": 541,
             "month": 1,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 1,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Thieves\u2019 Banquet",
@@ -448,26 +293,16 @@
         "startDate": {
             "year": 541,
             "month": 13,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
         "endDate": {
             "year": 541,
             "month": 13,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Mort-Aux-Rats",
@@ -475,28 +310,19 @@
         "startDate": {
             "year": 541,
             "month": 13,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 13,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Investiture",
@@ -504,28 +330,19 @@
         "startDate": {
             "year": 541,
             "month": 4,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
         "endDate": {
             "year": 541,
             "month": 4,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Singing Grindstones",
@@ -533,26 +350,16 @@
         "startDate": {
             "year": 541,
             "month": 15,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
         "endDate": {
             "year": 541,
             "month": 15,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Lytlingnicht",
@@ -560,26 +367,16 @@
         "startDate": {
             "year": 541,
             "month": 6,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
         "endDate": {
             "year": 541,
             "month": 6,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Ossein Moon",
@@ -587,28 +384,19 @@
         "startDate": {
             "year": 541,
             "month": 5,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
         "endDate": {
             "year": 541,
             "month": 5,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Lunar Event"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Famished Moon",
@@ -616,28 +404,19 @@
         "startDate": {
             "year": 541,
             "month": 13,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
         "endDate": {
             "year": 541,
             "month": 13,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Lunar Event"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Deliverance",
@@ -645,28 +424,19 @@
         "startDate": {
             "year": 541,
             "month": 4,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
         "endDate": {
             "year": 541,
             "month": 4,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Duellist's Moon",
@@ -674,26 +444,16 @@
         "startDate": {
             "year": 541,
             "month": 10,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
         "endDate": {
             "year": 541,
             "month": 11,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Lunar Event"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Laceworker Egg Hatching",
@@ -701,26 +461,16 @@
         "startDate": {
             "year": 541,
             "month": 0,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
         "endDate": {
             "year": 541,
             "month": 0,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Ecological Event"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Wende-withers.",
@@ -728,29 +478,20 @@
         "startDate": {
             "year": 541,
             "month": 9,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
         "endDate": {
             "year": 541,
             "month": 9,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Ecological Event",
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "New Moon (ROT)",
@@ -758,27 +499,17 @@
         "startDate": {
             "year": 541,
             "month": 9,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
         "endDate": {
             "year": 541,
             "month": 9,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Lunar Event",
             "Ecological Event"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Death of Joy",
@@ -786,29 +517,20 @@
         "startDate": {
             "year": 541,
             "month": 5,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 5,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday",
             "Lunar Event"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Laceworker Egg Laying",
@@ -816,26 +538,16 @@
         "startDate": {
             "year": 541,
             "month": 8,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
         "endDate": {
             "year": 541,
             "month": 8,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Ecological Event"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Sanctum Ablutio",
@@ -843,28 +555,19 @@
         "startDate": {
             "year": 541,
             "month": 2,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 2,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Day of Deals.",
@@ -872,28 +575,19 @@
         "startDate": {
             "year": 541,
             "month": 10,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
         "endDate": {
             "year": 541,
             "month": 10,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Obsequies",
@@ -901,28 +595,19 @@
         "startDate": {
             "year": 541,
             "month": 4,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
         "endDate": {
             "year": 541,
             "month": 4,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Day of Wagers",
@@ -930,28 +615,21 @@
         "startDate": {
             "year": 541,
             "month": 0,
-            "day": 0,
-            "hour": 0,
-            "minute": 2,
-            "seconds": 0
+            "day": 0
+                        "minute": 2,
         },
         "endDate": {
             "year": 541,
             "month": 0,
-            "day": 0,
-            "hour": 0,
-            "minute": 2,
-            "seconds": 0
+            "day": 0
+                        "minute": 2,
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Mass Pontifex - Sanctum Profundio",
@@ -959,26 +637,16 @@
         "startDate": {
             "year": 541,
             "month": 14,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 14,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "New Year\u2019s Eve",
@@ -986,28 +654,19 @@
         "startDate": {
             "year": 541,
             "month": 15,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
         "endDate": {
             "year": 541,
             "month": 15,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "The Dancing Eclipse",
@@ -1015,27 +674,17 @@
         "startDate": {
             "year": 541,
             "month": 5,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
         "endDate": {
             "year": 541,
             "month": 5,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday",
             "Lunar Event"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Mass Pontifex - Sanctum Ostentatio.",
@@ -1043,28 +692,19 @@
         "startDate": {
             "year": 541,
             "month": 10,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 10,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Mother's Moon",
@@ -1072,28 +712,19 @@
         "startDate": {
             "year": 541,
             "month": 15,
-            "day": 4,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 4
         },
         "endDate": {
             "year": 542,
             "month": 0,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Lunar Event"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Triumph",
@@ -1101,28 +732,19 @@
         "startDate": {
             "year": 541,
             "month": 4,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 4,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Troth-Plight.",
@@ -1130,28 +752,19 @@
         "startDate": {
             "year": 541,
             "month": 8,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 8,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Maker\u2019s Day.",
@@ -1159,26 +772,16 @@
         "startDate": {
             "year": 541,
             "month": 8,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
         "endDate": {
             "year": 541,
             "month": 8,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Hot Obol Day",
@@ -1186,28 +789,19 @@
         "startDate": {
             "year": 541,
             "month": 3,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 3,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Day of Blows",
@@ -1215,28 +809,19 @@
         "startDate": {
             "year": 541,
             "month": 1,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
         "endDate": {
             "year": 541,
             "month": 1,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "S\u00e9ance of the Sleepless",
@@ -1244,26 +829,16 @@
         "startDate": {
             "year": 541,
             "month": 14,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
         "endDate": {
             "year": 541,
             "month": 14,
-            "day": 1,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 1
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Offre Men",
@@ -1271,28 +846,19 @@
         "startDate": {
             "year": 541,
             "month": 11,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 11,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Mass Pontifex",
@@ -1300,24 +866,17 @@
         "startDate": {
             "year": 542,
             "month": 2,
-            "day": 0,
-            "hour": 0,
-            "minute": 2,
-            "seconds": 0
+            "day": 0
+                        "minute": 2,
         },
         "endDate": {
             "year": 542,
             "month": 2,
-            "day": 0,
-            "hour": 0,
-            "minute": 2,
-            "seconds": 0
+            "day": 0
+                        "minute": 2,
         },
-        "allDay": true,
         "repeats": 0,
-        "categories": [],
-        "userVisibility": [],
-        "remindUsers": null
+        "categories": []
     },
     {
         "title": "Day of Appeals",
@@ -1325,26 +884,16 @@
         "startDate": {
             "year": 541,
             "month": 1,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
         "endDate": {
             "year": 541,
             "month": 1,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Blighted Moon",
@@ -1352,28 +901,19 @@
         "startDate": {
             "year": 541,
             "month": 8,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 8,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Lunar Event"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Tongueless Truths",
@@ -1381,26 +921,16 @@
         "startDate": {
             "year": 541,
             "month": 3,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
         "endDate": {
             "year": 541,
             "month": 3,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Procession of the Forlorn.",
@@ -1408,26 +938,16 @@
         "startDate": {
             "year": 541,
             "month": 12,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
         "endDate": {
             "year": 541,
             "month": 12,
-            "day": 0,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 0
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Modranich",
@@ -1435,26 +955,16 @@
         "startDate": {
             "year": 541,
             "month": 6,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
         "endDate": {
             "year": 541,
             "month": 6,
-            "day": 2,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 2
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [],
-        "remindUsers": null
+        ]
     },
     {
         "title": "Panic\u2019s Night.",
@@ -1462,27 +972,18 @@
         "startDate": {
             "year": 541,
             "month": 11,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
         "endDate": {
             "year": 541,
             "month": 11,
-            "day": 3,
-            "hour": 0,
-            "minute": 0,
-            "seconds": 0
+            "day": 3
         },
-        "allDay": true,
-        "repeats": 3,
         "categories": [
             "Holiday"
         ],
         "userVisibility": [
             "default"
-        ],
-        "remindUsers": null
+        ]
     }
 ]
