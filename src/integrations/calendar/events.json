@@ -616,13 +616,11 @@
             "year": 541,
             "month": 0,
             "day": 0
-                        "minute": 2,
         },
         "endDate": {
             "year": 541,
             "month": 0,
             "day": 0
-                        "minute": 2,
         },
         "categories": [
             "Holiday"
@@ -867,13 +865,11 @@
             "year": 542,
             "month": 2,
             "day": 0
-                        "minute": 2,
         },
         "endDate": {
             "year": 542,
             "month": 2,
             "day": 0
-                        "minute": 2,
         },
         "repeats": 0,
         "categories": []
