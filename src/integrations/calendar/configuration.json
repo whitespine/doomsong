@@ -4,7 +4,7 @@
     "currentDate": {
         "year": 541,
         "month": 0,
-        "day": 4,
+        "day": 1,
         "seconds": 43200
     },
     "general": {
@@ -33,7 +33,7 @@
         {
             "id": "96868abb",
             "name": "Chance",
-            "description": "",
+            "description": "Clearing, picking stones, ploughing, planting, thawing, sprouting, chill, buds, shoots, lambs, grey-green",
             "abbreviation": "Jan",
             "numericRepresentation": 1,
             "numericRepresentationOffset": 0,
@@ -46,7 +46,7 @@
         {
             "id": "fb0e1628",
             "name": "Justice",
-            "description": "",
+            "description": "Ploughing, sowing, blooming, brightening, sprouting, flowers, saplings, calves, baby chicks, green-brown",
             "abbreviation": "Feb",
             "numericRepresentation": 2,
             "numericRepresentationOffset": 0,
@@ -59,7 +59,7 @@
         {
             "id": "5a2452fc",
             "name": "Perception",
-            "description": "",
+            "description": "Weeding, scaring birds, gathering eggs, farrowing, piglets, flowers, seedlings, cheery, bustling, blue-brown",
             "abbreviation": "Mar",
             "numericRepresentation": 3,
             "numericRepresentationOffset": 0,
@@ -72,7 +72,7 @@
         {
             "id": "284d738e",
             "name": "Oblivion",
-            "description": "",
+            "description": "Weeding, watering, repairing fences, labouring, energetic, construction, industry, buzzing, brown-green",
             "abbreviation": "Apr",
             "numericRepresentation": 4,
             "numericRepresentationOffset": 0,
@@ -85,7 +85,7 @@
         {
             "id": "4849f72b",
             "name": "Joy",
-            "description": "",
+            "description": "Staking plants, hoeing, watering, setting snares, pest control, warm, humming, lively, vibrant, green-blue",
             "abbreviation": "May",
             "numericRepresentation": 5,
             "numericRepresentationOffset": 0,
@@ -98,7 +98,7 @@
         {
             "id": "f3b5d6cd",
             "name": "Frenzy",
-            "description": "",
+            "description": "Shepherding, fishing, netting, fattening, well-digging, warm, stuffy, dry, flourishing, balmy, green-yellow",
             "abbreviation": "Jun",
             "numericRepresentation": 6,
             "numericRepresentationOffset": 0,
@@ -111,7 +111,7 @@
         {
             "id": "a3287a9f",
             "name": "Fecundity",
-            "description": "",
+            "description": "Gathering apples, milking, churning, baking, washing, hot, scorching, weary, humid, dry-yellow-white",
             "abbreviation": "Jul",
             "numericRepresentation": 7,
             "numericRepresentationOffset": 0,
@@ -124,7 +124,7 @@
         {
             "id": "7868fa2d",
             "name": "Feast",
-            "description": "",
+            "description": "Gathering berries, sugar-curing, fermenting, bright, harsh, swelteirng, brown-yellow-white",
             "abbreviation": "Aug",
             "numericRepresentation": 8,
             "numericRepresentationOffset": 0,
@@ -137,7 +137,7 @@
         {
             "id": "3281691",
             "name": "Toil",
-            "description": "",
+            "description": "Harvesting, scything, winnowing, gathering cropseeds, drying, storing, bustling, cool, green-yellow-orange",
             "abbreviation": "Sep",
             "numericRepresentation": 9,
             "numericRepresentationOffset": 0,
@@ -150,7 +150,7 @@
         {
             "id": "72d7c0e2",
             "name": "Rot",
-            "description": "",
+            "description": "Gathering nuts & mushrooms, hunting, foraging, rummaging, musty, pensive, solemn, yellow-orange-red",
             "abbreviation": "Oct",
             "numericRepresentation": 10,
             "numericRepresentationOffset": 0,
@@ -163,7 +163,7 @@
         {
             "id": "3e3cffe9",
             "name": "Honour",
-            "description": "",
+            "description": "Butchering, salting, curing, clearing, collecting firewood, invigorating, plodding, sweet, ruddy, red-orange-gold",
             "abbreviation": "Hon",
             "numericRepresentation": 11,
             "numericRepresentationOffset": 0,
@@ -176,7 +176,7 @@
         {
             "id": "1d9e6960",
             "name": "Panic",
-            "description": "",
+            "description": "Shearing, milling, preserving, pruning, fertilising fields, striving, slogging, crisp, bracing, gold-red-brown",
             "abbreviation": "Dec",
             "numericRepresentation": 12,
             "numericRepresentationOffset": 0,
@@ -189,7 +189,7 @@
         {
             "id": "7608071e",
             "name": "Hope",
-            "description": "",
+            "description": "Hunting, tanning, pickling, spinning, weaving, dormant, listless, bitter, icy, bare, silver-grey",
             "abbreviation": "",
             "numericRepresentation": 13,
             "numericRepresentationOffset": 0,
@@ -202,7 +202,7 @@
         {
             "id": "fbfa7f3f",
             "name": "Voracity",
-            "description": "",
+            "description": "Repairing, chopping wood, crafting, sewing, dismal, stifled, slumbering, brittle, freezing, icicles, grey-blue",
             "abbreviation": "",
             "numericRepresentation": 14,
             "numericRepresentationOffset": 0,
@@ -215,7 +215,7 @@
         {
             "id": "651713fa",
             "name": "Languor",
-            "description": "",
+            "description": "Brewing, fishing, hunting, rope-making, short days, desolate, muffled, crisp, cold, dark, blue-grey",
             "abbreviation": "",
             "numericRepresentation": 15,
             "numericRepresentationOffset": 0,
@@ -228,7 +228,7 @@
         {
             "id": "2eda9031",
             "name": "The Grimme",
-            "description": "",
+            "description": "Logging, clear-cutting, whittling, tale-telling, frozen, bleak, fallen, deadened, sombre, silent, black",
             "abbreviation": "",
             "numericRepresentation": 16,
             "numericRepresentationOffset": 0,
