@@ -1,0 +1,190 @@
+[
+    {
+        "sign": "Chance",
+        "weather": [
+            "Storms. Rain lashes at the trees and batters the land. This continues until a 6 is rolled for weather.",
+            "Overcast. The sun barely penetrates dark cloud cover, swaddling the day in grim twilight.",
+            "Thick Fog. Dense, grey, impenetrable. The difficulty of attempts to [navigate] is increased by 2.",
+            "Blustery.  Blustery. Howling winds with an icy bite. You would be forgiven for thinking winter was not yet over.",
+            "Icy. Bitter and clear. The air is still and the cold bites in the lungs of those who breathe.",
+            "Warm. The promise of summer peeks through the clouds. This weather lasts until the end of the week. All laceworker eggs begin to hatch, releasing thousands of tiny laceworkers into the wilderness."
+        ]
+    },
+    {
+        "sign": "Fortune",
+        "weather": [
+            "Strong Winds. Anything flimsy that isn’t properly secured will be swept away and never seen again.",
+            "Balmy. Villagers and fieldhands can’t stop remarking about how warm it is for this time of year.",
+            "Cool and Clear. Dragonflies zip across the ground, mating over sources of water",
+            "Lazy Rain. Thick droplets tumble clumsily from the clouds overhead, slapping into growing puddles.",
+            "Muggy. Damp and full of hungry gowenflies. It is impossible to rest near large bodies of water.",
+            "Intermittent Rain. The clouds above spit rain for unpredictable stretches of time. Attempts to track people or creatures are made much easier by the wet earth and mud."
+        ]
+    },
+    {
+        "sign": "Perception",
+        "weather": [
+            "Torrential Rainstorm. Heavy rains pour from the sky. If this is rolled two days in a row, flash floods occur on the third. Rivers burst their banks, bridges are washed away and travel is very dangerous.",
+            "Waterlogged. It rained heavily overnight; the ground is a muddy slop that makes travel tiring.",
+            "Clear and Bright. The sky is clear in every direction. Cold breezes stop and start.",
+            "Overcast. The sky is shrouded in thin grey clouds. These thin in places but never reveal the sky.",
+            "Fresh. The countryside bursts forth in green glory. All day, the air smells sweet and invigorating.",
+            "Sudden Rainstorm. At midday, clouds roll in from the east. It will rain steadily until the next dawn."
+        ]
+    },    
+    {
+        "sign": "Oblivion",
+        "weather": [
+            "Lighnting Strikes. The air is dry and hot. Random bolts of lightning strike until the next dawn.",
+            "Hot. The sun glowers down from the heavens. Vegetation wilts and sweat beads on your brow.",
+            "Sunny and Serene. Wildlife cavorts and frolics; villagers go about their business with cheery smiles.",
+            "Mild Temperatures. The day remains pleasant; clouds pass regularly over the sun.",
+            "Fogbanks. The fog is slow to burn away; the difficulty of attempts to [navigate] is increased by 2.",
+            "Steady Rain. Dark clouds knot and writhe ceaselessly, obscuring the sky. The rain shows no sign of letting up. It is easier to track creatures yet more difficult to establish camp in wide open areas."
+        ]
+    },
+
+    {
+        "sign": "Joy",
+        "weather": [
+            "Scorching Heat. The earth bakes and blisters. If this is rolled two days in a row, a drought occurs on the third. This remains in effect until you roll a weather event involving rain.",
+            "Sweltering. Working or walking outside is a gruelling experience. The sun is relentless.",
+            "Heat Mirages. The air shimmers. Your mouth grows dry at the thought of lakes and horse troughs.",
+            "Humid. The night is hot. Characters must [endure, difficulty 3] or gain the Exhausted condition.",
+            "Thick Smoke. Something catches alight; fire sweeps a distant hill. Smoke claws at your eyes and lungs.",
+            "Cooling Breezes. Wind sweeps in from far across the oceans, washing the land in cool weather."
+        ]
+    },
+
+    {
+        "sign": "Frenzy",
+        "weather": [
+            "Thunderstorms. Thunder rolls. After an hour of distant rumbling, rain falls in heavy sheets.",
+            "Dusty. Wherever you step, the parched earth sends up desperate, dry flurries of parched soil.",
+            "Intense Heat. The land boils. Even keeping to the shade provides no relief.",
+            "Harsh winds. The wind scrapes and seethes out of the south.",
+            "Terrible Stillness. The air, clammy and suffocating, hangs heavy about you. It is difficult to breathe.",
+            "Wildfires. You wake, choking on smoke, to the sound of fleeing wildlife; the nearest visible landmark is ablaze. By midday, the fire will have consumed another, closer landmark."
+        ]
+    },
+
+    {
+        "sign": "Fecundity",
+        "weather": [
+            "Dry and Hot. Grass withers, leaves curl, vines and bracken shrivel. The heat is oppressive.",
+            "Warm Breeze. The wind picks up a little, pushing unpleasant puffs of hot air against your skin.",
+            "Stultifying Humidity. Sweat pours from your brow and sustained activity requires great effort.",
+            "Summer Rains. In the distance, you spot a large, dark grey raincloud. A short time later, it is raining.",
+            "Cloudy. A bank of clouds rolls in to cover the sun. Even with this cover, the day remains stifling.",
+            "White clouds drift picturesquely across an endless blue sky. If a character uses the words ‘what a perfect day’ in a sentence, each member of the party may remove a psychological condition."
+        ]
+    },
+
+    {
+        "sign": "Feast",
+        "weather": [
+            "Locust Swarm. Ravenous insects descend upon the flowers and fields, eating all green and growing things down to the root. The difficulty to [forage] is increased by 3 for the rest of the week.",
+            "Grey Skies. The day is darker than it has been of late. You get a brief respite from the heat.",
+            "Blue Skies. The day is bright; from high vantage points, you can see for miles in all directions.",
+            "Rolling Storms. Rainclouds push swiftly across the sky, drenching the land for the rest of the day.",
+            "Dry Heat. The land bakes under an unrelenting sun. Animals and villagers alike have little energy.",
+            "Indecisive Skies. Thin clouds spit tiny droplets. These evaporate quickly and do nothing to cool you."
+        ]
+    },
+
+    {
+        "sign": "Toil",
+        "weather": [
+            "Cool Weather. The heat drains out of the day, giving much-needed relief to those working the fields.",
+            "Rainstorm. Steady rains pour forth from a solid grey sky. It does not let up until late in the evening.",
+            "Warm. Villagers and fieldhands can’t stop remarking about how warm it is for the time of year.",
+            "Sparrows. Flocks of birds wheel and bank across the sky. At dusk, the trees are loud with their cheeping.",
+            "Bright Skies. The sun does not rise to its summer zenith, yet it traces a valiant path across the sky.",
+            "Blustery. Strong winds buffet the landscape. Branches splinter and fall from trees, roof tiles plummet onto the streets, boulders are dislodged from high places. Travelling is more hazardous than usual."
+        ]
+    },
+
+    {
+        "sign": "Rot",
+        "weather": [
+            "Heavy Rainstorm. The day is wet and windy. If this is rolled two days in a row, flash floods occur on the third. The rivers burst their banks and lakes expand their borders.",
+            "Cooling Breezes. The earth breathes a sign of relief. Vegetation unfurls toward the merciful skies.",
+            "Mushroom Spores. Puffy clots of fungal matter drift across the land. These build up in the bracken.",
+            "Mists. Vapour swirls and collects in the lowlands. Pale, slender mushrooms sprout in misty regions.",
+            "Foetid Stink. Foul, musty smells rise from the earth. You cannot escape the stench of dying things.",
+            "Nature’s Gold. Throughout the land, the leaves on trees begin turning yellow and orange."
+        ]
+    },
+
+    {
+        "sign": "Honour",
+        "weather": [
+            "High Waters. Rain in the mountains swells the rivers downstream, stopping boats and destroying weaker bridges. It is impossible to cross rivers without a sturdy structure in place.",
+            "Rolling Fogbanks. Thick fogs sweep across the land. It is easy to get lost unless travelling by road.",
+            "Light Rain. Droplets pepper the surrounding earth. You feel pleasantly refreshed.",
+            "Crisp Morning. Your blankets feel thin and inadequate. The warmth of summer is a distant memory.",
+            "Dry and Clear. Those with snares and bows rise to see what spoils they can fetch from the forests.",
+            "Nature’s Flame. Throughout the land, the leaves on trees shift from gold to gaudy reds."
+        ]
+    },
+
+    {
+        "sign": "Panic",
+        "weather": [
+            "Unrelenting Rain. The ground softens and your clothes soak through, slowly.",
+            "Cold Snap. Winter rears its chilly visage. Your thoughts turn to warmer clothes and foodstores.",
+            "Grey and Overcast. Gloom creeps across the land, foreshadowing the terrible season to come.",
+            "Clear. The day is clear and bright. The wind rises intermittently, tugging at caps and shirt sleeves.",
+            "Misty. Moisture clings to the earth. Increase the difficulty of attempts to [navigate] by 1.",
+            "Nature’s Shroud. Throughout the land, the leaves on trees begin dropping to the ground where they curl and brown. For the next D6 days, their crunch underfoot makes ambushes more difficult."
+        ]
+    },
+
+    {
+        "sign": "Hope",
+        "weather": [
+            "Drizzle. Icy rain falls steadily during the day, chilling you to the bone. Until the next time you warm yourself at a campfire or in a village, all checks are hasty.",
+            "Westerly Winds. Cold sweeps in from Acheron’s icy plains. Only furs or heresy will keep you warm.",
+            "Snowflakes. During the early morning, the sky delivers light flurries of snow.",
+            "Aurora Perfidus. Lights dance in darkened skies and wisps (ds:229) emerge to lure folk to dark places.",
+            "Frost. The party wakes to find a layer of frost covering the world. This melts quickly in the sun.",
+            "Hailstorm. The sky hurls down huge, malformed lumps of ice. Travel is nigh on impossible."
+        ]
+    },
+
+    {
+        "sign": "Voracity",
+        "weather": [
+            "Sudden Blizzard. Winds howl, temperatures plunge, snow accumulates. It is impossible to [navigate].",
+            "Snowfall. Silent, steady snow brings forlorn beauty to the landscape.",
+            "Sun and Wind. The top layer of snow hardens, forming a crust that is tiring to walk through.",
+            "Dusting. Snow settles across the land, forming a thin, glittering crust that crunches underfoot.",
+            "The Weather Turns. The temperature drops below freezing. You must find shelter or keep moving.",
+            "Squall. Chill winds blow in from the west. Difficulty of attempts to [navigate] westward are increased by 2; attempts to [navigate] eastward are decreased by 2."
+        ]
+    },
+
+    {
+        "sign": "Languor",
+        "weather": [
+            "Snowstorm. Snow falls thick and fast. If this is rolled two days in a row, it is impossible to travel for D6 days. If, after this D6 elapses, you roll this result a third time, you are snowed in until spring or a thaw.",
+            "Frosty. Your breath freezes on your eyelashes. Sound travels further through the crisp air.",
+            "Clear Skies. It is bitterly cold. Your bare skin freezes to metal; unless warmed, you must rip free.",
+            "Winter Fog. Overnight, ice crystals form on every leaf and branch. The air shimmers with frost.",
+            "Freezing. Anyone who gets wet must resist [death] unless they immediately find fire and shelter.",
+            "Thaw. The snows melt, turning the ground to mud and slush."
+        ]
+    },
+
+    {
+        "sign": "Grimme",
+        "weather": [
+            "Thaw. The snows melt, turning the ground to mud and slush.",
+            "Freezing Rain. Ice accumulates on trees and eves. Surfaces are slick, glistening and treacherous.",
+            "Snow. The wind eddies and swirls unpredictably, sending the snow into strange flurries.",
+            "Sunlight. Even though it brings no warmth with it, the light is welcome upon your skin.",
+            "Overcast. The day is a little warmer than usual. It lifts your spirits even if the snow doesn’t thaw.",
+            "Sleet. A storm blows in on warmer air. Half-melted snow clings to your clothing and obscures your vision. Travel is cold, wet and miserable."
+        ]
+    }
+]
