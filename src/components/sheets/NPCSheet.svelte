@@ -1,6 +1,7 @@
 <script>
     import TraitTag from "../fields/TraitTag.svelte";
     import UpdateInput from "../fields/UpdateInput.svelte";
+    import Frame from "../layout/Frame.svelte";
     import Die from "../rolls/Die.svelte";
     let { data, actor, app } = $props();
     $inspect(data);
@@ -153,6 +154,10 @@
 
     <div class="bio">
         <span>Description</span>
+
+        <Frame>
+
+        </Frame>
     </div>
 </div>
 

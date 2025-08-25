@@ -1,54 +1,7 @@
 [
     {
-        "title": "The Sign of Chance",
-        "content": "During this week, followers of Chance (wycces, cultists, husks and laceworkers) may decide, after flipping the Doomcoin, to ignore the skull result.",
-        "startDate": {
-            "year": 541,
-            "month": 0,
-            "day": 0
-        },
-        "endDate": {
-            "year": 541,
-            "month": 0,
-            "day": 4
-        },
-        "categories": [
-            "Sign", "Occult"
-        ]
-    },
-    {
-        "title": "The Week's Prayer",
-        "content": "Steel oneself against the coming of the season, for winter’s end brings tempting warmth.",
-        "startDate": {
-            "year": 541,
-            "month": 0,
-            "day": 0
-        },
-        "categories": [
-            "Prayer"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "The Vernal Equinox",
-        "content": "The first day of spring; this day and night are exactly the same length.",
-        "startDate": {
-            "year": 541,
-            "month": 0,
-            "day": 0
-        },
-        "categories": [
-            "Holiday"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
         "title": "Day of Wagers",
-        "content": "It is tradition to make a wager with a friend, to be paid by the end of Saive (4).",
+        "content": "<p>It is tradition to make a wager with a friend, to be paid before the dawning of Dies Tertius. Those who do not pay up are called \u2018ballycur\u2019 until they do.</p>",
         "startDate": {
             "year": 541,
             "month": 0,
@@ -59,157 +12,18 @@
         ],
         "userVisibility": [
             "default"
-        ]
-    },
-    {
-        "title": "Mother's Moon [2]",
-        "content": "The soothing orange light of Mother’s Moon tints the land a strange amber colour. All who sleep beneath this full moon do so with the soundness of babes, unlikely to wake even in the event of danger.",
-        "startDate": {
-            "year": 541,
-            "month": 0,
-            "day": 0
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "Giving up the Bell",
-        "content": "Throughout Painyme, town criers return their bells to the town hall. A secret vote is then held to determine whether the villagers consider them a trustworthy servant of the community who should return to their duties. If not, the leader of village selects a new town crier.",
-        "startDate": {
-            "year": 541,
-            "month": 0,
-            "day": 1
-        },
-        "categories": [
-            "Holiday"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "Mother's Moon [3]",
-        "content": "The amber glow of the full moon is noticeably dimmer than on previous evenings. Fields and forests fill with the scratching noise of laceworker hatchlings still within their pearlescent egg casings.",
-        "startDate": {
-            "year": 541,
-            "month": 0,
-            "day": 1
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "Bautenmoot",
-        "content": "The bautenlobbe travel to a secret location deep within the Weald. The purpose of this gathering is unknown to humanfolk, but their collective effort to attend makes clear its importance.",
-        "startDate": {
-            "year": 541,
-            "month": 0,
-            "day": 2
-        },
-        "categories": [
-            "Ecological"
-        ]
-    },
-    {
-        "title": "Bautenmoot's End",
-        "content": "The bautenlobbe end their secret ceremony with a collective bellow. Anyone within the Weald can hear this roaring and know great numbers of bautenlobbe will soon be returning to their home dens.",
-        "startDate": {
-            "year": 541,
-            "month": 0,
-            "day": 2
-        },
-        "categories": [
-            "Ecological"
-        ]
-    },
-    {
-        "title": "Saive!",
-        "content": "Up and down the coast, sailors raise a toast to a day of safe sailing. Ex-sailors uphold the tradition as a toast of good luck. On this day, most taverns will provide a free tot of grog to passing mariners, hoping to benefit from a portion of that luck.",
-        "startDate": {
-            "year": 541,
-            "month": 0,
-            "day": 3
-        },
-        "categories": [
-            "Holiday"
-        ]
-    },
-    {
-        "title": "Wager's Won",
-        "content": "All bets made at the start of the week must be paid in full by midnight. It is tradition to call anyone who cannot pay a ‘ballycur’ until such a time as they can settle up.",
-        "startDate": {
-            "year": 541,
-            "month": 0,
-            "day": 3
-        },
-        "categories": [
-            "Holiday"
-        ]
-    },
-    {
-        "title": "Spither Hymn",
-        "content": "If laceworkers have not yet hatched (see Result 6 on the Weather Table), those cults who worship Chance will gather in lonely, wild places to chant soft songs to their patron. The most devoted remain behind so as to provide sustenance for the newly hatched.",
-        "startDate": {
-            "year": 541,
-            "month": 0,
-            "day": 4
-        },
-        "categories": [
-            "Ecological",
-            "Holiday",
-            "Occult"
         ]
     },
     {
         "title": "Laceworker Egg Hatching",
-        "content": "Unless the weather has been warm during the previous week, on this night all laceworkers hatch en masse. Colourful swarms of tiny laceworkers scurry to and fro beneath the moonlight.",
+        "content": "<p>On this evening, any unhatched laceworkers spill out of their egg cases. The night crawls with colour.</p>",
         "startDate": {
             "year": 541,
             "month": 0,
             "day": 4
         },
         "categories": [
-            "Ecological"
-        ]
-    },
-    {
-        "title": "The Sign of Justice",
-        "content": "During this week, followers of Justice (wycces, cultists, husks and wulfs) can track their quarry with ease by using the stars.",
-        "startDate": {
-            "year": 541,
-            "month": 1,
-            "day": 0
-        },
-        "endDate": {
-            "year": 541,
-            "month": 1,
-            "day": 4
-        },
-        "categories": [
-            "Sign", "Occult"
-        ]
-    },
-    {
-        "title": "The Week's Prayer",
-        "content": "Seek not retribution; the weight of that responsibility falls to other, more capable hands.",
-        "startDate": {
-            "year": 541,
-            "month": 1,
-            "day": 0
-        },
-        "categories": [
-            "Prayer"
-        ],
-        "userVisibility": [
-            "default"
+            "Ecological Event"
         ]
     },
     {
@@ -227,150 +41,60 @@
             "default"
         ]
     },
-        {
-        "title": "The Grutching",
-        "content": "On this night, it is considered good luck to prick your thumb and let a drop of blood fall into a well. This practise is strictly forbidden in cities and villages, most of which post guards throughout the night.",
-        "startDate": {
-            "year": 541,
-            "month": 1,
-            "day": 0
-        },
-        "categories": [
-            "Holiday", "Occult"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
     {
         "title": "Day of Murmurs",
-        "content": "Followers of Justice air their grievances publicly, making their grudges known to those who have wronged them. This is done verbally, as it is difficult to prove spoken heresy quickly enough to prevent harm befalling a person on the Day of Blows (9).",
+        "content": "<p>Followers of Justice air their grievances publicly, making their grudges known verbally to those who have wronged them.</p>",
         "startDate": {
             "year": 541,
             "month": 1,
             "day": 1
         },
         "categories": [
-            "Holiday", "Occult"
-        ]
-    },    {
-        "title": "Old Watch",
-        "content": "In a tradition that predates the Justiciers, frustrated citizens don dark clothing and take up the tools they have to hand. Then they roam the streets, hoping trouble comes their way. Often, they run into each other.",
-        "startDate": {
-            "year": 541,
-            "month": 1,
-            "day": 1
-        },
-        "categories": [
-            "Holiday", "Occult"
+            "Holiday"
         ]
     },
     {
         "title": "Day of Appeals",
-        "content": "Those who have been murmured against can seek forgiveness from those they’ve wronged. Alternatively, they can report them to the Church of the Divine Corpse or the Wyccefinders’ Guild. It is unlikely either will do anything quickly enough to avert the Day of Blows.",
+        "content": "<p>Those who have been murmured against can seek forgiveness from those</p><p>they\u2019ve wronged. Alternatively, they can report them to the Church or the wyccefinders.</p>",
         "startDate": {
             "year": 541,
             "month": 1,
             "day": 2
         },
         "categories": [
-            "Holiday", "Occult"
-        ]
-    },
-    {
-
-        "title": "Herth Fire's Night",
-        "content": "The crescent moon shimmers whitely in the sky, a foreshadowing of Burning Moon.",
-        "startDate": {
-            "year": 541,
-            "month": 1,
-            "day": 2
-        },
-        "categories": [
-            "Lunar"
+            "Holiday"
         ]
     },
     {
         "title": "Day of Blows",
-        "content": "Unless appeased the day before, followers of Justice seek retribution against those who have wronged them, but only for those grudges aired on the Day of Murmurs. It is a day of sudden violence, missing livestock and foul-tasting meals. Corpses frequently turn up in lonely fields and distant riverbanks.",
+        "content": "<p>Unless appeased the day before, followers of Justice can seek retribution for grudges aired on the Day of Murmurs. It is a day of sudden violence and mysterious corpses.</p>",
         "startDate": {
             "year": 541,
             "month": 1,
             "day": 3
         },
         "categories": [
-            "Holiday", "Occult"
-        ]
-    },
-    
-    {
-        "title": "Bane Fire's Night",
-        "content": "The glowing half moon causes shadows to writhe and shiver, as when near a bonfire.",
-        "startDate": {
-            "year": 541,
-            "month": 1,
-            "day": 3
-        },
-        "categories": [
-            "Lunar"
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
         ]
     },
     {
-        "title": "Rodmen's Delight",
-        "content": "With a week of bright nights ahead, young rodmen embrace the responsibility of watching flocks and herds. More experienced rodmen help animals with calving, lambing and farrowing.",
-        "startDate": {
-            "year": 541,
-            "month": 1,
-            "day": 4
-        },
-        "categories": [
-            "Holiday", "Agricultural"
-        ]
-    },
-    {
-        "title": "March of the Chosen",
-        "content": "In the borderkingdom of Acheron, Castle Acheron thaws. The Chosen return home.",
-        "startDate": {
-            "year": 541,
-            "month": 1,
-            "day": 4
-        },
-        "categories": [
-            "Holiday", "Military"
-        ]
-    },
-    {
-        "title": "Heall Fire's Night",
-        "content": "The gibbous moon flares and flames, all but crackling in anticipation of Burning Moon.",
-        "startDate": {
-            "year": 541,
-            "month": 1,
-            "day": 4
-        },
-        "categories": [
-            "Lunar"
-        ]
-    },
-    {
-        "title": "Sign of Perception",
-        "content": "During this week, slumber brings with it terrible portents of the future. These are amplified if one spends any amount of time gazing at the night sky.",
+        "title": "Burning Moon",
+        "content": "<p>Visible for 5 nights during the Sign of Perception. This moon glows pellucid and white, so luminous the world is denied full darkness for an entire week.</p>",
         "startDate": {
             "year": 541,
             "month": 2,
             "day": 0
         },
-        "endDate": {
-            "year": 541,
-            "month": 2,
-            "day": 4
-        },
         "categories": [
-            "Sign", "Occult"
+            "Lunar Event"
         ]
     },
     {
         "title": "Sanctum Ablutio",
-        "content": "The devout meditate on the cardinal sin of Exultation (ds:157) and children who have reached 8 years of age are baptised in a nearby body of running water. Congregations will gather at their local church for a long sermon as usual, then proceed to a nearby stream or river.",
+        "content": "<p>On this Mass Pontifex, the devout meditate on the sin of Exultation.</p><p>Children who have reached 8 years of age are baptised in running water.</p>",
         "startDate": {
             "year": 541,
             "month": 2,
@@ -384,170 +108,20 @@
         ]
     },
     {
-        "title": "Burning Moon",
-        "content": "The full moon blazes forth and white-hot stars cut through a mottled rubine sky. The righteous devout begin a week-long sleepless ‘watch and ward’ so as to avoid glimpsing any visions sent by Perception.",
+        "title": "Astrologer\u2019s Vigil",
+        "content": "<p>Followers of Perception prepare for a night of star-gazing. On this evening,</p><p>the burning glory of the night sky reveals truths not usually discernible to the naked eye.</p>",
         "startDate": {
             "year": 541,
             "month": 2,
-            "day": 0
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "Artem",
-        "content": "A day when painting, dancing, reciting poetry, singing and sculpting is celebrated by all. Many villages erect elaborate displays and stalls for performers to occupy. Any shopkeeper who accepts of piece of art in exchange for their wares is considered a patron of the arts.",
-        "startDate": {
-            "year": 541,
-            "month": 2,
-            "day": 1
+            "day": 4
         },
         "categories": [
             "Holiday"
         ]
     },
-    {
-        "title": "Burning Moon",
-        "content": "The night is as bright as the day, yet still the stars shine through. As the moon grows, many of the devout opt to wear veils. These prevent them from even accidentally glancing at the heretical skies overhead.",
-        "startDate": {
-            "year": 541,
-            "month": 2,
-            "day": 1
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "Saint Chrysotaph's Day",
-        "content": "To commemorate the day Saint Chrysotaph was driven mad by Perception, the people of Painyme wear blindfolds. At sundown, each throws a single item from an open window, representing the saint being defenestrated from the tower that was later named after him.",
-        "startDate": {
-            "year": 541,
-            "month": 2,
-            "day": 2
-        },
-        "categories": [
-            "Holiday"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "Burning Moon",
-        "content": "Overhead, the night sky deepens to carmine and burgundy. The moon swells in size, looming over Painyme and daring its residents to gaze upwards. The stars flare and spark unpredictably.",
-        "startDate": {
-            "year": 541,
-            "month": 2,
-            "day": 2
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "First Saint's Day",
-        "content": "This day commemorates the First Saint, whose name has been lost to history. Their visions led to both the establishing of the Church of the Divine Corpse and the founding of Assartum over the mouth of Heall. The devout are forbidden from holding weapons on this day, so as to show the enduring power of words.",
-        "startDate": {
-            "year": 541,
-            "month": 2,
-            "day": 3
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "Burning Moon",
-        "content": "The lights and colours above become so intense that the sky itself hums and quakes. Those who use the Astrologist ability or [commune] with Perception receive a +2 to related checks.",
-        "startDate": {
-            "year": 541,
-            "month": 2,
-            "day": 3
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "Astrologer's Vigil",
-        "content": "Followers of Perception prepare for the final, glorious night of Burning Moon. The devout who have held ‘watch and ward’ for the full week are by now either dead, delirious, or stupefied from a lack of sleep.",
-        "startDate": {
-            "year": 541,
-            "month": 2,
-            "day": 4
-        },
-        "categories": [
-            "Holiday", "Occult"
-        ]
-    },
-    {
-        "title": "Burning Moon",
-        "content": "The incandescent glory of the stars reveal truths not otherwise visible to the naked eye. Those who use the Astrologist ability or [commune] with Perception may spend downtime to receive a very specific prophesy. Their ears and eyes spin with the glories of the heavens; they get the Half-deaf and Half-blind conditions for D6 days.",
-        "startDate": {
-            "year": 541,
-            "month": 2,
-            "day": 4
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "The Sign of Oblivion",
-        "content": "During this week, followers of Oblivion (wycces, cultists, husks and the —) can see through Blackest Night as if it were daylight.",
-        "startDate": {
-            "year": 541,
-            "month": 3,
-            "day": 0
-        },
-        "endDate": {
-            "year": 541,
-            "month": 3,
-            "day": 4
-        },
-        "categories": [
-            "Sign", "Occult"
-        ]
-    },
-{
-        "title": "The Week's Prayer",
-        "content": "They seek to make the dark their haven-place; but no safety will they find in the arms of traitors.",
-        "startDate": {
-            "year": 541,
-            "month": 3,
-            "day": 0
-        },
-        "categories": [
-            "Holiday", "Prayer"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-
     {
         "title": "Hot Obol Day",
-        "content": "Local nobles gather on balconies to hurl scalding obols into the crowds gathered</p><p>below. They watch with glee as the poor scrabble to pick up these heated metal coins.",
+        "content": "<p>Local nobles gather on balconies to hurl scalding obols into the crowds gathered</p><p>below. They watch with glee as the poor scrabble to pick up these heated metal coins.</p>",
         "startDate": {
             "year": 541,
             "month": 3,
@@ -555,55 +129,6 @@
         },
         "categories": [
             "Holiday"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    
-    {
-        "title": "Blackest Night",
-        "content": "The sun sets but neither the moon nor the stars appear overhead. Each night will be darker than the last. The effects of Blackest Night stack until the stars return next week, under the sign of Joy.",
-        "startDate": {
-            "year": 541,
-            "month": 3,
-            "day": 0
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-
-     {
-        "title": "Blind Man's Bluff",
-        "content": "The superstitious go about wearing blindfolds for fear of ‘being taken by Oblivion’. This practise is considered ridiculous rather than outright heretical. A concerning number of Oblivion’s followers claim they can remember nothing before waking under the sign of Oblivion on Dies Secundus, usually near a beach.",
-        "startDate": {
-            "year": 541,
-            "month": 3,
-            "day": 1
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    
-    
-    {
-        "title": "Blackest Night",
-        "content": "Folks can barely see the hands held directly in front of their faces. If a person is discovered outside in such darkness, the suspicions of the Wyccefinders’ Guild are instantly raised.",
-        "startDate": {
-            "year": 541,
-            "month": 3,
-            "day": 1
-        },
-        "categories": [
-            "Lunar"
         ],
         "userVisibility": [
             "default"
@@ -611,7 +136,7 @@
     },
     {
         "title": "Tongueless Truths",
-        "content": "On this day, it is customary to write a secret on a piece of paper, put it in a bottle and hurl it into a body of water that will carry it to the sea. Local scribes make good money penning secrets for the illiterate. It is said when the Last Day is nigh, all secrets will return and wash up on the beaches.",
+        "content": "<p>Followers of Oblivion write down secrets and hurl them into the sea, in</p><p>glass bottles. Monks and scribes earn good money writing secrets for the illiterate.</p>",
         "startDate": {
             "year": 541,
             "month": 3,
@@ -619,83 +144,6 @@
         },
         "categories": [
             "Holiday"
-        ]
-    },
-    
-    {
-        "title": "Blackest Night",
-        "content": "Even creatures that normally hunt at night lie quietly in their dens. A torch illuminates a mere five feet in any direction. It is swaddled in darkness and cannot be seen from more than a short distance away.",
-        "startDate": {
-            "year": 541,
-            "month": 3,
-            "day": 2
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "The Fishmonger’s Hook",
-        "content": "Repeated nights of total darkness tempt strange creatures to the ocean’s surface, where they can be snagged by daring fishers and reinforced nets. Those fishmongers with strange wares to sell usually chalk a shut-eyed fishhook on their signs.",
-        "startDate": {
-            "year": 541,
-            "month": 3,
-            "day": 3
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "Blackest Night",
-        "content": "A bonfire illuminates no more than a pale puddle of the surrounding area. It is swaddled in darkness and cannot be seen from more than a short distance away.",
-        "startDate": {
-            "year": 541,
-            "month": 3,
-            "day": 3
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    {
-        "title": "Un-Knowing",
-        "content": "Everyone shares the unspoken feeling that one day Blackest Night will last forever. The final day in the House of Sleep weighs heavily on the entire world. All living creatures have the Morose condition.",
-        "startDate": {
-            "year": 541,
-            "month": 3,
-            "day": 4
-        },
-        "categories": [
-            "Lunar", "Occult"
-        ],
-        "userVisibility": [
-            "default"
-        ]
-    },
-    
-    {
-        "title": "Blackest Night",
-        "content": "A night akin to blindness. If a person finds themselves inside a burning house on this evening, the flames do not illuminate their escape.",
-        "startDate": {
-            "year": 541,
-            "month": 3,
-            "day": 4
-        },
-        "categories": [
-            "Lunar"
-        ],
-        "userVisibility": [
-            "default"
         ]
     },
     {
@@ -783,7 +231,7 @@
         },
         "categories": [
             "Holiday",
-            "Lunar"
+            "Lunar Event"
         ],
         "userVisibility": [
             "default"
@@ -798,7 +246,7 @@
             "day": 1
         },
         "categories": [
-            "Lunar"
+            "Lunar Event"
         ],
         "userVisibility": [
             "default"
@@ -814,7 +262,7 @@
         },
         "categories": [
             "Holiday",
-            "Lunar"
+            "Lunar Event"
         ]
     },
     {
@@ -913,7 +361,7 @@
             "day": 0
         },
         "categories": [
-            "Lunar"
+            "Lunar Event"
         ],
         "userVisibility": [
             "default"
@@ -940,7 +388,7 @@
             "day": 3
         },
         "categories": [
-            "Ecological"
+            "Ecological Event"
         ]
     },
     {
@@ -953,7 +401,7 @@
         },
         "categories": [
             "Holiday",
-            "Ecological"
+            "Ecological Event"
         ],
         "userVisibility": [
             "default"
@@ -968,8 +416,8 @@
             "day": 1
         },
         "categories": [
-            "Lunar",
-            "Ecological"
+            "Lunar Event",
+            "Ecological Event"
         ]
     },
     {
@@ -981,7 +429,7 @@
             "day": 4
         },
         "categories": [
-            "Ecological",
+            "Ecological Event",
             "Holiday"
         ],
         "userVisibility": [
@@ -1012,7 +460,7 @@
             "day": 3
         },
         "categories": [
-            "Lunar"
+            "Lunar Event"
         ]
     },
     {
@@ -1135,7 +583,7 @@
             "day": 1
         },
         "categories": [
-            "Lunar"
+            "Lunar Event"
         ],
         "userVisibility": [
             "default"
@@ -1240,10 +688,33 @@
             "day": 4
         },
         "categories": [
-            "Lunar"
+            "Lunar Event"
         ],
         "userVisibility": [
             "default"
         ]
+    },
+    {
+        "title": "Bautenmoot",
+        "content": "<p>All bautenlobbe travel to a secret location deep within the Weald. The reason for this meeting is unknown, but their collective effort to attend makes clear its importance.</p>",
+        "startDate": {
+            "year": 542,
+            "month": 0,
+            "day": 2
+        },
+        "categories": [
+            "Ecological Event"
+        ]
+    },
+    {
+        "title": "Mass Pontifex",
+        "content": "",
+        "startDate": {
+            "year": 542,
+            "month": 2,
+            "day": 0
+        },
+        "repeats": 0,
+        "categories": []
     }
 ]
