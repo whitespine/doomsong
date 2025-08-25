@@ -13,7 +13,7 @@
             "day": 4
         },
         "categories": [
-            "Sign",
+            "Astrological",
             "Occult"
         ]
     },
@@ -71,7 +71,7 @@
             "day": 0
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -101,7 +101,7 @@
             "day": 1
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -195,7 +195,7 @@
             "day": 4
         },
         "categories": [
-            "Sign",
+            "Astrological",
             "Occult"
         ]
     },
@@ -293,7 +293,7 @@
             "day": 2
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ]
     },
     {
@@ -318,7 +318,7 @@
             "day": 3
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ]
     },
     {
@@ -356,7 +356,7 @@
             "day": 4
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ]
     },
     {
@@ -373,7 +373,7 @@
             "day": 4
         },
         "categories": [
-            "Sign",
+            "Astrological",
             "Occult"
         ]
     },
@@ -401,7 +401,7 @@
             "day": 0
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -428,7 +428,7 @@
             "day": 1
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -458,7 +458,7 @@
             "day": 2
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -473,7 +473,7 @@
             "day": 3
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -488,7 +488,7 @@
             "day": 3
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -516,7 +516,7 @@
             "day": 4
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -536,7 +536,7 @@
             "day": 4
         },
         "categories": [
-            "Sign",
+            "Astrological",
             "Occult"
         ]
     },
@@ -580,7 +580,7 @@
             "day": 0
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -595,7 +595,7 @@
             "day": 1
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -610,7 +610,7 @@
             "day": 1
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -637,7 +637,7 @@
             "day": 2
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -652,7 +652,7 @@
             "day": 3
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -667,7 +667,7 @@
             "day": 3
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -682,7 +682,7 @@
             "day": 4
         },
         "categories": [
-            "Lunar",
+            "Astrological",
             "Occult"
         ],
         "userVisibility": [
@@ -698,7 +698,7 @@
             "day": 4
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -746,7 +746,7 @@
             "day": 0
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -776,7 +776,7 @@
             "day": 0
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -906,8 +906,41 @@
         ]
     },
     {
+        "title": "The Sign of Frenzy",
+        "content": "During this week, followers of Frenzy (wycces, cultists, husks and opiri) can smell the fear of those truly to devout to the Divine Corpse, up to a mile away.",
+        "startDate": {
+            "year": 541,
+            "month": 5,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 5,
+            "day": 4
+        },
+        "categories": [
+            "Astrological",
+            "Occult"
+        ]
+    },
+    {
+        "title": "The Week's Prayer",
+        "content": "And lo! your enemies will scatter before you, and all foul beasts will perish and die.",
+        "startDate": {
+            "year": 541,
+            "month": 5,
+            "day": 0
+        },
+        "categories": [
+            "Prayer"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
         "title": "Death of Joy",
-        "content": "On this day the Sublime Joy was torn from the skies and murdered by Templar. Ever since, it has been darkened by a solar eclipse. A matching eclipse occurs on Dies Quartius. ",
+        "content": "On this day, the Sublime Joy was torn from the skies and murdered by Templar. Ever since, it has been darkened by a solar eclipse. This repeats on Dies Quartius, when Joy would dance with her sister and mother.",
         "startDate": {
             "year": 541,
             "month": 5,
@@ -915,7 +948,38 @@
         },
         "categories": [
             "Holiday",
-            "Lunar"
+            "Astrological"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Joy’s Tears",
+        "content": "An exquisite astrological display rips open the night sky: a meteor shower that streaks the sky in blue and green. Whilst staggeringly beautiful, the display is a dark herald of the approaching Ossein Moon.",
+        "startDate": {
+            "year": 541,
+            "month": 5,
+            "day": 0
+        },
+        "categories": [
+            "Occult",
+            "Astrological"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Mandatum: Custodore",
+        "content": "By order of the Ecclesiarch, on the eve of the Ossein Moon all local militia rally to protect rural churches, Templar are sent forth to patrol holy sites, and the Reverential Guard is tripled around the Sepulchre Reverentia.",
+        "startDate": {
+            "year": 541,
+            "month": 5,
+            "day": 1
+        },
+        "categories": [
+            "Ecclesiarch"
         ],
         "userVisibility": [
             "default"
@@ -923,14 +987,74 @@
     },
     {
         "title": "Ossein Moon",
-        "content": "Visible for 3 nights during the Sign of Frenzy. This moon glows bone yellow and its rising marks the beginning of opiri feeding frenzies (opiri, p. 259).  Dies primus - Long-dormant opiri nests burst into activity. Entire settlements perish in a jubilant rush of hungry wings. The night is thick with the sound of feeding opiri-gara. Dies Secundus - Opiri emerge again, returning to devastated towns in search of survivors. Frenzy's favoured seethe across ruined, hollow places. Dies tertius - On the final night of the full moon, the hunger of the opiri drives them further afield. They scour forests and villages, searching for fresh meat and marrow ",
+        "content": "As the bone-yellow moon crests the horizon, long-dormant opiri nests burst into activity. Entire settlements perish in a jubilant rush of hungry wings. The night is thick with the sound of feeding opiri-gara. ",
         "startDate": {
             "year": 541,
             "month": 5,
             "day": 1
         },
         "categories": [
-            "Lunar"
+            "Astrological"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Mandatum: Opugnare",
+        "content": "By order of the Ecclesiarch, after the first night of the Ossein Moon local militia from unaffected settlements travel to devastated villages. There, while the heretical beasts hide from the sun, they hunt down and try to destroy opiri nests. Most villagers flee to the nearest perceived place of safety.",
+        "startDate": {
+            "year": 541,
+            "month": 5,
+            "day": 2
+        },
+        "categories": [
+            "Ecclesiarch"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Ossein Moon",
+        "content": "The opiri re-emerge from their nests, returning to devastated towns in search of survivors.  The baleful yellow eye of the moon peers down as Frenzy’s favoured seethe across ruined, hollow places.",
+        "startDate": {
+            "year": 541,
+            "month": 5,
+            "day": 2
+        },
+        "categories": [
+            "Astrological"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Mandatum: Resistere",
+        "content": "By order of the Ecclesiarch, on the final night of the Ossein Moon all surviving citizens are instructed to hunker down and ready a defence against wandering opiri. The villages nearest to ravaged sites often disobey, fleeing en masse because they know that, come nightfall, they will be targeted.",
+        "startDate": {
+            "year": 541,
+            "month": 5,
+            "day": 3
+        },
+        "categories": [
+            "Ecclesiarch"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Ossein Moon",
+        "content": "On the third and final night of the Ossein Moon, the hunger of the opiri-gara drives them further afield. They scour forests and villages, searching for fresh meat and marrow.",
+        "startDate": {
+            "year": 541,
+            "month": 5,
+            "day": 3
+        },
+        "categories": [
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -938,7 +1062,7 @@
     },
     {
         "title": "The Dancing Eclipse",
-        "content": "The Dancing Eclipse. Worshippers of Ecstasy, Joy and Frenzy celebrate by dancing. As little as a hop, skip or twirl in front of the wrong person can be enough to get burnt as a wycce. ",
+        "content": "Under the fading light of a full solar eclipse, those who worship the triple goddess of Ecstasy, Joy and Frenzy do so by dancing. The devout often refer to this day perjoratively as ‘Day of the Doxies’. As little as a hop, skip or twirl in front of the wrong person can be enough to be burnt as a wycce.",
         "startDate": {
             "year": 541,
             "month": 5,
@@ -946,12 +1070,45 @@
         },
         "categories": [
             "Holiday",
-            "Lunar"
+            "Astrological",
+            "Occult"
         ]
     },
     {
-        "title": "Mass Pontifex - Sanctum Votum",
-        "content": "Sanctum Votum. The devout meditate on the sin of Bliss. This Mass Pontifex is the only day on which nobles can marry. Villagers will have a lot to say about which wedding was best. ",
+        "title": "Frenzy's Tears",
+        "content": "The week closes with a meteor shower to parallel the first: bloody, rending streaks of red and gold. It is said that dancing on the bones of the freshly dead will prevent them returning as husks of Frenzy.",
+        "startDate": {
+            "year": 541,
+            "month": 5,
+            "day": 4
+        },
+        "categories": [
+            "Holiday",
+            "Astrological"
+        ]
+    },
+    {
+        "title": "The Sign of Fecundity",
+        "content": "During this week, all fennig can all use the Growth occult ability (ds:237) as if they were fennig wycces.",
+        "startDate": {
+            "year": 541,
+            "month": 6,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 6,
+            "day": 4
+        },
+        "categories": [
+            "Astrological",
+            "Occult",
+            "Ecological"
+        ]
+    },
+    {
+        "title": "Sanctum Votum",
+        "content": "The devout meditate on the cardinal sin of Bliss (ds:157). This is the only day on which nobility can hold weddings; these events become the central focus of all congregations. Town gossips will have much to say about which weddings boasted the best attendance.",
         "startDate": {
             "year": 541,
             "month": 6,
@@ -962,20 +1119,78 @@
         ]
     },
     {
-        "title": "Modranich",
-        "content": " Modranicht. Farmers sacrifice an adult female animal to Fecundity, praying for the safe birth of livestock in the next birthing season. ",
+        "title": "Vow of Chastity",
+        "content": "It is considered a sin for newlyweds to consummate their marriage while the sign of Fecundity is in the sky. They must wait until First Night (36).",
         "startDate": {
             "year": 541,
             "month": 6,
-            "day": 2
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 6,
+            "day": 4
         },
         "categories": [
             "Holiday"
         ]
     },
     {
-        "title": "F\u00e6dernich",
-        "content": " F\u00e6dernicht. Farmers sacrifice an adult male animal to Fecundity, praying for virile livestock in the next breeding season. ",
+        "title": "The Cenning",
+        "content": "All along waterways and rivers, the fennig are notoriously absent for an event they call ‘the Cenning’. No one knows where they go or what they do; humanfolk assume it’s a kind of orgy. Anyone digging up their burrows on this day will find them unoccupied, their hoards of possessions unguarded.",
+        "startDate": {
+            "year": 541,
+            "month": 6,
+            "day": 1
+        },
+        "categories": [
+            "Holiday",
+            "Ecological"
+        ]
+    },
+    {
+        "title": "Greenwood Dark",
+        "content": "The Weald feels distinctly unsettling; it grows twice as fast overnight. The Signmakers’ Guild have reported seeing all manner of creatures gathering before greenwood shrines and altars; no one believes these stories.",
+        "startDate": {
+            "year": 541,
+            "month": 6,
+            "day": 1
+        },
+        "categories": [
+            "Holiday",
+            "Ecological"
+        ]
+    },
+    {
+        "title": "Quota",
+        "content": "Superstition dictates that if, before the end of Quota, woodcutters can clear the uncommonly vigourous growth the Weald displays during Greenwood Dark, it will be a good year. Villages on the outskirts of borderkingdoms often abandon their own tasks to go help the Woodcutters’ Guild achieve this.",
+        "startDate": {
+            "year": 541,
+            "month": 6,
+            "day": 2
+        },
+        "categories": [
+            "Holiday",
+            "Ecological"
+        ]
+    },
+    {
+        "title": "Modranich",
+        "content": "Night of ritual sacrifice performed in Fecundity’s name. Farmers take an adult female animal to the wilderness, then slaughter it with a prayer for safe births during the next lambing, calving or farrowing season.",
+        "startDate": {
+            "year": 541,
+            "month": 6,
+            "day": 2
+        },
+        "categories": [
+            "Holiday",
+            "Occult",
+            "Agricultural"
+        ]
+    },
+    {
+        "title": "Stitchwiggins",
+        "content": "Folk empty their cupboards of garments and linens. They take them to local tailors, embroiderers and dressmakers, who embellish them with extravagant Signs of the Crossroads, the holy symbol of the Church. By providing this service free of charge, they are permitted to pay less tax in the following year.",
         "startDate": {
             "year": 541,
             "month": 6,
@@ -986,8 +1201,22 @@
         ]
     },
     {
-        "title": "Lytlingnicht",
-        "content": "Lytlingnicht. Farmers sacrifice a young animal to Fecundity, praying for healthy offspring in the next breeding season ",
+        "title": "F\u00e6dernich",
+        "content": "Night of ritual sacrifice performed in Fecundity’s name. Farmers take an adult male animal to the wilderness, then slaughter it with a prayer for virility during the next breeding season.",
+        "startDate": {
+            "year": 541,
+            "month": 6,
+            "day": 3
+        },
+        "categories": [
+            "Holiday",
+            "Occult",
+            "Agricultural"
+        ]
+    },
+    {
+        "title": "The Holy Day of Saint Asaph",
+        "content": "The devout empty their pantries and bake a whole host of foodstuffs. This delicious bounty must be consumed before the following dawn, when the sign of Feast appears in the heavens.  It is common for villagers to go door to door, sampling what their neighbours have baked.",
         "startDate": {
             "year": 541,
             "month": 6,
@@ -998,27 +1227,260 @@
         ]
     },
     {
-        "title": "Week of Feast/Fast",
-        "content": "Week of Feast/Fast. Week of Feast/Fast. Devout followers of the Divine Corpse abstain from eating while the sign of Feast is in the sky. Heretical followers of Feast secretly gorge themselves all week. ",
+        "title": "Lytlingnicht",
+        "content": "Night of ritual sacrifice performed in Fecundity’s name. Farmers take a young animal to the wilderness, then slaughter it with a prayer for healthy offspring during the next breeding season.",
+        "startDate": {
+            "year": 541,
+            "month": 6,
+            "day": 4
+        },
+        "categories": [
+            "Holiday",
+            "Occult",
+            "Agricultural"
+        ]
+    },
+    {
+        "title": "The Sign of Feast",
+        "content": "During this week, wherever followers of Feast (wycces, cultists and husks) go, food and water overflow. Livestock grow fat and berries weigh down every bush.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 7,
+            "day": 4
+        },
+        "categories": [
+            "Astrological",
+            "Occult"
+        ]
+    },
+    {
+        "title": "The Week's Prayer",
+        "content": "When the maggot mounts the heavens, we fast.",
         "startDate": {
             "year": 541,
             "month": 7,
             "day": 0
         },
         "categories": [
+            "Holiday",
+            "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "First Day of Fast",
+        "content": "The devout abstain from consuming food while Feast’s sign is in the sky.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 0
+        },
+        "categories": [
+            "Holiday",
+            "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "First Day of Feast",
+        "content": "Heretics find ways to secretly stuff themselves with food while Feast’s sign is in the sky.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 0
+        },
+        "categories": [
+            "Holiday",
+            "Occult"
+        ]
+    },
+    {
+        "title": "First Night",
+        "content": "Noble newlyweds, who are only allowed to marry on Santum Votum (31), may now consummate their marrages. This is because the sign of Fecundity is no longer in the heavens.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 0
+        },
+        "categories": [
+            "Holiday",
+            "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "Second Day of Fast",
+        "content": "The devout abstain from consuming food while Feast’s sign is in the sky.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 1
+        },
+        "categories": [
+            "Holiday",
+            "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "Second Day of Feast",
+        "content": "Heretics find ways to secretly stuff themselves with food while Feast’s sign is in the sky.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 1
+        },
+        "categories": [
+            "Holiday",
+            "Occult"
+        ]
+    },
+    {
+        "title": "Lover's Light",
+        "content": "Sweethearts carve their names into a candle and light it in a place that holds meaning for them.  Traditionally, if they remain together until the candle burns down, their love will prove everlasting.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 1
+        },
+        "categories": [
             "Holiday"
         ]
     },
     {
-        "title": "Feast of the Wicker King.",
-        "content": " Feast of the Wicker King. Followers of Feast construct a fat wicker figure holding a carved wooden bowl. The bowl is filled with food and the figure burnt. ",
+        "title": "Third Day of Fast",
+        "content": "The devout abstain from consuming food while Feast’s sign is in the sky.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 2
+        },
+        "categories": [
+            "Holiday",
+            "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "Third Day of Feast",
+        "content": "Heretics find ways to secretly stuff themselves with food while Feast’s sign is in the sky.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 2
+        },
+        "categories": [
+            "Holiday",
+            "Occult"
+        ]
+    },
+    {
+        "title": "Starving Crescent",
+        "content": "The pale green glimmer of the Blighted Moon creeps into view. This thin sliver is a sign to the followers of Feast that they should begin constructing fat wicker figures for the Feast of the Wicker King.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 2
+        },
+        "categories": [
+            "Astrological",
+            "Occult"
+        ]
+    },
+    {
+        "title": "Fourth Day of Fast",
+        "content": "The devout abstain from consuming food while Feast’s sign is in the sky.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 3
+        },
+        "categories": [
+            "Holiday",
+            "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "Fourth Day of Feast",
+        "content": "Heretics find ways to secretly stuff themselves with food while Feast’s sign is in the sky.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 3
+        },
+        "categories": [
+            "Holiday",
+            "Occult"
+        ]
+    },
+    {
+        "title": "Half-Starved Moon",
+        "content": "The followers of Feast carve black wooden bowls for the Feast of the Wicker King.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 3
+        },
+        "categories": [
+            "Astrological",
+            "Occult"
+        ]
+    },
+    {
+        "title": "Fifth Day of Fast",
+        "content": "The devout abstain from consuming food while Feast’s sign is in the sky.",
         "startDate": {
             "year": 541,
             "month": 7,
             "day": 4
         },
         "categories": [
-            "Holiday"
+            "Holiday",
+            "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "Fifth Day of Feast",
+        "content": "Heretics find ways to secretly stuff themselves with food while Feast’s sign is in the sky.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 4
+        },
+        "categories": [
+            "Holiday",
+            "Occult"
+        ]
+    },
+    {
+        "title": "Feast of the Wicker King.",
+        "content": "Followers of Feast place their black wooden bowls in the arms of their fat wicker figures. The bowl is filled with food and the figure is burnt. It is considered unsafe to burn an empty bowl.",
+        "startDate": {
+            "year": 541,
+            "month": 7,
+            "day": 4
+        },
+        "categories": [
+            "Holiday",
+            "Occult"
+        ]
+    },
+    {
+        "title": "The Sign of Toil",
+        "content": "During this week, followers of Toil (wycces, cultists and husks) struck down rise anew when the stars appear. Next week, they suffer greatly for this reprieve.",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 8,
+            "day": 4
+        },
+        "categories": [
+            "Astrological",
+            "Occult"
         ]
     },
     {
@@ -1045,7 +1507,7 @@
             "day": 0
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -1100,7 +1562,7 @@
             "day": 1
         },
         "categories": [
-            "Lunar",
+            "Astrological",
             "Ecological"
         ]
     },
@@ -1144,7 +1606,7 @@
             "day": 3
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ]
     },
     {
@@ -1267,7 +1729,7 @@
             "day": 1
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
@@ -1372,7 +1834,7 @@
             "day": 4
         },
         "categories": [
-            "Lunar"
+            "Astrological"
         ],
         "userVisibility": [
             "default"
