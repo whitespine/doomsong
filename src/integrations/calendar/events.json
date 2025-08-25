@@ -705,8 +705,56 @@
         ]
     },
     {
+        "title": "Ecclesiarch's Official Birthday",
+        "content": "The city of Assartum holds a week-long festival in praise of the Ecclesiarch. Smaller towns and villages hold less impressive celebrations.",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 4,
+            "day": 4
+        },
+        "categories": [
+            "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "The Week's Prayer",
+        "content": "May the wisdom of the Ecclesiarch be a light in troubled times, brighter even than the sun.",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 0
+        },
+        "categories": [
+            "Prayer",
+            "Ecclesiarch"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "The Summer's Solstice",
+        "content": "The first day of summer. The longest day and shortest night of the entire year.",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 0
+        },
+        "categories": [
+            "Lunar"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
         "title": "Triumph",
-        "content": "The entire city of Assartum celebrates the Ecclesiarch's official birthday, starting with a grand parade of Templar.",
+        "content": "On the first day of this celebratory week, an army's worth of Templar parade through Assartum.",
         "startDate": {
             "year": 541,
             "month": 4,
@@ -720,8 +768,38 @@
         ]
     },
     {
+        "title": "The Stars Return",
+        "content": "The people of Painyme stay up late to welcome back the stars, often drinking far too much. This occurrence is invariably taken as proof that the shining path laid by the Immortal Corpse holds true.",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 0
+        },
+        "categories": [
+            "Lunar"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
         "title": "Deliverance",
-        "content": "Assartum\u2019s stocks, pillories and holding cells are emptied; their contents brought before the Justiciers and declared guilty. The day closes with mass executions. ",
+        "content": "On the second day of this celebratory week, Assartum’s stocks, pillories and holding cells are emptied. Their occupants are brought before the Ecclesiarch’s three Justiciers, who sentence them to death.  The day draws to a close with a series of mass beheadings, performed at various locations throughout the city.",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 1
+        },
+        "categories": [
+            "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Urchin-Swep",
+        "content": "Following Deliverance, the streets run red. Waifs and urchins are assembled and paid a copper obol each to mop the gutters, lest a single drop of blood remains to stain the roads on Investiture.",
         "startDate": {
             "year": 541,
             "month": 4,
@@ -736,11 +814,43 @@
     },
     {
         "title": "Investiture",
-        "content": "New Ecclesiarchs are officially crowned on this day, while reigning Ecclesiarchs celebrate their official birthday instead. Feasts and banquets are held throughout the land. ",
+        "content": "If an Ecclesiarch passed away during the previous year, their successor is crowned. If not, the reigning Ecclesiarch celebrates their official birthday. Throughout the land, labourers, serfs and villagers put down their tools to attend banquets funded by Assartum’s coffers. In the capital city, the feasting is legendary",
         "startDate": {
             "year": 541,
             "month": 4,
             "day": 2
+        },
+        "categories": [
+            "Holiday",
+            "Ecclesiarch"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Ratting Night",
+        "content": "Emboldened by the presence of so many leftovers, rats pour forth from hiding. The Ratcatchers’ Guild make their presence known on the streets. It is an evening of blood, fur and wrath.",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 2
+        },
+        "categories": [
+            "Holiday",
+            "Ecclesiarch"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Repentance",
+        "content": "On the fourth day of this celebratory week, Wyccefinder Guildhalls throughout the land empty their dungeons. Those accused of wyccecraft are put on trial before their peers. Very few, if any, are pardoned; when night falls, the mass burnings begin. In Assartum, pyres can fill entire city squares.",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 3
         },
         "categories": [
             "Holiday"
@@ -750,8 +860,8 @@
         ]
     },
     {
-        "title": "Repentance",
-        "content": "The Wyccefinders\u2019 Guild empties its dungeons and commences a day of trials. The day closes with a mass pyre; in Assartum, these can fill entire city squares. ",
+        "title": "Wyccefire Night",
+        "content": "Large pyres light up Painyme’s hills and plains. Those who grieve for the accused do so in secret. Many light candles in their memory, all the while hoping the wyccefinders don’t take them, too.",
         "startDate": {
             "year": 541,
             "month": 4,
@@ -766,7 +876,7 @@
     },
     {
         "title": "Obsequies",
-        "content": "Following the week of revelry, the Gravediggers\u2019 Guild inter the deceased. Each of the dead receives burial rites, an individual grave and a copper key. ",
+        "content": "On the fifth and final day of this celebratory week, the Gravediggers’ Guild inter those who passed during the week. Each of the dead receives an individual grave, burial rites and a copper key. Gravediggers are often at this work for two full days, digging through the night to complete the task before the unquiet dead rise.",
         "startDate": {
             "year": 541,
             "month": 4,
@@ -774,6 +884,22 @@
         },
         "categories": [
             "Holiday"
+        ],
+        "userVisibility": [
+            "default"
+        ]
+    },
+    {
+        "title": "Night of Restless Needles",
+        "content": "Those who remember the old ways gather in groups of three. They lavishly embroider a pouch with the sun, the moon and the chalice. This is usually filled with sweet herbs and burnt before morning.",
+        "startDate": {
+            "year": 541,
+            "month": 4,
+            "day": 4
+        },
+        "categories": [
+            "Holiday",
+            "Occult"
         ],
         "userVisibility": [
             "default"
@@ -797,7 +923,7 @@
     },
     {
         "title": "Ossein Moon",
-        "content": "Visible for 3 nights during the Sign of Frenzy. This moon glows bone yellow and its rising marks the beginning of opiri feeding frenzies (opiri, p. 259).  Dies primus - Long-dormant opiri nests burst into activity. Entire settlements perish in a jubilant rush of hungry wings. The night is thick with the sound of feeding opiri-gara. Dies Secundus - Opiri emerge again, returning to devastated towns in search of survivors. Frenzy\u2019s favoured seethe across ruined, hollow places. Dies tertius - On the final night of the full moon, the hunger of the opiri drives them further afield. They scour forests and villages, searching for fresh meat and marrow ",
+        "content": "Visible for 3 nights during the Sign of Frenzy. This moon glows bone yellow and its rising marks the beginning of opiri feeding frenzies (opiri, p. 259).  Dies primus - Long-dormant opiri nests burst into activity. Entire settlements perish in a jubilant rush of hungry wings. The night is thick with the sound of feeding opiri-gara. Dies Secundus - Opiri emerge again, returning to devastated towns in search of survivors. Frenzy's favoured seethe across ruined, hollow places. Dies tertius - On the final night of the full moon, the hunger of the opiri drives them further afield. They scour forests and villages, searching for fresh meat and marrow ",
         "startDate": {
             "year": 541,
             "month": 5,
@@ -926,8 +1052,8 @@
         ]
     },
     {
-        "title": "Maker\u2019s Day.",
-        "content": " Maker\u2019s Day. Followers of Toil glorify their patron by destroying either their most recent or their finest mannekin. ",
+        "title": "Maker's Day.",
+        "content": " Maker's Day. Followers of Toil glorify their patron by destroying either their most recent or their finest mannekin. ",
         "startDate": {
             "year": 541,
             "month": 8,
@@ -996,7 +1122,7 @@
     },
     {
         "title": "Mass Pontifex - Sanctum Ostentatio.",
-        "content": " Sanctum Ostentatio. The devout meditate on the sin of Lamentation. Saints and martyrs are paraded around a settlement\u2019s outer walls, then ceremonially cast out ",
+        "content": " Sanctum Ostentatio. The devout meditate on the sin of Lamentation. Saints and martyrs are paraded around a settlement's outer walls, then ceremonially cast out ",
         "startDate": {
             "year": 541,
             "month": 10,
@@ -1023,7 +1149,7 @@
     },
     {
         "title": "Day of Deals.",
-        "content": " Day of Deals. Both the Ecclesiastical devout and the heretical followers of Honour regard deals and promises made on this day to be \u2018more binding\u2019 than on any other. ",
+        "content": " Day of Deals. Both the Ecclesiastical devout and the heretical followers of Honour regard deals and promises made on this day to be \u2018more binding' than on any other. ",
         "startDate": {
             "year": 541,
             "month": 10,
@@ -1064,8 +1190,8 @@
         ]
     },
     {
-        "title": "Panic\u2019s Night.",
-        "content": " Panic\u2019s Night. Panic makes his influence known in the world; crime and heresy abound. All who are accosted by the authorities say they couldn\u2019t help themselves \u2013 Panic made them do it. ",
+        "title": "Panic's Night.",
+        "content": " Panic's Night. Panic makes his influence known in the world; crime and heresy abound. All who are accosted by the authorities say they couldn't help themselves \u2013 Panic made them do it. ",
         "startDate": {
             "year": 541,
             "month": 11,
@@ -1119,7 +1245,7 @@
     },
     {
         "title": "Mort-Aux-Rats",
-        "content": " Mort-Aux-Rats. A ratcatching holiday. Peasants are given one obol for every rat they kill (as counted in tails) and present to the Ratcatchers\u2019 Guild. ",
+        "content": " Mort-Aux-Rats. A ratcatching holiday. Peasants are given one obol for every rat they kill (as counted in tails) and present to the Ratcatchers' Guild. ",
         "startDate": {
             "year": 541,
             "month": 13,
@@ -1148,8 +1274,8 @@
         ]
     },
     {
-        "title": "Thieves\u2019 Banquet",
-        "content": "Thieves\u2019 Banquet. Followers of Voracity steal something they do not want or need, only to hide it somewhere they will forget, dotting the countryside with hidden caches of valuables. ",
+        "title": "Thieves' Banquet",
+        "content": "Thieves' Banquet. Followers of Voracity steal something they do not want or need, only to hide it somewhere they will forget, dotting the countryside with hidden caches of valuables. ",
         "startDate": {
             "year": 541,
             "month": 13,
@@ -1161,7 +1287,7 @@
     },
     {
         "title": "Mass Pontifex - Sanctum Profundio",
-        "content": "Sanctum Profundio. The devout meditate on the sin on Woe. The Ecclesiarch prays with the living, then descends to the Sepulchre Reverentia\u2019s catacombs and prays with the dead. ",
+        "content": "Sanctum Profundio. The devout meditate on the sin on Woe. The Ecclesiarch prays with the living, then descends to the Sepulchre Reverentia's catacombs and prays with the dead. ",
         "startDate": {
             "year": 541,
             "month": 14,
@@ -1184,8 +1310,8 @@
         ]
     },
     {
-        "title": "The Ecclesiarch\u2019s Largesse",
-        "content": "The Ecclesiarch\u2019s Largesse. Each officially recognised Guildhall receives a shipment of goods and supplies from the Ecclesiarch, intended as a thanks for services rendered. ",
+        "title": "The Ecclesiarch's Largesse",
+        "content": "The Ecclesiarch's Largesse. Each officially recognised Guildhall receives a shipment of goods and supplies from the Ecclesiarch, intended as a thanks for services rendered. ",
         "startDate": {
             "year": 541,
             "month": 14,
@@ -1212,7 +1338,7 @@
     },
     {
         "title": "Singing Grindstones",
-        "content": "Singing Grindstones. Members of the Woodcutters\u2019 Guild return to the Weald. They stop in villages and get their axes sharpened. Blacksmiths do not charge for this service today. ",
+        "content": "Singing Grindstones. Members of the Woodcutters' Guild return to the Weald. They stop in villages and get their axes sharpened. Blacksmiths do not charge for this service today. ",
         "startDate": {
             "year": 541,
             "month": 15,
@@ -1223,8 +1349,8 @@
         ]
     },
     {
-        "title": "New Year\u2019s Eve",
-        "content": "New Year\u2019s Eve. Throughout the land, all able-bodied villagers enter forests and fields to seek out clutches of laceworker eggs, to destroy them before they can hatch in spring. ",
+        "title": "New Year's Eve",
+        "content": "New Year's Eve. Throughout the land, all able-bodied villagers enter forests and fields to seek out clutches of laceworker eggs, to destroy them before they can hatch in spring. ",
         "startDate": {
             "year": 541,
             "month": 15,
