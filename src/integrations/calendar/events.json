@@ -13,12 +13,13 @@
             "day": 4
         },
         "categories": [
-            "Sign", "Occult"
+            "Sign",
+            "Occult"
         ]
     },
     {
         "title": "The Week's Prayer",
-        "content": "Steel oneself against the coming of the season, for winter’s end brings tempting warmth.",
+        "content": "Steel oneself against the coming of the season, for winter's end brings tempting warmth.",
         "startDate": {
             "year": 541,
             "month": 0,
@@ -63,7 +64,7 @@
     },
     {
         "title": "Mother's Moon [2]",
-        "content": "The soothing orange light of Mother’s Moon tints the land a strange amber colour. All who sleep beneath this full moon do so with the soundness of babes, unlikely to wake even in the event of danger.",
+        "content": "The soothing orange light of Mother's Moon tints the land a strange amber colour. All who sleep beneath this full moon do so with the soundness of babes, unlikely to wake even in the event of danger.",
         "startDate": {
             "year": 541,
             "month": 0,
@@ -144,7 +145,7 @@
     },
     {
         "title": "Wager's Won",
-        "content": "All bets made at the start of the week must be paid in full by midnight. It is tradition to call anyone who cannot pay a ‘ballycur’ until such a time as they can settle up.",
+        "content": "All bets made at the start of the week must be paid in full by midnight. It is tradition to call anyone who cannot pay a 'ballycur' until such a time as they can settle up.",
         "startDate": {
             "year": 541,
             "month": 0,
@@ -194,7 +195,8 @@
             "day": 4
         },
         "categories": [
-            "Sign", "Occult"
+            "Sign",
+            "Occult"
         ]
     },
     {
@@ -214,7 +216,7 @@
     },
     {
         "title": "The March",
-        "content": "<p>Soldiers on winter leave return to one of several Wealdean fronts. This begins as a parade through Assartum and descends into the gruelling march it actually is.</p>",
+        "content": "Soldiers on winter leave return to one of several Wealdean fronts. This begins as a parade through Assartum and descends into the gruelling march it actually is. ",
         "startDate": {
             "year": 541,
             "month": 1,
@@ -227,7 +229,7 @@
             "default"
         ]
     },
-        {
+    {
         "title": "The Grutching",
         "content": "On this night, it is considered good luck to prick your thumb and let a drop of blood fall into a well. This practise is strictly forbidden in cities and villages, most of which post guards throughout the night.",
         "startDate": {
@@ -236,7 +238,8 @@
             "day": 0
         },
         "categories": [
-            "Holiday", "Occult"
+            "Holiday",
+            "Occult"
         ],
         "userVisibility": [
             "default"
@@ -251,9 +254,11 @@
             "day": 1
         },
         "categories": [
-            "Holiday", "Occult"
+            "Holiday",
+            "Occult"
         ]
-    },    {
+    },
+    {
         "title": "Old Watch",
         "content": "In a tradition that predates the Justiciers, frustrated citizens don dark clothing and take up the tools they have to hand. Then they roam the streets, hoping trouble comes their way. Often, they run into each other.",
         "startDate": {
@@ -262,23 +267,24 @@
             "day": 1
         },
         "categories": [
-            "Holiday", "Occult"
+            "Holiday",
+            "Occult"
         ]
     },
     {
         "title": "Day of Appeals",
-        "content": "Those who have been murmured against can seek forgiveness from those they’ve wronged. Alternatively, they can report them to the Church of the Divine Corpse or the Wyccefinders’ Guild. It is unlikely either will do anything quickly enough to avert the Day of Blows.",
+        "content": "Those who have been murmured against can seek forgiveness from those they've wronged. Alternatively, they can report them to the Church of the Divine Corpse or the Wyccefinders' Guild. It is unlikely either will do anything quickly enough to avert the Day of Blows.",
         "startDate": {
             "year": 541,
             "month": 1,
             "day": 2
         },
         "categories": [
-            "Holiday", "Occult"
+            "Holiday",
+            "Occult"
         ]
     },
     {
-
         "title": "Herth Fire's Night",
         "content": "The crescent moon shimmers whitely in the sky, a foreshadowing of Burning Moon.",
         "startDate": {
@@ -299,10 +305,10 @@
             "day": 3
         },
         "categories": [
-            "Holiday", "Occult"
+            "Holiday",
+            "Occult"
         ]
     },
-    
     {
         "title": "Bane Fire's Night",
         "content": "The glowing half moon causes shadows to writhe and shiver, as when near a bonfire.",
@@ -324,7 +330,8 @@
             "day": 4
         },
         "categories": [
-            "Holiday", "Agricultural"
+            "Holiday",
+            "Agricultural"
         ]
     },
     {
@@ -336,7 +343,8 @@
             "day": 4
         },
         "categories": [
-            "Holiday", "Military"
+            "Holiday",
+            "Military"
         ]
     },
     {
@@ -365,7 +373,8 @@
             "day": 4
         },
         "categories": [
-            "Sign", "Occult"
+            "Sign",
+            "Occult"
         ]
     },
     {
@@ -385,7 +394,7 @@
     },
     {
         "title": "Burning Moon",
-        "content": "The full moon blazes forth and white-hot stars cut through a mottled rubine sky. The righteous devout begin a week-long sleepless ‘watch and ward’ so as to avoid glimpsing any visions sent by Perception.",
+        "content": "The full moon blazes forth and white-hot stars cut through a mottled rubine sky. The righteous devout begin a week-long sleepless 'watch and ward' so as to avoid glimpsing any visions sent by Perception.",
         "startDate": {
             "year": 541,
             "month": 2,
@@ -487,14 +496,15 @@
     },
     {
         "title": "Astrologer's Vigil",
-        "content": "Followers of Perception prepare for the final, glorious night of Burning Moon. The devout who have held ‘watch and ward’ for the full week are by now either dead, delirious, or stupefied from a lack of sleep.",
+        "content": "Followers of Perception prepare for the final, glorious night of Burning Moon. The devout who have held 'watch and ward' for the full week are by now either dead, delirious, or stupefied from a lack of sleep.",
         "startDate": {
             "year": 541,
             "month": 2,
             "day": 4
         },
         "categories": [
-            "Holiday", "Occult"
+            "Holiday",
+            "Occult"
         ]
     },
     {
@@ -526,10 +536,11 @@
             "day": 4
         },
         "categories": [
-            "Sign", "Occult"
+            "Sign",
+            "Occult"
         ]
     },
-{
+    {
         "title": "The Week's Prayer",
         "content": "They seek to make the dark their haven-place; but no safety will they find in the arms of traitors.",
         "startDate": {
@@ -538,16 +549,16 @@
             "day": 0
         },
         "categories": [
-            "Holiday", "Prayer"
+            "Holiday",
+            "Prayer"
         ],
         "userVisibility": [
             "default"
         ]
     },
-
     {
         "title": "Hot Obol Day",
-        "content": "Local nobles gather on balconies to hurl scalding obols into the crowds gathered</p><p>below. They watch with glee as the poor scrabble to pick up these heated metal coins.",
+        "content": "Local nobles gather on balconies to hurl scalding obols into the crowds gathered below. They watch with glee as the poor scrabble to pick up these heated metal coins.",
         "startDate": {
             "year": 541,
             "month": 3,
@@ -560,7 +571,6 @@
             "default"
         ]
     },
-    
     {
         "title": "Blackest Night",
         "content": "The sun sets but neither the moon nor the stars appear overhead. Each night will be darker than the last. The effects of Blackest Night stack until the stars return next week, under the sign of Joy.",
@@ -576,10 +586,9 @@
             "default"
         ]
     },
-
-     {
+    {
         "title": "Blind Man's Bluff",
-        "content": "The superstitious go about wearing blindfolds for fear of ‘being taken by Oblivion’. This practise is considered ridiculous rather than outright heretical. A concerning number of Oblivion’s followers claim they can remember nothing before waking under the sign of Oblivion on Dies Secundus, usually near a beach.",
+        "content": "The superstitious go about wearing blindfolds for fear of 'being taken by Oblivion'. This practise is considered ridiculous rather than outright heretical. A concerning number of Oblivion's followers claim they can remember nothing before waking under the sign of Oblivion on Dies Secundus, usually near a beach.",
         "startDate": {
             "year": 541,
             "month": 3,
@@ -592,11 +601,9 @@
             "default"
         ]
     },
-    
-    
     {
         "title": "Blackest Night",
-        "content": "Folks can barely see the hands held directly in front of their faces. If a person is discovered outside in such darkness, the suspicions of the Wyccefinders’ Guild are instantly raised.",
+        "content": "Folks can barely see the hands held directly in front of their faces. If a person is discovered outside in such darkness, the suspicions of the Wyccefinders' Guild are instantly raised.",
         "startDate": {
             "year": 541,
             "month": 3,
@@ -621,7 +628,6 @@
             "Holiday"
         ]
     },
-    
     {
         "title": "Blackest Night",
         "content": "Even creatures that normally hunt at night lie quietly in their dens. A torch illuminates a mere five feet in any direction. It is swaddled in darkness and cannot be seen from more than a short distance away.",
@@ -638,8 +644,8 @@
         ]
     },
     {
-        "title": "The Fishmonger’s Hook",
-        "content": "Repeated nights of total darkness tempt strange creatures to the ocean’s surface, where they can be snagged by daring fishers and reinforced nets. Those fishmongers with strange wares to sell usually chalk a shut-eyed fishhook on their signs.",
+        "title": "The Fishmonger's Hook",
+        "content": "Repeated nights of total darkness tempt strange creatures to the ocean's surface, where they can be snagged by daring fishers and reinforced nets. Those fishmongers with strange wares to sell usually chalk a shut-eyed fishhook on their signs.",
         "startDate": {
             "year": 541,
             "month": 3,
@@ -676,13 +682,13 @@
             "day": 4
         },
         "categories": [
-            "Lunar", "Occult"
+            "Lunar",
+            "Occult"
         ],
         "userVisibility": [
             "default"
         ]
     },
-    
     {
         "title": "Blackest Night",
         "content": "A night akin to blindness. If a person finds themselves inside a burning house on this evening, the flames do not illuminate their escape.",
@@ -700,7 +706,7 @@
     },
     {
         "title": "Triumph",
-        "content": "<p>The entire city of Assartum celebrates the Ecclesiarch\u2019s official birthday, starting</p><p>with a grand parade of Templar.</p>",
+        "content": "The entire city of Assartum celebrates the Ecclesiarch's official birthday, starting with a grand parade of Templar.",
         "startDate": {
             "year": 541,
             "month": 4,
@@ -715,7 +721,7 @@
     },
     {
         "title": "Deliverance",
-        "content": "<p>Assartum\u2019s stocks, pillories and holding cells are emptied; their contents</p><p>brought before the Justiciers and declared guilty. The day closes with mass executions.</p>",
+        "content": "Assartum\u2019s stocks, pillories and holding cells are emptied; their contents brought before the Justiciers and declared guilty. The day closes with mass executions. ",
         "startDate": {
             "year": 541,
             "month": 4,
@@ -730,7 +736,7 @@
     },
     {
         "title": "Investiture",
-        "content": "<p>New Ecclesiarchs are officially crowned on this day, while reigning Ecclesiarchs</p><p>celebrate their official birthday instead. Feasts and banquets are held throughout the land.</p>",
+        "content": "New Ecclesiarchs are officially crowned on this day, while reigning Ecclesiarchs celebrate their official birthday instead. Feasts and banquets are held throughout the land. ",
         "startDate": {
             "year": 541,
             "month": 4,
@@ -745,7 +751,7 @@
     },
     {
         "title": "Repentance",
-        "content": "<p>The Wyccefinders\u2019 Guild empties its dungeons and commences a day of trials.</p><p>The day closes with a mass pyre; in Assartum, these can fill entire city squares.</p>",
+        "content": "The Wyccefinders\u2019 Guild empties its dungeons and commences a day of trials. The day closes with a mass pyre; in Assartum, these can fill entire city squares. ",
         "startDate": {
             "year": 541,
             "month": 4,
@@ -760,7 +766,7 @@
     },
     {
         "title": "Obsequies",
-        "content": "<p>Following the week of revelry, the Gravediggers\u2019 Guild inter the deceased. Each</p><p>of the dead receives burial rites, an individual grave and a copper key.</p>",
+        "content": "Following the week of revelry, the Gravediggers\u2019 Guild inter the deceased. Each of the dead receives burial rites, an individual grave and a copper key. ",
         "startDate": {
             "year": 541,
             "month": 4,
@@ -775,7 +781,7 @@
     },
     {
         "title": "Death of Joy",
-        "content": "<p>On this day the Sublime Joy was torn from the skies and murdered by Templar.</p><p>Ever since, it has been darkened by a solar eclipse. A matching eclipse occurs on Dies Quartius.</p>",
+        "content": "On this day the Sublime Joy was torn from the skies and murdered by Templar. Ever since, it has been darkened by a solar eclipse. A matching eclipse occurs on Dies Quartius. ",
         "startDate": {
             "year": 541,
             "month": 5,
@@ -791,7 +797,7 @@
     },
     {
         "title": "Ossein Moon",
-        "content": "<p>Visible for 3 nights during the Sign of Frenzy. This moon glows bone yellow and its rising marks the beginning of opiri feeding frenzies (opiri, p. 259).</p><p></p><p>Dies primus - Long-dormant opiri nests burst into activity. Entire settlements perish in a jubilant rush of hungry wings. The night is thick with the sound of feeding opiri-gara.</p><p>Dies Secundus - Opiri emerge again, returning to devastated towns in search of survivors. Frenzy\u2019s favoured seethe across ruined, hollow places.</p><p>Dies tertius - On the final night of the full moon, the hunger of the opiri drives them further afield. They scour forests and villages, searching for fresh meat and marrow</p>",
+        "content": "Visible for 3 nights during the Sign of Frenzy. This moon glows bone yellow and its rising marks the beginning of opiri feeding frenzies (opiri, p. 259).  Dies primus - Long-dormant opiri nests burst into activity. Entire settlements perish in a jubilant rush of hungry wings. The night is thick with the sound of feeding opiri-gara. Dies Secundus - Opiri emerge again, returning to devastated towns in search of survivors. Frenzy\u2019s favoured seethe across ruined, hollow places. Dies tertius - On the final night of the full moon, the hunger of the opiri drives them further afield. They scour forests and villages, searching for fresh meat and marrow ",
         "startDate": {
             "year": 541,
             "month": 5,
@@ -806,7 +812,7 @@
     },
     {
         "title": "The Dancing Eclipse",
-        "content": "<p>The Dancing Eclipse. Worshippers of Ecstasy, Joy and Frenzy celebrate by dancing. As little</p><p>as a hop, skip or twirl in front of the wrong person can be enough to get burnt as a wycce.</p>",
+        "content": "The Dancing Eclipse. Worshippers of Ecstasy, Joy and Frenzy celebrate by dancing. As little as a hop, skip or twirl in front of the wrong person can be enough to get burnt as a wycce. ",
         "startDate": {
             "year": 541,
             "month": 5,
@@ -819,7 +825,7 @@
     },
     {
         "title": "Mass Pontifex - Sanctum Votum",
-        "content": "<p>Sanctum Votum. The devout meditate on the sin of Bliss. This Mass Pontifex is the only</p><p>day on which nobles can marry. Villagers will have a lot to say about which wedding was best.</p>",
+        "content": "Sanctum Votum. The devout meditate on the sin of Bliss. This Mass Pontifex is the only day on which nobles can marry. Villagers will have a lot to say about which wedding was best. ",
         "startDate": {
             "year": 541,
             "month": 6,
@@ -831,7 +837,7 @@
     },
     {
         "title": "Modranich",
-        "content": "<p></p><p>Modranicht. Farmers sacrifice an adult female animal to Fecundity, praying for the safe birth of livestock in the next birthing season.</p>",
+        "content": " Modranicht. Farmers sacrifice an adult female animal to Fecundity, praying for the safe birth of livestock in the next birthing season. ",
         "startDate": {
             "year": 541,
             "month": 6,
@@ -843,7 +849,7 @@
     },
     {
         "title": "F\u00e6dernich",
-        "content": "<p></p><p>F\u00e6dernicht. Farmers sacrifice an adult male animal to Fecundity, praying for virile livestock</p><p>in the next breeding season.</p>",
+        "content": " F\u00e6dernicht. Farmers sacrifice an adult male animal to Fecundity, praying for virile livestock in the next breeding season. ",
         "startDate": {
             "year": 541,
             "month": 6,
@@ -855,7 +861,7 @@
     },
     {
         "title": "Lytlingnicht",
-        "content": "<p>Lytlingnicht. Farmers sacrifice a young animal to Fecundity, praying for healthy offspring</p><p>in the next breeding season</p>",
+        "content": "Lytlingnicht. Farmers sacrifice a young animal to Fecundity, praying for healthy offspring in the next breeding season ",
         "startDate": {
             "year": 541,
             "month": 6,
@@ -867,7 +873,7 @@
     },
     {
         "title": "Week of Feast/Fast",
-        "content": "<p>Week of Feast/Fast.</p><p>Week of Feast/Fast. Devout followers of the Divine Corpse abstain from eating while the</p><p>sign of Feast is in the sky. Heretical followers of Feast secretly gorge themselves all week.</p>",
+        "content": "Week of Feast/Fast. Week of Feast/Fast. Devout followers of the Divine Corpse abstain from eating while the sign of Feast is in the sky. Heretical followers of Feast secretly gorge themselves all week. ",
         "startDate": {
             "year": 541,
             "month": 7,
@@ -879,7 +885,7 @@
     },
     {
         "title": "Feast of the Wicker King.",
-        "content": "<p></p><p>Feast of the Wicker King. Followers of Feast construct a fat wicker figure holding a carved</p><p>wooden bowl. The bowl is filled with food and the figure burnt.</p>",
+        "content": " Feast of the Wicker King. Followers of Feast construct a fat wicker figure holding a carved wooden bowl. The bowl is filled with food and the figure burnt. ",
         "startDate": {
             "year": 541,
             "month": 7,
@@ -891,7 +897,7 @@
     },
     {
         "title": "Troth-Plight.",
-        "content": "<p></p><p>Troth-Plight. Royal knights must deliver news of all proposed noble betrothals to the</p><p>Ecclesiarch, in person. Betrothal feasts are held in relevant bordercastles.</p>",
+        "content": " Troth-Plight. Royal knights must deliver news of all proposed noble betrothals to the Ecclesiarch, in person. Betrothal feasts are held in relevant bordercastles. ",
         "startDate": {
             "year": 541,
             "month": 8,
@@ -906,7 +912,7 @@
     },
     {
         "title": "Blighted Moon",
-        "content": "<p>Visible for 3 nights during the Sign of Toil. This moon glows corpse grey and sheds tiny flakes of luminescent powder, the rot of stars. Insects emerge in droves to consume this substance.</p>",
+        "content": "Visible for 3 nights during the Sign of Toil. This moon glows corpse grey and sheds tiny flakes of luminescent powder, the rot of stars. Insects emerge in droves to consume this substance. ",
         "startDate": {
             "year": 541,
             "month": 8,
@@ -921,7 +927,7 @@
     },
     {
         "title": "Maker\u2019s Day.",
-        "content": "<p></p><p>Maker\u2019s Day. Followers of Toil glorify their patron by destroying either their most recent</p><p>or their finest mannekin.</p>",
+        "content": " Maker\u2019s Day. Followers of Toil glorify their patron by destroying either their most recent or their finest mannekin. ",
         "startDate": {
             "year": 541,
             "month": 8,
@@ -933,7 +939,7 @@
     },
     {
         "title": "Laceworker Egg Laying",
-        "content": "<p>Laceworker Egg Laying. Glutted on the insects attracted by Blighted Moon, the</p><p>laceworkers begin laying eggs in earnest. These remain dormant until the following spring.</p>",
+        "content": "Laceworker Egg Laying. Glutted on the insects attracted by Blighted Moon, the laceworkers begin laying eggs in earnest. These remain dormant until the following spring. ",
         "startDate": {
             "year": 541,
             "month": 8,
@@ -945,7 +951,7 @@
     },
     {
         "title": "Sign of Rot.",
-        "content": "<p></p><p>Sign of Rot. At dawn, all unharvested crops wither and rot in their fields. Nothing edible</p><p>remains. Villagers across the land hold a harvest festival to celebrate the end of their labours.</p>",
+        "content": " Sign of Rot. At dawn, all unharvested crops wither and rot in their fields. Nothing edible remains. Villagers across the land hold a harvest festival to celebrate the end of their labours. ",
         "startDate": {
             "year": 541,
             "month": 9,
@@ -961,7 +967,7 @@
     },
     {
         "title": "New Moon (ROT)",
-        "content": "<p>As the new moon creeps across the land, bultchlings emerge from putrid crops and plant wendeworts (p. 287) in hollow trees.</p>",
+        "content": "As the new moon creeps across the land, bultchlings emerge from putrid crops and plant wendeworts (p. 287) in hollow trees. ",
         "startDate": {
             "year": 541,
             "month": 9,
@@ -974,7 +980,7 @@
     },
     {
         "title": "Wende-withers.",
-        "content": "<p></p><p>Wende-withers. As the sign of Rot gives way to that of Honour, any unharvested wendeworts</p><p>begin to shrivel and die. The hollow trees in which they grew begin to disintegrate.</p>",
+        "content": " Wende-withers. As the sign of Rot gives way to that of Honour, any unharvested wendeworts begin to shrivel and die. The hollow trees in which they grew begin to disintegrate. ",
         "startDate": {
             "year": 541,
             "month": 9,
@@ -990,7 +996,7 @@
     },
     {
         "title": "Mass Pontifex - Sanctum Ostentatio.",
-        "content": "<p></p><p>Sanctum Ostentatio. The devout meditate on the sin of Lamentation. Saints and martyrs</p><p>are paraded around a settlement\u2019s outer walls, then ceremonially cast out</p>",
+        "content": " Sanctum Ostentatio. The devout meditate on the sin of Lamentation. Saints and martyrs are paraded around a settlement\u2019s outer walls, then ceremonially cast out ",
         "startDate": {
             "year": 541,
             "month": 10,
@@ -1005,7 +1011,7 @@
     },
     {
         "title": "Duellist's Moon",
-        "content": "<p>Visible for 3 nights during the Signs of Honour and Panic. This moon glows the crimson of fresh-spilt blood. There are many theories about the hole at its centre.</p>",
+        "content": "Visible for 3 nights during the Signs of Honour and Panic. This moon glows the crimson of fresh-spilt blood. There are many theories about the hole at its centre. ",
         "startDate": {
             "year": 541,
             "month": 10,
@@ -1017,7 +1023,7 @@
     },
     {
         "title": "Day of Deals.",
-        "content": "<p></p><p>Day of Deals. Both the Ecclesiastical devout and the heretical followers of Honour regard</p><p>deals and promises made on this day to be \u2018more binding\u2019 than on any other.</p>",
+        "content": " Day of Deals. Both the Ecclesiastical devout and the heretical followers of Honour regard deals and promises made on this day to be \u2018more binding\u2019 than on any other. ",
         "startDate": {
             "year": 541,
             "month": 10,
@@ -1032,7 +1038,7 @@
     },
     {
         "title": "Offre Men",
-        "content": "<p></p><p>Offre Men. Fearful devout construct offre men to put in front of their dwellings. Cults of Panic</p><p>are so active this week that, sometimes, the only way to save a house is to offer a straw substitute.</p>",
+        "content": " Offre Men. Fearful devout construct offre men to put in front of their dwellings. Cults of Panic are so active this week that, sometimes, the only way to save a house is to offer a straw substitute. ",
         "startDate": {
             "year": 541,
             "month": 11,
@@ -1047,7 +1053,7 @@
     },
     {
         "title": "The March",
-        "content": "<p>The March. Soldiers chosen for winter leave begin the march homewards from Wealdean</p><p>fronts. All roads leading to Assartum fill with regiments of happy foot soldiers.</p>",
+        "content": "The March. Soldiers chosen for winter leave begin the march homewards from Wealdean fronts. All roads leading to Assartum fill with regiments of happy foot soldiers. ",
         "startDate": {
             "year": 541,
             "month": 11,
@@ -1059,7 +1065,7 @@
     },
     {
         "title": "Panic\u2019s Night.",
-        "content": "<p></p><p>Panic\u2019s Night. Panic makes his influence known in the world; crime and heresy abound. All</p><p>who are accosted by the authorities say they couldn\u2019t help themselves \u2013 Panic made them do it.</p>",
+        "content": " Panic\u2019s Night. Panic makes his influence known in the world; crime and heresy abound. All who are accosted by the authorities say they couldn\u2019t help themselves \u2013 Panic made them do it. ",
         "startDate": {
             "year": 541,
             "month": 11,
@@ -1074,7 +1080,7 @@
     },
     {
         "title": "Procession of the Forlorn.",
-        "content": "<p></p><p>Procession of the Forlorn. Followers of Hope ritualistically blind one of their own, believing</p><p>their hope will bring back the sun. Every year, the sight of the blinded is restored at dawn.</p>",
+        "content": " Procession of the Forlorn. Followers of Hope ritualistically blind one of their own, believing their hope will bring back the sun. Every year, the sight of the blinded is restored at dawn. ",
         "startDate": {
             "year": 541,
             "month": 12,
@@ -1086,7 +1092,7 @@
     },
     {
         "title": "Feast of Twelve Families",
-        "content": "<p>Feast of Twelve Families. Noble houses lay a table with 12 place settings: 5 are provided with</p><p>food and drink, 7 are left empty. Nobles are expected to show generosity toward their lessers</p>",
+        "content": "Feast of Twelve Families. Noble houses lay a table with 12 place settings: 5 are provided with food and drink, 7 are left empty. Nobles are expected to show generosity toward their lessers ",
         "startDate": {
             "year": 541,
             "month": 12,
@@ -1098,7 +1104,7 @@
     },
     {
         "title": "Icelorn",
-        "content": "<p>Icelorn. The clans of Acheron toast their Queen and their Chosen, who are by now ice-locked</p><p>within Castle Acheron. Communal howling continues long into the evening.</p>",
+        "content": "Icelorn. The clans of Acheron toast their Queen and their Chosen, who are by now ice-locked within Castle Acheron. Communal howling continues long into the evening. ",
         "startDate": {
             "year": 541,
             "month": 12,
@@ -1113,7 +1119,7 @@
     },
     {
         "title": "Mort-Aux-Rats",
-        "content": "<p></p><p>Mort-Aux-Rats. A ratcatching holiday. Peasants are given one obol for every rat they kill (as</p><p>counted in tails) and present to the Ratcatchers\u2019 Guild.</p>",
+        "content": " Mort-Aux-Rats. A ratcatching holiday. Peasants are given one obol for every rat they kill (as counted in tails) and present to the Ratcatchers\u2019 Guild. ",
         "startDate": {
             "year": 541,
             "month": 13,
@@ -1128,7 +1134,7 @@
     },
     {
         "title": "Famished Moon",
-        "content": "<p>Visible for 3 nights during the Sign of Voracity. This moon is noticably smaller than any other, and consequently much darker. Any who eat under its light will find themselves ever-hungry.</p>",
+        "content": "Visible for 3 nights during the Sign of Voracity. This moon is noticably smaller than any other, and consequently much darker. Any who eat under its light will find themselves ever-hungry. ",
         "startDate": {
             "year": 541,
             "month": 13,
@@ -1143,7 +1149,7 @@
     },
     {
         "title": "Thieves\u2019 Banquet",
-        "content": "<p>Thieves\u2019 Banquet. Followers of Voracity steal something they do not want or need, only to</p><p>hide it somewhere they will forget, dotting the countryside with hidden caches of valuables.</p>",
+        "content": "Thieves\u2019 Banquet. Followers of Voracity steal something they do not want or need, only to hide it somewhere they will forget, dotting the countryside with hidden caches of valuables. ",
         "startDate": {
             "year": 541,
             "month": 13,
@@ -1155,7 +1161,7 @@
     },
     {
         "title": "Mass Pontifex - Sanctum Profundio",
-        "content": "<p>Sanctum Profundio. The devout meditate on the sin on Woe. The Ecclesiarch prays with the</p><p>living, then descends to the Sepulchre Reverentia\u2019s catacombs and prays with the dead.</p>",
+        "content": "Sanctum Profundio. The devout meditate on the sin on Woe. The Ecclesiarch prays with the living, then descends to the Sepulchre Reverentia\u2019s catacombs and prays with the dead. ",
         "startDate": {
             "year": 541,
             "month": 14,
@@ -1167,7 +1173,7 @@
     },
     {
         "title": "S\u00e9ance of the Sleepless",
-        "content": "<p>S\u00e9ance of the Sleepless. Followers of Languor burn asphodel, synchronising so they can</p><p>become one with Languor, the long-dead and each other all at the same time.</p>",
+        "content": "S\u00e9ance of the Sleepless. Followers of Languor burn asphodel, synchronising so they can become one with Languor, the long-dead and each other all at the same time. ",
         "startDate": {
             "year": 541,
             "month": 14,
@@ -1179,7 +1185,7 @@
     },
     {
         "title": "The Ecclesiarch\u2019s Largesse",
-        "content": "<p>The Ecclesiarch\u2019s Largesse. Each officially recognised Guildhall receives a shipment of</p><p>goods and supplies from the Ecclesiarch, intended as a thanks for services rendered.</p>",
+        "content": "The Ecclesiarch\u2019s Largesse. Each officially recognised Guildhall receives a shipment of goods and supplies from the Ecclesiarch, intended as a thanks for services rendered. ",
         "startDate": {
             "year": 541,
             "month": 14,
@@ -1191,7 +1197,7 @@
     },
     {
         "title": "Blessing of the Keys",
-        "content": "<p>Blessing of the Keys. Members of the clergy go house to house in villages, saying prayers</p><p>over any keys found within.</p>",
+        "content": "Blessing of the Keys. Members of the clergy go house to house in villages, saying prayers over any keys found within. ",
         "startDate": {
             "year": 541,
             "month": 15,
@@ -1206,7 +1212,7 @@
     },
     {
         "title": "Singing Grindstones",
-        "content": "<p>Singing Grindstones. Members of the Woodcutters\u2019 Guild return to the Weald. They stop</p><p>in villages and get their axes sharpened. Blacksmiths do not charge for this service today.</p>",
+        "content": "Singing Grindstones. Members of the Woodcutters\u2019 Guild return to the Weald. They stop in villages and get their axes sharpened. Blacksmiths do not charge for this service today. ",
         "startDate": {
             "year": 541,
             "month": 15,
@@ -1218,7 +1224,7 @@
     },
     {
         "title": "New Year\u2019s Eve",
-        "content": "<p>New Year\u2019s Eve. Throughout the land, all able-bodied villagers enter forests and fields to</p><p>seek out clutches of laceworker eggs, to destroy them before they can hatch in spring.</p>",
+        "content": "New Year\u2019s Eve. Throughout the land, all able-bodied villagers enter forests and fields to seek out clutches of laceworker eggs, to destroy them before they can hatch in spring. ",
         "startDate": {
             "year": 541,
             "month": 15,
@@ -1233,7 +1239,7 @@
     },
     {
         "title": "Mother's Moon",
-        "content": "<p>Visible for 3 nights during the Signs of the Grimme and Chance. This moon glows orange; its caress causes laceworker eggs to begin hatching en masse.</p>",
+        "content": "Visible for 3 nights during the Signs of the Grimme and Chance. This moon glows orange; its caress causes laceworker eggs to begin hatching en masse. ",
         "startDate": {
             "year": 541,
             "month": 15,
