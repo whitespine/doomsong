@@ -54,3 +54,13 @@ img {
         text-align: start;
     }
 }
+
+// Invisible windows 
+.doomsong-block {
+    background: none;
+    box-shadow: none;
+
+    section.window-content {
+        background: none;
+    }
+}

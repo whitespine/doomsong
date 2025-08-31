@@ -1,9 +1,16 @@
 import configuration from "./configuration.json"; 
 import events from "./events.json";
 
-export async function initCalendar() {
+export async function initCalendar(reset) {
     // Do base init
     await SimpleCalendar.api.configureCalendar(configuration);
+
+    // Clear ALL notes. TODO: Only remove notes in events
+    if(reset)  {
+        for(let note of SimpleCalendar.api.getNotes()) {
+            await SimpleCalendar.api.removeNote(note._id);
+        }
+    }
 
     // Add every event
     for (let evt of events) {

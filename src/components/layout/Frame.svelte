@@ -31,13 +31,14 @@
 <style lang="scss">
     .frame {
         display: grid;
-        grid-template: "t t t" 376px 
+        grid-template: "t t t" calc(376px / 2)
                        "l n r" 1fr
-                       "b b b" 381px / 15px 1fr 15px;
-        max-width: 880px;
+                       "b b b" calc(681px / 2) / 33px 300px 35px;
+        height: 100%;
 
-        > * {
-            background-size: cover;
+        .top,.bottom {
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
         }
 
         .top {
@@ -46,13 +47,19 @@
         }
 
         .column {
-            background-image: url("systems/doomsong/assets/frames/basic/bottom_frame.png");
+            background-image: url("systems/doomsong/assets/frames/basic/vert_border_spacer.png");
+            background-size: 100% 100%;
+            background-position-x: center;
 
             &.left {
+                margin-left: 8px;
+                margin-right: 2px;
                 grid-area: l;
             }
 
             &.right {
+                margin-left: 1px;
+                margin-right: 10px;
                 grid-area: r;
             }
         }
@@ -66,8 +73,9 @@
             grid-column: 1 / 4;
             grid-row: 1 / 4;
             background-color: white;
-            margin: 70px;
+            margin: 25px 35px;
             padding: 30px 45px;
+            max-width: 100%;
         }
     }
 
