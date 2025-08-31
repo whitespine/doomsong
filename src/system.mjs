@@ -31,6 +31,9 @@ Hooks.once('init', async function() {
       actor: DoomsongActor,
       message: DoomsongChatMessage,
       token: DoomsongTokenDocument
+    },
+    calendar: {
+      init: initCalendar
     }
   };
 });
