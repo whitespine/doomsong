@@ -69,7 +69,7 @@
         {#snippet field(key, label, path)}
             <div>
                 <label for={key}>{label}:</label>
-                <UpdateInput name={key} {data} {actor} {path} type="text" />
+                <UpdateInput name={key} {data} doc={actor} {path} type="text" />
             </div>
         {/snippet}
         {@render field("name", "Name", "name")}
