@@ -2,6 +2,9 @@
     import Die from "./Die.svelte";
     import roll_types from "./roll_types.json";
     import RollingDie from "./RollingDie.svelte";
+    import crest from "../../assets/icons/crest.png"
+    import skull from "../../assets/icons/skull.png"
+
     let { _id: id, author, speaker, flags, rolls, dsn_roll } = $props();
     let ds_data = $derived(flags[game.system.id]);
     let roll = $derived(Roll.fromJSON(rolls[0]));
@@ -52,13 +55,13 @@
     {:else if ds_data.coin_result == 1}
         <img
             class="doomcoin flipped"
-            src="systems/doomsong/assets/icons/crest.png"
+            src={crest}
             alt="Crest"
         />
     {:else if ds_data.coin_result == -1}
         <img
             class="doomcoin flipped"
-            src="systems/doomsong/assets/icons/skull.png"
+            src={skull}
             alt="Skull"
         />
     {/if}
@@ -84,13 +87,13 @@
             {#if result_key == "crest"}
                 <img
                     class="critical"
-                    src="systems/doomsong/assets/icons/crest.png"
+                    src={crest}
                     alt="Crest"
                 />
             {:else if result_key == "skull"}
                 <img
                     class="critical"
-                    src="systems/doomsong/assets/icons/skull.png"
+                    src={skull}
                     alt="Skull"
                 />
             {:else}

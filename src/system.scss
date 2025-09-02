@@ -64,3 +64,40 @@ img {
         background: none;
     }
 }
+
+// Framing
+
+.doomsong.actor.app {
+    box-shadow: none !important;
+    background: none;
+
+    & > header {
+        z-index: 10; // Just make it high as shit
+        color: black;
+        margin-left: 80px;
+        margin-right: 10px;
+    }
+
+    & > section.window-content {
+        padding: 5px 5px 5px 15px ; // Top right bottom left
+    }
+
+    // Need to bump it a bit down and to the right so it isn't blocked by the 
+    & > .window-resizable-handle {
+       bottom: -20px;
+       right: -25px;
+    }
+
+    &:not(.minimized)::before {
+        content: "";
+        position: absolute;
+        top: -13px;
+        left: -25px;
+        right: -35px;
+        bottom: -35px;
+        border: 155px solid transparent;
+        border-image: url("$assets/frames/DoomBorder.png") 155 repeat;
+        pointer-events: none;
+        z-index: 2;
+    }
+}

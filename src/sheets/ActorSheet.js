@@ -1,11 +1,23 @@
 import { svelte_render_override } from "../overrides/svelte_application_utils.svelte";
 
 export class DoomsongActorSheet extends ActorSheet {
+    static get defaultOptions() {
+        return foundry.utils.mergeObject(super.defaultOptions, {
+            closeOnSubmit: false,
+            submit: false,
+            submitOnClose: false,
+            submitOnChange: false,
+            resizable: true,
+            baseApplication: "ActorSheet",
+            classes: ["doomsong", "actor"],
+            // dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],
+            // secrets: [{ parentSelector: ".editor" }],
+            // token: null
+        });
+    }
+
     async _render(force = false, options = {}) {
         // Never submit? I think
-        options.submit = false;
-        options.submitOnClose = false;
-
         await svelte_render_override(this, this.componentToMount, () => {
             let wrapper = document.createElement("div");
             return wrapper
@@ -25,15 +37,15 @@ export class DoomsongActorSheet extends ActorSheet {
         let update = {
             img: img
         };
-        if(this.actor.token) {
+        if (this.actor.token) {
             current_token = this.actor.token.texture.src;
         } else {
             current_token = this.actor.prototypeToken.texture.src;
         }
         let sync = this.actor.img == current_token || current_token == mm;
-        if(!sync) {
+        if (!sync) {
             return this.actor.update(update);
-        } else if(this.actor.token) {
+        } else if (this.actor.token) {
             return this.actor.update(update).then(() => this.actor.token.update({
                 "texture.src": img
             }));
@@ -63,7 +75,7 @@ export class DoomsongActorSheet extends ActorSheet {
         await fp.browse();
     }
 
-    async getData(options={}) {
+    async getData(options = {}) {
         let base = await super.getData();
         base.app = this;
         base.data = foundry.utils.duplicate(base.data);

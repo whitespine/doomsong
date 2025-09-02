@@ -6,6 +6,11 @@ export default defineConfig({
   base: "/systems/doomsong/",
   root: "src/",
   publicDir: "../public",
+  resolve: {
+    alias: {
+      $assets: './assets'
+    }
+  },
   server: {
     host: "www.worthy-opponents.com",
     port: 20001,

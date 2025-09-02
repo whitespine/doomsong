@@ -6,6 +6,12 @@ export class DoomsongNPCSheet extends DoomsongActorSheet {
         return NPCSheetComponent;
     }
 
+    static get defaultOptions() {
+        return foundry.utils.mergeObject(super.defaultOptions, {
+            classes: ["doomsong", "actor", "npc"]
+        });
+    }
+
     _getHeaderButtons() {
         let buttons = super._getHeaderButtons();
 
