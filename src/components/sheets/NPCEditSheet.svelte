@@ -2,8 +2,9 @@
     import TraitTag from "../fields/TraitTag.svelte";
     import UpdateInput from "../fields/UpdateInput.svelte";
     import Die from "../rolls/Die.svelte";
-    let { data, actor, app } = $props();
-    $inspect(data);
+    let { context } = $props();
+    let source = $derived(context.source);
+    let actor = $derived(context.document);
 
     // Add a new basic move
     function addMove(act_index) {
@@ -26,33 +27,37 @@
     // Add a new tag
     function addTag() {
         const callback = (form, prefix) => {
-            let tag = new FormData(globalThis.$(form).find("form")[0]).get("tag");
+            let tag = form.elements.tag.value;
             let existing_tags = [...actor.system.tags];
             existing_tags.push(`${prefix}${tag}`);
             actor.update({
-                "system.tags": existing_tags
+                "system.tags": existing_tags,
             });
         };
-        let d = new Dialog({
-            title: "Add a Tag",
-            content: `<form><input type="text" name="tag"></input></form>`,
-            buttons: {
-                add: {
+        new foundry.applications.api.DialogV2({
+            window: { title: "Add a Tag" },
+            content: `<input type="text" name="tag" autofocus></input>`,
+            buttons: [
+                {
+                    action: "add",
                     label: "Add",
-                    callback: (f) => callback(f, "")
+                    callback: (evt, button, dialog) =>
+                        callback(button.form, ""),
                 },
-                add_defining: {
+                {
+                    action: "add_defining",
                     label: "Defining",
-                    callback: (f) => callback(f, "+")
+                    callback: (evt, button, dialog) =>
+                        callback(button.form, "+"),
                 },
-                add_super: {
+                {
+                    action: "add_super_defining",
                     label: "Epitome",
-                    callback: (f) => callback(f, "++"),
+                    callback: (evt, button, dialog) =>
+                        callback(button.form, "++"),
                 },
-            },
-            default: "add",
-        });
-        return d.render(true);
+            ],
+        }).render({ force: true });
     }
 </script>
 
@@ -61,7 +66,7 @@
     <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
     <img
         class="portrait"
-        src={data.img}
+        src={source.img}
         alt="potrait"
         onclick={() => app.editImage("img")}
     />
@@ -69,7 +74,13 @@
         {#snippet field(key, label, path)}
             <div>
                 <label for={key}>{label}:</label>
-                <UpdateInput name={key} {data} doc={actor} {path} type="text" />
+                <UpdateInput
+                    name={key}
+                    {source}
+                    doc={actor}
+                    {path}
+                    type="text"
+                />
             </div>
         {/snippet}
         {@render field("name", "Name", "name")}
@@ -93,24 +104,28 @@
             class="vibes"
             name="vibes"
             placeholder="put, some, descriptors, here"
-            {data}
+            data={source}
             doc={actor}
             path="system.vibes"
             type="text"
         />
         <div class="tags">
-            {#if data.system.tags.length == 0}
+            {#if source.system.tags.length == 0}
                 Add a tag!
             {:else}
-                {#each data.system.tags as tag, index}
-                    <TraitTag doc={actor} {data} path={`system.tags.${index}`} />
+                {#each source.system.tags as tag, index}
+                    <TraitTag
+                        doc={actor}
+                        {source}
+                        path={`system.tags.${index}`}
+                    />
                 {/each}
             {/if}
             <button onclick={addTag}>Add Tag</button>
         </div>
     </div>
     <div class="moves">
-        {#each data.system.moves as act_moves, act_index}
+        {#each source.system.moves as act_moves, act_index}
             <div class="act-body">
                 <Die
                     value={act_index + 1}
@@ -130,7 +145,7 @@
                             <UpdateInput
                                 tag="textarea"
                                 doc={actor}
-                                {data}
+                                {source}
                                 path={`system.moves.${act_index}.${move_index}`}
                                 style="resize: vertical"
                             />
@@ -153,7 +168,6 @@
 
     <div class="bio">
         <span>Description</span>
-
     </div>
 </div>
 
@@ -161,7 +175,7 @@
     .npc-sheet {
         display: grid;
         grid-template:
-            "p s" 150px
+            "p s" 200px
             "m m" 1fr
             "b b" 1fr / 150px 1fr;
 
@@ -174,6 +188,10 @@
             grid-area: s;
             display: grid;
             grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+
+            & > * {
+                margin: 5px;
+            }
 
             .vibes,
             .tags {
@@ -190,7 +208,7 @@
                 align-items: center;
                 button {
                     margin-left: auto;
-                    max-width: 60px;
+                    max-width: 80px;
                 }
             }
         }
@@ -218,7 +236,7 @@
                         flex-direction: row;
                         align-items: center;
 
-                        input {
+                        textarea {
                             flex-grow: 1;
                         }
                     }

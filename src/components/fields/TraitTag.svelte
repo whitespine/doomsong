@@ -1,9 +1,9 @@
 <script>
     import { resolveDotpath, spliceArrayItem, stepwiseResolveDotpath } from "../../utils/paths";
-    let { doc, data, path } = $props();
+    let { doc, source, path } = $props();
 
 
-    let value = $derived(resolveDotpath(data, path, ""));
+    let value = $derived(resolveDotpath(source, path, ""));
     let clean_value = $derived(value.replaceAll("+", ""));
     let clazz = $derived.by(() => {
         let leading_plusses = 0;
@@ -16,7 +16,6 @@
     });
 
     function cycle() {
-        console.log("Cycle");
         if (!value || !doc) return;
         let new_value;
         if (value?.startsWith("++")) {

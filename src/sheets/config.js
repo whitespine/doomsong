@@ -1,7 +1,7 @@
 import { DoomsongNPCSheet } from "./NPCSheet";
 
 export function setupSheets() {
-    Actors.unregisterSheet("core", ActorSheet);
+    foundry.documents.collections.Actors.unregisterSheet("core", foundry.applications.sheets.ActorSheetV2);
     // Actors.registerSheet(game.system.id, )
-    Actors.registerSheet(game.system.id, DoomsongNPCSheet, { types: ["npc"], makeDefault: true });
+    foundry.documents.collections.Actors.registerSheet(game.system.id, DoomsongNPCSheet, { types: ["npc"], makeDefault: true });
 }

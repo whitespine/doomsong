@@ -1,8 +1,8 @@
 import { svelte_render_override } from "../overrides/svelte_application_utils.svelte";
 
-export class DoomsongActorSheet extends ActorSheet {
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
+export class DoomsongActorSheet extends foundry.applications.sheets.ActorSheetV2 {
+    static get DEFAULT_OPTIONS() {
+        return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
             closeOnSubmit: false,
             submit: false,
             submitOnClose: false,
@@ -14,20 +14,6 @@ export class DoomsongActorSheet extends ActorSheet {
             // secrets: [{ parentSelector: ".editor" }],
             // token: null
         });
-    }
-
-    async _render(force = false, options = {}) {
-        // Never submit? I think
-        await svelte_render_override(this, this.componentToMount, () => {
-            let wrapper = document.createElement("div");
-            return wrapper
-        }, force, options);
-
-        this.object.apps[this.appId] = this;
-    }
-
-    get componentToMount() {
-        throw new TypeError("Do not instantiate this class directly");
     }
 
     // Helper for setting an image that also hits token
@@ -73,12 +59,5 @@ export class DoomsongActorSheet extends ActorSheet {
             }
         });
         await fp.browse();
-    }
-
-    async getData(options = {}) {
-        let base = await super.getData();
-        base.app = this;
-        base.data = foundry.utils.duplicate(base.data);
-        return base;
     }
 }

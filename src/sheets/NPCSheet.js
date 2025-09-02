@@ -1,15 +1,25 @@
 import NPCSheetComponent from "../components/sheets/NPCSheet.svelte";
+import { SvelteApplicationMixin } from "../overrides/svelte_mixin.svelte";
 import { DoomsongActorSheet } from "./ActorSheet";
 
-export class DoomsongNPCSheet extends DoomsongActorSheet {
-    get componentToMount() {
-        return NPCSheetComponent;
+export class DoomsongNPCSheet extends SvelteApplicationMixin(DoomsongActorSheet) {
+    static get DEFAULT_OPTIONS() {
+        return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
+            classes: ["doomsong", "actor", "npc"],
+            svelte: {
+                component: NPCSheetComponent
+            },
+            window: {
+                resizable: true,
+            },
+            position: {
+                width: 900
+            }
+        });
     }
 
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ["doomsong", "actor", "npc"]
-        });
+    static get foo() {
+        return "haha";
     }
 
     _getHeaderButtons() {

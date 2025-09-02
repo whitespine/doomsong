@@ -1,8 +1,8 @@
 <script>
     import { resolveDotpath } from "../../utils/paths";
-    let { tag="input", doc, data, path, class: className, ...restProps } = $props();
+    let { tag="input", doc, source, path, class: className, ...restProps } = $props();
 
-    let value = $state(resolveDotpath(data, path, ""));
+    let value = $derived(resolveDotpath(source, path, ""));
 
     let change_timeout = null;
     function commit(new_value, delay) {
