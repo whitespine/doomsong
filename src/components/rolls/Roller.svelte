@@ -122,11 +122,13 @@
                             >
                                 <i class="fas fa-caret-up"></i>
                             </button>
-                            </div>
-                        {:else if category == "Conditions"}
+                        </div>
+                    {:else if category == "Conditions"}
                         <div class="extra mid" data-tooltip="Other bonuses">
                             <span>
-                                Bonus: {choices.Extra > 0 ? "+" : ""}{choices.Extra}
+                                Bonus: {choices.Extra > 0
+                                    ? "+"
+                                    : ""}{choices.Extra}
                             </span>
                         </div>
                     {:else if category == "Allies"}
@@ -153,13 +155,19 @@
 
 <style lang="scss">
     .container {
-        background-image: url("../../ui/parchment.jpg");
+        background-color: white;
+        border: solid black 1px;
         padding: 5px;
         margin-right: 10px;
         display: flex;
         flex-direction: column;
         z-index: calc(var(--z-index-ui) + 10);
         pointer-events: all;
+        color: black;
+
+        * {
+            color: black;
+        }
     }
 
     .header {
@@ -173,6 +181,8 @@
             flex-grow: 1;
             margin-right: 30px;
             font-size: larger;
+            background-color: black;
+            color: white;
         }
 
         // Our difficulty buttons
@@ -208,6 +218,7 @@
         align-items: center;
         justify-items: center;
 
+
         // Center text for modifiers
         div {
             width: 100%;
@@ -223,12 +234,14 @@
 
         // Our extra bonus modifier zone
         .extra {
-            &.top, &.mid, &.bottom {
+            &.top,
+            &.mid,
+            &.bottom {
                 border-left: 1px solid black;
                 border-right: 1px solid black;
             }
             &.mid {
-                justify-content: center; 
+                justify-content: center;
                 font-size: large;
             }
             &.top {
@@ -245,6 +258,7 @@
             font-size: large;
             font-weight: normal;
             box-shadow: none;
+            width: 100%;
 
             outline: none;
             border-radius: 0px;
@@ -256,23 +270,15 @@
                 font-weight: bolder;
             }
         }
-
-        // Alternate rows
-        /*
-        > *:nth-child(12n+1),
-        > *:nth-child(12n+2),
-        > *:nth-child(12n+3),
-        > *:nth-child(12n+4),
-        > *:nth-child(12n+5),
-        > *:nth-child(12n+6) {
-            background: grey;
-        }
-        */
     }
 
     .roll-buttons {
         display: flex;
         flex-direction: row;
+
+        button {
+            flex-grow: 1;
+        }
     }
 
     /*
