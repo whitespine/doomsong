@@ -9,6 +9,27 @@ export const DOOMSONG = {
             calendar: "init_calendar",
             pdf: "init_pdf",
             tokens: "init_tokens"
+        },
+        combat: {
+            view_acts: {
+                key: "view_acts",
+                options: {
+                    before_plan: "Before players plan",
+                    after_plan: "After players confirm plans",
+                    next_act: "Only within the span of an act",
+                    never: "Never",
+                }
+            },
+            view_actions: {
+                key: "view_actions",
+                options: {
+                    all_for_act: "All actions for an act will be displayed",
+                    on_click_temp: "Actions will be revealed as the Game Master clicks on them, and be visible for this act only",
+                    // on_click_perm: "Actions will be revealed as the Game Master clicks on them, and be visible forevermore",
+                    never: "Never"
+                }
+
+            }
         }
     },
 

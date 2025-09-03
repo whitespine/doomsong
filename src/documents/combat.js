@@ -52,7 +52,6 @@ export class DoomsongCombat extends Combat {
             // Reset all combatant dice if entering "begin"
             if (next == "begin") {
                 await this.clearSetDice();
-                update.round = this.round + 1;
             }
 
             // Finally perform our update
@@ -93,11 +92,9 @@ export class DoomsongCombat extends Combat {
                 "begin": "end",
             }[this.system.phase] || "begin";
 
-            // Finally perform our update, polyfilling round and turn data
-            let round = prev == "end" ? this.round - 1 : this.round;
+            // Finally perform our update
             return this.update({
-                "system.phase": prev,
-                round
+                "system.phase": prev
             });
         }
     }
@@ -131,6 +128,35 @@ export class DoomsongCombat extends Combat {
 
     }
 
+    _onUpdate(changed, options, userId) {
+        super._onUpdate(changed, options, userId);
+        // always update turn markers
+        this._updateTurnMarkers();
+
+        let stateChanged = true;
+        if (this.active) {
+            // const play = c => c && (game.user.isGM ? !c.hasPlayerOwner : c.isOwner);
+            // if ( play(this.combatant) ) this._playCombatSound("yourTurn");
+            // else if ( play(this.nextCombatant) ) this._playCombatSound("nextUp");
+        }
+    }
+
+    _updateTurnMarkers() {
+        if (!canvas.ready) return;
+        const any_active = this.system.phase == "acts" && this.active;
+        const current_tokens = any_active ? this.combatantsByAct[this.system.act].map(cba => cba.combatant.token.object) : [];
+
+        // Clean up inactive
+        for (const token of canvas.tokens.turnMarkers) {
+            if (!current_tokens.includes(token)) token.renderFlags.set({ refreshTurnMarker: true });
+        }
+
+        // Set up active
+        for (const token of current_tokens) {
+            token?.renderFlags.set({ refreshTurnMarker: true });
+        }
+    }
+
     // Returns an Object<ActNumber, Array<[combatant, dice_this_act]>>
     get combatantsByAct() {
         let result = {};
@@ -150,17 +176,6 @@ export class DoomsongCombat extends Combat {
             result[act] = all_this_act;
         }
         return result;
-    }
-
-    polyfillTurn(phase, act = 0) {
-        // Polyfill turns from our more complex bullshit. This makes turn markers work
-        return {
-            "begin": 0,
-            "set": 1,
-            "acts": 2 + (act),
-            "retreat": 9,
-            "end": 10,
-        }[phase] ?? 0;
     }
 }
 
@@ -240,6 +255,7 @@ export class DoomsongCombatant extends Combatant {
         return this.img ?? CONST.DEFAULT_TOKEN;
     }
 
+    // Ping this combatant's token
     ping() {
         if (!canvas.ready || (this.sceneId !== canvas.scene.id)) return;
         const token = this.token?.object;
