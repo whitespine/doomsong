@@ -92,9 +92,9 @@ export class DoomsongCombat extends Combat {
                 "end": "retreat",
                 "begin": "end",
             }[this.system.phase] || "begin";
-            let round = prev == "begin" ? this.round - 1 : this.round;
 
-            // Finally perform our update
+            // Finally perform our update, polyfilling round and turn data
+            let round = prev == "end" ? this.round - 1 : this.round;
             return this.update({
                 "system.phase": prev,
                 round
@@ -126,6 +126,11 @@ export class DoomsongCombat extends Combat {
         await DoomsongCombatant.updateDocuments(updates, { parent: this });
     }
 
+    // Disable this function
+    _manageTurnEvents() {
+
+    }
+
     // Returns an Object<ActNumber, Array<[combatant, dice_this_act]>>
     get combatantsByAct() {
         let result = {};
@@ -147,18 +152,15 @@ export class DoomsongCombat extends Combat {
         return result;
     }
 
-    _preUpdate(updateData, meta, user) {
-        if (updateData?.system?.phase || updateData?.system?.act) {
-            // Polyfill turns from our more complex bullshit. This makes turn markers work
-            updateData.turn = {
-                "begin": 0,
-                "set": 1,
-                "acts": 2 + (updateData?.system.act ?? this.system.act),
-                "retreat": 10,
-                "end": 11,
-            }[updateData?.system?.phase || this?.system?.phase] ?? 0;
-        }
-        return super._preUpdate(updateData, meta, user);
+    polyfillTurn(phase, act=0) {
+        // Polyfill turns from our more complex bullshit. This makes turn markers work
+        return {
+            "begin": 0,
+            "set": 1,
+            "acts": 2 + (act),
+            "retreat": 9,
+            "end": 10,
+        }[phase] ?? 0;
     }
 }
 
