@@ -77,7 +77,8 @@ Hooks.once('ready', async function() {
 
 // Mount our ui components
 Hooks.once('ready', async function() {
-  let ui_bottom = document.querySelector("#ui-bottom");
+  // let ui_bottom = document.querySelector("#ui-bottom");
+  let ui_bottom = document.querySelector("#ui-right-column-1");
   mount(Roller, {
     target: ui_bottom
   });

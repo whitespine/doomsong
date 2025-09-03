@@ -164,10 +164,6 @@
         z-index: calc(var(--z-index-ui) + 10);
         pointer-events: all;
         color: black;
-
-        * {
-            color: black;
-        }
     }
 
     .header {
@@ -181,21 +177,22 @@
             flex-grow: 1;
             margin-right: 30px;
             font-size: larger;
-            background-color: black;
-            color: white;
         }
 
         // Our difficulty buttons
         button {
             width: 30px;
             font-size: x-large;
+            border-radius: 0px;
 
             &.add {
-                background-color: orange;
+                color: white;
+                background-color: black;
             }
 
             &.subtract {
-                background-color: teal;
+                background-color: white;
+                color: black;
             }
         }
 
@@ -265,9 +262,11 @@
             border: none;
             padding: 0;
             background: none;
+            color: black;
+
             &.active {
-                box-shadow: inset 0 0 0 2px black;
-                font-weight: bolder;
+                color: white;
+                background-color: black;
             }
         }
     }

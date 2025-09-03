@@ -57,9 +57,14 @@
 
     button,
     input,
-    textarea {
+    textarea,
+    select {
         background-color: black;
         color: white
+    }
+
+    button, select {
+        border-radius: 0px;
     }
 
     // Custom tooltip
