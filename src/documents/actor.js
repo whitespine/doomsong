@@ -16,7 +16,7 @@ export class DoomsongActor extends Actor {
         if (data["system.toughness_bar.value"]) data["system.toughness"] = data["system.toughness_bar.value"];
 
         // Fix array updates then delegate to super
-        data = this.system.fullUpdateData(data);
+        // data = this.system.fullUpdateData(data);
         return super.update(data, options);
     }
 
@@ -39,7 +39,7 @@ export class DoomsongActor extends Actor {
         if(data.prototypeToken?.disposition == undefined) {
             mods["prototypeToken.disposition"]= {
                 "player": CONST.TOKEN_DISPOSITIONS.FRIENDLY,
-                "npc": CONST.TOKEN_DISPOSITIONS.SECRET,
+                "npc": CONST.TOKEN_DISPOSITIONS.HOSTILE,
             }[data.type] || CONST.TOKEN_DISPOSITIONS.NEUTRAL;
         }
 
