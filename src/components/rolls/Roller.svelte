@@ -231,6 +231,7 @@
 
         // Our extra bonus modifier zone
         .extra {
+            // margin: 1px;
             &.top,
             &.mid,
             &.bottom {
@@ -240,12 +241,6 @@
             &.mid {
                 justify-content: center;
                 font-size: large;
-            }
-            &.top {
-                border-top: 1px solid black;
-            }
-            &.bottom {
-                border-bottom: 1px solid black;
             }
         }
 
