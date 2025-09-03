@@ -20,22 +20,23 @@ export class DoomsongChatMessage extends ChatMessage {
         }
 
         // Expects jquery format
-        await sleep(100);
-        return globalThis.$(this._svelte_wrapper);
+        // await sleep(100);
+        return this._svelte_wrapper;
     }
 
     // For doomsong rolls, we have a custom svelte component :)
     async getRollHTML() {
+        console.log("Roll html");
         return this.populateAsComponent(RollMessage);
     }
 
     // Override base function
-    async getHTML() {
+    async renderHTML() {
         if (this.flags[game.system.id]?.["type"] == "roll") {
             return this.getRollHTML();
             // Todo support other types of rolls
         } else {
-            return super.getHTML();
+            return super.renderHTML();
         }
     }
 }

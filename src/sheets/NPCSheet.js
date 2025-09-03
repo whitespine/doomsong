@@ -18,10 +18,6 @@ export class DoomsongNPCSheet extends SvelteApplicationMixin(DoomsongActorSheet)
         });
     }
 
-    static get foo() {
-        return "haha";
-    }
-
     _getHeaderButtons() {
         let buttons = super._getHeaderButtons();
 
@@ -34,13 +30,6 @@ export class DoomsongNPCSheet extends SvelteApplicationMixin(DoomsongActorSheet)
                 let block = this._svelte_props.block ?? false;
                 block = !block;
                 this._svelte_props.block = block;
-                console.log(this._svelte_wrapper);
-                console.log(this);
-                if(block) {
-                    this.element.addClass("doomsong-block");
-                } else {
-                    this.element.removeClass("doomsong-block");
-                }
             }
         });
 

@@ -85,12 +85,12 @@
 
 <div class="doomsong container">
     <div class="header">
-        <select onchange={selectRollType}>
+        <select class="elevated" onchange={selectRollType}>
             {#each Object.entries(roll_types) as [key, type]}
                 <option value={key}>{type.label}</option>
             {/each}
         </select>
-        <span class="difficulty">Difficulty:</span>
+        <span class="elevated difficulty">Difficulty:</span>
         <button class="add" onclick={() => difficulty++}>+</button>
         <span class="difficulty value" data-tooltip="Difficulty"
             >{difficulty}</span
@@ -204,11 +204,6 @@
         }
     }
 
-    select {
-        // height: 40px;
-        height: 100%;
-    }
-
     .roll-options {
         display: grid;
         grid-template: 1fr / 2fr repeat(4, 1fr) 2fr;
@@ -236,7 +231,6 @@
             &.mid,
             &.bottom {
                 border-left: 1px solid black;
-                border-right: 1px solid black;
             }
             &.mid {
                 justify-content: center;
@@ -248,7 +242,6 @@
         button {
             cursor: pointer;
             font-size: large;
-            font-weight: normal;
             box-shadow: none;
             width: 100%;
 
