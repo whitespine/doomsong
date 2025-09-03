@@ -6,9 +6,11 @@
 <div class="flexcol">
     <span>{@html game.i18n.localize("DS.combat.phase_detail.begin")}</span>
     {#each zip(combat.combatants.contents, source.combatants) as [combatant, cdata]}
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <!-- svelte-ignore a11y_no_static_element_interactions -->
         <div
             class="combatant"
-            onclick={() => combatant.actor.sheet.render(true)}
+            onclick={() => combatant.ping()}
             oncontextmenu={() => combatant.delete()}
         >
             <img class="thumbnail" src={combatant.thumbnail} alt={cdata.name} />

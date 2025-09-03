@@ -18,11 +18,13 @@
 </script>
 
 <div class="planner">
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
     <img
         class="thumbnail"
         src={combatant.thumbnail}
         alt={combatant.name}
-        onclick={() => combatant.actor.sheet.render(true)}
+        onclick={() => combatant.ping()}
         oncontextmenu={() => combatant.delete()}
     />
     <h2>{combatant.name}</h2>

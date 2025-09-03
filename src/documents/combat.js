@@ -152,7 +152,7 @@ export class DoomsongCombat extends Combat {
         return result;
     }
 
-    polyfillTurn(phase, act=0) {
+    polyfillTurn(phase, act = 0) {
         // Polyfill turns from our more complex bullshit. This makes turn markers work
         return {
             "begin": 0,
@@ -238,5 +238,15 @@ export class DoomsongCombatant extends Combatant {
         //return combatant._thumb = await game.video.createThumbnail(combatant._videoSrc, {width: 100, height: 100});
         //}
         return this.img ?? CONST.DEFAULT_TOKEN;
+    }
+
+    ping() {
+        if (!canvas.ready || (this.sceneId !== canvas.scene.id)) return;
+        const token = this.token?.object;
+        if (!token || !token.visible) {
+            ui.notifications.warn("COMBAT.WarnNonVisibleToken", { localize: true });
+            return;
+        }
+        return canvas.ping(token.center);
     }
 }

@@ -14,7 +14,8 @@
 <div class="combatants">
     {#each combatant_actions as c}
         {#if canSee(c.combatant)}
-            <div class="combatant">
+            <!-- svelte-ignore a11y_click_events_have_key_events -->
+            <div class="combatant" onclick={() => c.combatant.ping()} role="presentation" >
                 <div class="thumbnail">
                     <img
                         src={c.combatant.thumbnail}
