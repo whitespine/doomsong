@@ -2,19 +2,13 @@
     import Die from "../rolls/Die.svelte";
     import RollingDie from "../rolls/RollingDie.svelte";
     let { combat, combat_source, combatant, source } = $props();
+    import { DOOMSONG } from "../../consts";
 
-    let can_see_moves = $derived(
-        combatant.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER,
-    );
-    let can_edit = $derived(
-        combatant.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
-    );
-
-    let add_die_cursor = $derived.by(() => {
-        let owns = can_edit; 
-        let can_set = combatant.canSetDie() ? "pointer" : "default";
-        return owns && can_set;
-    });
+    let owner = $derived(combatant.owner);
+    let visible_dice = $derived(combatant.visible_dice);
+    $inspect(owner);
+    let set_cursor = $derived((owner && combatant.canSetDie()) ? "pointer" : "default");
+    let clear_cursor = $derived(owner ? "pointer" : "default");
 </script>
 
 <div class="planner">
@@ -31,23 +25,23 @@
     <div class="dice-box">
         {#each [1, 2, 3, 4, 5, 6] as act}
             <Die
-                style={`cursor: ${add_die_cursor}`}
+                style={`cursor: ${set_cursor}`}
                 value={act}
                 onclick={() => combatant.setDice(act)}
-                data-tooltip={ can_see_moves ? combatant.actor.actTooltip(act) : "This creature's capabilities are a mystery"}
+                data-tooltip={ combatant.actTooltip(act) }
                 data-tooltip-class="doomsong actions"
             />
         {/each}
     </div>
     <div class="plan-box">
         {#each { length: combatant.system.available_dice }, set_index}
-            {#if can_see_moves && combatant.system.set_dice[set_index]}
+            {#if visible_dice[set_index]}
                 <Die
-                    value={combatant.system.set_dice[set_index]}
-                    style="cursor: pointer"
-                    onclick={() => combatant.unsetDie(combatant.system.set_dice[set_index])}
-                    oncontextmenu={() => combatant.unsetDie(combatant.system.set_dice[set_index])}
-                    data-tooltip={ combatant.actor.actTooltip(combatant.system.set_dice[set_index]) }
+                    value={visible_dice[set_index]}
+                    style={`cursor: ${clear_cursor}`}
+                    onclick={() => combatant.unsetDie(visible_dice[set_index])}
+                    oncontextmenu={() => combatant.unsetDie(visible_dice[set_index])}
+                    data-tooltip={ combatant.actTooltip(visible_dice[set_index]) }
                     data-tooltip-class="doomsong actions"
                 />
             {:else}

@@ -1,3 +1,4 @@
+import { DOOMSONG } from "../consts";
 
 
 export class DoomsongCombat extends Combat {
@@ -144,7 +145,14 @@ export class DoomsongCombat extends Combat {
     _updateTurnMarkers() {
         if (!canvas.ready) return;
         const any_active = this.system.phase == "acts" && this.active;
-        const current_tokens = any_active ? this.combatantsByAct[this.system.act].map(cba => cba.combatant.token.object) : [];
+        // Get the on deck tokens if this combat is active
+        const current_tokens = any_active ? this.combatantsByAct[this.system.act].map(cba => cba.combatant.token.object).filter(x => x) : [];
+
+        // Remove foe tokens if settings don't let you see same act 
+        let view_acts = game.settings.get(game.system.id, DOOMSONG.settings.combat.view_acts.key);
+        if (view_acts == "never") {
+            current_tokens = current_tokens.filter(t => t.document?.disposition == CONST.TOKEN_DISPOSITIONS.FRIENDLY); // Only show friendly
+        }
 
         // Clean up inactive
         for (const token of canvas.tokens.turnMarkers) {
@@ -264,5 +272,57 @@ export class DoomsongCombatant extends Combatant {
             return;
         }
         return canvas.ping(token.center);
+    }
+
+    // Helper shorthand. Do we own this combatant?
+    get owner() {
+        return this.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
+    }
+
+    // Helper shorthand. Are we an owner or observer on this combatant. Todo: loft to document level, somehow?
+    get observer() {
+        return this.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER;
+    }
+
+    // Helper shorthand. Is the token friendly?
+    get friendly() {
+        return (this.token?.disposition || 0) >= CONST.TOKEN_DISPOSITIONS.FRIENDLY;
+    }
+
+    // For determining if an npc's set die is visible for the given act
+    get visible_dice() {
+        // Determine if acts visible at the current phase of combat
+        if (this.observer || this.friendly) {
+            return this.system.set_dice;
+        } else {
+            // Depends on mode and combat state
+            let combat = this.combat;
+            let mode = game.settings.get(game.system.id, DOOMSONG.settings.combat.view_acts.key);
+            switch (combat.system.phase) {
+                default:
+                case "begin":
+                    return [];
+                case "set":
+                    return mode == "before_plan" ? this.system.set_dice : [];
+                case "acts":
+                    return mode == "after_plan" ? this.system.set_dice : (mode == "next_act" ? this.system.set_dice.filter(d => d <= combat.system.act) : []);
+                case "retreat":
+                case "end":
+                    return this.system.set_dice;
+            }
+        }
+
+    }
+
+    // Generates html for a tooltip describing the moves available for a dice in a given act - but only if you can see them!
+    actTooltip(act) {
+        if(this.observer || this.friendly) {
+            let moves = this.actor.system.moves[act - 1];
+            let items = moves.map(move => `<li>${move}</li>`);
+            return `<ul>${items.join("")}</ul>`;
+        } else {
+            // TODO: Allow revelation of enemy capabilities
+            return "<span>This being's capabilities are unknown</span>";
+        }
     }
 }

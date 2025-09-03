@@ -32,23 +32,25 @@ export function setupSettings() {
     });    
 
     // Combat view options
-    game.settings.register(game.system.id, DOOMSONG.settings.combat.view_acts, {
-        name: "Show enemy Acts",
+    game.settings.register(game.system.id, DOOMSONG.settings.combat.view_acts.key, {
+        name: "Show enemy acts",
         hint: "When, if ever, to show when enemies intend to act",
         scope: 'world',
         type: String,
         config: true,
-        choices: DOOMSONG.settings.combat.view_actions.options,
-        default: "never"
+        choices: DOOMSONG.settings.combat.view_acts.options,
+        default: "never",
+        requiresReload: true
     });
 
-    game.settings.register(game.system.id, DOOMSONG.settings.combat.view_actions, {
-        name: "Show enemy actions",
+    game.settings.register(game.system.id, DOOMSONG.settings.combat.view_moves.key, {
+        name: "Show enemy moves",
         hint: "When, if ever, to show what acts an enemy is capable of",
         scope: 'world',
         type: String,
         config: true,
-        choices: DOOMSONG.settings.combat.view_actions.options,
-        default: "never"
+        choices: DOOMSONG.settings.combat.view_moves.options,
+        default: "never",
+        requiresReload: true
     });
 }

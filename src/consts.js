@@ -20,7 +20,7 @@ export const DOOMSONG = {
                     never: "Never",
                 }
             },
-            view_actions: {
+            view_moves: {
                 key: "view_actions",
                 options: {
                     all_for_act: "All actions for an act will be displayed",

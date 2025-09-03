@@ -1,5 +1,5 @@
 
-export class DoomsongToken extends Token {
+export class DoomsongToken extends foundry.canvas.placeables.Token {
     /**
      * Refresh presentation of the Token's combat turn marker, if any.
      * @protected
@@ -32,7 +32,7 @@ export class DoomsongToken extends Token {
     }
 }
 
-export class DoomsongTokenDocument extends TokenDocument {
+export class DoomsongTokenDocument extends foundry.documents.TokenDocument {
     // Fix our bars to be editable
     getBarAttribute(s) {
         let sub = super.getBarAttribute(s);

@@ -64,10 +64,4 @@ export class DoomsongActor extends Actor {
         this.system.attack_difficulty = Math.max(this.system.toughness + this.system.protection, this.system.min_difficulty || 0);
     }
 
-    // Generates html for a tooltip describing the moves available for a dice in a given act
-    actTooltip(act) {
-        let moves = this.system.moves[act - 1];
-        let items = moves.map(move => `<li>${move}</li>`);
-        return `<ul>${items.join("")}</ul>`;
-    }
 }
