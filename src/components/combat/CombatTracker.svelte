@@ -1,70 +1,43 @@
 <script>
-    import { onMount, onDestroy } from "svelte";
     import SetPhase from "./SetPhase.svelte";
     import ActsPhase from "./ActsPhase.svelte";
-    import { mimic } from "../../utils/mimic";
     import Die from "../rolls/Die.svelte";
+    import BeginPhase from "./BeginPhase.svelte";
 
     // A clunky bit of state, stands for current combat. Needed to get past svelte "optimization" until theres a proper invalidate rune
-    let cc = $state.raw(mimic(game.combat));
-
-    // Make a hook on mount to track any changes to combatants. TODO - fix updateCombat to not potentially thrash?
-    let combat_hooks = [];
-
-    // Force a re-render
-    function tick() {
-        cc = mimic(game.combat);
-    }
-    onMount(() => {
-        combat_hooks.push(
-            Hooks.on("updateCombat", tick),
-            Hooks.on("updateCombatant", tick),
-            Hooks.on("createCombatant", tick),
-            Hooks.on("deleteCombatant", tick),
-        );
-    });
-
-    // Cleanup hook on destroy
-    onDestroy(() => {
-        for (let hook of combat_hooks) {
-            try {
-                Hooks.off(hook);
-            } catch (e) {
-                console.warn(e);
-            } // Don't care
-        }
-    });
+    let { context } = $props();
+    let combat = $derived(context.combat);
+    let source = $derived(context.source);
 </script>
 
 <div class="combat-tracker">
-    {#if cc == null}
-        <span>No current combat. TODO: Add a button here to add one</span>
+    {#if combat == null}
+        <span>No current combat. Toggle combat on tokens to create one.</span>
     {:else}
         <h1>
-            <span>{game.i18n.localize(`DS.combat.phase.${cc.system.phase}`)}</span>
-            {#if cc.system.phase == "acts"}
-                <Die value={cc.system.act} />
+            <span>{game.i18n.localize(`DS.combat.phase.${source.system.phase}`)}</span>
+            {#if source.system.phase == "acts"}
+                <Die value={source.system.act} />
             {/if}
         </h1>
         <div class="content">
             <div class="phase">
-                {#if cc.system.phase == "begin"}
-                    {@html game.i18n.localize("DS.combat.phase_detail.begin")}
-                {:else if cc.system.phase == "set"}
-                    <SetPhase {cc} />
-                {:else if cc.system.phase == "acts"}
-                    <ActsPhase {cc} />
-                {:else if cc.system.phase == "retreat"}
+                {#if source.system.phase == "begin"}
+                    <BeginPhase {combat} {source} />
+                {:else if source.system.phase == "set"}
+                    <SetPhase {combat} {source} />
+                {:else if source.system.phase == "acts"}
+                    <ActsPhase {combat} {source} />
+                {:else if source.system.phase == "retreat"}
                     {@html game.i18n.localize("DS.combat.phase_detail.retreat")}
-                {:else if cc.system.phase == "end"}
+                {:else if source.system.phase == "end"}
                     {@html game.i18n.localize("DS.combat.phase_detail.end")}
                 {/if}
             </div>
         </div>
         <nav class="phase-controls">
-            <!-- Buttons to control combat -->
-            <button onclick={() => cc.prevPhase()}>Previous</button>
-            <button onclick={() => cc.nextPhase()}>Next</button>
+            <button onclick={() => combat.prevPhase()}>Previous</button>
+            <button onclick={() => combat.nextPhase()}>Next</button>
         </nav>
     {/if}
 </div>
@@ -77,6 +50,7 @@
         color: black;
         height: 100%;
         overflow: hidden auto;
+        padding: 5px;
     }
 
     .phase {

@@ -1,18 +1,9 @@
 <script>
-    let { cc } = $props();
-    let act = $derived(cc.system.act);
+    let { combat, source } = $props();
+    let act = $derived(source.system.act);
 
     // An array containing [{combatant: combatant, actions: actions}] they can do in this act}
-    let combatant_actions = $derived(cc.combatantsByAct[act]);
-
-    // Get a thumbnail for a combatant
-    function thumbnail(combatant) {
-        //if ( combatant._videoSrc && !combatant.img ) {
-        //if ( combatant._thumb ) return combatant._thumb;
-        //return combatant._thumb = await game.video.createThumbnail(combatant._videoSrc, {width: 100, height: 100});
-        //}
-        return combatant.img ?? CONST.DEFAULT_TOKEN;
-    }
+    let combatant_actions = $derived(combat.combatantsByAct[act]);
 
     const canSeeMoves = (combatant) =>
         combatant.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER;
@@ -26,13 +17,13 @@
             <div class="combatant">
                 <div class="thumbnail">
                     <img
-                        src={thumbnail(c.combatant)}
+                        src={c.combatant.thumbnail}
                         alt={c.combatant.name}
                     />
                 </div>
                 <div class="header">
                     <h2>{c.combatant.name}</h2>
-                    <h3>Move a short distance and perform {c.actions} action{c.actions > 1 ? "s" : ""}</h3>
+                    <h4>Move a short distance and perform {c.actions} action{c.actions > 1 ? "s" : ""}</h4>
                 </div>
                 <ul class="actions">
                     {#if !canSeeMoves(c.combatant)}

@@ -82,7 +82,7 @@ Hooks.once('ready', async function() {
   mount(Roller, {
     target: ui_bottom
   });
-})
+});
 
 // HMR reload of various components
 if (import.meta.hot) {

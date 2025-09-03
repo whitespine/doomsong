@@ -1,15 +1,8 @@
 <script>
     import Die from "../rolls/Die.svelte";
     import RollingDie from "../rolls/RollingDie.svelte";
-    let { combatant } = $props();
+    let { combat, combat_source, combatant, source } = $props();
 
-    let thumbnail = $derived.by(() => {
-        //if ( combatant._videoSrc && !combatant.img ) {
-        //if ( combatant._thumb ) return combatant._thumb;
-        //return combatant._thumb = await game.video.createThumbnail(combatant._videoSrc, {width: 100, height: 100});
-        //}
-        return combatant.img ?? CONST.DEFAULT_TOKEN;
-    });
     let can_see_moves = $derived(
         combatant.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OBSERVER,
     );
@@ -27,7 +20,7 @@
 <div class="planner">
     <img
         class="thumbnail"
-        src={thumbnail}
+        src={combatant.thumbnail}
         alt={combatant.name}
         onclick={() => combatant.actor.sheet.render(true)}
         oncontextmenu={() => combatant.delete()}
@@ -93,6 +86,7 @@
         h2 {
             grid-area: h;
             border-bottom: none;
+            font-size: x-large;
         }
 
         .plan-box {

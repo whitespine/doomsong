@@ -1,7 +1,7 @@
 import { DoomsongChatMessage } from "../overrides/DoomsongChatMessage.svelte";
 import { DoomsongActor } from "./actor";
 import { DoomsongCombat, DoomsongCombatant } from "./combat";
-import { DoomsongTokenDocument } from "./token";
+import { DoomsongToken, DoomsongTokenDocument } from "./token";
 
 export function setupDocuments() {
     // CONFIG.Item.documentClass = IconItem;
@@ -9,6 +9,7 @@ export function setupDocuments() {
     CONFIG.ChatMessage.documentClass = DoomsongChatMessage;
     // CONFIG.ActiveEffect.documentClass = LancerActiveEffect;
     CONFIG.Token.documentClass = DoomsongTokenDocument;
+    CONFIG.Token.objectClass = DoomsongToken;
     CONFIG.Combat.documentClass = DoomsongCombat;
     CONFIG.Combatant.documentClass = DoomsongCombatant;
 

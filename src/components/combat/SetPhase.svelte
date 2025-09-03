@@ -1,13 +1,12 @@
 <script>
+    import { zip } from "../../utils/zip";
     import SetPlanner from "./SetPlanner.svelte";
-    import { mimic } from "../../utils/mimic";
-    let { cc } = $props();
-    let combatants = $derived(cc.combatants.map(c => mimic(c)));
+    let { combat, source } = $props();
 </script>
 
 
 <div class="flexcol">
-    {#each combatants as combatant}
-        <SetPlanner {combatant}> </SetPlanner>
+    {#each zip(combat.combatants.contents, source.combatants) as [combatant, combatant_source]}
+        <SetPlanner {combat} combat_source={source} {combatant} source={combatant_source}> </SetPlanner>
     {/each}
 </div>
