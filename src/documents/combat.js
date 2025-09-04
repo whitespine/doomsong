@@ -317,8 +317,8 @@ export class DoomsongCombatant extends Combatant {
     // Generates html for a tooltip describing the moves available for a dice in a given act - but only if you can see them!
     actTooltip(act) {
         if (this.observer || this.friendly) {
-            let moves = this.actor.system.moves[act - 1];
-            let items = moves.map(move => `<li>${move}</li>`);
+            let moves = Object.values(this.actor.system.moves[act]);
+            let items = moves.map(move => `<li>${move.name}: ${move.text}</li>`);
             return `<ul>${items.join("")}</ul>`;
         } else {
             // TODO: Allow revelation of enemy capabilities

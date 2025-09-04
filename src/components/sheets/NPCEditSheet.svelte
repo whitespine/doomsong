@@ -2,6 +2,7 @@
     import TraitTag from "../fields/TraitTag.svelte";
     import UpdateInput from "../fields/UpdateInput.svelte";
     import Die from "../rolls/Die.svelte";
+    import { prevent } from "../../utils/handlers";
     let { context } = $props();
     let source = $derived(context.source);
     let actor = $derived(context.document);
@@ -16,7 +17,7 @@
     // Remove the specified move
     function deleteMove(act, move_id) {
         actor.update({
-            [`-=system.moves.${act}.${move_id}`]: null,
+            [`system.moves.${act}.-=${move_id}`]: null,
         });
     }
 
@@ -57,7 +58,7 @@
     }
 </script>
 
-<div class="npc-sheet">
+<div class="npc-sheet" onsubmit={prevent}>
     <div class="header">
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
@@ -65,41 +66,47 @@
             class="portrait"
             src={source.img}
             alt="potrait"
-            onclick={() => app.editImage("img")}
+            onclick={() => context.app.editImage("img")}
         />
-        <div class="stats">
-            {#snippet field(key, label, path)}
-                <div>
-                    <label for={key}>{label}:</label>
-                    <UpdateInput
-                        name={key}
-                        {source}
-                        doc={actor}
-                        {path}
-                        type="text"
-                    />
-                </div>
-            {/snippet}
-            {@render field("name", "Name", "name")}
-            {@render field(
-                "max_toughness",
-                "Max Toughness",
-                "system.max_toughness",
-            )}
-            {@render field("toughness", "Toughness", "system.toughness")}
-            {@render field("protection", "Protection", "system.protection")}
-            {@render field(
-                "action_dice",
-                "Action Dice",
-                "system.base_action_dice",
-            )}
-            {@render field("max_footing", "Max Footing", "system.max_footing")}
-            {@render field("footing", "Footing", "system.footing")}
-            {@render field(
-                "min_difficulty",
-                "Minimum Difficulty",
-                "system.min_difficulty",
-            )}
+        <div class="stat-area">
+            <div class="stat-grid">
+                {#snippet field(key, label, path)}
+                    <div>
+                        <label for={key}>{label}:</label>
+                        <UpdateInput
+                            name={key}
+                            {source}
+                            doc={actor}
+                            {path}
+                            type="text"
+                        />
+                    </div>
+                {/snippet}
+                {@render field("name", "Name", "name")}
+                {@render field(
+                    "max_toughness",
+                    "Max Toughness",
+                    "system.max_toughness",
+                )}
+                {@render field("toughness", "Toughness", "system.toughness")}
+                {@render field("protection", "Protection", "system.protection")}
+                {@render field(
+                    "action_dice",
+                    "Action Dice",
+                    "system.base_action_dice",
+                )}
+                {@render field(
+                    "max_footing",
+                    "Max Footing",
+                    "system.max_footing",
+                )}
+                {@render field("footing", "Footing", "system.footing")}
+                {@render field(
+                    "min_difficulty",
+                    "Min Difficulty",
+                    "system.min_difficulty",
+                )}
+            </div>
 
             <UpdateInput
                 class="vibes"
@@ -111,7 +118,7 @@
                 type="text"
             />
             <div class="traits">
-                {#if source.system.tags.length == 0}
+                {#if source.system.traits.length == 0}
                     Add a trait!
                 {:else}
                     {#each source.system.traits as trait, index}
@@ -156,7 +163,6 @@
                                 doc={actor}
                                 {source}
                                 path={`system.moves.${act}.${move_id}.text`}
-                                style="resize: vertical"
                             />
                             <!-- svelte-ignore a11y_click_events_have_key_events -->
                             <!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -173,10 +179,6 @@
             </div>
         {/each}
     </div>
-
-    <div class="bio">
-        <span>Description</span>
-    </div>
 </div>
 
 <style lang="scss" module>
@@ -186,29 +188,29 @@
             flex-direction: row;
 
             .portrait {
-                max-width: 150px;
-                max-height: 150px;
+                max-width: 200px;
+                max-height: 200px;
                 border: 1px solid black;
             }
 
-            .stats {
-                display: grid;
-                grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+            .stat-area {
+                display: flex;
+                flex-direction: column;
 
-                & > * {
-                    margin: 5px;
-                }
+                .stat-grid {
+                    display: grid;
+                    grid-template: repeat(2, 1fr) / repeat(4, 1fr);
 
-                .vibes,
-                .tags {
-                    grid-column: 1 / 5;
+                    & > * {
+                        margin: 5px;
+                    }
                 }
 
                 .vibes {
                     font-style: italic;
                 }
 
-                .tags {
+                .traits {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
@@ -221,7 +223,6 @@
         }
 
         .moves {
-            grid-area: m;
             border: 1px solid black;
             margin: 10px 15px;
 
@@ -237,7 +238,6 @@
                     display: flex;
                     flex-direction: column;
                     flex-grow: 1;
-                    grid-area: moves;
 
                     .move {
                         display: flex;
@@ -246,11 +246,15 @@
 
                         input {
                             width: 120px;
+                            height: 2em;
                         }
 
                         textarea {
                             margin-left: 10px;
                             flex-grow: 1;
+                            height: 2em;
+                            resize: vertical;
+                            min-height: 2em;
                         }
                     }
 
@@ -259,10 +263,6 @@
                     }
                 }
             }
-        }
-
-        .bio {
-            grid-area: b;
         }
     }
 </style>

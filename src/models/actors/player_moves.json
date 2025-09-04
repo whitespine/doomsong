@@ -12,17 +12,17 @@
     "2": {
         "dash": {
            "name": "Dash", 
-           "text": "Move a short distance {in addition to the free move at the start of the Act)."
+           "text": "Move a short distance [in addition to the free move at the start of the Act]."
         },
         "hastyaction": {
            "name": "Hasty Action", 
-           "text": "Perform an open action {ds:91). If it requires a check, it is hasty."
+           "text": "Perform an open action [ds:91]. If it requires a check, it is hasty."
         }
     },
     "3": {
         "lightstrike": {
            "name": "Light Strike", 
-           "text": "Make a hasty {attack} with a non-heavy weapon {ds:96)."
+           "text": "Make a hasty [attack] with a non-heavy weapon [ds:96]."
         },
         "recover": {
            "name": "Recover", 
@@ -32,21 +32,21 @@
     "4": {
         "standardstrike": {
            "name": "Standard Strike", 
-           "text": "Make an {attack} as discussed on page 96 of the Doomsong corebook."
+           "text": "Make a standard [attack] [ds:96]"
         },
         "standardaction": {
            "name": "Standard Action", 
-           "text": "Perform an open action {ds:91). If it requires a check, it is standard."
+           "text": "Perform an open action [ds:91]. If it requires a check, it is standard."
         }
     },
     "5": {
         "heavystrike": {
            "name": "Heavy Strike", 
-           "text": "Make a focused {attack} with a non-light weapon {ds:96)."
+           "text": "Make a focused [attack] with a non-light weapon [ds:96]."
         },
         "setup": {
            "name": "Set Up", 
-           "text": "Ready this die and state a trigger. If met, spend to take a free {Act 4} action."
+           "text": "Ready this die and state a trigger. If met, spend to take a free [Act 4] action."
         }
     },
     "6": {
@@ -56,7 +56,7 @@
         },
         "withdraw": {
            "name": "Withdraw", 
-           "text": "Ready this die. Spend it to make a focused {retreat} in the next phase {ds:101)."
+           "text": "Ready this die. Spend it to make a focused [retreat] in the next phase [ds:101]."
         }
     }
 }

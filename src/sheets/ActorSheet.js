@@ -1,17 +1,22 @@
 import { svelte_render_override } from "../overrides/svelte_application_utils.svelte";
 
 export class DoomsongActorSheet extends foundry.applications.sheets.ActorSheetV2 {
-    static get DEFAULT_OPTIONS() {
-        return {
-            closeOnSubmit: false,
-            submit: false,
-            submitOnClose: false,
-            submitOnChange: false,
-            baseApplication: "ActorSheet",
-            window: {
-                resizable: true,
-            },
-        };
+    static DEFAULT_OPTIONS = {
+        classes: ["doomsong", "actor"],
+        closeOnSubmit: false,
+        submit: false,
+        submitOnClose: false,
+        submitOnChange: false,
+        baseApplication: "ActorSheet",
+        window: {
+            resizable: true,
+        }
+    }
+
+    async _prepareContext(options) {
+        let context = await super._prepareContext(options);
+        context.app = this;
+        return context;
     }
 
     // Helper for setting an image that also hits token

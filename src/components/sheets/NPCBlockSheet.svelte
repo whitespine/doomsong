@@ -1,21 +1,27 @@
 <script>
+    import TraitDisplay from "../fields/TraitDisplay.svelte";
     import Die from "../rolls/Die.svelte";
     let { context } = $props();
     let source = $derived(context.source);
-    $inspect(context);
+    let acts_to_show = $derived.by(() => {
+        return [1,2,3,4,5,6].filter(act => Object.keys(source.system.moves[act]).length > 0)
+    });
 </script>
 
 <div class="frame-body">
     <h1>{source.name}</h1>
     <div class="traits">
-        {#each source.system.traits as trait}
-            <span>{trait}</span>
+        {#each source.system.traits as trait, index}
+            {#if index > 0}
+                <span>•</span>
+            {/if}
+            <TraitDisplay {trait}></TraitDisplay>
         {/each}
     </div>
-    <div class="traits"></div>
+    <div class="abilities"></div>
     <div class="acts">
-        {#each [1, 2, 3, 4, 5, 6] as act}
-            <div class="act">
+        {#each acts_to_show as act, displayed_act_index}
+            <div class="act" class:grey={displayed_act_index % 2 == 0}>
                 <Die value={act} />
                 <div class="moves">
                     {#each Object.values(source.system.moves[act]) as move}
@@ -36,18 +42,41 @@
         flex-direction: column;
         align-items: center;
 
-        .acts, .traits {
+        .acts,
+        .traits {
             width: 100%;
         }
 
         .traits {
             border-bottom: solid black 2px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding-bottom: 10px;
+
+            span {
+                margin-left: 2px;
+                margin-right: 2px;
+            }
         }
 
         .acts {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
             .act {
+                flex-grow: 1;
                 display: flex;
                 flex-direction: row;
+                align-items: center;
+                padding: 5px;
+
+                &.grey {
+                    background-color: lightgray;
+                }
+
                 .moves {
                     display: flex;
                     flex-direction: column;
