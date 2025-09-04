@@ -34,7 +34,7 @@ export class ActorModel extends DoomsongDataModel {
             }),
 
             // Traits. Precede with + or ++ to make defined/super defined
-            tags: new fields.ArrayField(
+            traits: new fields.ArrayField(
                 new fields.StringField({ nullable: false, required: true, initial: "" },
                     { nullable: false, required: true, initial: [] }
                 )
