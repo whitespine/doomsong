@@ -31,9 +31,9 @@
                         <li>This combatant's capabilities are a mystery</li>
                     {:else if !c.combatant.hasMovesDefined}
                         <li>Consult book</li>
-                    {:else if c.combatant.actor.system.moves[act - 1].length > 0}
-                        {#each c.combatant.actor.system.moves[act - 1] as move}
-                            <li>{move}</li>
+                    {:else if c.combatant.actor.system.moves[act].length > 0}
+                        {#each c.combatant.actor.system.moves[act] as move}
+                            <li>{move.name}: {move.text}</li>
                         {/each}
                     {:else}
                         <li>No actions possible</li>

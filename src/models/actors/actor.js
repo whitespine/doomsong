@@ -2,6 +2,14 @@ import { ControlledLengthArrayField, DoomsongDataModel } from "../base";
 
 const fields = foundry.data.fields;
 
+const MoveField = () => new fields.SchemaField({
+    name: new fields.StringField({ nullable: false, initial: "New Move"}),
+    text: new fields.StringField({ nullable: false, initial: "Do something"}),
+    // TODO: more attributes, such as check type, bonuses, etc
+});
+
+const MovesList = () => new fields.ArrayField(MoveField(), {nullable: false});
+
 export class ActorModel extends DoomsongDataModel {
     // Some schema elements are consistent across all actor types. Define them here
     static defineSchema() {
@@ -15,12 +23,15 @@ export class ActorModel extends DoomsongDataModel {
 
             // Combat moves
             base_action_dice: new fields.NumberField({ nullable: false, integer: true, min: 1, initial: 1 }), // How many ya got, initially?
-            // A fixed length array of arrays. Each sub-array is the actions possible at that act
-            moves: new ControlledLengthArrayField(
-                new fields.ArrayField(
-                    new fields.StringField({ nullable: false})
-                )
-            , {nullable: false, length: 6}),
+            // Each sub-array is the moves possible at that act, a simple object we'll expand later for more convenient automation
+            moves: new fields.SchemaField({
+                1: MovesList(),
+                2: MovesList(),
+                3: MovesList(),
+                4: MovesList(),
+                5: MovesList(),
+                6: MovesList(),
+            }),
 
             // Descriptions etc
             traits: new fields.ArrayField(new fields.StringField({ nullable: false }))

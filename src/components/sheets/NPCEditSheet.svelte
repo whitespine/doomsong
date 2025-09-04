@@ -7,20 +7,18 @@
     let actor = $derived(context.document);
 
     // Add a new basic move
-    function addMove(act_index) {
+    function addMove(act) {
         actor.update({
-            [`system.moves.${act_index}`]: actor.system.moves[act_index].concat(
-                [""],
-            ),
+            [`system.moves.${act}`]: actor.system.moves[act].concat(undefined) // Let the field autopopulate
         });
     }
 
     // Remove the specified move
-    function deleteMove(act_index, move_index) {
-        let new_move_array = [...actor.system.moves[act_index]];
+    function deleteMove(act, move_index) {
+        let new_move_array = [...actor.system.moves[act]];
         new_move_array.splice(move_index, 1);
         actor.update({
-            [`system.moves.${act_index}`]: new_move_array,
+            [`system.moves.${act}`]: new_move_array,
         });
     }
 
@@ -125,28 +123,35 @@
         </div>
     </div>
     <div class="moves">
-        {#each source.system.moves as act_moves, act_index}
+        {#each Object.entries(source.system.moves) as [act, moves]}
             <div class="act-body">
                 <Die
-                    value={act_index + 1}
+                    value={act}
                     style="width: 32px; height: 32px; cursor: pointer"
-                    onclick={() => addMove(act_index)}
+                    onclick={() => addMove(act)}
                     data-tooltip="Add a move to this act"
                 />
                 <div class="move-options">
-                    {#if act_moves.length == 0}
+                    {#if moves.length == 0}
                         <span
                             >Click the die to add a move. Otherwise, this
                             creature will be unable to do much in this act.</span
                         >
                     {/if}
-                    {#each act_moves as move, move_index}
+                    {#each moves as move, move_index}
                         <div class="move">
+                            <UpdateInput
+                                tag="input"
+                                type="text"
+                                doc={actor}
+                                {source}
+                                path={`system.moves.${act}.${move_index}.name`}
+                                />
                             <UpdateInput
                                 tag="textarea"
                                 doc={actor}
                                 {source}
-                                path={`system.moves.${act_index}.${move_index}`}
+                                path={`system.moves.${act}.${move_index}.text`}
                                 style="resize: vertical"
                             />
                             <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -154,7 +159,7 @@
                             <!-- svelte-ignore a11y_missing_attribute -->
                             <a
                                 onclick={() =>
-                                    deleteMove(act_index, move_index)}
+                                    deleteMove(act, move_index)}
                                 aria-label={`Delete move: ${move}`}
                             >
                                 <i class="fas fa-trash"></i>
@@ -224,6 +229,7 @@
                 align-items: center;
                 justify-items: center;
                 padding: 5px 0px; // Give a bit of spacing on the top and bottom
+                border-bottom: solid black 1px;
 
                 .move-options {
                     display: flex;
@@ -236,7 +242,12 @@
                         flex-direction: row;
                         align-items: center;
 
+                        input {
+                            width: 120px;
+                        }
+
                         textarea {
+                            margin-left: 10px;
                             flex-grow: 1;
                         }
                     }
