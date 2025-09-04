@@ -9,16 +9,14 @@
     // Add a new basic move
     function addMove(act) {
         actor.update({
-            [`system.moves.${act}`]: actor.system.moves[act].concat(undefined), // Let the field autopopulate
+            [`system.moves.${act}.${foundry.utils.randomID()}`]: null, // Let the field autopopulate
         });
     }
 
     // Remove the specified move
-    function deleteMove(act, move_index) {
-        let new_move_array = [...actor.system.moves[act]];
-        new_move_array.splice(move_index, 1);
+    function deleteMove(act, move_id) {
         actor.update({
-            [`system.moves.${act}`]: new_move_array,
+            [`-=system.moves.${act}.${move_id}`]: null,
         });
     }
 
@@ -138,34 +136,34 @@
                     data-tooltip="Add a move to this act"
                 />
                 <div class="move-options">
-                    {#if moves.length == 0}
+                    {#if Object.keys(moves).length == 0}
                         <span
                             >Click the die to add a move. Otherwise, this
                             creature will be unable to do much in this act.</span
                         >
                     {/if}
-                    {#each moves as move, move_index}
+                    {#each Object.entries(moves) as [move_id, move]}
                         <div class="move">
                             <UpdateInput
                                 tag="input"
                                 type="text"
                                 doc={actor}
                                 {source}
-                                path={`system.moves.${act}.${move_index}.name`}
+                                path={`system.moves.${act}.${move_id}.name`}
                             />
                             <UpdateInput
                                 tag="textarea"
                                 doc={actor}
                                 {source}
-                                path={`system.moves.${act}.${move_index}.text`}
+                                path={`system.moves.${act}.${move_id}.text`}
                                 style="resize: vertical"
                             />
                             <!-- svelte-ignore a11y_click_events_have_key_events -->
                             <!-- svelte-ignore a11y_no_static_element_interactions -->
                             <!-- svelte-ignore a11y_missing_attribute -->
                             <a
-                                onclick={() => deleteMove(act, move_index)}
-                                aria-label={`Delete move: ${move}`}
+                                onclick={() => deleteMove(act, move_id)}
+                                aria-label={`Delete move: ${move.name}`}
                             >
                                 <i class="fas fa-trash"></i>
                             </a>

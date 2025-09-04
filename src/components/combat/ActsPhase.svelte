@@ -31,8 +31,8 @@
                         <li>This combatant's capabilities are a mystery</li>
                     {:else if !c.combatant.hasMovesDefined}
                         <li>Consult book</li>
-                    {:else if c.combatant.actor.system.moves[act].length > 0}
-                        {#each c.combatant.actor.system.moves[act] as move}
+                    {:else if Object.keys(c.combatant.actor.system.moves[act]).length > 0}
+                        {#each Object.values(c.combatant.actor.system.moves[act]) as move}
                             <li>{move.name}: {move.text}</li>
                         {/each}
                     {:else}

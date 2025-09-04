@@ -18,7 +18,7 @@
             <div class="act">
                 <Die value={act} />
                 <div class="moves">
-                    {#each source.system.moves[act] as move}
+                    {#each Object.values(source.system.moves[act]) as move}
                         <p>
                             <span class="name">{move.name}:</span>
                             <span class="text">{move.text}</span>

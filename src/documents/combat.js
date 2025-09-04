@@ -214,9 +214,9 @@ export class DoomsongCombatant extends Combatant {
     randomDice(count = 1) {
         let dice = [];
         // Create an array of [action_count, act]. Need to know action_count to filter empty acts
-        let act_move_counts = Object.fromEntries([1, 2, 3, 4, 5, 6].map((act) => [act, this.actor.system.moves[act].length]));
+        let act_move_counts = Object.fromEntries([1, 2, 3, 4, 5, 6].map((act) => [act, Object.keys(this.actor.system.moves[act]).length]));
         while (dice.length < count) {
-            let remaining_valid_acts = Object.entries(act_move_counts).filter(([act, count]) => count > 0).map(([act, count]) => act);
+            let remaining_valid_acts = Object.entries(act_move_counts).filter(([_act, count]) => count > 0).map(([act, _count]) => act);
             if (remaining_valid_acts.length == 0) {
                 // Just roll randomly - they'll get to move, at least!
                 return Math.ceil(Math.random() * 6);

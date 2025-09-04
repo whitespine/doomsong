@@ -8,7 +8,7 @@ const MoveField = () => new fields.SchemaField({
     // TODO: more attributes, such as check type, bonuses, etc
 });
 
-const MovesList = () => new fields.ArrayField(MoveField(), {nullable: false});
+const MovesList = () => new fields.TypedObjectField(MoveField(), {nullable: false});
 
 export class ActorModel extends DoomsongDataModel {
     // Some schema elements are consistent across all actor types. Define them here
