@@ -9,7 +9,7 @@
     // Add a new basic move
     function addMove(act) {
         actor.update({
-            [`system.moves.${act}`]: actor.system.moves[act].concat(undefined) // Let the field autopopulate
+            [`system.moves.${act}`]: actor.system.moves[act].concat(undefined), // Let the field autopopulate
         });
     }
 
@@ -60,66 +60,72 @@
 </script>
 
 <div class="npc-sheet">
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-    <img
-        class="portrait"
-        src={source.img}
-        alt="potrait"
-        onclick={() => app.editImage("img")}
-    />
-    <div class="stats">
-        {#snippet field(key, label, path)}
-            <div>
-                <label for={key}>{label}:</label>
-                <UpdateInput
-                    name={key}
-                    {source}
-                    doc={actor}
-                    {path}
-                    type="text"
-                />
-            </div>
-        {/snippet}
-        {@render field("name", "Name", "name")}
-        {@render field(
-            "max_toughness",
-            "Max Toughness",
-            "system.max_toughness",
-        )}
-        {@render field("toughness", "Toughness", "system.toughness")}
-        {@render field("protection", "Protection", "system.protection")}
-        {@render field("action_dice", "Action Dice", "system.base_action_dice")}
-        {@render field("max_footing", "Max Footing", "system.max_footing")}
-        {@render field("footing", "Footing", "system.footing")}
-        {@render field(
-            "min_difficulty",
-            "Minimum Difficulty",
-            "system.min_difficulty",
-        )}
-
-        <UpdateInput
-            class="vibes"
-            name="vibes"
-            placeholder="put, some, descriptors, here"
-            data={source}
-            doc={actor}
-            path="system.vibes"
-            type="text"
+    <div class="header">
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+        <img
+            class="portrait"
+            src={source.img}
+            alt="potrait"
+            onclick={() => app.editImage("img")}
         />
-        <div class="tags">
-            {#if source.system.tags.length == 0}
-                Add a tag!
-            {:else}
-                {#each source.system.tags as tag, index}
-                    <TraitTag
-                        doc={actor}
+        <div class="stats">
+            {#snippet field(key, label, path)}
+                <div>
+                    <label for={key}>{label}:</label>
+                    <UpdateInput
+                        name={key}
                         {source}
-                        path={`system.tags.${index}`}
+                        doc={actor}
+                        {path}
+                        type="text"
                     />
-                {/each}
-            {/if}
-            <button onclick={addTag}>Add Tag</button>
+                </div>
+            {/snippet}
+            {@render field("name", "Name", "name")}
+            {@render field(
+                "max_toughness",
+                "Max Toughness",
+                "system.max_toughness",
+            )}
+            {@render field("toughness", "Toughness", "system.toughness")}
+            {@render field("protection", "Protection", "system.protection")}
+            {@render field(
+                "action_dice",
+                "Action Dice",
+                "system.base_action_dice",
+            )}
+            {@render field("max_footing", "Max Footing", "system.max_footing")}
+            {@render field("footing", "Footing", "system.footing")}
+            {@render field(
+                "min_difficulty",
+                "Minimum Difficulty",
+                "system.min_difficulty",
+            )}
+
+            <UpdateInput
+                class="vibes"
+                name="vibes"
+                placeholder="put, some, descriptors, here"
+                data={source}
+                doc={actor}
+                path="system.vibes"
+                type="text"
+            />
+            <div class="tags">
+                {#if source.system.tags.length == 0}
+                    Add a tag!
+                {:else}
+                    {#each source.system.tags as tag, index}
+                        <TraitTag
+                            doc={actor}
+                            {source}
+                            path={`system.tags.${index}`}
+                        />
+                    {/each}
+                {/if}
+                <button onclick={addTag}>Add Tag</button>
+            </div>
         </div>
     </div>
     <div class="moves">
@@ -146,7 +152,7 @@
                                 doc={actor}
                                 {source}
                                 path={`system.moves.${act}.${move_index}.name`}
-                                />
+                            />
                             <UpdateInput
                                 tag="textarea"
                                 doc={actor}
@@ -158,8 +164,7 @@
                             <!-- svelte-ignore a11y_no_static_element_interactions -->
                             <!-- svelte-ignore a11y_missing_attribute -->
                             <a
-                                onclick={() =>
-                                    deleteMove(act, move_index)}
+                                onclick={() => deleteMove(act, move_index)}
                                 aria-label={`Delete move: ${move}`}
                             >
                                 <i class="fas fa-trash"></i>
@@ -178,42 +183,41 @@
 
 <style lang="scss" module>
     .npc-sheet {
-        display: grid;
-        grid-template:
-            "p s" 200px
-            "m m" 1fr
-            "b b" 1fr / 150px 1fr;
+        .header {
+            display: flex;
+            flex-direction: row;
 
-        .portrait {
-            grid-area: p;
-            border: 1px solid black;
-        }
-
-        .stats {
-            grid-area: s;
-            display: grid;
-            grid-template: repeat(4, 1fr) / repeat(4, 1fr);
-
-            & > * {
-                margin: 5px;
+            .portrait {
+                max-width: 150px;
+                max-height: 150px;
+                border: 1px solid black;
             }
 
-            .vibes,
-            .tags {
-                grid-column: 1 / 5;
-            }
+            .stats {
+                display: grid;
+                grid-template: repeat(4, 1fr) / repeat(4, 1fr);
 
-            .vibes {
-                font-style: italic;
-            }
+                & > * {
+                    margin: 5px;
+                }
 
-            .tags {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                button {
-                    margin-left: auto;
-                    max-width: 80px;
+                .vibes,
+                .tags {
+                    grid-column: 1 / 5;
+                }
+
+                .vibes {
+                    font-style: italic;
+                }
+
+                .tags {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    button {
+                        margin-left: auto;
+                        max-width: 80px;
+                    }
                 }
             }
         }

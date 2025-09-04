@@ -3,7 +3,12 @@ import { mount, unmount } from 'svelte';
 function SvelteApplicationMixin(BaseApplication) {
   class SvelteApplication extends BaseApplication {
     #componentInstance;
-    props = $state({});
+
+    constructor(options, ...args) {
+      super(options, ...args);
+      let initial_props = options?.svelte?.props ?? this.DEFAULT_OPTIONS?.svelte?.props ?? {};
+      this.props = $state(initial_props);
+    }
 
     // Provide svelte data via options.svelte
     // Should have .component

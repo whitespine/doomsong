@@ -2,7 +2,7 @@
 <script>
     import NPCBlockSheet from "./NPCBlockSheet.svelte";
     import NPCEditSheet from "./NPCEditSheet.svelte";
-    let {block=false, ...restProps} = $props();
+    let {block=true, ...restProps} = $props();
 </script>
 
 {#if block}

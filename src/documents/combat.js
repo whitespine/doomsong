@@ -214,16 +214,16 @@ export class DoomsongCombatant extends Combatant {
     randomDice(count = 1) {
         let dice = [];
         // Create an array of [action_count, act]. Need to know action_count to filter empty acts
-        let valid_acts = this.actor.system.moves.map((act_moves, act_index) => [act_moves.length, act_index + 1]);
+        let act_move_counts = Object.fromEntries([1, 2, 3, 4, 5, 6].map((act) => [act, this.actor.system.moves[act].length]));
         while (dice.length < count) {
-            let remaining_valid_acts = valid_acts.filter(x => x[0] > 0).map(x => x[1]);
+            let remaining_valid_acts = Object.entries(act_move_counts).filter(([act, count]) => count > 0).map(([act, count]) => act);
             if (remaining_valid_acts.length == 0) {
                 // Just roll randomly - they'll get to move, at least!
                 return Math.ceil(Math.random() * 6);
             } else {
                 // Roll within valid
                 let act = remaining_valid_acts[Math.floor(Math.random() * remaining_valid_acts.length)];
-                valid_acts[act - 1][0]--; // Deduct
+                act_move_counts[act]--; // Deduct
                 dice.push(act);
             }
         }
@@ -252,7 +252,7 @@ export class DoomsongCombatant extends Combatant {
 
     // Easy check if we have any moves defined
     get hasMovesDefined() {
-        return this.actor.system.moves.some(act_moves => act_moves.length != 0);
+        return [1,2,3,4,5,6].some(act => this.actor.system.moves[act].length != 0);
     }
 
     get thumbnail() {
@@ -316,7 +316,7 @@ export class DoomsongCombatant extends Combatant {
 
     // Generates html for a tooltip describing the moves available for a dice in a given act - but only if you can see them!
     actTooltip(act) {
-        if(this.observer || this.friendly) {
+        if (this.observer || this.friendly) {
             let moves = this.actor.system.moves[act - 1];
             let items = moves.map(move => `<li>${move}</li>`);
             return `<ul>${items.join("")}</ul>`;

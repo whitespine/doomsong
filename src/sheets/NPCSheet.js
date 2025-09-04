@@ -7,13 +7,17 @@ export class DoomsongNPCSheet extends SvelteApplicationMixin(DoomsongActorSheet)
         return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
             classes: ["doomsong", "actor", "npc"],
             svelte: {
-                component: NPCSheetComponent
+                component: NPCSheetComponent,
+                props: {
+                    block: true
+                }
             },
             window: {
                 resizable: true,
             },
             position: {
-                width: 900
+                width: 400,
+                height: 600
             }
         });
     }
@@ -26,7 +30,6 @@ export class DoomsongNPCSheet extends SvelteApplicationMixin(DoomsongActorSheet)
             icon: "fas fa-user",
             label: `Toggle Edit`,
             onclick: event => {
-                console.log("Henlo");
                 let block = this._svelte_props.block ?? false;
                 block = !block;
                 this._svelte_props.block = block;
