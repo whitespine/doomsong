@@ -13,12 +13,7 @@ export class NpcModel extends ActorModel {
             // Vibes. Just a string, comma separated
             vibes: new fields.StringField({ nullable: false, required: true, initial: "" }),
 
-            // Tags. Precede with + or ++ to make defined/super defined
-            tags: new fields.ArrayField(
-                new fields.StringField({ nullable: false, required: true, initial: "" },
-                    { nullable: false, required: true, initial: [] }
-                )
-            )
+
         }
     }
 }

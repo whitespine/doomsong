@@ -23,18 +23,18 @@
     }
 
     // Add a new tag
-    function addTag() {
+    function addTrait() {
         const callback = (form, prefix) => {
-            let tag = form.elements.tag.value;
-            let existing_tags = [...actor.system.tags];
-            existing_tags.push(`${prefix}${tag}`);
+            let trait = form.elements.trait.value;
+            let existing_traits = [...actor.system.traits];
+            existing_traits.push(`${prefix}${trait}`);
             actor.update({
-                "system.tags": existing_tags,
+                "system.traits": existing_traits,
             });
         };
         new foundry.applications.api.DialogV2({
             window: { title: "Add a Tag" },
-            content: `<input type="text" name="tag" autofocus></input>`,
+            content: `<input type="text" name="trait" autofocus></input>`,
             buttons: [
                 {
                     action: "add",
@@ -112,19 +112,19 @@
                 path="system.vibes"
                 type="text"
             />
-            <div class="tags">
+            <div class="traits">
                 {#if source.system.tags.length == 0}
-                    Add a tag!
+                    Add a trait!
                 {:else}
-                    {#each source.system.tags as tag, index}
+                    {#each source.system.traits as trait, index}
                         <TraitTag
                             doc={actor}
                             {source}
-                            path={`system.tags.${index}`}
+                            path={`system.traits.${index}`}
                         />
                     {/each}
                 {/if}
-                <button onclick={addTag}>Add Tag</button>
+                <button onclick={addTrait}>Add Trait</button>
             </div>
         </div>
     </div>
