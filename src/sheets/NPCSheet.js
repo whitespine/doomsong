@@ -4,7 +4,7 @@ import { DoomsongActorSheet } from "./ActorSheet";
 
 export class DoomsongNPCSheet extends SvelteApplicationMixin(DoomsongActorSheet) {
     static get DEFAULT_OPTIONS() {
-        return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
+        return {
             classes: ["doomsong", "actor", "npc"],
             svelte: {
                 component: NPCSheetComponent,
@@ -12,30 +12,33 @@ export class DoomsongNPCSheet extends SvelteApplicationMixin(DoomsongActorSheet)
                     block: true
                 }
             },
-            window: {
-                resizable: true,
-            },
             position: {
                 width: 400,
                 height: 600
+            },
+            actions: {
+                toggleEdit: DoomsongNPCSheet.toggleEdit
+            },
+            window: {
+                controls: [
+                    {
+                        // font awesome icon
+                        icon: 'fa-solid fa-edit',
+                        // string that will be run through localization
+                        label: "Toggle Edit",
+                        // string that MUST match one of your `actions`
+                        // action: "toggleEdit",
+                        action: "toggleEdit",
+                    }
+                ]
             }
-        });
+        };
     }
 
-    _getHeaderButtons() {
-        let buttons = super._getHeaderButtons();
-
-        buttons.unshift({
-            class: "toggle-edit",
-            icon: "fas fa-user",
-            label: `Toggle Edit`,
-            onclick: event => {
-                let block = this._svelte_props.block ?? false;
-                block = !block;
-                this._svelte_props.block = block;
-            }
-        });
-
-        return buttons;
+    static toggleEdit(_evt, _target) {
+        // Due to weird bindings, we can use `this`
+        let block = this.props.block ?? true;
+        block = !block;
+        this.props.block = block;
     }
 }

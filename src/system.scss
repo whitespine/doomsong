@@ -15,6 +15,7 @@
     .doomsong {
         --color-text-primary: black;
         --color-text-emphatic: black;
+        --color-light-1: black;
 
         font-family: "IM Fell Double Pica", serif !important;
         font-weight: 400;
@@ -86,6 +87,7 @@
                 margin-right: 10px;
                 background: none;
                 border: none;
+                color: black;
             }
 
             &>section.window-content {

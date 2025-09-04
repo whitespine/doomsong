@@ -6,7 +6,7 @@ function SvelteApplicationMixin(BaseApplication) {
 
     constructor(options, ...args) {
       super(options, ...args);
-      let initial_props = options?.svelte?.props ?? this.DEFAULT_OPTIONS?.svelte?.props ?? {};
+      let initial_props = this.options.svelte?.props ?? {};
       this.props = $state(initial_props);
     }
 

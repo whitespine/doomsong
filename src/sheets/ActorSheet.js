@@ -2,18 +2,16 @@ import { svelte_render_override } from "../overrides/svelte_application_utils.sv
 
 export class DoomsongActorSheet extends foundry.applications.sheets.ActorSheetV2 {
     static get DEFAULT_OPTIONS() {
-        return foundry.utils.mergeObject(super.DEFAULT_OPTIONS, {
+        return {
             closeOnSubmit: false,
             submit: false,
             submitOnClose: false,
             submitOnChange: false,
-            resizable: true,
             baseApplication: "ActorSheet",
-            classes: ["doomsong", "actor"],
-            // dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],
-            // secrets: [{ parentSelector: ".editor" }],
-            // token: null
-        });
+            window: {
+                resizable: true,
+            },
+        };
     }
 
     // Helper for setting an image that also hits token

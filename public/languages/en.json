@@ -1,4 +1,10 @@
 {
+    "TYPES": {
+        "Actor": {
+            "npc": "NPC",
+            "player": "Player"
+        }
+    },
     "DS": {
         "combat": {
             "phase": {
