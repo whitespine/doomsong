@@ -12,7 +12,6 @@ export default defineConfig({
     }
   },
   server: {
-    host: "www.worthy-opponents.com",
     port: 20001,
     open: "/",
     proxy: {

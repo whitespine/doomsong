@@ -3,12 +3,12 @@ import { ControlledLengthArrayField, DoomsongDataModel } from "../base";
 const fields = foundry.data.fields;
 
 const MoveField = () => new fields.SchemaField({
-    name: new fields.StringField({ nullable: false, initial: "New Move"}),
-    text: new fields.StringField({ nullable: false, initial: "Do something"}),
+    name: new fields.StringField({ nullable: false, initial: "New Move" }),
+    text: new fields.StringField({ nullable: false, initial: "Do something" }),
     // TODO: more attributes, such as check type, bonuses, etc
 });
 
-const MovesList = () => new fields.TypedObjectField(MoveField(), {nullable: false});
+const MovesList = () => new fields.TypedObjectField(MoveField(), { nullable: false });
 
 export class ActorModel extends DoomsongDataModel {
     // Some schema elements are consistent across all actor types. Define them here
@@ -36,8 +36,23 @@ export class ActorModel extends DoomsongDataModel {
             // Traits. Precede with + or ++ to make defined/super defined
             traits: new fields.ArrayField(
                 new fields.StringField({ nullable: false, required: true, initial: "" },
-                    { nullable: false, required: true, initial: [] }
+                    { nullable: false }
                 )
+            ),
+
+            // Abilities. Mostly geared towards players
+            abilities: new fields.TypedObjectField(
+                new fields.SchemaField({
+                    name: new fields.StringField({ nullable: false, initial: "New Ability" }),
+                    level: new fields.NumberField({ nullable: false, initial: 1, integer: true, min: 1 }), // Abilities start at level 1. Just correct based on index
+                    level_text: new fields.ArrayField(
+                        new fields.StringField({ nullable: false }),
+                        {
+                            nullable: false,
+                            clean: (value) => (Array.isArray(value) && value.length == 0) ? value : ["Ability Text"] // Force to be at least length 1
+                        }),
+                    page: new fields.StringField({ nullable: false, initial: "DS:???" }),
+                })
             )
         };
     }

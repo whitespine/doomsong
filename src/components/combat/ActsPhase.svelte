@@ -57,7 +57,7 @@
             "portrait header" 76px
             "actions actions" 1fr / 76px 1fr;
 
-        h2,h3 {
+        h2 {
             margin-bottom: 3px;
             border-bottom: none;
         }

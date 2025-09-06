@@ -18,7 +18,18 @@
             <TraitDisplay {trait}></TraitDisplay>
         {/each}
     </div>
-    <div class="abilities"></div>
+    <div class="abilities">
+        {#each Object.entries(source.system.abilities) as [ability_id, ability]}
+        <p class="ability">
+            <span class="name">
+                {ability.name}.
+            </span>
+            <span class="text">
+                {ability.level_text[0]}
+            </span>
+        </p>
+        {/each}
+    </div>
     <div class="acts">
         {#each acts_to_show as act, displayed_act_index}
             <div class="act" class:grey={displayed_act_index % 2 == 0}>
@@ -43,8 +54,15 @@
         align-items: center;
 
         .acts,
+        .abilities,
         .traits {
             width: 100%;
+        }
+
+        .abilities {
+            .name {
+                font-weight: bolder;
+            }
         }
 
         .traits {

@@ -14,6 +14,21 @@
         });
     }
 
+    // Add a new blank ability
+    function addAbility() {
+        actor.update({
+            [`system.abilities.${foundry.utils.randomID()}`]: null, // Let the field autopopulate
+        });
+    }
+
+    // Remove the specified ability
+    function deleteAbility(ability_id) {
+        actor.update({
+            [`system.abilities.-=${ability_id}`]: null,
+        });
+    }
+
+
     // Remove the specified move
     function deleteMove(act, move_id) {
         actor.update({
@@ -133,6 +148,41 @@
             </div>
         </div>
     </div>
+    <div class="abilities">
+        {#if Object.keys(source.system.abilities).length == 0}
+            <span>Try adding a new ability, if this npc has one</span>
+        {/if}
+        {#each Object.entries(source.system.abilities) as [ability_id, ability]}
+            <div class="ability">
+                <div class="name">
+                    <label for={`${ability_id}.name`}>Name:</label>
+                    <UpdateInput
+                        tag="input"
+                        type="text"
+                        name={`${ability_id}.name`}
+                        doc={actor}
+                        {source}
+                        path={`system.abilities.${ability_id}.name`}
+                    />
+                </div>
+
+                <!-- Only accept level one abilities on npcs -->
+                <div class="text">
+                    <label for={`${ability_id}.level_text.0`}>Text:</label>
+                    <UpdateInput
+                        tag="input"
+                        type="text"
+                        name={`${ability_id}.level_text.0`}
+                        doc={actor}
+                        {source}
+                        path={`system.abilities.${ability_id}.level_text.0`}
+                    />
+                </div>
+                <button aria-label="Delete ability" class="delete" onclick={() => deleteAbility(ability_id)}><i class="fas fa-trash"></i></button>
+            </div>
+        {/each}
+        <button onclick={addAbility}>Add an Ability</button>
+    </div>
     <div class="moves">
         {#each Object.entries(source.system.moves) as [act, moves]}
             <div class="act-body">
@@ -218,6 +268,35 @@
                         margin-left: auto;
                         max-width: 80px;
                     }
+                }
+            }
+        }
+
+        .abilities {
+            display: flex;
+            flex-direction: column;
+
+            .ability {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                & > * {
+                    padding: 5px;
+                }
+
+
+                .name {
+                    flex-grow: 1;
+                    flex-basis: 20%;
+                }
+
+                .text {
+                    flex-grow: 1;
+                    flex-basis: 100%;
+                }
+
+                .delete {
+                    color: white;
                 }
             }
         }

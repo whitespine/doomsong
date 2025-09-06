@@ -9,12 +9,12 @@ export class DoomsongNPCSheet extends SvelteApplicationMixin(DoomsongActorSheet)
         svelte: {
             component: NPCSheetComponent,
             props: {
-                block: false // TODO revert to true
+                block: true
             }
         },
         position: {
             width: 400,
-            height: 600
+            height: "auto"
         },
         actions: {
             toggleEdit: DoomsongNPCSheet.toggleEdit
