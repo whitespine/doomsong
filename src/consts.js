@@ -8,7 +8,8 @@ export const DOOMSONG = {
         init: {
             calendar: "init_calendar",
             pdf: "init_pdf",
-            tokens: "init_tokens"
+            tokens: "init_tokens",
+            combat: "init_combat"
         },
         combat: {
             view_acts: {

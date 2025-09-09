@@ -33,3 +33,15 @@ export async function initTokenSettings() {
         }
     });
 }
+
+// Initializes combat tracker to have a pretty flashing pulse under them
+export async function initCombatSettings() {
+    return game.settings.set("core", "combatTrackerConfig", {
+        turnMarker: {
+            enabled: true,
+            animation: "pulse",
+            src: "systems/doomsong/assets/icons/sign_of_the_crossroads.png",
+            disposition: false
+        }, resource: "", skipDefeated: false
+    });
+}

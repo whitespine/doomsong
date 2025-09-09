@@ -3,7 +3,7 @@ import { setupSettings } from './settings';
 import { DOOMSONG } from './consts';
 import { initCalendar } from './integrations/calendar/calendar';
 import { setupModels } from './models/config';
-import { initTokenSettings, setupDocuments } from './documents/config';
+import { initCombatSettings, initTokenSettings, setupDocuments } from './documents/config';
 import { initPdfPager } from './integrations/pdf/pager';
 import { retry, sleep } from './utils/time';
 import { mount } from 'svelte';
@@ -45,6 +45,14 @@ Hooks.once("ready", async function() {
     await initTokenSettings().then(async () => {
       await game.settings.set(game.system.id, DOOMSONG.settings.init.tokens, true);
       ui.notifications.info("Initialized tokens");
+    });
+  }
+
+  let need_init_combat = !game.settings.get(game.system.id, DOOMSONG.settings.init.combat);
+  if (need_init_combat) {
+    await initCombatSettings().then(async () => {
+      await game.settings.set(game.system.id, DOOMSONG.settings.init.combat, true);
+      ui.notifications.info("Initialized combat");
     });
   }
 })

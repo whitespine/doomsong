@@ -23,7 +23,7 @@
                     />
                 </div>
                 <div class="header">
-                    <h2>{c.combatant.name}</h2>
+                    <h2 class="clip-text">{c.combatant.name}</h2>
                     <h4>Move a short distance and perform {c.actions} action{c.actions > 1 ? "s" : ""}</h4>
                 </div>
                 <ul class="actions">

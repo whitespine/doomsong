@@ -20,7 +20,16 @@ export function setupSettings() {
         config: false,
         type: Boolean,
         default: false,
-    });    
+    });  
+
+    // Have we succesfully initialized combat?
+    game.settings.register(game.system.id, DOOMSONG.settings.init.combat, {
+        name: "Initialize Combat",
+        scope: "world",
+        config: false,
+        type: Boolean,
+        default: false,
+    });      
 
     // Have we succesfully initialized pdf pager?
     game.settings.register(game.system.id, DOOMSONG.settings.init.pdf, {

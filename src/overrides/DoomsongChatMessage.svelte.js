@@ -26,7 +26,6 @@ export class DoomsongChatMessage extends ChatMessage {
 
     // For doomsong rolls, we have a custom svelte component :)
     async getRollHTML() {
-        console.log("Roll html");
         return this.populateAsComponent(RollMessage);
     }
 
