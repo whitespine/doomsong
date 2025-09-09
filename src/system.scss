@@ -17,19 +17,6 @@
         --color-text-emphatic: black;
         --color-light-1: black;
 
-        .invert {
-            --color-text-primary: white;
-            --color-text-emphatic: white;
-            --color-light-1: white;
-
-            button,
-            input,
-            textarea,
-            select {
-                background-color: white;
-                color: black;
-            }
-        }
 
         .clip-text {
             white-space: nowrap;
@@ -80,6 +67,14 @@
         select {
             background-color: black;
             color: white
+        }
+
+        button.invert,
+        input.invert,
+        textarea.invert,
+        select.invert {
+            background-color: white;
+            color: black;
         }
 
         // Sharp edges!

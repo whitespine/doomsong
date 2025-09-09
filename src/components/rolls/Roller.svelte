@@ -91,11 +91,11 @@
             {/each}
         </select>
         <span class="elevated difficulty">Difficulty:</span>
-        <button class="add" onclick={() => difficulty++}>+</button>
+        <button onclick={() => difficulty--}>-</button>
         <span class="difficulty value" data-tooltip="Difficulty"
             >{difficulty}</span
         >
-        <button class="subtract" onclick={() => difficulty--}>-</button>
+        <button class="invert" onclick={() => difficulty++}>+</button>
     </div>
     <div class="roll-options">
         {#each ["Traits", "Gear", "Conditions", "Allies"] as category}
@@ -184,16 +184,6 @@
             width: 30px;
             font-size: x-large;
             border-radius: 0px;
-
-            &.add {
-                color: white;
-                background-color: black;
-            }
-
-            &.subtract {
-                background-color: white;
-                color: black;
-            }
         }
 
         .difficulty {
@@ -267,60 +257,4 @@
             flex-grow: 1;
         }
     }
-
-    /*
-    .roll-options {
-        display: grid;
-        grid-template: 1fr / 2fr repeat(4, 1fr) 2fr;
-        align-items: center;
-        justify-items: center;
-
-        // Center text for modifiers
-        div {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: end;
-            align-items: center;
-
-            span {
-                font-weight: bold;
-            }
-        }
-
-        // Buttons we want to be flush, like in the book
-        button {
-            cursor: pointer;
-            font-size: large;
-            font-weight: normal;
-            box-shadow: none;
-
-
-            outline: none;
-            border-radius: 0px;
-            border: none;
-            padding: 0;
-            background: none;
-            &.active {
-                box-shadow: inset 0 0 0 2px black;
-                font-weight: bolder;
-            }
-        }
-
-        // Alternate rows
-        > *:nth-child(12n+1),
-        > *:nth-child(12n+2),
-        > *:nth-child(12n+3),
-        > *:nth-child(12n+4),
-        > *:nth-child(12n+5),
-        > *:nth-child(12n+6) {
-            background: grey;
-        }
-    }
-
-    .roll-buttons {
-        display: flex;
-        flex-direction: row;
-    }
-        */
 </style>
