@@ -124,7 +124,7 @@ export class DoomsongCombat extends Combat {
         await DoomsongCombatant.updateDocuments(updates, { parent: this });
     }
 
-    // Disable this function
+    // Modify this function to more or less simulate the normal triggerTurnEvents
     _manageTurnEvents() {
 
     }
@@ -142,6 +142,7 @@ export class DoomsongCombat extends Combat {
         }
     }
 
+    // Override this function to support multiple turn markers
     _updateTurnMarkers() {
         if (!canvas.ready) return;
         const any_active = this.system.phase == "acts" && this.active;

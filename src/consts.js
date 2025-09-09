@@ -34,6 +34,13 @@ export const DOOMSONG = {
         }
     },
 
+    socket: {
+        attack: {
+            start_attack: "start_attack",
+            finish_defense: "finish_defense"
+        }
+    },
+
     // Keys for combat status flags
     combat: {
         phases: {
