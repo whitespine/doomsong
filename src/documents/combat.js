@@ -219,7 +219,7 @@ export class DoomsongCombatant extends Combatant {
             let remaining_valid_acts = Object.entries(act_move_counts).filter(([_act, count]) => count > 0).map(([act, _count]) => act);
             if (remaining_valid_acts.length == 0) {
                 // Just roll randomly - they'll get to move, at least!
-                return Math.ceil(Math.random() * 6);
+                dice.push(Math.ceil(Math.random() * 6));
             } else {
                 // Roll within valid
                 let act = remaining_valid_acts[Math.floor(Math.random() * remaining_valid_acts.length)];
