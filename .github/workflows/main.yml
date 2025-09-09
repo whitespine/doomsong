@@ -107,7 +107,6 @@ jobs:
         run: |
           npm ci 
           npm run build
-          cp -r ./src/assets ./dist/assets
 
       # Create a "system.zip" archive containing all the system's required files.
       # If you have other directories or files that will need to be added to
