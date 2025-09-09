@@ -146,7 +146,7 @@ export class DoomsongCombat extends Combat {
         if (!canvas.ready) return;
         const any_active = this.system.phase == "acts" && this.active;
         // Get the on deck tokens if this combat is active
-        const current_tokens = any_active ? this.combatantsByAct[this.system.act].map(cba => cba.combatant.token.object).filter(x => x) : [];
+        let current_tokens = any_active ? this.combatantsByAct[this.system.act].map(cba => cba.combatant.token.object).filter(x => x) : [];
 
         // Remove foe tokens if settings don't let you see same act 
         let view_acts = game.settings.get(game.system.id, DOOMSONG.settings.combat.view_acts.key);
