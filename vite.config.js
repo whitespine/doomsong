@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { resolve } from 'path';
 
 
 export default defineConfig({
@@ -8,7 +9,7 @@ export default defineConfig({
   publicDir: "../public",
   resolve: {
     alias: {
-      $assets: './assets'
+      $assets: resolve('public/assets')
     }
   },
   server: {

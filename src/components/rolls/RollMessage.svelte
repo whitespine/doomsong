@@ -2,8 +2,8 @@
     import Die from "./Die.svelte";
     import roll_types from "./roll_types.json";
     import RollingDie from "./RollingDie.svelte";
-    import crest from "../../assets/icons/crest.png"
-    import skull from "../../assets/icons/skull.png"
+    import crest from "$assets/icons/crest.png"
+    import skull from "$assets/icons/skull.png"
 
     let { _id: id, author, speaker, flags, rolls, dsn_roll } = $props();
     let ds_data = $derived(flags[game.system.id]);
