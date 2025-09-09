@@ -102,6 +102,18 @@
             }
         }
 
+        // Black and white
+        section.window-content {
+            background-color: white;
+            color: black;
+        }
+        
+        // Fix headers for non-sheet styled
+        header {
+            --color-text-primary: white;
+            --color-light-1: white;
+        }
+
         &.actor.application {
             border: none;
             box-shadow: none;
@@ -121,8 +133,7 @@
 
             &>section.window-content {
                 padding: 5px 5px 5px 15px; // Top right bottom left
-                background-color: white;
-                color: black;
+
                 overflow: hidden auto;
             }
 
