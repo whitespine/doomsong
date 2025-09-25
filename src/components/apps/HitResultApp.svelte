@@ -6,32 +6,11 @@
 
     let { context } = $props();
     let app = $derived(context.app);
-    let attack_id = $derived(context.attack_id);
-    let attacker = $derived(context.attacker);
-    let defender = $derived(context.defender);
-    $inspect(attacker);
-    $inspect(defender);
 
-    let footing_spent = $state(0);
-    let bonus = $state(0);
     function submit(e) {
         e.preventDefault();
         e.stopPropagation();
-        let payload = {
-            attack_id,
-            total_defense:
-                defender.system.attack_difficulty + footing_spent + bonus,
-            footing_spent,
-            attacker: attacker.uuid,
-            defender: defender.uuid,
-            bonus: context.bonus,
-            mode: context.mode
-        };
-        if (!game.user.isGM) {
-            game.socket.send(`${game.system.id}.${DOOMSONG.socket.attack.finish_defense}`, payload);
-        } else {
-            handleCompleteAttack(payload);
-        }
+
         app.close();
     }
 </script>

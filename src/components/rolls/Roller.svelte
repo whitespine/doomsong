@@ -1,6 +1,8 @@
 <script>
     import roll_types from "./roll_types.json";
     import { targeted_tokens } from "../../utils/target.svelte";
+    import { rollCheck } from "../../utils/roll";
+    import { initiateAttack } from "../../apps/dodge_prompt.svelte";
 
     // Gives tooltips for a given value
     function valueTooltip(value) {
@@ -31,9 +33,9 @@
     }
 
     // Our currently selected options
-    let roll_type_key = $state("STANDARD");
+    let roll_type_key = $state("standard");
     let roll_type = $derived(
-        roll_types[roll_type_key] || roll_types["STANDARD"],
+        roll_types[roll_type_key] || roll_types["standard"],
     );
     let choices = $state(defaultChoices());
     // let difficulty = $state(5);
@@ -59,27 +61,23 @@
     // Roll handler
     async function roll(mode) {
         let total_bonuses = Object.values(choices).reduce((x, y) => x + y, 0);
-        let formula = {
-            hasty: `2d6kl1 + ${total_bonuses}`,
-            standard: `1d6 + ${total_bonuses}`,
-            focused: `2d6kh1 + ${total_bonuses}`,
-        }[mode];
-        let roll = await new Roll(formula).roll();
-
-        // Send to chat
-        await ChatMessage.create({
-            rolls: [roll],
-            speaker: ChatMessage.getSpeaker(),
-            // Doomsong specific sauce
-            [`flags.${game.system.id}`]: {
-                type: "roll",
-                roll_type: roll_type_key,
-                coin_result: 0,
-                difficulty: difficulty,
-                category: "standard",
-            },
-        });
-        reset();
+        let attacker = _token?.actor ?? game.user.character;
+        if (
+            (roll_type_key == "attack") &&
+            (targeted_tokens.length != 0) &&
+            attacker
+        ) {
+            initiateAttack({
+                user: game.user.id,
+                attacker,
+                targets: targeted_tokens.map(t => t.actor),
+                bonus: total_bonuses,
+            });
+        } else {
+            // Handle immediately
+            rollCheck({  roll_type: roll_type_key, difficulty, mode, bonus: total_bonuses });
+        }
+        // reset();
     }
 </script>
 
@@ -147,9 +145,13 @@
         {/each}
     </div>
     <div class="roll-buttons">
-        <button onclick={() => roll("hasty")}>Hasty</button>
+        <button onclick={() => roll("hasty")}
+            >{roll_type_key == "attack" ? "Light" : "Hasty"}</button
+        >
         <button onclick={() => roll("standard")}>Standard</button>
-        <button onclick={() => roll("focused")}>Focused</button>
+        <button onclick={() => roll("focused")}
+            >{roll_type_key == "attack" ? "Heavy" : "Focused"}</button
+        >
     </div>
 </div>
 
@@ -199,7 +201,6 @@
         grid-template: 1fr / 2fr repeat(4, 1fr) 2fr;
         align-items: center;
         justify-items: center;
-
 
         // Center text for modifiers
         div {

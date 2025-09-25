@@ -4,7 +4,7 @@
  */
 export class DoomsongActor extends Actor {
     /**
-     * Patch update to preserve arrays
+     * Patch update to handle pseudo-bars
      *
      * @param data
      *
@@ -13,7 +13,9 @@ export class DoomsongActor extends Actor {
     async update(data, options = {}) {
         // Handle token updates
         if (data["system.footing_bar.value"]) data["system.footing"] = data["system.footing_bar.value"];
+        if (data.system?.footing_bar?.value) data["system.footing"] = data?.system?.footing_bar?.value;
         if (data["system.toughness_bar.value"]) data["system.toughness"] = data["system.toughness_bar.value"];
+        if (data.system?.toughness_bar?.value) data["system.toughness"] = data.system?.toughness_bar?.value;
 
         // Fix array updates then delegate to super
         // data = this.system.fullUpdateData(data);

@@ -36,8 +36,9 @@ export const DOOMSONG = {
 
     socket: {
         attack: {
-            start_attack: "start_attack",
-            finish_defense: "finish_defense"
+            incoming_attack: "incoming_attack",
+            attack_response: "attack_response",
+            attack_result: "attack_result",  // can be handled by either the attacker, defender, or both
         }
     },
 

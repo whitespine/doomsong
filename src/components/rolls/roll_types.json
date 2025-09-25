@@ -1,5 +1,5 @@
 {
-    "STANDARD": {
+    "standard": {
         "label": "Standard",
         "tooltip": "Suitable for most challenges",
         "default_difficulty": 5,
@@ -12,7 +12,7 @@
             "crest": "They succeed at their goal and gain an extra advantage."
         }
     },
-    "ATTACK": {
+    "attack": {
         "label": "Attack",
         "tooltip": "Onwards! Tear down any who dare stand against our righteous cause!",
         "default_difficulty": 5,
@@ -25,7 +25,7 @@
             "crest": "Flipping the doomcoin on an 'Over' result simply adjusts it up or down by one. If already 6+ over, the target is defeated instantly in a manner of your choosing"
         }
     },
-    "CORRUPTION": {
+    "corruption": {
         "label": "Corruption",
         "tooltip": "Foul miasmas permeate first the flesh, then the soul; an unceasing assault from all sides.",
         "default_difficulty": 5,
@@ -38,7 +38,7 @@
             "crest": "Immunity: You are immune to this specific corruption for D6 days."
         }
     },
-    "DEATH": {
+    "death": {
         "label": "Death",
         "tooltip": "There is no light to grace the tunnel, only a slow loss of self as your blood soaks the ground.",
         "default_difficulty": 3,

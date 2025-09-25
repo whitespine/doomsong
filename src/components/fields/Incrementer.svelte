@@ -42,10 +42,16 @@
             min-height: none;
             text-align: center;
             flex-grow: 1;
-        }
-        
-        button {
             font-size: x-large;
+        }
+
+        button {
+            --button-size: 1.5em;
+            font-size: x-large;
+            width: 1.5em;
+            padding: 15px;
+            min-height: none;
+            min-width: none;
         }
     }
 </style>
