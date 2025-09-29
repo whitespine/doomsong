@@ -1,7 +1,7 @@
 <script>
     import roll_types from "./roll_types.json";
     import { targeted_tokens } from "../../utils/target.svelte";
-    import { rollCheck } from "../../utils/roll";
+    import { formulaFor, rollCheck } from "../../utils/roll";
     import { initiateAttack } from "../../apps/dodge_prompt.svelte";
 
     // Gives tooltips for a given value
@@ -62,20 +62,28 @@
     async function roll(mode) {
         let total_bonuses = Object.values(choices).reduce((x, y) => x + y, 0);
         let attacker = _token?.actor ?? game.user.character;
+
         if (
             (roll_type_key == "attack") &&
             (targeted_tokens.length != 0) &&
             attacker
         ) {
+            if(!attacker) {
+                return ui.notifications.warn("Must have a token selected or an actor associated with your user");
+            }
             initiateAttack({
-                user: game.user.id,
-                attacker,
                 targets: targeted_tokens.map(t => t.actor),
-                bonus: total_bonuses,
+                attack: {
+                    user: game.user.id,
+                    attacker: attacker.uuid,
+                    type: "bludgeoning", // TODO prompt this elsewhere
+                    formula: formulaFor(mode, total_bonuses),
+                }
             });
         } else {
             // Handle immediately
-            rollCheck({  roll_type: roll_type_key, difficulty, mode, bonus: total_bonuses });
+            let formula = formulaFor(mode, total_bonuses);
+            rollCheck({  roll_type: roll_type_key, difficulty, formula });
         }
         // reset();
     }

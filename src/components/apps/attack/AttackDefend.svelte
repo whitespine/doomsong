@@ -1,19 +1,21 @@
 <script>
     import attack_img from "$assets/icons/attack.png";
-    import Incrementer from "../fields/Incrementer.svelte";
-    import { DOOMSONG } from "../../consts";
-    import { handleCompleteAttack } from "../../apps/dodge_prompt.svelte";
+    import Incrementer from "../../fields/Incrementer.svelte";
+    import { DOOMSONG } from "../../../consts";
+    import { handleCompleteAttack } from "../../../apps/dodge_prompt.svelte";
+    import { AttackFlow } from "../../../apps/dodge_prompt.svelte";
 
     let { context } = $props();
     let app = $derived(context.app);
-    let attack_id = $derived(context.attack_id);
-    let attacker = $derived(context.attacker);
-    let defender = $derived(context.defender);
-    $inspect(attacker);
-    $inspect(defender);
+
+    /**
+     * @type {AttackFlow}
+     */
+    let flow = $derived(app.flow);
 
     let footing_spent = $state(0);
     let bonus = $state(0);
+
     function submit(e) {
         e.preventDefault();
         e.stopPropagation();

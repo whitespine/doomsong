@@ -35,11 +35,7 @@ export const DOOMSONG = {
     },
 
     socket: {
-        attack: {
-            incoming_attack: "incoming_attack",
-            attack_response: "attack_response",
-            attack_result: "attack_result",  // can be handled by either the attacker, defender, or both
-        }
+        update_attack: "UPDATE_ATTACK_FLOW"
     },
 
     // Keys for combat status flags

@@ -1,19 +1,31 @@
 
-/**
- * @typedef
+/** An attempt to attack
+ * @typedef {object} CheckParams
+ * @property {("standard" | "corruption" | "navigate" | "attack")} roll_type Unique id of this attack flow
+ * @property {string} formula The formula for the roll
+ * @property {number} difficulty The difficulty of the roll
+ * @property {AttackMetadata} [attack] Attack metadata, in case it is an attack
  */
 
 /**
  * 
- * @param {*} param0 
+ * @param {("standard" | "hasty" | "focused")} roll_type The type of roll
+ * @param {number} bonus The flat bonus
+ */
+export function formulaFor(roll_type, bonus) {
+    return {
+        hasty: `2d6kl1 + ${bonus}`,
+        focused: `2d6kh1 + ${bonus}`,
+    }[roll_type] || `1d6 + ${bonus}`; // default standard
+}
+
+/**
+ * 
+ * @param {CheckParams} check_details 
  * @returns 
  */
-export async function rollCheck({ roll_type = "standard", difficulty = 5, mode = "standard", bonus = 0, speaker = null }) {
-    let formula = {
-        hasty: `2d6kl1 + ${bonus}`,
-        standard: `1d6 + ${bonus}`,
-        focused: `2d6kh1 + ${bonus}`,
-    }[mode];
+export async function rollCheck(check_details){
+    let { roll_type = "standard", difficulty = 5, formula, speaker = null } = check_details;
     let roll = await new Roll(formula).roll();
 
     // Send to chat immediately
@@ -25,11 +37,12 @@ export async function rollCheck({ roll_type = "standard", difficulty = 5, mode =
             type: "roll",
             roll_type,
             coin_result: 0,
-            difficulty: difficulty,
+            difficulty,
         },
     });
 
     return {
         message,
-    }
+        roll // technically embedded in message
+    };
 }
