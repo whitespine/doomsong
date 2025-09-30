@@ -1,0 +1,92 @@
+{
+    "bludgeoning": {
+        "1": {
+            "label": "Staggered",
+            "text": "Target loses -2 footing. If they are prone, they instead lose an additional -2 toughness."
+        },
+        "2": {
+            "label": "Battered",
+            "text": "The target loses an additional -1 toughness, then a piece of armour they are wearing gains the ill-fitting property."
+        },
+        "3": {
+            "label": "Smashed Face",
+            "text": "Target gains the Smashed Face injury and must resist [death]."
+        },
+        "4": {
+            "label": "Broken",
+            "text": "The target must resist [death]. Even if they succeed, they lose all footing and are knocked unconscious for D6 rounds."
+        },
+        "5": {
+            "label": "Crushed Arm",
+            "text": "If the target blocked this [attack], the item they used to block is destroyed. Then, they gain the Broken Arm injury and must resist [death]."
+        },
+        "6": {
+            "label": "Staggered",
+            "text": "Target falls prone and loses all footing. A piece of armour they are wearing is destroyed and then they suffer bludgeoning damage (again)"
+        },
+        "critical": {
+            "label": "Critical",
+            "text": "The target is defeated or killed in a manner of the attacker's choosing. This could be a shot through the heart, a decapitation, or some form of non-lethal removal from the fight."
+        }
+    },
+    "slashing": {
+        "1": {
+            "label": "Grazed",
+            "text": "The target gains the Bleeding condition. This is not an injury."
+        },
+        "2": {
+            "label": "Scarred",
+            "text": "Target gains the Scar injury on a location of the GM’s choice and must resist [death]."
+        },
+        "3": {
+            "label": "Sliced Face",
+            "text": "Target gains the Missing Ear or Eye permanent injury and must resist [death]."
+        },
+        "4": {
+            "label": "Guts",
+            "text": "Target must resist [death].  Even if they succeed, they will die in D6 rounds unless they gain at least +1 toughness."
+        },
+        "5": {
+            "label": "Cleaved Limb",
+            "text": "Target loses D6 additional toughness, loses all footing, gains the Missing Leg, Foot, Hand or Arm permanent injury and must resist [death]."
+        },
+        "6": {
+            "label": "Wide Swing",
+            "text": "Target loses D6 additional toughness. If there is an adjacent foe with less maximum toughness than the target, that foe suffers slashing damage."
+        },
+        "critical": {
+            "label": "Critical",
+            "text": "The target is defeated or killed in a manner of the attacker's choosing. This could be a shot through the heart, a decapitation, or some form of non-lethal removal from the fight."
+        }
+    },
+    "piercing": {
+        "1": {
+            "label": "Pricked",
+            "text": "The target loses an additional -1 toughness."
+        },
+        "2": {
+            "label": "Stuck",
+            "text": "Target loses an additional -1 toughness. Then they lose -2 footing."
+        },
+        "3": {
+            "label": "Punctured Eye",
+            "text": "Target gains the Missing Eye permanent injury and must resist [death]."
+        },
+        "4": {
+            "label": "Femoral Artery",
+            "text": " Target gains the Bleeding condition. This is not an injury. The target also loses D6 additional toughness."
+        },
+        "5": {
+            "label": "Pinned Arm",
+            "text": "Target loses an additional -1 toughness and drops any item they are holding. They cannot move until they take an open action to free themselves."
+        },
+        "6": {
+            "label": "Impaled",
+            "text": "The target gains the Puncture Wound injury and must resist [death]. If there is a foe directly behind the target, they lose -2 toughness."
+        },
+        "critical": {
+            "label": "Critical",
+            "text": "The target is defeated or killed in a manner of the attacker's choosing. This could be a shot through the heart, a decapitation, or some form of non-lethal removal from the fight."
+        }
+    }
+}
