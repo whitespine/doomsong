@@ -1,11 +1,10 @@
-import DodgeApp from "../components/apps/DodgeApp.svelte";
-import HitResultApp from "../components/apps/attack/AttackRoll.svelte";
+import AttackFlowComponent from "../components/apps/AttackFlowComponent.svelte";
 import { DOOMSONG } from "../consts";
 import { SvelteApplicationMixin } from "../overrides/svelte_mixin.svelte";
 import { onlineOwners } from "../utils/ownership";
-import { formulaFor, rollCheck } from "../utils/roll";
 
-export class AttackFlowPrompt extends SvelteApplicationMixin(foundry.applications.api.ApplicationV2) {
+export class AttackFlowApp extends SvelteApplicationMixin(foundry.applications.api.ApplicationV2) {
+    /** @type {AttackFlow} */
     flow = $state(null);
 
     constructor(flow, options={}) {
@@ -16,7 +15,7 @@ export class AttackFlowPrompt extends SvelteApplicationMixin(foundry.application
     static DEFAULT_OPTIONS = {
         classes: ["doomsong"],
         svelte: {
-            component: DodgeApp
+            component: AttackFlowComponent
         },
         position: {
             width: 300,
@@ -43,7 +42,7 @@ export class AttackFlowPrompt extends SvelteApplicationMixin(foundry.application
     /**
      * @param {AttackFlow} flow 
      */
-    static showFlow(flow) {
+    static async showFlow(flow) {
         let in_progress = IN_PROGRESS_APPS[flow.attack_id];
         if(in_progress) {
             in_progress.flow = flow;
@@ -51,13 +50,13 @@ export class AttackFlowPrompt extends SvelteApplicationMixin(foundry.application
             // Start and render a new one
             let attacker = fromUuidSync(flow.attack.attacker);
             let defender = fromUuidSync(flow.attack.defender);
-            let prompt = new AttackFlowPrompt({
+            let prompt = new AttackFlowApp({
                 window: {
                     title: `${attacker.name} attacks ${defender.name}`
                 }, 
             });
             IN_PROGRESS_APPS[flow.attack_id] = prompt;
-            prompt.render({ force: true });
+            return prompt.render({ force: true });
         }
     }
 }
@@ -78,7 +77,7 @@ export const FLOW_STEPS = {
     INITIATE: "UNUSED_FOR_NOW",
     DEFENSE: "DEFEND_YOURSELF",
     ROLL: "ROLL_THOSE_BONES",
-    RESOLVE: "FLIP_THE_COIN_COWARD",
+    RESOLVE: "FLIP_THE_COIN_COWARD"
 };
 
 
@@ -113,7 +112,9 @@ Hooks.on("ready", () => {
  * @property {AttackMetadata} attack Attack metadata
  * @property {FlowStep} step What stage in the flow we are
  * @property {number} footing_spent Footing spent in defense. Effectively increases to-hit. Can also be used to satisfy "do"
- * @property {number} shield Do we have a shield? Augments footing spent if footing_spent > 0
+ * @property {number} bonus_dodge Augments footing spent, but does not cost footing
+ * @property {number} final_target Populated after defense submitted. The difficulty of the check
+ * @property {number} roll_result The number we rolled
  */
 
 /** 
@@ -129,7 +130,7 @@ Hooks.on("ready", () => {
 export function broadcastFlow(flow) {
     return Promise.all([
         game.socket.emit(`${game.system.id}.${DOOMSONG.socket.update_attack}`, flow),
-        AttackFlowPrompt.showFlow(flow)
+        AttackFlowApp.showFlow(flow)
     ]);
 }
 
@@ -146,30 +147,23 @@ export function initiateAttack(data) {
             ui.notifications.error("Nobody is online who has sufficient ownership to handle this attack");
             return;
         } else {
+            /** @type {AttackFlow} */
+            let flow = {
+                attack_id: foundry.utils.randomID(),
+                attack: data.attack,
+                target: target.uuid,
+                footing_spent: 0,
+                shield: false,
+                step: FLOW_STEPS.DEFENSE
+            };
             if(data.attack.formula || data.attack.dodge_cost) {
-                // If this is an interactive attack, submit to others and ourselves
-                /** @type {AttackFlow} */
-                let flow = {
-                    attack_id: foundry.utils.randomID(),
-                    attack: data.attack,
-                    target: target.uuid,
-                    footing_spent: 0,
-                    shield: false,
-                    stage: FLOW_STEPS.DEFENSE
-                };
-                broadcastFlow(flow);
+                // The defender needs a chance to respond
+                flow.step = FLOW_STEPS.DEFENSE;
             } else if(data.attack.effect) {
-                // It still does something, skip to the resolution step
-                /** @type {AttackFlow} */
-                let flow = {
-                    attack_id: foundry.utils.randomID(),
-                    attack: data.attack,
-                    footing_spent: 0,
-                    shield: false,
-                    step: FLOW_STEPS.RESOLVE,
-                };
-                broadcastFlow(flow);
+                // It still does something, but does not need a roll. Skip to the resolution step
+                flow.step = FLOW_STEPS.RESOLVE;
             }
+            broadcastFlow(flow);
         }
     }
 }

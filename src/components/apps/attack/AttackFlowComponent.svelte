@@ -1,7 +1,8 @@
 
 <script>
-    import Defense from "./AttackDefend.svelte";
+    import Defense from "./Defense.svelte";
     import { AttackFlow, FLOW_STEPS } from "../../../apps/dodge_prompt.svelte";
+    import AttackRoll from "./AttackRoll.svelte";
 
     let { context } = $props();
     let app = $derived(context.app);
@@ -17,7 +18,8 @@
 
 </script>
 
-{#if flow.mode == FLOW_STEPS.DEFENSE}
-    <Defense {flow} {attacker} {defender} />
-{:else if context.mode == ""}
+{#if flow.step == FLOW_STEPS.DEFENSE}
+    <Defense {app} {flow} {attacker} {defender} />
+{:else if flow.step == FLOW_STEPS.ROLL}
+    <AttackRoll {app} {flow} {attacker} {defender} />
 {/if}

@@ -2,39 +2,18 @@
     import attack_img from "$assets/icons/attack.png";
     import Incrementer from "../../fields/Incrementer.svelte";
     import { DOOMSONG } from "../../../consts";
-    import { handleCompleteAttack } from "../../../apps/dodge_prompt.svelte";
-    import { AttackFlow } from "../../../apps/dodge_prompt.svelte";
+    import { broadcastFlow, FLOW_STEPS, handleCompleteAttack } from "../../../apps/dodge_prompt.svelte";
 
-    let { context } = $props();
-    let app = $derived(context.app);
+    /** @import { AttackFlowApp } from "../../../apps/dodge_prompt.svelte" */
 
     /**
-     * @type {AttackFlow}
+     * @type {{app: AttackFlowApp, attacker: Actor, defender: Actor}}
      */
-    let flow = $derived(app.flow);
-
-    let footing_spent = $state(0);
-    let bonus = $state(0);
+    let { app, attacker, defender } = $props();
 
     function submit(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        let payload = {
-            attack_id,
-            total_defense:
-                defender.system.attack_difficulty + footing_spent + bonus,
-            footing_spent,
-            attacker: attacker.uuid,
-            defender: defender.uuid,
-            bonus: context.bonus,
-            mode: context.mode
-        };
-        if (!game.user.isGM) {
-            game.socket.send(`${game.system.id}.${DOOMSONG.socket.attack.finish_defense}`, payload);
-        } else {
-            handleCompleteAttack(payload);
-        }
-        app.close();
+        app.flow.step = FLOW_STEPS.ROLL; // We move on to the roll
+        broadcastFlow(app.flow);
     }
 </script>
 
@@ -45,17 +24,18 @@
         <img src={defender.img} alt={`Portrait of ${defender.name}`} />
     </div>
     <p class="wide">Spend footing to dodge or block</p>
+
     <label for="footing_spent">Footing Spent:</label>
     <Incrementer
         type="number"
         name="footing_spent"
         min="0"
         max={defender.system.footing}
-        bind:value={footing_spent}
+        bind:value={app.flow.footing_spent}
     />
 
-    <label for="bonus_dodge">Bonus Dodge:</label>
-    <Incrementer type="number" name="bonus_dodge" min="0" bind:value={bonus} />
+    <label for="bonus_dodge" data-tooltip="For instance, a shield gives +1 dodge if footing is spent to block">Bonus Dodge:</label>
+    <Incrementer type="number" name="bonus_dodge" min="0" bind:value={app.flow.bonus_dodge} />
 
     <button class="devote wide elevated">Commit</button>
 </form>

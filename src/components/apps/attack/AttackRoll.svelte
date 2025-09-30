@@ -1,44 +1,65 @@
 <script>
-    import attack_img from "$assets/icons/attack.png";
-    import Incrementer from "../../fields/Incrementer.svelte";
-    import { DOOMSONG } from "../../../consts";
-    import { handleCompleteAttack } from "../../../apps/dodge_prompt.svelte";
+    import RollingDie from "../../rolls/RollingDie.svelte";
+    import { broadcastFlow, FLOW_STEPS } from "../../../apps/dodge_prompt.svelte";
 
-    let { context } = $props();
-    let app = $derived(context.app);
+    /** @import { AttackFlowApp } from "../../../apps/dodge_prompt.svelte" */
 
-    function submit(e) {
-        e.preventDefault();
-        e.stopPropagation();
+    /**
+     * @type {{app: AttackFlowApp, attacker: Actor, defender: Actor}}
+     */
+    let { app, attacker, defender } = $props();
 
-        app.close();
+    let dice_count = $derived(app.includes("2d6") ? 2 : 1); // For display purposes only
+
+    async function doRoll() {
+        // Handle the actual dice roll
+        let roll = await new Roll(app.flow.attack.formula).roll();
+
+        // Send to chat immediately
+        let message = await ChatMessage.create({
+            rolls: [roll],
+            speaker: attacker,
+            // Doomsong specific sauce
+            [`flags.${game.system.id}`]: {
+                type: "roll",
+                roll_type: "attack",
+                coin_result: 0,
+                difficulty: defender.system.attack_difficulty + app.flow.footing_spent + app.flow.bonus_dodge,
+            },
+        });
     }
+
+    onMount(() => {
+        doRoll();
+
+        // Until we have proper dsn support, just use a timeout
+        setTimeout(() => {
+            // We basically just want to move this forward after 2 seconds
+            app.flow.step = FLOW_STEPS.RESOLVE;
+            broadcastFlow(app.flow);
+        }, 1000);
+    });
+
+    /*
+    onDestroy(() => {
+        if (interval) {
+            clearInterval(interval);
+        }
+    });
+    */
 </script>
 
-<form onsubmit={submit}>
-    <div class="wide">
-        <img src={attacker.img} alt={`Portrait of ${attacker.name}`} />
-        <img src={attack_img} alt="An axe striking a shield" />
-        <img src={defender.img} alt={`Portrait of ${defender.name}`} />
+<div>
+    <h1>Oooooooo</h1>
+    <div class="flexrow">
+        {#each { length: dice_count } as _, i}
+            <RollingDie />
+        {/each}
     </div>
-    <p class="wide">Spend footing to dodge or block</p>
-    <label for="footing_spent">Footing Spent:</label>
-    <Incrementer
-        type="number"
-        name="footing_spent"
-        min="0"
-        max={defender.system.footing}
-        bind:value={footing_spent}
-    />
-
-    <label for="bonus_dodge">Bonus Dodge:</label>
-    <Incrementer type="number" name="bonus_dodge" min="0" bind:value={bonus} />
-
-    <button class="devote wide elevated">Commit</button>
-</form>
+</div>
 
 <style lang="scss">
-    form {
+    div {
         display: grid;
         grid-template: 1fr / 1fr 1fr;
         align-items: center;
