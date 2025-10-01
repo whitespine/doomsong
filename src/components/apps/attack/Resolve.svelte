@@ -1,8 +1,6 @@
 <script>
     import attack_img from "$assets/icons/attack.png";
     import Incrementer from "../../fields/Incrementer.svelte";
-    import { DOOMSONG } from "../../../consts";
-    import { broadcastFlow, FLOW_STEPS, handleCompleteAttack } from "../../../apps/dodge_prompt.svelte";
     import { AttackFlow } from "../../../apps/dodge_prompt.svelte";
 
     /**

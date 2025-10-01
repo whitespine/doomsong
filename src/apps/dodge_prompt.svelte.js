@@ -1,4 +1,4 @@
-import AttackFlowComponent from "../components/apps/AttackFlowComponent.svelte";
+import AttackFlowComponent from "../components/apps/attack/FlowComponent.svelte";
 import { DOOMSONG } from "../consts";
 import { SvelteApplicationMixin } from "../overrides/svelte_mixin.svelte";
 import { onlineOwners } from "../utils/ownership";
