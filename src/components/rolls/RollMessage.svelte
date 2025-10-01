@@ -1,9 +1,10 @@
 <script>
     import Die from "./Die.svelte";
     import roll_types from "./roll_types.json";
+    import damage_types from "./attack_over_table.json";
     import RollingDie from "./RollingDie.svelte";
-    import crest from "$assets/icons/crest.png"
-    import skull from "$assets/icons/skull.png"
+    import crest from "$assets/icons/crest.png";
+    import skull from "$assets/icons/skull.png";
 
     let { _id: id, author, speaker, flags, rolls, dsn_roll } = $props();
     let ds_data = $derived(flags[game.system.id]);
@@ -24,8 +25,29 @@
         } else {
             base = 3;
         }
-        let final_result = base + ds_data.coin_result;
+        let final_result;
+        if (ds_data.roll_type == "attack") {
+            // Attacks normally flex more by doomcoins
+            let over = difficulty - total;
+            if (over == 1) {
+                final_result = 2; // Adjust down to equal
+            } else if (over >= 6) {
+                final_result = 4; // Adjust up to crest
+            }
+        } else {
+            final_result = base + ds_data.coin_result;
+        }
         return ["skull", "under", "equal", "over", "crest"][final_result];
+    });
+    let attack_over_result = $derived.by(() => {
+        let over = total - difficulty;
+        if ("heavy") {
+            over = Math.min(over, 6);
+        } else {
+            over = Math.min(over, 3);
+        }
+        over += ds_data.coin_result;
+        return [null, "1", "2", "3", "4", "5", "6", "critical"][over];
     });
     let speaker_actor = $derived(ChatMessage.getSpeakerActor(speaker));
 
@@ -53,17 +75,9 @@
             aria-label="Flip Doomcoin"><i class="fas fa-coin"></i></a
         >
     {:else if ds_data.coin_result == 1}
-        <img
-            class="doomcoin flipped"
-            src={crest}
-            alt="Crest"
-        />
+        <img class="doomcoin flipped" src={crest} alt="Crest" />
     {:else if ds_data.coin_result == -1}
-        <img
-            class="doomcoin flipped"
-            src={skull}
-            alt="Skull"
-        />
+        <img class="doomcoin flipped" src={skull} alt="Skull" />
     {/if}
 </h2>
 <div class="doomsong dice">
@@ -85,17 +99,9 @@
     {#each Object.entries(roll_type["results"]) as [result_key, result_text]}
         <div class="result-key">
             {#if result_key == "crest"}
-                <img
-                    class="critical"
-                    src={crest}
-                    alt="Crest"
-                />
+                <img class="critical" src={crest} alt="Crest" />
             {:else if result_key == "skull"}
-                <img
-                    class="critical"
-                    src={skull}
-                    alt="Skull"
-                />
+                <img class="critical" src={skull} alt="Skull" />
             {:else}
                 <span>
                     {result_key.toLocaleUpperCase()}
@@ -108,6 +114,21 @@
             </span>
         </div>
     {/each}
+    {#if ds_data.roll_type == "attack"}
+        <div class="result-key">
+            <span>
+                {attack_over_result}
+            </span>
+        </div>
+        <div>
+            <span>
+                {damage_types["bludgeoning"][attack_over_result]["label"]}
+            </span>
+            <span>
+                {damage_types["bludgeoning"][attack_over_result]["text"]}
+            </span>
+        </div>
+    {/if}
 </div>
 
 <style lang="scss">

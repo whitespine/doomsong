@@ -30,14 +30,16 @@
     }
 
     onMount(() => {
-        doRoll();
+        if(game.user.id == app.flow.attack.attacker) {
+            doRoll();
 
-        // Until we have proper dsn support, just use a timeout
-        setTimeout(() => {
-            // We basically just want to move this forward after 2 seconds
-            app.flow.step = FLOW_STEPS.RESOLVE;
-            broadcastFlow(app.flow);
-        }, 1000);
+            // Until we have proper dsn support, just use a timeout
+            setTimeout(() => {
+                // We basically just want to move this forward after 2 seconds
+                app.flow.step = FLOW_STEPS.RESOLVE;
+                broadcastFlow(app.flow);
+            }, 1000);
+        }
     });
 
     /*

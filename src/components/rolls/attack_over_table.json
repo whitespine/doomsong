@@ -2,31 +2,98 @@
     "bludgeoning": {
         "1": {
             "label": "Staggered",
-            "text": "Target loses -2 footing. If they are prone, they instead lose an additional -2 toughness."
+            "text": "Target loses -2 footing. If they are prone, they instead lose an additional -2 toughness.",
+            "penalties": [
+                {
+                    "label": "Target loses -2 footing",
+                    "footing": 2
+                },
+                {
+                    "label": "If target is prone, they instead lose an additional -2 toughness",
+                    "footing": 1
+                }
+            ]
         },
         "2": {
             "label": "Battered",
-            "text": "The target loses an additional -1 toughness, then a piece of armour they are wearing gains the ill-fitting property."
+            "text": "The target loses an additional -1 toughness, then a piece of armour they are wearing gains the ill-fitting property.",
+            "penalties": [
+                {
+                    "label": "Target loses -1 tougness",
+                    "toughness": 1
+                },
+                {
+                    "label": "A piece of armor they are wearing gains the ill-fitting property",
+                    "manual": true
+                }
+            ]
         },
         "3": {
             "label": "Smashed Face",
-            "text": "Target gains the Smashed Face injury and must resist [death]."
+            "text": "Target gains the Smashed Face injury and must resist [death].",
+            "penalties": [
+                {
+                    "label": "Target gains the Smashed Face injury",
+                    "manual": true
+                },
+                {
+                    "label": "Target must resist [death]",
+                    "resist_death": true
+                }
+            ]
         },
         "4": {
             "label": "Broken",
-            "text": "The target must resist [death]. Even if they succeed, they lose all footing and are knocked unconscious for D6 rounds."
+            "text": "The target must resist [death]. Even if they succeed, they lose all footing and are knocked unconscious for D6 rounds.",
+
+            "penalties": [
+                {
+                    "label": "Target gains the Smashed Face injury",
+                    "manual": true
+                },
+                {
+                    "label": "Target must resist [death]",
+                    "resist_death": true
+                }
+            ]
         },
         "5": {
             "label": "Crushed Arm",
-            "text": "If the target blocked this [attack], the item they used to block is destroyed. Then, they gain the Broken Arm injury and must resist [death]."
+            "text": "If the target blocked this [attack], the item they used to block is destroyed. Then, they gain the Broken Arm injury and must resist [death].",
+            "penalties": [
+                {
+                    "label": "Target gains the Smashed Face injury",
+                    "manual": true
+                },
+                {
+                    "label": "Target must resist [death]",
+                    "resist_death": true
+                }
+            ]
         },
         "6": {
             "label": "Staggered",
-            "text": "Target falls prone and loses all footing. A piece of armour they are wearing is destroyed and then they suffer bludgeoning damage (again)"
+            "text": "Target falls prone and loses all footing. A piece of armour they are wearing is destroyed and then they suffer bludgeoning damage (again)",
+            "penalties": [
+                {
+                    "label": "Target gains the Smashed Face injury",
+                    "manual": true
+                },
+                {
+                    "label": "Target must resist [death]",
+                    "resist_death": true
+                }
+            ]
         },
         "critical": {
             "label": "Critical",
-            "text": "The target is defeated or killed in a manner of the attacker's choosing. This could be a shot through the heart, a decapitation, or some form of non-lethal removal from the fight."
+            "text": "The target is defeated or killed in a manner of the attacker's choosing. This could be a shot through the heart, a decapitation, or some form of non-lethal removal from the fight.",
+            "penalties": [
+                {
+                    "label": "Target is executed with extreme prejudice",
+                    "toughness": 999
+                }
+            ]
         }
     },
     "slashing": {

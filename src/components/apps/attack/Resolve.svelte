@@ -9,11 +9,6 @@
      * @type {{flow: AttackFlow, attacker: Actor, defender: Actor}}
      */
     let { flow, attacker, defender } = $props();
-
-    function submit(e) {
-        flow.step = FLOW_STEPS.ROLL; // We move on to the roll
-        broadcastFlow(flow);
-    }
 </script>
 
 <form onsubmit={submit}>

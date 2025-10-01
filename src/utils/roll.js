@@ -1,7 +1,7 @@
 
 /** An attempt to attack
  * @typedef {object} CheckParams
- * @property {("standard" | "corruption" | "navigate" | "attack")} roll_type Unique id of this attack flow
+ * @property {("standard" | "corruption" | "navigate" | "attack")} roll_type What are we rolling
  * @property {string} formula The formula for the roll
  * @property {number} difficulty The difficulty of the roll
  * @property {AttackMetadata} [attack] Attack metadata, in case it is an attack
@@ -24,7 +24,7 @@ export function formulaFor(roll_type, bonus) {
  * @param {CheckParams} check_details 
  * @returns 
  */
-export async function rollCheck(check_details){
+export async function rollCheck(check_details) {
     let { roll_type = "standard", difficulty = 5, formula, speaker = null } = check_details;
     let roll = await new Roll(formula).roll();
 

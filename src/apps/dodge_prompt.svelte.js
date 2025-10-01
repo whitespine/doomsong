@@ -7,7 +7,7 @@ export class AttackFlowApp extends SvelteApplicationMixin(foundry.applications.a
     /** @type {AttackFlow} */
     flow = $state(null);
 
-    constructor(flow, options={}) {
+    constructor(flow, options = {}) {
         super(options);
         this.flow = flow;
     }
@@ -33,7 +33,7 @@ export class AttackFlowApp extends SvelteApplicationMixin(foundry.applications.a
 
     // Cleanup
     async close(options) {
-        if(this.options.attack.attack_id) {
+        if (this.options.attack.attack_id) {
             delete IN_PROGRESS_APPS[this.options.attack.attack_id];
         }
         return super.close(options);
@@ -43,20 +43,30 @@ export class AttackFlowApp extends SvelteApplicationMixin(foundry.applications.a
      * @param {AttackFlow} flow 
      */
     static async showFlow(flow) {
+        let close = flow.step == FLOW_STEPS.COMPLETE;
         let in_progress = IN_PROGRESS_APPS[flow.attack_id];
-        if(in_progress) {
-            in_progress.flow = flow;
+
+        if (in_progress) {
+            if (close) {
+                in_progress.close();
+            } else {
+                in_progress.flow = flow;
+            }
         } else {
-            // Start and render a new one
-            let attacker = fromUuidSync(flow.attack.attacker);
-            let defender = fromUuidSync(flow.attack.defender);
-            let prompt = new AttackFlowApp({
-                window: {
-                    title: `${attacker.name} attacks ${defender.name}`
-                }, 
-            });
-            IN_PROGRESS_APPS[flow.attack_id] = prompt;
-            return prompt.render({ force: true });
+            if (close) {
+                // Do nothing
+            } else {
+                // Start and render a new one
+                let attacker = fromUuidSync(flow.attack.attacker);
+                let defender = fromUuidSync(flow.attack.defender);
+                let prompt = new AttackFlowApp({
+                    window: {
+                        title: `${attacker.name} attacks ${defender.name}`
+                    },
+                });
+                IN_PROGRESS_APPS[flow.attack_id] = prompt;
+                await prompt.render({ force: true });
+            }
         }
     }
 }
@@ -77,7 +87,8 @@ export const FLOW_STEPS = {
     INITIATE: "UNUSED_FOR_NOW",
     DEFENSE: "DEFEND_YOURSELF",
     ROLL: "ROLL_THOSE_BONES",
-    RESOLVE: "FLIP_THE_COIN_COWARD"
+    RESOLVE: "FLIP_THE_COIN_COWARD",
+    COMPLETE: "IT_ALL_ENDS_SOMEDAY"
 };
 
 
@@ -156,10 +167,10 @@ export function initiateAttack(data) {
                 shield: false,
                 step: FLOW_STEPS.DEFENSE
             };
-            if(data.attack.formula || data.attack.dodge_cost) {
+            if (data.attack.formula || data.attack.dodge_cost) {
                 // The defender needs a chance to respond
                 flow.step = FLOW_STEPS.DEFENSE;
-            } else if(data.attack.effect) {
+            } else if (data.attack.effect) {
                 // It still does something, but does not need a roll. Skip to the resolution step
                 flow.step = FLOW_STEPS.RESOLVE;
             }
