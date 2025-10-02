@@ -18,7 +18,7 @@ export class AttackFlowApp extends SvelteApplicationMixin(foundry.applications.a
             component: AttackFlowComponent
         },
         position: {
-            width: 300,
+            width: 500,
             height: "auto"
         }
     }
@@ -33,8 +33,8 @@ export class AttackFlowApp extends SvelteApplicationMixin(foundry.applications.a
 
     // Cleanup
     async close(options) {
-        if (this.options.attack.attack_id) {
-            delete IN_PROGRESS_APPS[this.options.attack.attack_id];
+        if (this.flow.attack.attack_id) {
+            delete IN_PROGRESS_APPS[this.flow.attack.attack_id];
         }
         return super.close(options);
     }
@@ -56,6 +56,7 @@ export class AttackFlowApp extends SvelteApplicationMixin(foundry.applications.a
             if (close) {
                 // Do nothing
             } else {
+                console.error("Making new flow window");
                 // Start and render a new one
                 let attacker = fromUuidSync(flow.attack.attacker);
                 let defender = fromUuidSync(flow.target);

@@ -2,7 +2,10 @@
     import attack_img from "$assets/icons/attack.png";
     import Incrementer from "../../fields/Incrementer.svelte";
     import { DOOMSONG } from "../../../consts";
-    import { broadcastFlow, FLOW_STEPS } from "../../../apps/dodge_prompt.svelte";
+    import {
+        broadcastFlow,
+        FLOW_STEPS,
+    } from "../../../apps/dodge_prompt.svelte";
 
     /** @import { AttackFlowApp } from "../../../apps/dodge_prompt.svelte" */
 
@@ -18,45 +21,57 @@
 </script>
 
 <form onsubmit={submit}>
-    <div class="wide">
+    <div>
+        <h1 class="clip-text">{attacker.name}</h1>
+        <h1>vs</h1>
+        <h1 class="clip-text">{defender.name}</h1>
         <img src={attacker.img} alt={`Portrait of ${attacker.name}`} />
         <img src={attack_img} alt="An axe striking a shield" />
         <img src={defender.img} alt={`Portrait of ${defender.name}`} />
     </div>
-    <p class="wide">Spend footing to dodge or block</p>
+    <p>Spend footing to dodge or block</p>
 
-    <label for="footing_spent">Footing Spent:</label>
-    <Incrementer
-        type="number"
-        name="footing_spent"
-        min="0"
-        max={defender.system.footing}
-        bind:value={app.flow.footing_spent}
-    />
+    <div class="inputs">
+        <label for="footing_spent">Footing Spent:</label>
+        <Incrementer
+            name="footing_spent"
+            min="0"
+            max={defender.system.footing}
+            bind:value={app.flow.footing_spent}
+            style={"margin-left: auto"}
+            width="140px"
+        />
+    </div>
 
-    <label for="bonus_dodge" data-tooltip="For instance, a shield gives +1 dodge if footing is spent to block">Bonus Dodge:</label>
-    <Incrementer type="number" name="bonus_dodge" min="0" bind:value={app.flow.bonus_dodge} />
+    <div class="inputs">
+        <label
+            for="bonus_dodge"
+            data-tooltip="For instance, a shield gives +1 dodge if footing is spent to block"
+            >Bonus Dodge:</label
+        >
+        <Incrementer
+            name="bonus_dodge"
+            min="0"
+            bind:value={app.flow.bonus_dodge}
+            style={"margin-left: auto"}
+            width="140px"
+        />
+    </div>
 
     <button class="devote wide elevated">Commit</button>
 </form>
 
 <style lang="scss">
     form {
-        display: grid;
-        grid-template: 1fr / 1fr 1fr;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        align-content: center;
 
         div {
-            display: flex;
-            flex-direction: row;
-            img {
-                flex-grow: 1;
-                max-width: 33%;
-                max-height: auto;
-                // margin: auto;
-            }
+            display: grid;
+            grid-template: 32px 1fr / repeat(3, 1fr);
+            align-items: center;
+            justify-items: center;
         }
 
         p {
@@ -64,18 +79,22 @@
             font-size: large;
             font-weight: 300;
         }
-        label {
-            text-align: right;
-            padding-right: 20px;
+
+        .inputs {
+            width: 100%;
+            height: 3em;
+            display: flex;
+            flex-direction: row;
+
+            label {
+                font-weight: 300;
+            }
         }
 
         button.devote {
             min-height: 60px;
             font-size: xx-large;
-        }
-
-        .wide {
-            grid-column: 1 / 3;
+            width: 100%;
         }
     }
 </style>

@@ -93,7 +93,7 @@
             {/each}
         </select>
         <span class="elevated difficulty">Difficulty:</span>
-        <Incrementer type="number" name="difficulty" min="0" bind:value={difficulty} style="max-width: 160px" />
+        <Incrementer type="number" name="difficulty" min="0" bind:value={difficulty} width="140px" />
     </div>
     <div class="roll-options">
         {#each ["Traits", "Gear", "Conditions", "Allies"] as category}

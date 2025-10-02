@@ -4,11 +4,11 @@
         min = undefined,
         max = undefined,
         name = undefined,
+        width = "140px",
         ...restProps
     } = $props();
 
     function increment(e, delta) {
-        console.log(e);
         e.preventDefault();
         e.stopPropagation();
         let new_value = value + delta;
@@ -22,7 +22,7 @@
     }
 </script>
 
-<div {...restProps}>
+<div {...restProps} style:min-width={width} style:max-width={width}> 
     <button onclick={(e) => increment(e, -1)}>-</button>
     <input
         type="number"
@@ -37,18 +37,20 @@
 <style lang="scss">
     div {
         display: flex;
+        height: 100%;
         align-items: center;
         input {
             margin: 5px;
-            min-height: none;
             text-align: center;
             flex-grow: 1;
+            flex-basis: 1;
             font-size: x-large;
         }
 
         button {
             --button-size: 1.5em;
             font-size: x-large;
+            flex-basis: 0;
             width: 1.5em;
             padding: 15px;
             min-height: none;
