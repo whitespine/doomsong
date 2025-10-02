@@ -3,7 +3,6 @@
     let { context } = $props();
     let source = $derived(context.source);
     let actor = $derived(context.document);
-    $inspect(source);
 </script>
 
 <div class="shield">

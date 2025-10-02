@@ -1,6 +1,7 @@
 <script>
     import RollingDie from "../../rolls/RollingDie.svelte";
     import { broadcastFlow, FLOW_STEPS } from "../../../apps/dodge_prompt.svelte";
+    import { onMount, onDestroy } from "svelte";
 
     /** @import { AttackFlowApp } from "../../../apps/dodge_prompt.svelte" */
 
@@ -9,7 +10,7 @@
      */
     let { app, attacker, defender } = $props();
 
-    let dice_count = $derived(app.includes("2d6") ? 2 : 1); // For display purposes only
+    let dice_count = $derived(app.flow.attack.formula.includes("2d6") ? 2 : 1); // For display purposes only
 
     async function doRoll() {
         // Handle the actual dice roll
@@ -30,7 +31,7 @@
     }
 
     onMount(() => {
-        if(game.user.id == app.flow.attack.attacker) {
+        if(game.user.id == app.flow.attack.user) {
             doRoll();
 
             // Until we have proper dsn support, just use a timeout
@@ -38,7 +39,8 @@
                 // We basically just want to move this forward after 2 seconds
                 app.flow.step = FLOW_STEPS.RESOLVE;
                 broadcastFlow(app.flow);
-            }, 1000);
+            // }, 2000);
+            }, 2000);
         }
     });
 
@@ -52,50 +54,25 @@
 </script>
 
 <div>
-    <h1>Oooooooo</h1>
-    <div class="flexrow">
+    <div class="dicebox">
         {#each { length: dice_count } as _, i}
-            <RollingDie />
+            <RollingDie class="bigdice" />
         {/each}
     </div>
 </div>
 
-<style lang="scss">
-    div {
-        display: grid;
-        grid-template: 1fr / 1fr 1fr;
+<style lang="scss" module>
+    .dicebox {
+        display: flex;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
-        align-content: center;
 
-        div {
-            display: flex;
-            flex-direction: row;
-            img {
-                flex-grow: 1;
-                max-width: 33%;
-                max-height: auto;
-                // margin: auto;
-            }
-        }
-
-        p {
-            text-align: center;
-            font-size: large;
-            font-weight: 300;
-        }
-        label {
-            text-align: right;
-            padding-right: 20px;
-        }
-
-        button.devote {
-            min-height: 60px;
-            font-size: xx-large;
-        }
-
-        .wide {
-            grid-column: 1 / 3;
+        img {
+            --size: 64px;
+            width: var(--size);
+            height: var(--size);
+            margin: 12px;
         }
     }
 </style>

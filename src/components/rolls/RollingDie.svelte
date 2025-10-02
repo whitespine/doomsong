@@ -5,6 +5,7 @@
     let props = $props();
     let value = $state(1);
     let interval;
+
     onMount(() => {
         interval = setInterval(() => {
             let new_value = Math.ceil(Math.random() * 6);

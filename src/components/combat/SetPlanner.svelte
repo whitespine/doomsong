@@ -6,7 +6,6 @@
 
     let owner = $derived(combatant.owner);
     let visible_dice = $derived(combatant.visible_dice);
-    $inspect(owner);
     let set_cursor = $derived((owner && combatant.canSetDie()) ? "pointer" : "default");
     let clear_cursor = $derived(owner ? "pointer" : "default");
 </script>
