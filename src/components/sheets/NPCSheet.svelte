@@ -2,12 +2,11 @@
 <script>
     import NPCBlockSheet from "./NPCBlockSheet.svelte";
     import NPCEditSheet from "./NPCEditSheet.svelte";
-    let {block=true, ...restProps} = $props();
+    let {block=true, context} = $props();
 </script>
 
-<h1>{restProps.actor.name}</h1>
 {#if block}
-    <NPCBlockSheet {...restProps} />
+    <NPCBlockSheet {context} />
 {:else}
-    <NPCEditSheet {...restProps} />
+    <NPCEditSheet {context} />
 {/if}

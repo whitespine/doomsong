@@ -57,6 +57,10 @@ export class ActorModel extends DoomsongDataModel {
         };
     }
 
+    prepareBaseData() {
+        console.log("hewwo");
+    }
+
     prepareDerivedData() {
         // Combat stats shared by all actors
         this.toughness_bar = {

@@ -1,5 +1,5 @@
 import { DoomsongChatMessage } from "../overrides/DoomsongChatMessage.svelte";
-import { DoomsongActor } from "./actor";
+import { DoomsongActor } from "./actor.svelte";
 import { DoomsongCombat, DoomsongCombatant } from "./combat";
 import { DoomsongToken, DoomsongTokenDocument } from "./token";
 

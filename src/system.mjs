@@ -10,9 +10,10 @@ import { mount } from 'svelte';
 import Roller from "./components/rolls/Roller.svelte";
 import { DoomsongCombatTracker } from './overrides/DoomsongCombatTracker.svelte';
 import { DoomsongChatMessage } from './overrides/DoomsongChatMessage.svelte';
-import { DoomsongActor } from './documents/actor';
+import { DoomsongActor } from './documents/actor.svelte';
 import { DoomsongTokenDocument } from './documents/token';
 import { setupSheets } from './sheets/config';
+import { AttackFlowApp } from './apps/dodge_prompt.svelte';
 
 Hooks.once('init', async function() {
   console.log("Initializing DOOMSONG RPG")
@@ -33,6 +34,7 @@ Hooks.once('init', async function() {
       token: DoomsongTokenDocument
     },
     apps: {
+      attack: AttackFlowApp
     },
     calendar: {
       init: initCalendar

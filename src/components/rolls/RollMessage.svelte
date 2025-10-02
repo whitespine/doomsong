@@ -122,10 +122,11 @@
         </div>
         <div>
             <span>
-                {damage_types["bludgeoning"][attack_over_result]["label"]}
+                <!--{damage_types["bludgeoning"][attack_over_result]["label"]}-->
+                {damage_types["bludgeoning"]}
             </span>
             <span>
-                {damage_types["bludgeoning"][attack_over_result]["text"]}
+                <!--{damage_types["bludgeoning"][attack_over_result]["text"]}-->
             </span>
         </div>
     {/if}

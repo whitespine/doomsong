@@ -3,6 +3,14 @@
  * Our custom class for Icon Actors
  */
 export class DoomsongActor extends Actor {
+
+    // name = $state("");
+    sync_name = $state("test");
+
+    // constructor() {
+        // super();
+    // }
+
     /**
      * Patch update to handle pseudo-bars
      *
@@ -22,6 +30,29 @@ export class DoomsongActor extends Actor {
         return super.update(data, options);
     }
 
+    /**
+     * Patch onUpdate to sync our svelte properties
+     * @param {object} changed 
+     * @param {object} options 
+     * @param {string} userId 
+     */
+    /**
+    _onUpdate(changed, options, userId) {
+        if (changed.name) this.sync_name = changed.name;
+        super._onUpdate(changed, options, userId);
+    }
+        */
+
+
+    /**
+     * Keep our svelte properties in sync
+     */
+    prepareBaseData() {
+        // this.sync_name = this.name;
+    }
+
+
+
     /* @override
      * This is the best place to overwrite "top level" properties like name 
      * and prototype token attributes. Otherwise, use models
@@ -32,21 +63,21 @@ export class DoomsongActor extends Actor {
         let mods = {}
 
         // Set actorlink defaults
-        if(data.prototypeToken?.actorLink == undefined) {
+        if (data.prototypeToken?.actorLink == undefined) {
             let link = data.type === "player";
             mods["prototypeToken.actorLink"] = link;
         }
 
         // Set disposition defaults
-        if(data.prototypeToken?.disposition == undefined) {
-            mods["prototypeToken.disposition"]= {
+        if (data.prototypeToken?.disposition == undefined) {
+            mods["prototypeToken.disposition"] = {
                 "player": CONST.TOKEN_DISPOSITIONS.FRIENDLY,
                 "npc": CONST.TOKEN_DISPOSITIONS.HOSTILE,
             }[data.type] || CONST.TOKEN_DISPOSITIONS.NEUTRAL;
         }
 
         // Save only if necessary
-        if(Object.keys(mods).length > 0) {
+        if (Object.keys(mods).length > 0) {
             this.updateSource(mods);
         }
     }
