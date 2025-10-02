@@ -13,7 +13,6 @@ import { DoomsongChatMessage } from './overrides/DoomsongChatMessage.svelte';
 import { DoomsongActor } from './documents/actor';
 import { DoomsongTokenDocument } from './documents/token';
 import { setupSheets } from './sheets/config';
-import { DodgePrompt } from './apps/dodge_prompt.svelte';
 
 Hooks.once('init', async function() {
   console.log("Initializing DOOMSONG RPG")
@@ -34,7 +33,6 @@ Hooks.once('init', async function() {
       token: DoomsongTokenDocument
     },
     apps: {
-      dodge: DodgePrompt
     },
     calendar: {
       init: initCalendar
