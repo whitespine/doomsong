@@ -40,7 +40,7 @@
         return ["skull", "under", "equal", "over", "crest"][final_result];
     });
     let attack_over_result = $derived.by(() => {
-        let over = total - difficulty;
+        let over = roll.total - ds_data.difficulty;
         if ("heavy") {
             over = Math.min(over, 6);
         } else {
