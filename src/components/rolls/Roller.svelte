@@ -3,6 +3,7 @@
     import { targeted_tokens } from "../../utils/target.svelte";
     import { formulaFor, rollCheck } from "../../utils/roll";
     import { initiateAttack } from "../../apps/dodge_prompt.svelte";
+    import Incrementer from "../fields/Incrementer.svelte";
 
     // Gives tooltips for a given value
     function valueTooltip(value) {
@@ -28,23 +29,19 @@
 
     // Callback for setting a roll type
     function selectRollType(evt) {
-        roll_type_key = evt.target.value;
+        roll_type = evt.target.value;
         difficulty = roll_type.default_difficulty;
     }
 
     // Our currently selected options
-    let roll_type_key = $state("standard");
-    let roll_type = $derived(
-        roll_types[roll_type_key] || roll_types["standard"],
-    );
+    let roll_type = $state("standard");
     let choices = $state(defaultChoices());
-    // let difficulty = $state(5);
     let difficulty = $derived.by(() => {
-        if (targeted_tokens.length == 1) {
+        if (roll_type == "attack" && targeted_tokens.length >= 1) {
             // Use their toughness + protection instead
-            return targeted_tokens[0].actor.system.attack_difficulty;
+            return targeted_tokens[0].actor.system.attack_difficulty ?? 5;
         }
-        return 5;
+        return roll_types[roll_type].default_difficulty ?? 5;
     });
 
     // Reset the above two to their default values
@@ -64,7 +61,7 @@
         let attacker = _token?.actor ?? game.user.character;
 
         if (
-            (roll_type_key == "attack") &&
+            (roll_type == "attack") &&
             (targeted_tokens.length != 0) &&
             attacker
         ) {
@@ -83,9 +80,8 @@
         } else {
             // Handle immediately
             let formula = formulaFor(mode, total_bonuses);
-            rollCheck({  roll_type: roll_type_key, difficulty, formula });
+            rollCheck({  roll_type: roll_type, difficulty, formula });
         }
-        // reset();
     }
 </script>
 
@@ -97,11 +93,7 @@
             {/each}
         </select>
         <span class="elevated difficulty">Difficulty:</span>
-        <button onclick={() => difficulty--}>-</button>
-        <span class="difficulty value" data-tooltip="Difficulty"
-            >{difficulty}</span
-        >
-        <button class="invert" onclick={() => difficulty++}>+</button>
+        <Incrementer type="number" name="difficulty" min="0" bind:value={difficulty} style="max-width: 160px" />
     </div>
     <div class="roll-options">
         {#each ["Traits", "Gear", "Conditions", "Allies"] as category}
@@ -154,11 +146,11 @@
     </div>
     <div class="roll-buttons">
         <button onclick={() => roll("hasty")}
-            >{roll_type_key == "attack" ? "Light" : "Hasty"}</button
+            >{roll_type == "attack" ? "Light" : "Hasty"}</button
         >
         <button onclick={() => roll("standard")}>Standard</button>
         <button onclick={() => roll("focused")}
-            >{roll_type_key == "attack" ? "Heavy" : "Focused"}</button
+            >{roll_type == "attack" ? "Heavy" : "Focused"}</button
         >
     </div>
 </div>
@@ -188,14 +180,6 @@
             margin-right: 30px;
             font-size: larger;
         }
-
-        // Our difficulty buttons
-        button {
-            width: 30px;
-            font-size: x-large;
-            border-radius: 0px;
-        }
-
         .difficulty {
             padding-left: 5px;
             padding-right: 5px;

@@ -164,7 +164,7 @@ export function initiateAttack(data) {
                 attack: data.attack,
                 target: target.uuid,
                 footing_spent: 0,
-                shield: false,
+                bonus_dodge: 0,
                 step: FLOW_STEPS.DEFENSE
             };
             if (data.attack.formula || data.attack.dodge_cost) {

@@ -4,6 +4,7 @@
         min = undefined,
         max = undefined,
         name = undefined,
+        ...restProps
     } = $props();
 
     function increment(e, delta) {
@@ -21,7 +22,7 @@
     }
 </script>
 
-<div>
+<div {...restProps}>
     <button onclick={(e) => increment(e, -1)}>-</button>
     <input
         type="number"
