@@ -14,7 +14,7 @@
 <div class="frame-body">
     <div class="header">
         <div class="identity">
-            <h1>{context.actor.system.name}</h1>
+            <h1>{context.actor.name}</h1>
             <div class="traits">
                 {#each source.system.traits as trait, index}
                     {#if index > 0}

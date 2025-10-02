@@ -58,8 +58,8 @@ export class AttackFlowApp extends SvelteApplicationMixin(foundry.applications.a
             } else {
                 // Start and render a new one
                 let attacker = fromUuidSync(flow.attack.attacker);
-                let defender = fromUuidSync(flow.attack.defender);
-                let prompt = new AttackFlowApp({
+                let defender = fromUuidSync(flow.target);
+                let prompt = new AttackFlowApp(flow, {
                     window: {
                         title: `${attacker.name} attacks ${defender.name}`
                     },

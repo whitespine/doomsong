@@ -1,3 +1,4 @@
+import { reactAllSchema } from "../models/base.svelte";
 
 /**
  * Our custom class for Icon Actors
@@ -20,28 +21,10 @@ export class DoomsongActor extends Actor {
         return super.update(data, options);
     }
 
-    /**
-     * Patch onUpdate to sync our svelte properties
-     * @param {object} changed 
-     * @param {object} options 
-     * @param {string} userId 
-     */
-    /**
-    _onUpdate(changed, options, userId) {
-        if (changed.name) this.sync_name = changed.name;
-        super._onUpdate(changed, options, userId);
+    _configure(options = {}) {
+        super._configure(options);
+        // reactAllSchema(this);
     }
-        */
-
-
-    /**
-     * Keep our svelte properties in sync
-     */
-    prepareBaseData() {
-        // this.sync_name = this.name;
-    }
-
-
 
     /* @override
      * This is the best place to overwrite "top level" properties like name 

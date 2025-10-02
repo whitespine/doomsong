@@ -1,20 +1,49 @@
 import { formatDotpath } from "../utils/paths";
 
+// Simple wrapper around a single svelte state
+class Statelet {
+	constructor(initial) {
+		this.value = $state(initial);
+	}
+}
+
+// Add getters and setters for a statelet
+function stateletKey(key) {
+	return `_STATELET__${key}`;
+} 
+
+// Get a statelet, or initialize+grab it if not yet assigned
+function safeGetStatelet(object, sk, initial_value) {
+	if(!(sk in object)) {
+		object[sk] = new Statelet(initial_value); 
+	}
+	return object[sk];
+}
+
+// Call during a _configure to inject a Statelet and appropriate getters and setters, to make any field reactive
+// initial_value does not really matter
+export function injectReactive(object, key, initial_value=null) {
+	let sk = stateletKey(key);
+	Object.defineProperty(object, key, {
+	  get: function() { return safeGetStatelet(object, sk, initial_value).value },
+		set: function(v) { safeGetStatelet(object, sk, initial_value).value = v }
+	});
+}
+
+// Shorthand for reacting to all in a DataModel's schema
+export function reactAllSchema(object) {
+  for(let key of object.schema.keys()) {
+    injectReactive(object, key);
+  }
+}
+
 // Establish a shorthand
 export const fields = foundry.data.fields;
 
 export class DoomsongDataModel extends foundry.abstract.TypeDataModel {
-  // To enable cool shit, universally
-
-  // These are synced with parent, but svelte friendly
-  name = $state(null);
-  img = $state(null);
-  // TODO more
-
-  // Manually sync all our svelte properties
-  prepareBaseData() {
-      this.name = this.parent.name;
-      this.img = this.parent.img;
+  _configure(options={}) {
+    super._configure(options);
+    reactAllSchema(this);
   }
 }
 

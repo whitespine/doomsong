@@ -1,6 +1,6 @@
 <script>
     let {
-        value = $bindable(0),
+        value = $bindable(),
         min = undefined,
         max = undefined,
         name = undefined,

@@ -1,4 +1,4 @@
-import { ControlledLengthArrayField, DoomsongDataModel } from "../base.svelte";
+import { DoomsongDataModel } from "../base.svelte";
 
 const fields = foundry.data.fields;
 
@@ -57,18 +57,16 @@ export class ActorModel extends DoomsongDataModel {
         };
     }
 
-    prepareDerivedData() {
-        // Combat stats shared by all actors
-        this.toughness_bar = {
-            min: 0,
-            max: this.max_toughness,
-            value: this.toughness
-        }
-        this.footing_bar = {
-            min: 0,
-            max: this.max_footing,
-            value: this.footing
-        }
-        this.attack_difficulty = Math.max(this.toughness + this.protection, this.min_difficulty || 0);
-    }
+    // For display purposes
+    toughness_bar = $derived({
+        min: 0,
+        max: this.max_toughness,
+        value: this.toughness
+    });
+    footing_bar = $derived({
+        min: 0,
+        max: this.max_footing,
+        value: this.footing
+    });
+    attack_difficulty = $derived(Math.max(this.toughness + this.protection, this.min_difficulty || 0));
 }
