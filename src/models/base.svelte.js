@@ -6,16 +6,15 @@ export const fields = foundry.data.fields;
 export class DoomsongDataModel extends foundry.abstract.TypeDataModel {
   // To enable cool shit, universally
 
-  /**
-   * Create a full update payload, e.g. to preserve arrays
-   *
-   * @param {object} update_data the update data to apply
-   *
-   * @returns {object} update_data augmented with fixed arrays etc
-   */
-  fullUpdateData(update_data) {
-    const system = foundry.utils.duplicate(this._source);
-    return fancyMerge({ system }, update_data);
+  // These are synced with parent, but svelte friendly
+  name = $state(null);
+  img = $state(null);
+  // TODO more
+
+  // Manually sync all our svelte properties
+  prepareBaseData() {
+      this.name = this.parent.name;
+      this.img = this.parent.img;
   }
 }
 

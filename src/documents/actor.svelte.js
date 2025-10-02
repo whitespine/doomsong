@@ -3,14 +3,6 @@
  * Our custom class for Icon Actors
  */
 export class DoomsongActor extends Actor {
-
-    // name = $state("");
-    sync_name = $state("test");
-
-    // constructor() {
-        // super();
-    // }
-
     /**
      * Patch update to handle pseudo-bars
      *
@@ -25,8 +17,6 @@ export class DoomsongActor extends Actor {
         if (data["system.toughness_bar.value"]) data["system.toughness"] = data["system.toughness_bar.value"];
         if (data.system?.toughness_bar?.value) data["system.toughness"] = data.system?.toughness_bar?.value;
 
-        // Fix array updates then delegate to super
-        // data = this.system.fullUpdateData(data);
         return super.update(data, options);
     }
 

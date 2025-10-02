@@ -1,4 +1,4 @@
-import { ControlledLengthArrayField, DoomsongDataModel } from "./base";
+import { ControlledLengthArrayField, DoomsongDataModel } from "./base.svelte";
 
 export const fields = foundry.data.fields;
 

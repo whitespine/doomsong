@@ -1,4 +1,4 @@
-import { ActorModel } from "./actor";
+import { ActorModel } from "./actor.svelte";
 import PlayerDefaultMoves from "./player_moves.json"
 
 

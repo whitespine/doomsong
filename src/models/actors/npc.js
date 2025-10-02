@@ -1,4 +1,4 @@
-import { ActorModel } from "./actor";
+import { ActorModel } from "./actor.svelte";
 
 const fields = foundry.data.fields;
 

@@ -1,4 +1,4 @@
-import { ControlledLengthArrayField, DoomsongDataModel } from "../base";
+import { ControlledLengthArrayField, DoomsongDataModel } from "../base.svelte";
 
 const fields = foundry.data.fields;
 
@@ -55,10 +55,6 @@ export class ActorModel extends DoomsongDataModel {
                 })
             )
         };
-    }
-
-    prepareBaseData() {
-        console.log("hewwo");
     }
 
     prepareDerivedData() {
