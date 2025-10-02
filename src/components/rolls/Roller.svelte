@@ -30,7 +30,6 @@
     // Callback for setting a roll type
     function selectRollType(evt) {
         roll_type = evt.target.value;
-        difficulty = roll_type.default_difficulty;
     }
 
     // Our currently selected options
