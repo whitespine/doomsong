@@ -17,7 +17,20 @@ export function preventDefault(fn) {
 
 
 // Stop events dead in their tracks
-export function prevent(evt) {
+export function stop(evt) {
     evt.preventDefault();
     evt.stopPropagation();
+    return evt;
+}
+
+// Stop propagation only
+export function stopProp(evt) {
+    evt.stopPropagation();
+    return evt;
+}
+
+// Prevent default only
+export function prevent(evt) {
+    evt.stopPropagation();
+    return evt;
 }

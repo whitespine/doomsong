@@ -1,5 +1,6 @@
 <script>
     import { resolveDotpath } from "../../utils/paths";
+    import { stop } from "../../utils/handlers";
     let { tag="input", doc, source, path, class: className, ...restProps } = $props();
 
     let value = $derived(resolveDotpath(source, path, ""));
@@ -25,8 +26,8 @@
 </script>
 
 <svelte:element this={tag}
-    onchange={(e) => commit(e.target.value, 0)}
-    oninput={(e) => commit(e.target.value, 1000)}
+    onchange={(e) => commit(stop(e).target.value, 0)}
+    oninput={(e) => commit(stop(e).target.value, 1000)}
     {...restProps}
     class={className}
     {value}

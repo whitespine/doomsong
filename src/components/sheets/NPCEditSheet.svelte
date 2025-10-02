@@ -2,7 +2,7 @@
     import TraitTag from "../fields/TraitTag.svelte";
     import UpdateInput from "../fields/UpdateInput.svelte";
     import Die from "../rolls/Die.svelte";
-    import { prevent } from "../../utils/handlers";
+    import { stop } from "../../utils/handlers";
     let { context } = $props();
     let source = $derived(context.source);
     let actor = $derived(context.document);
@@ -73,7 +73,8 @@
     }
 </script>
 
-<div class="npc-sheet" onsubmit={prevent}>
+<div class="npc-sheet" onsubmit={stop}>
+    <button hidden disabled>Snake Eater</button>
     <div class="header">
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
