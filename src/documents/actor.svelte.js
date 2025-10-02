@@ -1,4 +1,4 @@
-import { reactAllSchema } from "../models/base.svelte";
+import { injectReactive } from "../models/base.svelte";
 
 /**
  * Our custom class for Icon Actors
@@ -19,11 +19,6 @@ export class DoomsongActor extends Actor {
         if (data.system?.toughness_bar?.value) data["system.toughness"] = data.system?.toughness_bar?.value;
 
         return super.update(data, options);
-    }
-
-    _configure(options = {}) {
-        super._configure(options);
-        // reactAllSchema(this);
     }
 
     /* @override

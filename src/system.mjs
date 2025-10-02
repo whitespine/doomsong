@@ -14,9 +14,11 @@ import { DoomsongActor } from './documents/actor.svelte';
 import { DoomsongTokenDocument } from './documents/token';
 import { setupSheets } from './sheets/config';
 import { AttackFlowApp } from './apps/dodge_prompt.svelte';
+import  {injectAllCoreDocuments} from './utils/reactor';
 
 Hooks.once('init', async function() {
   console.log("Initializing DOOMSONG RPG")
+  injectAllCoreDocuments();
   setupDocuments();
   setupModels();
   setupSettings();
