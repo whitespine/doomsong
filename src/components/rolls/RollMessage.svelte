@@ -3,7 +3,7 @@
     import RollingDie from "./RollingDie.svelte";
     import crest from "$assets/icons/crest.png";
     import skull from "$assets/icons/skull.png";
-    import { resultTables } from "../../utils/roll.svelte";
+    import { resultTables, suspense } from "../../utils/roll.svelte";
     /** @import { RollMessageData } from "../../utils/roll.svelte" */
 
     let { _id: id, author, speaker, flags, rolls, dsn_roll } = $props();
@@ -38,15 +38,10 @@
     // Modify this roll to have a flipped doomcoin. DSN integrated
     async function flipDoomcoin() {
         // Moves the result up or down by one
-        let doomcoin = await new Roll("1d2").roll();
+        let doomcoin = await suspense(new Roll("1d2"));
         let flip_value = doomcoin.total == 2 ? 1 : -1;
-        let dsn_promise = game.dice3d
-            ? game.dice3d.showForRoll(doomcoin, game.user, true)
-            : Promise.resolve(true);
-        dsn_promise.then(() => {
-            return game.messages.get(id).update({
-                [`flags.${game.system.id}.coin_result`]: flip_value,
-            });
+        return game.messages.get(id).update({
+            [`flags.${game.system.id}.coin_result`]: flip_value,
         });
     }
 </script>

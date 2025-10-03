@@ -1,4 +1,5 @@
 import roll_types from "./roll_types.json";
+import {sleep} from "./time";
 
 /** An attempt to attack
  * @typedef {object} CheckParams
@@ -79,6 +80,17 @@ export async function rollCheck(check_details) {
  * Wrapper class on a result table for providing better roll results
  */
 export class ResultTable {
+    /** 
+     * The over number with the highest value. If null, no X over's defined
+     * We DO NOT assume all over keys below this are defined - if in doubt, take the closest value that is lower
+     * We DO assume that at if any `X over` are defined, then 1 over MUST be defined. This is validated in the constructor
+     * @type {number | null} 
+     */
+    #max_over = null;
+
+    /** @type {({[key: number]: ResultEntry})} */
+    #over_entries = {};
+
     /**
      * Construct a result table
      * @param {RawResultTable} raw_table 
@@ -88,13 +100,17 @@ export class ResultTable {
         this.raw_table = raw_table; 
 
         // Also pre-compute some utility values
-        /** @type {number | null} */
-        this.max_over_key = null;
-        for(let key of Object.keys(this.raw_table.results)) {
-            let m = key.match(/(\d)\+? over/);
-            if(!m) continue;
-            let this_over = Number.parseInt(m[1]);
-            this.max_over_key = Math.max(this_over, this.max_over_key ?? -1);
+        for(let [key, entry] of Object.entries(this.raw_table.results)) {
+            let kto = this._keyToOver(key);
+            if(kto) {
+                this.#max_over = Math.max(this_over, this.#max_over ?? -1);
+                this.#over_entries[kto] = entry;
+            }
+        }
+
+        // Validate
+        if(this.#max_over !== null && this.#over_entries[1] === undefined) {
+            throw new TypeError("When providing \"X over\" entries, you must at least define 1 over");
         }
     }
 
@@ -103,51 +119,127 @@ export class ResultTable {
      * @param {number} over
      * @returns {string}
      */
-    _overKey(over) {
+    static #overToKey(over) {
         return `${over} over`;
     }
 
-    /** Get an over result based on params
-     * 
-     * @param {number} baseOver A number >= 1
-     * @param {CoinResult} coinResult Doomcoin result
-     * @returns {[string, ResultEntry]} The result key, and corresponding entry
+    /**
+     * The over value for a key
+     * @param {string} key
+     * @returns {number | null} Null if not a proper over key
      */
-    _overFor(baseOver, coinResult) {
-        // Handle edge cases first - Skull on a 1 over becomes equal
-        const simResult = (key) => [key, this.raw_table.results[key] ?? this._defaultResult];
-        if(baseOver == 1 && coinResult == -1) {
-            return simResult("equal");
-        }
-        // Crest on an undefined or max over becomes a proper crest. Handle both cases by just adding one
-        if(coinResult == 1 && (this.max_over_key == null || baseOver >= this.max_over_key)) {
-            return simResult("crest");
-        }
-
-        // Otherwise, just descend looking for any specific over result until we hit zero, at which point we give up and give over
-        if(this.max_over_key != null) {
-        let over = baseOver + (coinResult ?? 0);
-            while(over > 0) {
-                let ots = this._overKey(over);
-                if(this.raw_table.results[ots]) {
-                    return simResult(ots);
-                }
-                over--;
-            }
-        }
-
-        // Default case: give over result
-        return simResult("over");
+    static #keyToOver(key) {
+        let m = key.match(/(\d)\+? over/);
+        if(!m) return null;
+        return Number.parseInt(m[1]);
     }
 
-    /** What we return if no entry is specified. Error case, but we want to be error tolerant
-     * @returns {ResultEntry}
+    /** For a given key, give a [key, resultEntry] pair
+     * 
+     * @param {string} key The key.
+     * @returns {[string, ResultEntry]} A properly formatted entry for the given key. Returns a default result if none defined
      */
-    get _defaultResult() {
+    resultEntry(key) {
+        return [key, this.raw_table.results[key] ?? ResultTable.DEFAULT_RESULT];
+    }
+
+    /** 
+     * @type {ResultEntry}
+     */
+    static DEFAULT_RESULT = {
+        label: "NULL",
+        text: "No result is defined for this roll result!"
+    }
+
+    /**
+     * @param {string} resultKey  
+     * @returns {({
+     *  [above]: [string, ResultEntry],
+     *  [below]: [string, ResultEntry]
+     * })} The nearest neighbors to this result key
+     */
+    resultNeighbors(resultKey) {
         return {
-            label: "NULL",
-            text: "No result is defined for this roll result!"
+            above: this.crest(resultKey),
+            below: this.skull(resultKey)
+        };
+    }
+
+    /**
+     * Bump up a result as though it had been hit by a crest
+     * @param {string} resultKey The existing result key
+     * @returns {[string, ResultEntry] | null} The result entry for the key increased by one step. If impossible (already a crest), return null
+     */
+    crest(resultKey) {
+        ResultTable.#validateKey(resultKey);
+        if(resultKey == "skull") return this.resultEntry("under"); // Not really possible but I guess it makes sense
+        if(resultKey == "under") return this.resultEntry("equal"); 
+        if(resultKey == "equal") {
+            if(this.#max_over === null) {
+                return this.resultEntry("over");
+            } else {
+                return this.resultEntry("1 over"); // Guaranteed to exist
+            }
         }
+        if(resultKey.includes("over")) {
+            if(this.#max_over) {
+                // Get the next highest
+                let over = ResultTable.#keyToOver(resultKey) + 1;
+                while(over <= this.#max_over) {
+                    if(this.#over_entries[over]) return this.resultEntry(ResultTable.#overToKey(over));
+                    over += 1;
+                }
+                // We went beyond
+                return this.resultEntry("crest");
+            } else {
+                return this.resultEntry("crest");
+            }
+        }
+        if(resultKey == "crest") return null; // Not possible to go higher
+    }
+
+    /**
+     * Drop down a result as though it had been hit by a skull
+     * @param {string} resultKey The existing result key
+     * @returns {[string, ResultEntry] | null} The result entry for the key decreased by one step. If impossible (already a crest), return null
+     */
+    skull(resultKey) {
+        ResultTable.#validateKey(resultKey);
+        if(resultKey == "skull") return null; // Not possible to go lower
+        if(resultKey == "under") return this.resultEntry("skull"); 
+        if(resultKey == "equal") return this.resultEntry("under");
+        if(resultKey.includes("over")) {
+            if(this.#max_over == null) {
+                return this.resultEntry("equal");
+            } else {
+                let over = ResultTable.#keyToOver(resultKey);
+                // Get the next lowest
+                while(over >= 2) {
+                    over -= 1;
+                    if(this.#over_entries[over]) return this.resultEntry(ResultTable.#overToKey(over));
+                }
+                // We went beyond. Drop to equal
+                return this.resultEntry("equal");
+            }
+        }
+        if(resultKey == "crest") {
+            // return the highest over, or just over. Weird edge case, but whatever
+            if(this.#max_over) {
+                return this.resultEntry(ResultTable.#overToKey(this.#max_over))
+            } else {
+                return this.resultEntry("over");
+            }
+        }
+    }
+
+    static #VALID_KEYS = new Set(["skull", "under", "equal", "over", "crest"]);
+    /**
+     * Validate a key is valid
+     * @param {string} resultKey A potential key
+     */
+    static #validateKey(resultKey) {
+        if(ResultTable.#VALID_KEYS.has(resultKey) || ResultTable.#keyToOver(resultKey)) return;
+        throw new TypeError(`Invalid result table key ${resultKey}`);
     }
 
     /**
@@ -159,26 +251,20 @@ export class ResultTable {
      * @returns {[string, ResultEntry]} The result key and corresponding entry
      */
     resultFor(rollResult, difficulty, coinResult=null) {
-        const simResult = (key) => [key, this.raw_table.results[key] ?? this._defaultResult];
+        let result;
         if(rollResult < difficulty) {
-            if(coinResult == 1) {
-                return simResult("equal");
-            } else if (coinResult == -1) {
-                return simResult("skull");
-            } else {
-                return simResult("under");
-            }
+            result = "under";
         } else if(rollResult == difficulty) {
-            if(coinResult == 1) {
-                return this._overFor(1, 0); // Handle over 1 case. Pretend coin is 0 - it has been handled
-            } else if (coinResult == -1) {
-                return simResult("under");
-            } else {
-                return simResult("equal");
-            }
+            result = "equal"
         } else {
-            return this._overFor(rollResult - difficulty, coinResult ?? 0);
+            result = `${rollResult - difficulty} over`;
         }
+        if(coinResult == 1) {
+            result = this.crest(result) ?? result;
+        } else if(coinResult == -1) {
+            result = this.skull(result) ?? result;
+        }
+        return this.resultEntry(result);
     }
 
     // Wrapping getters
@@ -266,3 +352,25 @@ export function resultTables() {
  * @property {CoinResult} [coin_result] The coin result, if the coin has been flipped
  * @property {number} difficulty The difficulty it was rolled against
  */
+
+/**
+ * Add a bit of suspense to your roll. This will either resolve via dice-so-nice, if enabled, or
+ * if the settings have a configured dice delay use that as a timer instead.
+ * If no delay is set, will resolve "immediately" via whatever your configured foundry roll mechanisms are
+ * @param {Roll} roll An unresolved roll
+ * @returns {Roll} The roll you give it
+ */
+export async function suspense(roll) {
+    // Moves the result up or down by one
+    await roll.roll();
+    if(game.dice3d) {
+        // Use dicesonice
+        await game.dice3d.showForRoll(roll, game.user, true)
+    } else {
+        // TODO: Have some sort of timer setting as an else if condition
+        await sleep(1000);
+    }
+
+    // TODO: add options for broadcasting this to other players
+    return roll;
+}
