@@ -259,7 +259,14 @@ export class ResultTable {
         } else if (rollResult == difficulty) {
             result = "equal"
         } else {
-            result = `${rollResult - difficulty} over`;
+            if(this.#max_over) {
+                // Find closest defined that is <= delta
+                let over = rollResult - difficulty;
+                while(!this.#over_entries[over]) over--;
+                result = ResultTable.#overToKey(over);
+            } else {
+                result = `over`;
+            }
         }
 
         if (coinResult == 1) {
