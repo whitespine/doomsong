@@ -23,11 +23,13 @@
             // Doomsong specific sauce
             [`flags.${game.system.id}`]: {
                 type: "roll",
-                roll_type: "attack",
+                roll_type: "attack_b", // TODO: incorporate the roll type via the Flow. For now, trusty shovels
                 coin_result: 0,
                 difficulty: defender.system.attack_difficulty + app.flow.footing_spent + app.flow.bonus_dodge,
             },
         });
+
+        // Modify flow to include a list of consequences
     }
 
     onMount(() => {

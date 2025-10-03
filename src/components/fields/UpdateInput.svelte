@@ -3,8 +3,6 @@
     import { stop } from "../../utils/handlers";
     let { tag="input", doc, path, class: className, ...restProps } = $props();
 
-    // $inspect(restProps);
-
     let value = $derived.by(() => {
         if("value" in restProps) {
             return restProps["value"];

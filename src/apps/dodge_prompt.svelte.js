@@ -127,8 +127,9 @@ Hooks.on("ready", () => {
  * @property {number} bonus_dodge Augments footing spent, but does not cost footing
  * @property {number} final_target Populated after defense submitted. The difficulty of the check
  * @property {number} roll_result The number we rolled
+ * @property {Consequence[]} defender_consequences The remaining defender consequences that we can apply
+ * @property {Consequence[]} attacker_consequences The remaining attacker consequences that we can apply.
  */
-
 /** 
  * Symbol type for a token, can/should be replaced by proper fvtt types
  * @typedef {object} Token

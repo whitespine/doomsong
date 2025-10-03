@@ -2,8 +2,6 @@
     import UpdateInput from "../fields/UpdateInput.svelte";
     let { context } = $props();
     let actor = $derived(context.document);
-
-    $inspect(actor.system.toughness)
 </script>
 
 <div class="shield">

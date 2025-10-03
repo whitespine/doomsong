@@ -1,63 +1,41 @@
 <script>
     import Die from "./Die.svelte";
-    import roll_types from "./roll_types.json";
-    import damage_types from "./attack_over_table.json";
     import RollingDie from "./RollingDie.svelte";
     import crest from "$assets/icons/crest.png";
     import skull from "$assets/icons/skull.png";
+    import { resultTables } from "../../utils/roll.svelte";
+    /** @import { RollMessageData } from "../../utils/roll.svelte" */
 
     let { _id: id, author, speaker, flags, rolls, dsn_roll } = $props();
-    let ds_data = $derived(flags[game.system.id]);
+
+    /** @type {RollMessageData} */
+    let roll_data = $derived(flags[game.system.id]);
+
+    /** Reconstructed roll from the message
+     * @type {Roll}
+     */
     let roll = $derived(Roll.fromJSON(rolls[0]));
+
+    /** The values on our d6's
+     * @type {number[]}
+     */
     let die_results = $derived(roll.dice[0].results);
+
+    /** The sum total of + or - to the roll
+     * @type {number}
+     */
     let modifiers = $derived(roll.total - roll.dice[0].total); // Dumb hack, easier
-    let roll_type = $derived(
-        roll_types[ds_data.roll_type] || roll_types["STANDARD"],
+
+
+    /** The result table to pull from */
+    let result_table = $derived(
+        resultTables()[roll_data.roll_type] ?? resultTables()["standard"],
     );
-    let roll_result = $derived.by(() => {
-        let total = roll.total;
-        let difficulty = ds_data.difficulty;
-        let base;
-        if (total < difficulty) {
-            base = 1;
-        } else if (total == difficulty) {
-            base = 2;
-        } else {
-            base = 3;
-        }
-        let final_result;
 
-        // Special logic for doomcoin
-        if (ds_data.roll_type == "attack" && final_result == 3 && ds_data.coin_result != 0) {
-            // Attacks normally flex more by doomcoins
-            let over = difficulty - total;
-            if (over == 1) {
-                final_result = 2; // Adjust down to equal
-            } else if (over >= 6) {
-                final_result = 4; // Adjust up to crest
-            } else {
-                final_result = 3;
-            }
-        } else {
-            final_result = base + ds_data.coin_result;
-        }
-        console.warn(final_result);
-        return ["skull", "under", "equal", "over", "crest"][final_result];
-    });
-
-    $inspect(roll_result);
-    let attack_over_result = $derived.by(() => {
-        let over = roll.total - ds_data.difficulty;
-        if ("heavy") {
-            over = Math.min(over, 6);
-        } else {
-            over = Math.min(over, 3);
-        }
-        over += ds_data.coin_result;
-        return [null, "1", "2", "3", "4", "5", "6", "critical"][over];
-    });
+    let [result_key, result_entry] = $derived(result_table.resultFor(roll.total, roll_data.difficulty, roll_data.coin_result));
     let speaker_actor = $derived(ChatMessage.getSpeakerActor(speaker));
 
+    // Modify this roll to have a flipped doomcoin. DSN integrated
     async function flipDoomcoin() {
         // Moves the result up or down by one
         let doomcoin = await new Roll("1d2").roll();
@@ -74,21 +52,21 @@
 </script>
 
 <h2 class="doomsong">
-    <span>{roll_type.label} - {speaker_actor?.name}</span>
-    {#if ds_data.coin_result == 0}
+    <span>{result_table.label} - {speaker_actor?.name}</span>
+    {#if roll_data.coin_result == 0}
         <a
             class="doomcoin unflipped"
             onclick={flipDoomcoin}
             aria-label="Flip Doomcoin"><i class="fas fa-coin"></i></a
         >
-    {:else if ds_data.coin_result == 1}
+    {:else if roll_data.coin_result == 1}
         <img class="doomcoin flipped" src={crest} alt="Crest" />
-    {:else if ds_data.coin_result == -1}
+    {:else if roll_data.coin_result == -1}
         <img class="doomcoin flipped" src={skull} alt="Skull" />
     {/if}
 </h2>
 <div class="doomsong dice">
-    {#each die_results as die, index}
+    {#each die_results as die}
         {#if dsn_roll == "rolling"}
             <RollingDie />
         {:else}
@@ -103,41 +81,25 @@
     >
 </div>
 <div class={["doomsong", "results", { certain: dsn_roll != "rolling" }]}>
-    {#each Object.entries(roll_type["results"]) as [result_key, result]}
+    {#each Object.entries(result_table.results) as [table_result_key, table_result]}
         <div class="result-key">
-            {#if result_key == "crest"}
+            {#if table_result_key == "crest"}
                 <img class="critical" src={crest} alt="Crest" />
-            {:else if result_key == "skull"}
+            {:else if table_result_key == "skull"}
                 <img class="critical" src={skull} alt="Skull" />
             {:else}
                 <span>
-                    {result_key.toLocaleUpperCase()}
+                    {table_result_key.toLocaleUpperCase()}
                 </span>
             {/if}
         </div>
-        <div class={{ chosen: result_key == roll_result }}>
+        <div class={{ chosen: table_result_key == result_key }}>
             <p>
-                <span class="label">{result.label}.</span>
-                <span>{result.text}</span>
+                <span class="label">{table_result.label}.</span>
+                <span>{table_result.text}</span>
             </p>
         </div>
     {/each}
-    {#if ds_data.roll_type == "attackDEBUG"}
-        <div class="result-key">
-            <span>
-                {attack_over_result}
-            </span>
-        </div>
-        <div>
-            <span>
-                <!--{damage_types["bludgeoning"][attack_over_result]["label"]}-->
-                {damage_types["bludgeoning"]}
-            </span>
-            <span>
-                <!--{damage_types["bludgeoning"][attack_over_result]["text"]}-->
-            </span>
-        </div>
-    {/if}
 </div>
 
 <style lang="scss">

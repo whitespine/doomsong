@@ -1,7 +1,6 @@
 <script>
-    import roll_types from "./roll_types.json";
     import { targeted_tokens } from "../../utils/target.svelte";
-    import { formulaFor, rollCheck } from "../../utils/roll";
+    import { formulaFor, resultTables, rollCheck } from "../../utils/roll.svelte";
     import { initiateAttack } from "../../apps/dodge_prompt.svelte";
     import Incrementer from "../fields/Incrementer.svelte";
 
@@ -34,13 +33,14 @@
 
     // Our currently selected options
     let roll_type = $state("standard");
+    let result_table = $derived(resultTables()[roll_type] ?? resultTables()["standard"]);
     let choices = $state(defaultChoices());
     let difficulty = $derived.by(() => {
-        if (roll_type == "attack" && targeted_tokens.length >= 1) {
+        if (roll_type.includes("attack") && targeted_tokens.length >= 1) {
             // Use their toughness + protection instead
             return targeted_tokens[0].actor.system.attack_difficulty ?? 5;
         }
-        return roll_types[roll_type].default_difficulty ?? 5;
+        return result_table.defaultDifficulty;
     });
 
     // Reset the above two to their default values
@@ -50,7 +50,7 @@
     }
 
     // Button callback
-    function changeChoice(category, value) {
+    function setCategoryBonus(category, value) {
         choices[category] = value;
     }
 
@@ -60,8 +60,8 @@
         let attacker = _token?.actor ?? game.user.character;
 
         if (
-            (roll_type == "attack") &&
-            (targeted_tokens.length != 0) &&
+            roll_type.includes("attack") &&
+            targeted_tokens.length != 0 &&
             attacker
         ) {
             if(!attacker) {
@@ -87,8 +87,8 @@
 <div class="doomsong container">
     <div class="header">
         <select class="elevated" onchange={selectRollType}>
-            {#each Object.entries(roll_types) as [key, type]}
-                <option value={key}>{type.label}</option>
+            {#each Object.entries(resultTables()) as [key, table]}
+                <option value={key}>{table.label}</option>
             {/each}
         </select>
         <span class="elevated difficulty">Difficulty:</span>
@@ -102,7 +102,7 @@
             {#each [-1, 0, 1, 2, 3] as value}
                 {#if value <= 2 || category == "Traits"}
                     <button
-                        onclick={() => changeChoice(category, value)}
+                        onclick={() => setCategoryBonus(category, value)}
                         data-tooltip={valueTooltip(value)}
                         class={{ active: choices[category] == value }}
                     >
@@ -115,7 +115,7 @@
                             <button
                                 aria-label="Increase extra bonus"
                                 onclick={() =>
-                                    changeChoice("Extra", choices.Extra + 1)}
+                                    setCategoryBonus("Extra", choices.Extra + 1)}
                             >
                                 <i class="fas fa-caret-up"></i>
                             </button>
@@ -133,7 +133,7 @@
                             <button
                                 aria-label="Decrease extra bonus"
                                 onclick={() =>
-                                    changeChoice("Extra", choices.Extra - 1)}
+                                    setCategoryBonus("Extra", choices.Extra - 1)}
                             >
                                 <i class="fas fa-caret-down"></i>
                             </button>
@@ -145,11 +145,11 @@
     </div>
     <div class="roll-buttons">
         <button onclick={() => roll("hasty")}
-            >{roll_type == "attack" ? "Light" : "Hasty"}</button
+            >{roll_type.includes("attack") ? "Light" : "Hasty"}</button
         >
         <button onclick={() => roll("standard")}>Standard</button>
         <button onclick={() => roll("focused")}
-            >{roll_type == "attack" ? "Heavy" : "Focused"}</button
+            >{roll_type.includes("attack") ? "Heavy" : "Focused"}</button
         >
     </div>
 </div>
