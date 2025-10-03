@@ -1,6 +1,6 @@
 <script>
     import { targeted_tokens } from "../../utils/target.svelte";
-    import { formulaFor, resultTables, rollCheck } from "../../utils/roll.svelte";
+    import { FALLBACK_RESULT_TABLE, formulaFor, resultTables, rollCheck } from "../../utils/roll.svelte";
     import { initiateAttack } from "../../apps/dodge_prompt.svelte";
     import Incrementer from "../fields/Incrementer.svelte";
 
@@ -33,7 +33,7 @@
 
     // Our currently selected options
     let roll_type = $state("standard");
-    let result_table = $derived(resultTables()[roll_type] ?? resultTables()["standard"]);
+    let result_table = $derived(resultTables()[roll_type] ?? FALLBACK_RESULT_TABLE);
     let choices = $state(defaultChoices());
     let difficulty = $derived.by(() => {
         if (roll_type.includes("attack") && targeted_tokens.length >= 1) {

@@ -1,7 +1,8 @@
 import { mount, unmount } from 'svelte';
 import RollMessage from '../components/rolls/RollMessage.svelte'
-import { sleep } from '../utils/time';
 
+
+const DOOMSONG_MESSAGE_IDS = new Set();
 
 export class DoomsongChatMessage extends ChatMessage {
     // Populate this as the specified component. Cannot be changed once populated
@@ -40,24 +41,19 @@ export class DoomsongChatMessage extends ChatMessage {
     }
 }
 
+// Disable inbuilt DSN roll display for doomsong messages. We do these manually
+Hooks.on('diceSoNiceRollStart', (messageId, context) => {
+    //Hide this roll
+    if(game.messages.get(messageId)?.flags[game.system.id]?.["type"] == "roll") {
+        context.blind=true;
+    }
+});
+
+
 // Create a cleanup hook
 Hooks.on("deleteChatMessage", (message) => {
     if(message._svelte_component) {
         unmount(message._svelte_component);
         globalThis.$(message._svelte_wrapper).remove();
-    }
-});
-
-Hooks.on("diceSoNiceRollStart", (message_id) => {
-    let message = game.messages.get(message_id);
-    if(message?._svelte_props) {
-        message._svelte_props["dsn_roll"] = "rolling"; 
-    }
-});
-
-Hooks.on("diceSoNiceRollComplete", (message_id) => {
-    let message = game.messages.get(message_id);
-    if(message?._svelte_props) {
-        message._svelte_props["dsn_roll"] = "rolled"; 
     }
 });

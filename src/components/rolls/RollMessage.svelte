@@ -3,10 +3,14 @@
     import RollingDie from "./RollingDie.svelte";
     import crest from "$assets/icons/crest.png";
     import skull from "$assets/icons/skull.png";
-    import { resultTables, suspense } from "../../utils/roll.svelte";
-    /** @import { RollMessageData } from "../../utils/roll.svelte" */
+    import {
+        FALLBACK_RESULT_TABLE,
+        resultTables,
+        suspense,
+    } from "../../utils/roll.svelte";
+    /** @import { RollMessageData, ResultEntry } from "../../utils/roll.svelte" */
 
-    let { _id: id, author, speaker, flags, rolls, dsn_roll } = $props();
+    let { _id: id, author, speaker, flags, rolls, in_suspense } = $props();
 
     /** @type {RollMessageData} */
     let roll_data = $derived(flags[game.system.id]);
@@ -26,13 +30,42 @@
      */
     let modifiers = $derived(roll.total - roll.dice[0].total); // Dumb hack, easier
 
-
     /** The result table to pull from */
     let result_table = $derived(
-        resultTables()[roll_data.roll_type] ?? resultTables()["standard"],
+        resultTables()[roll_data.roll_type] ?? FALLBACK_RESULT_TABLE,
     );
 
-    let [result_key, result_entry] = $derived(result_table.resultFor(roll.total, roll_data.difficulty, roll_data.coin_result));
+    let [base_result_key, base_result] = $derived(
+        result_table.resultFor(roll.total, roll_data.difficulty, null),
+    );
+    let [final_result_key, _] = $derived(
+        result_table.resultFor(
+            roll.total,
+            roll_data.difficulty,
+            roll_data.coin_result,
+        ),
+    );
+    $inspect({
+        total: roll.total,
+        difficulty: roll_data.difficulty,
+        coin: roll_data.coin_result,
+        result: result_table.resultFor(
+            roll.total,
+            roll_data.difficulty,
+            roll_data.coin_result,
+        )
+    });
+    // $inspect(final_result_key);
+
+    /** @type {Array<[string, ResultEntry]>*/
+    let entries_to_show = $derived.by(() => {
+        let neighbors = result_table.neighborEntries(base_result_key);
+        return [
+            neighbors.below,
+            [base_result_key, base_result],
+            neighbors.above,
+        ].filter((x) => x);
+    });
     let speaker_actor = $derived(ChatMessage.getSpeakerActor(speaker));
 
     // Modify this roll to have a flipped doomcoin. DSN integrated
@@ -62,7 +95,7 @@
 </h2>
 <div class="doomsong dice">
     {#each die_results as die}
-        {#if dsn_roll == "rolling"}
+        {#if in_suspense}
             <RollingDie />
         {:else}
             <Die value={die.result} discarded={die.discarded} />
@@ -71,31 +104,31 @@
     <span>+</span>
     <span>{modifiers}</span>
     <span>→</span>
-    <span class={["result", { rolling: dsn_roll == "rolling" }]}
-        >{roll.total}</span
-    >
+    <span class={["result", { rolling: in_suspense }]}> {roll.total} </span>
 </div>
-<div class={["doomsong", "results", { certain: dsn_roll != "rolling" }]}>
-    {#each Object.entries(result_table.results) as [table_result_key, table_result]}
-        <div class="result-key">
-            {#if table_result_key == "crest"}
-                <img class="critical" src={crest} alt="Crest" />
-            {:else if table_result_key == "skull"}
-                <img class="critical" src={skull} alt="Skull" />
-            {:else}
-                <span>
-                    {table_result_key.toLocaleUpperCase()}
-                </span>
-            {/if}
-        </div>
-        <div class={{ chosen: table_result_key == result_key }}>
-            <p>
-                <span class="label">{table_result.label}.</span>
-                <span>{table_result.text}</span>
-            </p>
-        </div>
-    {/each}
-</div>
+{#if !in_suspense}
+    <div class="doomsong results">
+        {#each entries_to_show as [result_key, result_entry]}
+            <div class="result-key">
+                {#if result_key == "crest"}
+                    <img class="critical" src={crest} alt="Crest" />
+                {:else if result_key == "skull"}
+                    <img class="critical" src={skull} alt="Skull" />
+                {:else}
+                    <span>
+                        {result_key.toLocaleUpperCase()}
+                    </span>
+                {/if}
+            </div>
+            <div class={{ chosen: final_result_key == result_key }}>
+                <p>
+                    <span class="label">{result_entry.label}.</span>
+                    <span>{result_entry.text}</span>
+                </p>
+            </div>
+        {/each}
+    </div>
+{/if}
 
 <style lang="scss">
     h2 {
@@ -165,7 +198,7 @@
             }
         }
 
-        &.certain .chosen {
+        .chosen {
             background-color: gray;
         }
     }

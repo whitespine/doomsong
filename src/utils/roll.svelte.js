@@ -30,30 +30,32 @@ export async function rollCheck(check_details) {
     let { roll_type = "standard", difficulty = 5, formula, speaker = null } = check_details;
     let roll = await new Roll(formula).roll();
 
-    // Send to chat immediately
+    // Send to chat immediately. 
     /**
      * @type {RollMessageData}
      */
     let flags = {
-
+        type: "roll",
+        roll_type,
+        coin_result: 0,
+        difficulty,
     };
     let message = await ChatMessage.create({
         rolls: [roll],
         speaker: speaker ?? ChatMessage.getSpeaker(),
         // Doomsong specific sauce
-        [`flags.${game.system.id}`]: {
-            type: "roll",
-            roll_type,
-            coin_result: 0,
-            difficulty,
-        },
+        [`flags.${game.system.id}`]: flags
     });
+
+    // Provide suspense
+    await suspense(roll);
 
     return {
         message,
         roll // technically embedded in message
     };
 }
+
 
 /**
  * A key corresponding to a result. Numbers are synonymous with "over", but will use a specific result table entry 
@@ -101,9 +103,9 @@ export class ResultTable {
 
         // Also pre-compute some utility values
         for(let [key, entry] of Object.entries(this.raw_table.results)) {
-            let kto = this._keyToOver(key);
+            let kto = ResultTable.#keyToOver(key);
             if(kto) {
-                this.#max_over = Math.max(this_over, this.#max_over ?? -1);
+                this.#max_over = Math.max(kto, this.#max_over ?? -1);
                 this.#over_entries[kto] = entry;
             }
         }
@@ -140,25 +142,27 @@ export class ResultTable {
      * @returns {[string, ResultEntry]} A properly formatted entry for the given key. Returns a default result if none defined
      */
     resultEntry(key) {
-        return [key, this.raw_table.results[key] ?? ResultTable.DEFAULT_RESULT];
+        return [key, this.raw_table.results[key] ?? ResultTable.#defaultResult(key)];
     }
 
     /** 
      * @type {ResultEntry}
      */
-    static DEFAULT_RESULT = {
-        label: "NULL",
-        text: "No result is defined for this roll result!"
+    static #defaultResult(key) {
+        return {
+            label: "NULL",
+            text: `No result is defined for roll result ${key}!`
+        };
     }
 
     /**
      * @param {string} resultKey  
      * @returns {({
-     *  [above]: [string, ResultEntry],
-     *  [below]: [string, ResultEntry]
+     *  "above": [string, ResultEntry] | null,
+     *  "below": [string, ResultEntry] | null
      * })} The nearest neighbors to this result key
      */
-    resultNeighbors(resultKey) {
+    neighborEntries(resultKey) {
         return {
             above: this.crest(resultKey),
             below: this.skull(resultKey)
@@ -251,6 +255,7 @@ export class ResultTable {
      * @returns {[string, ResultEntry]} The result key and corresponding entry
      */
     resultFor(rollResult, difficulty, coinResult=null) {
+        console.error("WAWA");
         let result;
         if(rollResult < difficulty) {
             result = "under";
@@ -259,12 +264,14 @@ export class ResultTable {
         } else {
             result = `${rollResult - difficulty} over`;
         }
+
         if(coinResult == 1) {
-            result = this.crest(result) ?? result;
+            return this.crest(result) ?? this.resultEntry(result);
         } else if(coinResult == -1) {
-            result = this.skull(result) ?? result;
+            return this.skull(result) ?? this.resultEntry(result);
+        } else {
+            return this.resultEntry(result);
         }
-        return this.resultEntry(result);
     }
 
     // Wrapping getters
@@ -341,6 +348,8 @@ export function resultTables() {
     return result_tables;
 }
 
+export const FALLBACK_RESULT_TABLE = new ResultTable(roll_types[0]); // Convenient to have as  afallback
+
 /** Our union type for all custom messages
  * @typedef {RollMessageData} DoomsongMessageData
  */
@@ -362,7 +371,6 @@ export function resultTables() {
  */
 export async function suspense(roll) {
     // Moves the result up or down by one
-    await roll.roll();
     if(game.dice3d) {
         // Use dicesonice
         await game.dice3d.showForRoll(roll, game.user, true)
