@@ -1,5 +1,3 @@
-import { injectReactive } from "../models/base.svelte";
-
 /**
  * Our custom class for Icon Actors
  */

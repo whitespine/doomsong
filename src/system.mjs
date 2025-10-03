@@ -14,9 +14,9 @@ import { DoomsongActor } from './documents/actor.svelte';
 import { DoomsongTokenDocument } from './documents/token';
 import { setupSheets } from './sheets/config';
 import { AttackFlowApp } from './apps/dodge_prompt.svelte';
-import  {injectAllCoreDocuments} from './utils/reactor';
+import { injectAllCoreDocuments } from './utils/reactor.svelte';
 
-Hooks.once('init', async function() {
+Hooks.once('init', async function () {
   console.log("Initializing DOOMSONG RPG")
   injectAllCoreDocuments();
   setupDocuments();
@@ -45,7 +45,7 @@ Hooks.once('init', async function() {
 });
 
 // Setup tokens
-Hooks.once("ready", async function() {
+Hooks.once("ready", async function () {
   let need_init_tokens = !game.settings.get(game.system.id, DOOMSONG.settings.init.tokens);
   if (need_init_tokens) {
     await initTokenSettings().then(async () => {
@@ -64,7 +64,7 @@ Hooks.once("ready", async function() {
 })
 
 // Setup calendar
-Hooks.once('simple-calendar-ready', async function() {
+Hooks.once('simple-calendar-ready', async function () {
   let need_init_calendar = !game.settings.get(game.system.id, DOOMSONG.settings.init.calendar);
   if (need_init_calendar) {
     await initCalendar().then(async () => {
@@ -75,7 +75,7 @@ Hooks.once('simple-calendar-ready', async function() {
 });
 
 // Setup pdf character sheet. Provide your own? Or do we bundle?
-Hooks.once('ready', async function() {
+Hooks.once('ready', async function () {
   await retry(async () => {
     let need_init_pdf = !game.settings.get(game.system.id, DOOMSONG.settings.init.pdf);
     if (need_init_pdf) {
@@ -90,7 +90,7 @@ Hooks.once('ready', async function() {
 });
 
 // Mount our ui components
-Hooks.once('ready', async function() {
+Hooks.once('ready', async function () {
   let ui_bottom = document.querySelector("#ui-bottom");
   // let ui_bottom = document.querySelector("#ui-right-column-1");
   mount(Roller, {
