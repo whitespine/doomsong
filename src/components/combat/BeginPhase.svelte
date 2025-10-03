@@ -1,11 +1,11 @@
 <script>
     import { zip } from "../../utils/zip";
-    let { combat, source } = $props();
+    let { combat } = $props();
 </script>
 
 <div class="flexcol">
     <span>{@html game.i18n.localize("DS.combat.phase_detail.begin")}</span>
-    {#each zip(combat.combatants.contents, source.combatants) as [combatant, cdata]}
+    {#each combat.combatants.values() as combatant}
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_static_element_interactions -->
         <div
@@ -13,7 +13,7 @@
             onclick={() => combatant.ping()}
             oncontextmenu={() => combatant.delete()}
         >
-            <img class="thumbnail" src={combatant.thumbnail} alt={cdata.name} />
+            <img class="thumbnail" src={combatant.thumbnail} alt={combatant.name} />
             <span class="elevated">{combatant.name}</span>
         </div>
     {/each}

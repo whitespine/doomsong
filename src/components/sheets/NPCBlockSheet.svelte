@@ -3,10 +3,10 @@
     import Die from "../rolls/Die.svelte";
     import Shield from "../combat/Shield.svelte";
     let { context } = $props();
-    let source = $derived(context.source);
+    let actor = $derived(context.actor);
     let acts_to_show = $derived.by(() => {
         return [1, 2, 3, 4, 5, 6].filter(
-            (act) => Object.keys(source.system.moves[act]).length > 0,
+            (act) => Object.keys(actor.system.moves[act]).length > 0,
         );
     });
 </script>
@@ -14,9 +14,9 @@
 <div class="frame-body">
     <div class="header">
         <div class="identity">
-            <h1>{context.actor.name}</h1>
+            <h1>{context.actor.name} {context.actor.system.toughness} {actor.system.toughness}</h1>
             <div class="traits">
-                {#each source.system.traits as trait, index}
+                {#each actor.system.traits as trait, index}
                     {#if index > 0}
                         <span>•</span>
                     {/if}
@@ -27,7 +27,7 @@
         <Shield context={context}></Shield>
     </div>
     <div class="abilities">
-        {#each Object.entries(source.system.abilities) as [ability_id, ability]}
+        {#each Object.entries(actor.system.abilities) as [ability_id, ability]}
             <p class="ability">
                 <span class="name">
                     {ability.name}.
@@ -43,7 +43,7 @@
             <div class="act" class:grey={displayed_act_index % 2 == 0}>
                 <Die value={act} />
                 <div class="moves">
-                    {#each Object.values(source.system.moves[act]) as move}
+                    {#each Object.values(actor.system.moves[act]) as move}
                         <p>
                             <span class="name">{move.name}:</span>
                             <span class="text">{move.text}</span>

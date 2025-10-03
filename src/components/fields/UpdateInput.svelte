@@ -1,9 +1,17 @@
 <script>
     import { resolveDotpath } from "../../utils/paths";
     import { stop } from "../../utils/handlers";
-    let { tag="input", doc, source, path, class: className, ...restProps } = $props();
+    let { tag="input", doc, path, class: className, ...restProps } = $props();
 
-    let value = $derived(resolveDotpath(source, path, ""));
+    // $inspect(restProps);
+
+    let value = $derived.by(() => {
+        if("value" in restProps) {
+            return restProps["value"];
+        } else {
+            return resolveDotpath(doc, path, "");
+        }
+    });
 
     let change_timeout = null;
     function commit(new_value, delay) {

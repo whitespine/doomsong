@@ -33,9 +33,6 @@ function SvelteApplicationMixin(BaseApplication) {
     async _renderHTML(context, options) {
       // Update context for props
       this.props.context = context;
-      //if(context.source) {
-      // this.props.context.source = foundry.utils.duplicate(context.source);
-      //}
       return '';
     }
 

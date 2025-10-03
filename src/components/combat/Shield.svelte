@@ -1,17 +1,18 @@
 <script>
     import UpdateInput from "../fields/UpdateInput.svelte";
     let { context } = $props();
-    let source = $derived(context.source);
     let actor = $derived(context.document);
+
+    $inspect(actor.system.toughness)
 </script>
 
 <div class="shield">
     {#each ["max_toughness", "toughness", "max_footing", "footing"] as path}
         <UpdateInput
             name={`system.${path}`}
-            {source}
             doc={actor}
             path={`system.${path}`}
+            value={actor.system[path]}
             type="number"
         />
     {/each}

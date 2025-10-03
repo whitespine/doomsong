@@ -1,6 +1,6 @@
 <script>
-    let { combat, source } = $props();
-    let act = $derived(source.system.act);
+    let { combat } = $props();
+    let act = $derived(combat.system.act);
 
     // An array containing [{combatant: combatant, actions: actions}] they can do in this act}
     let combatant_actions = $derived(combat.combatantsByAct[act]);

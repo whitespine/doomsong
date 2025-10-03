@@ -7,7 +7,6 @@
     // A clunky bit of state, stands for current combat. Needed to get past svelte "optimization" until theres a proper invalidate rune
     let { context } = $props();
     let combat = $derived(context.combat);
-    let source = $derived(context.source);
 </script>
 
 <div class="combat-tracker">
@@ -15,22 +14,22 @@
         <span>No current combat. Toggle combat on tokens to create one.</span>
     {:else}
         <h1>
-            <span>{game.i18n.localize(`DS.combat.phase.${source.system.phase}`)}</span>
-            {#if source.system.phase == "acts"}
-                <Die value={source.system.act} />
+            <span>{game.i18n.localize(`DS.combat.phase.${combat.system.phase}`)}</span>
+            {#if combat.system.phase == "acts"}
+                <Die value={combat.system.act} />
             {/if}
         </h1>
         <div class="content">
             <div class="phase">
-                {#if source.system.phase == "begin"}
-                    <BeginPhase {combat} {source} />
-                {:else if source.system.phase == "set"}
-                    <SetPhase {combat} {source} />
-                {:else if source.system.phase == "acts"}
-                    <ActsPhase {combat} {source} />
-                {:else if source.system.phase == "retreat"}
+                {#if combat.system.phase == "begin"}
+                    <BeginPhase {combat} />
+                {:else if combat.system.phase == "set"}
+                    <SetPhase {combat} />
+                {:else if combat.system.phase == "acts"}
+                    <ActsPhase {combat} />
+                {:else if combat.system.phase == "retreat"}
                     {@html game.i18n.localize("DS.combat.phase_detail.retreat")}
-                {:else if source.system.phase == "end"}
+                {:else if combat.system.phase == "end"}
                     {@html game.i18n.localize("DS.combat.phase_detail.end")}
                 {/if}
             </div>

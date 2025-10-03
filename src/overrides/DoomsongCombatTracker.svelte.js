@@ -44,8 +44,7 @@ export class DoomsongCombatTracker extends SvelteApplicationMixin(foundry.applic
     async _prepareContext() {
         let combat = game.combats.find(x => x.active);
         return {
-            combat,
-            source: combat ? foundry.utils.duplicate(combat._source) : {}
+            combat
         };
     }
 

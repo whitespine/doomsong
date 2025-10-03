@@ -1,7 +1,7 @@
 <script>
     import Die from "../rolls/Die.svelte";
     import RollingDie from "../rolls/RollingDie.svelte";
-    let { combat, combat_source, combatant, source } = $props();
+    let { combat, combatant } = $props();
     import { DOOMSONG } from "../../consts";
 
     let owner = $derived(combatant.owner);

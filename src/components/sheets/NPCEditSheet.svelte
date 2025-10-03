@@ -4,7 +4,6 @@
     import Die from "../rolls/Die.svelte";
     import { stop } from "../../utils/handlers";
     let { context } = $props();
-    let source = $derived(context.source);
     let actor = $derived(context.document);
 
     // Add a new basic move
@@ -80,7 +79,7 @@
         <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
         <img
             class="portrait"
-            src={source.img}
+            src={actor.img}
             alt="potrait"
             onclick={() => context.app.editImage("img")}
         />
@@ -91,7 +90,6 @@
                         <label for={key}>{label}:</label>
                         <UpdateInput
                             name={key}
-                            {source}
                             doc={actor}
                             {path}
                             type="text"
@@ -128,19 +126,17 @@
                 class="vibes"
                 name="vibes"
                 placeholder="put, some, descriptors, here"
-                data={source}
                 doc={actor}
                 path="system.vibes"
                 type="text"
             />
             <div class="traits">
-                {#if source.system.traits.length == 0}
+                {#if actor.system.traits.length == 0}
                     Add a trait!
                 {:else}
-                    {#each source.system.traits as trait, index}
+                    {#each actor.system.traits as trait, index}
                         <TraitTag
                             doc={actor}
-                            {source}
                             path={`system.traits.${index}`}
                         />
                     {/each}
@@ -150,10 +146,10 @@
         </div>
     </div>
     <div class="abilities">
-        {#if Object.keys(source.system.abilities).length == 0}
+        {#if Object.keys(actor.system.abilities).length == 0}
             <span>Try adding a new ability, if this npc has one</span>
         {/if}
-        {#each Object.entries(source.system.abilities) as [ability_id, ability]}
+        {#each Object.entries(actor.system.abilities) as [ability_id, ability]}
             <div class="ability">
                 <div class="name">
                     <label for={`${ability_id}.name`}>Name:</label>
@@ -162,7 +158,6 @@
                         type="text"
                         name={`${ability_id}.name`}
                         doc={actor}
-                        {source}
                         path={`system.abilities.${ability_id}.name`}
                     />
                 </div>
@@ -175,7 +170,6 @@
                         type="text"
                         name={`${ability_id}.level_text.0`}
                         doc={actor}
-                        {source}
                         path={`system.abilities.${ability_id}.level_text.0`}
                     />
                 </div>
@@ -185,7 +179,7 @@
         <button onclick={addAbility}>Add an Ability</button>
     </div>
     <div class="moves">
-        {#each Object.entries(source.system.moves) as [act, moves]}
+        {#each Object.entries(actor.system.moves) as [act, moves]}
             <div class="act-body">
                 <Die
                     value={act}
@@ -206,13 +200,11 @@
                                 tag="input"
                                 type="text"
                                 doc={actor}
-                                {source}
                                 path={`system.moves.${act}.${move_id}.name`}
                             />
                             <UpdateInput
                                 tag="textarea"
                                 doc={actor}
-                                {source}
                                 path={`system.moves.${act}.${move_id}.text`}
                             />
                             <!-- svelte-ignore a11y_click_events_have_key_events -->

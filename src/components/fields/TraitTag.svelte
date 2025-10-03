@@ -1,9 +1,9 @@
 <script>
     import { resolveDotpath, spliceArrayItem, stepwiseResolveDotpath } from "../../utils/paths";
-    let { doc, source, path } = $props();
+    let { doc, path } = $props();
 
 
-    let value = $derived(resolveDotpath(source, path, ""));
+    let value = $derived(resolveDotpath(actor, path, ""));
     let clean_value = $derived(value.replaceAll("+", ""));
     let clazz = $derived.by(() => {
         let leading_plusses = 0;
