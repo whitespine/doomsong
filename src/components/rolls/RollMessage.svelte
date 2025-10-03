@@ -6,19 +6,19 @@
     import {
         FALLBACK_RESULT_TABLE,
         resultTables,
-        suspense,
     } from "../../utils/roll.svelte";
+    import { inSuspense } from "../../utils/suspense.svelte";
     /** @import { RollMessageData, ResultEntry } from "../../utils/roll.svelte" */
 
-    let { _id: id, author, speaker, flags, rolls, in_suspense } = $props();
+    let { message } = $props();
 
     /** @type {RollMessageData} */
-    let roll_data = $derived(flags[game.system.id]);
+    let roll_data = $derived(message.doomsong);
 
     /** Reconstructed roll from the message
      * @type {Roll}
      */
-    let roll = $derived(Roll.fromJSON(rolls[0]));
+    let roll = $derived(message.rolls[0]);
 
     /** The values on our d6's
      * @type {number[]}
@@ -45,17 +45,6 @@
             roll_data.coin_result,
         ),
     );
-    $inspect({
-        total: roll.total,
-        difficulty: roll_data.difficulty,
-        coin: roll_data.coin_result,
-        result: result_table.resultFor(
-            roll.total,
-            roll_data.difficulty,
-            roll_data.coin_result,
-        )
-    });
-    // $inspect(final_result_key);
 
     /** @type {Array<[string, ResultEntry]>*/
     let entries_to_show = $derived.by(() => {
@@ -66,27 +55,29 @@
             neighbors.above,
         ].filter((x) => x);
     });
-    let speaker_actor = $derived(ChatMessage.getSpeakerActor(speaker));
 
     // Modify this roll to have a flipped doomcoin. DSN integrated
     async function flipDoomcoin() {
         // Moves the result up or down by one
-        let doomcoin = await suspense(new Roll("1d2"));
+        let doomcoin = await new Roll("1d2").roll();
         let flip_value = doomcoin.total == 2 ? 1 : -1;
-        return game.messages.get(id).update({
+        return game.messages.get(message.id).update({
             [`flags.${game.system.id}.coin_result`]: flip_value,
+            [`flags.${game.system.id}.coin_suspense`]: suspense(doomcoin),
         });
     }
 </script>
 
 <h2 class="doomsong">
-    <span>{result_table.label} - {speaker_actor?.name}</span>
+    <span>{result_table.label} - {message.speakerActor.name}</span>
     {#if roll_data.coin_result == 0}
         <a
             class="doomcoin unflipped"
             onclick={flipDoomcoin}
-            aria-label="Flip Doomcoin"><i class="fas fa-coin"></i></a
+            aria-label="Flip Doomcoin"
         >
+            <i class="fas fa-coin"></i>
+        </a>
     {:else if roll_data.coin_result == 1}
         <img class="doomcoin flipped" src={crest} alt="Crest" />
     {:else if roll_data.coin_result == -1}
@@ -95,7 +86,7 @@
 </h2>
 <div class="doomsong dice">
     {#each die_results as die}
-        {#if in_suspense}
+        {#if inSuspense(roll_data.roll_suspense)}
             <RollingDie />
         {:else}
             <Die value={die.result} discarded={die.discarded} />
@@ -104,9 +95,9 @@
     <span>+</span>
     <span>{modifiers}</span>
     <span>→</span>
-    <span class={["result", { rolling: in_suspense }]}> {roll.total} </span>
+    <span class={["result", { rolling: inSuspense(roll_data.roll_suspense) }]}> {roll.total} </span>
 </div>
-{#if !in_suspense}
+{#if !inSuspense(roll_data.roll_suspense)}
     <div class="doomsong results">
         {#each entries_to_show as [result_key, result_entry]}
             <div class="result-key">

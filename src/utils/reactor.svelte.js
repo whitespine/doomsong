@@ -54,6 +54,9 @@ const CORE_INJECTS = [
         target: Combat,
         keys: ["system"]
     }, {
+        target: Roll,
+        keys: ["rolls"] // TODO more
+    }, {
         target: Combatant,
         keys: ["name", "img", "system"]
     }

@@ -5,19 +5,20 @@ import RollMessage from '../components/rolls/RollMessage.svelte'
 const DOOMSONG_MESSAGE_IDS = new Set();
 
 export class DoomsongChatMessage extends ChatMessage {
+    // State
+    doomsong = $state({});
+
     // Populate this as the specified component. Cannot be changed once populated
     async populateAsComponent(component) {
-        const data = this.toObject(false);
-        if (this._svelte_wrapper) {
-            // Update props, no other action necessary
-            Object.assign(this._svelte_props, data);
-        } else {
+        this.doomsong = this.flags[game.system.id];
+
+        if (!this._svelte_wrapper) {
             // Instantiate props
-            let props = $state(data);
-            this._svelte_props = props;
             this._svelte_wrapper = document.createElement("li");
             this._svelte_wrapper.classList.add("chat-message")
-            this._svelte_component = mount(component, { props: props, target: this._svelte_wrapper })
+            this._svelte_component = mount(component, { props: {
+                message: this
+            }, target: this._svelte_wrapper });
         }
 
         // Expects jquery format

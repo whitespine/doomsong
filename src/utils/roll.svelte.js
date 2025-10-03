@@ -1,5 +1,5 @@
 import roll_types from "./roll_types.json";
-import {sleep} from "./time";
+import { suspense } from "./suspense.svelte";
 
 /** An attempt to attack
  * @typedef {object} CheckParams
@@ -39,6 +39,7 @@ export async function rollCheck(check_details) {
         roll_type,
         coin_result: 0,
         difficulty,
+        roll_suspense: suspense(roll)
     };
     let message = await ChatMessage.create({
         rolls: [roll],
@@ -46,9 +47,6 @@ export async function rollCheck(check_details) {
         // Doomsong specific sauce
         [`flags.${game.system.id}`]: flags
     });
-
-    // Provide suspense
-    await suspense(roll);
 
     return {
         message,
@@ -99,19 +97,19 @@ export class ResultTable {
      */
     constructor(raw_table) {
         /** @type {RawResultTable} */
-        this.raw_table = raw_table; 
+        this.raw_table = raw_table;
 
         // Also pre-compute some utility values
-        for(let [key, entry] of Object.entries(this.raw_table.results)) {
+        for (let [key, entry] of Object.entries(this.raw_table.results)) {
             let kto = ResultTable.#keyToOver(key);
-            if(kto) {
+            if (kto) {
                 this.#max_over = Math.max(kto, this.#max_over ?? -1);
                 this.#over_entries[kto] = entry;
             }
         }
 
         // Validate
-        if(this.#max_over !== null && this.#over_entries[1] === undefined) {
+        if (this.#max_over !== null && this.#over_entries[1] === undefined) {
             throw new TypeError("When providing \"X over\" entries, you must at least define 1 over");
         }
     }
@@ -132,7 +130,7 @@ export class ResultTable {
      */
     static #keyToOver(key) {
         let m = key.match(/(\d)\+? over/);
-        if(!m) return null;
+        if (!m) return null;
         return Number.parseInt(m[1]);
     }
 
@@ -176,21 +174,21 @@ export class ResultTable {
      */
     crest(resultKey) {
         ResultTable.#validateKey(resultKey);
-        if(resultKey == "skull") return this.resultEntry("under"); // Not really possible but I guess it makes sense
-        if(resultKey == "under") return this.resultEntry("equal"); 
-        if(resultKey == "equal") {
-            if(this.#max_over === null) {
+        if (resultKey == "skull") return this.resultEntry("under"); // Not really possible but I guess it makes sense
+        if (resultKey == "under") return this.resultEntry("equal");
+        if (resultKey == "equal") {
+            if (this.#max_over === null) {
                 return this.resultEntry("over");
             } else {
                 return this.resultEntry("1 over"); // Guaranteed to exist
             }
         }
-        if(resultKey.includes("over")) {
-            if(this.#max_over) {
+        if (resultKey.includes("over")) {
+            if (this.#max_over) {
                 // Get the next highest
                 let over = ResultTable.#keyToOver(resultKey) + 1;
-                while(over <= this.#max_over) {
-                    if(this.#over_entries[over]) return this.resultEntry(ResultTable.#overToKey(over));
+                while (over <= this.#max_over) {
+                    if (this.#over_entries[over]) return this.resultEntry(ResultTable.#overToKey(over));
                     over += 1;
                 }
                 // We went beyond
@@ -199,7 +197,7 @@ export class ResultTable {
                 return this.resultEntry("crest");
             }
         }
-        if(resultKey == "crest") return null; // Not possible to go higher
+        if (resultKey == "crest") return null; // Not possible to go higher
     }
 
     /**
@@ -209,26 +207,26 @@ export class ResultTable {
      */
     skull(resultKey) {
         ResultTable.#validateKey(resultKey);
-        if(resultKey == "skull") return null; // Not possible to go lower
-        if(resultKey == "under") return this.resultEntry("skull"); 
-        if(resultKey == "equal") return this.resultEntry("under");
-        if(resultKey.includes("over")) {
-            if(this.#max_over == null) {
+        if (resultKey == "skull") return null; // Not possible to go lower
+        if (resultKey == "under") return this.resultEntry("skull");
+        if (resultKey == "equal") return this.resultEntry("under");
+        if (resultKey.includes("over")) {
+            if (this.#max_over == null) {
                 return this.resultEntry("equal");
             } else {
                 let over = ResultTable.#keyToOver(resultKey);
                 // Get the next lowest
-                while(over >= 2) {
+                while (over >= 2) {
                     over -= 1;
-                    if(this.#over_entries[over]) return this.resultEntry(ResultTable.#overToKey(over));
+                    if (this.#over_entries[over]) return this.resultEntry(ResultTable.#overToKey(over));
                 }
                 // We went beyond. Drop to equal
                 return this.resultEntry("equal");
             }
         }
-        if(resultKey == "crest") {
+        if (resultKey == "crest") {
             // return the highest over, or just over. Weird edge case, but whatever
-            if(this.#max_over) {
+            if (this.#max_over) {
                 return this.resultEntry(ResultTable.#overToKey(this.#max_over))
             } else {
                 return this.resultEntry("over");
@@ -242,7 +240,7 @@ export class ResultTable {
      * @param {string} resultKey A potential key
      */
     static #validateKey(resultKey) {
-        if(ResultTable.#VALID_KEYS.has(resultKey) || ResultTable.#keyToOver(resultKey)) return;
+        if (ResultTable.#VALID_KEYS.has(resultKey) || ResultTable.#keyToOver(resultKey)) return;
         throw new TypeError(`Invalid result table key ${resultKey}`);
     }
 
@@ -251,23 +249,22 @@ export class ResultTable {
      * If over, combines the closest over result (if numeric over results specified) or uses the base over result if no numeric over results specified
      * @param {number} rollResult 
      * @param {number} difficulty 
-     * @param {CoinResult} coinResult The current flipped coin result
+     * @param {-1 | 0 | 1} coinResult The current flipped coin result
      * @returns {[string, ResultEntry]} The result key and corresponding entry
      */
-    resultFor(rollResult, difficulty, coinResult=null) {
-        console.error("WAWA");
+    resultFor(rollResult, difficulty, coinResult = null) {
         let result;
-        if(rollResult < difficulty) {
+        if (rollResult < difficulty) {
             result = "under";
-        } else if(rollResult == difficulty) {
+        } else if (rollResult == difficulty) {
             result = "equal"
         } else {
             result = `${rollResult - difficulty} over`;
         }
 
-        if(coinResult == 1) {
+        if (coinResult == 1) {
             return this.crest(result) ?? this.resultEntry(result);
-        } else if(coinResult == -1) {
+        } else if (coinResult == -1) {
             return this.skull(result) ?? this.resultEntry(result);
         } else {
             return this.resultEntry(result);
@@ -330,7 +327,7 @@ let result_tables = $state({});
  */
 function populateResultTables() {
     let tables = {};
-    for(let raw of roll_types) {
+    for (let raw of roll_types) {
         tables[raw.id] = new ResultTable(raw);
     }
     // TODO: read from foundry roll tables or something
@@ -357,28 +354,9 @@ export const FALLBACK_RESULT_TABLE = new ResultTable(roll_types[0]); // Convenie
 /** Our type for specifically a generic roll message
  * @typedef {object} RollMessageData
  * @property {"roll"} type The text to show for the consequence
- * @property {string} string Id of the result table to pull results from. Fallback to standard if not found
+ * @property {string} roll_type id of the result table to pull results from. Fallback to standard if not found
  * @property {CoinResult} [coin_result] The coin result, if the coin has been flipped
  * @property {number} difficulty The difficulty it was rolled against
+ * @property {string} [roll_suspense] ID of the roll suspense. Might be null
+ * @property {string} [coin_suspense] ID of the coin suspense. Might be null
  */
-
-/**
- * Add a bit of suspense to your roll. This will either resolve via dice-so-nice, if enabled, or
- * if the settings have a configured dice delay use that as a timer instead.
- * If no delay is set, will resolve "immediately" via whatever your configured foundry roll mechanisms are
- * @param {Roll} roll An unresolved roll
- * @returns {Roll} The roll you give it
- */
-export async function suspense(roll) {
-    // Moves the result up or down by one
-    if(game.dice3d) {
-        // Use dicesonice
-        await game.dice3d.showForRoll(roll, game.user, true)
-    } else {
-        // TODO: Have some sort of timer setting as an else if condition
-        await sleep(1000);
-    }
-
-    // TODO: add options for broadcasting this to other players
-    return roll;
-}
