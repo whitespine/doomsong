@@ -14,7 +14,7 @@
 <div class="frame-body">
     <div class="header">
         <div class="identity">
-            <h1>{context.actor.name} {context.actor.system.toughness} {actor.system.toughness}</h1>
+            <h1>{context.actor.name}</h1>
             <div class="traits">
                 {#each actor.system.traits as trait, index}
                     {#if index > 0}

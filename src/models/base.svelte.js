@@ -4,10 +4,12 @@ import { reactAllSchema } from "../utils/reactor.svelte";
 export const fields = foundry.data.fields;
 
 export class DoomsongDataModel extends foundry.abstract.TypeDataModel {
+  /*
   _configure(options={}) {
     super._configure(options);
-    reactAllSchema(this);
+    reactAllSchema(this); // Not actually necessary, system is replaced wholesale on each update
   }
+  */
 }
 
 /**

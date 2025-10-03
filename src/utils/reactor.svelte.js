@@ -52,10 +52,10 @@ const CORE_INJECTS = [
         keys: ["name", "img", "system"]
     }, {
         target: Combat,
-        keys: []
+        keys: ["system"]
     }, {
         target: Combatant,
-        keys: ["name", "img"]
+        keys: ["name", "img", "system"]
     }
 ];
 
