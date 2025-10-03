@@ -26,19 +26,26 @@
             base = 3;
         }
         let final_result;
-        if (ds_data.roll_type == "attack") {
+
+        // Special logic for doomcoin
+        if (ds_data.roll_type == "attack" && final_result == 3 && ds_data.coin_result != 0) {
             // Attacks normally flex more by doomcoins
             let over = difficulty - total;
             if (over == 1) {
                 final_result = 2; // Adjust down to equal
             } else if (over >= 6) {
                 final_result = 4; // Adjust up to crest
+            } else {
+                final_result = 3;
             }
         } else {
             final_result = base + ds_data.coin_result;
         }
+        console.warn(final_result);
         return ["skull", "under", "equal", "over", "crest"][final_result];
     });
+
+    $inspect(roll_result);
     let attack_over_result = $derived.by(() => {
         let over = roll.total - ds_data.difficulty;
         if ("heavy") {
@@ -96,7 +103,7 @@
     >
 </div>
 <div class={["doomsong", "results", { certain: dsn_roll != "rolling" }]}>
-    {#each Object.entries(roll_type["results"]) as [result_key, result_text]}
+    {#each Object.entries(roll_type["results"]) as [result_key, result]}
         <div class="result-key">
             {#if result_key == "crest"}
                 <img class="critical" src={crest} alt="Crest" />
@@ -109,12 +116,13 @@
             {/if}
         </div>
         <div class={{ chosen: result_key == roll_result }}>
-            <span>
-                {result_text}
-            </span>
+            <p>
+                <span class="label">{result.label}.</span>
+                <span>{result.text}</span>
+            </p>
         </div>
     {/each}
-    {#if ds_data.roll_type == "attack"}
+    {#if ds_data.roll_type == "attackDEBUG"}
         <div class="result-key">
             <span>
                 {attack_over_result}
@@ -188,6 +196,10 @@
             align-items: center;
             &.result-key {
                 justify-content: center;
+            }
+
+            .label {
+                font-weight: bold;
             }
 
             .critical {
