@@ -7,35 +7,36 @@ const DOOMSONG_MESSAGE_IDS = new Set();
 export class DoomsongChatMessage extends ChatMessage {
     // State
     doomsong = $state({});
+    _svelte_wrappers = {};
 
     // Populate this as the specified component. Cannot be changed once populated
-    async populateAsComponent(component) {
+    async populateAsComponent(component, mode) {
         this.doomsong = this.flags[game.system.id];
 
-        if (!this._svelte_wrapper) {
+        if (!this._svelte_wrappers[mode]) {
             // Instantiate props
-            this._svelte_wrapper = document.createElement("li");
-            this._svelte_wrapper.classList.add("chat-message")
+            let wrapper =  document.createElement("li")
+            this._svelte_wrappers[mode] = wrapper;
+            wrapper.classList.add("chat-message")
             this._svelte_component = mount(component, { props: {
                 message: this
-            }, target: this._svelte_wrapper });
+            }, target: wrapper });
         }
 
-        // Expects jquery format
-        // await sleep(100);
-        return this._svelte_wrapper;
+        return this._svelte_wrappers[mode];
     }
 
     // For doomsong rolls, we have a custom svelte component :)
-    async getRollHTML() {
-        return this.populateAsComponent(RollMessage);
+    async getRollHTML(mode) {
+        return this.populateAsComponent(RollMessage, mode);
     }
 
     // Override base function
-    async renderHTML() {
+    async renderHTML(options={}) {
+        let popup = options.canDelete === false;
+        let mode = popup ? "popup" : "message";
         if (this.flags[game.system.id]?.["type"] == "roll") {
-            return this.getRollHTML();
-            // Todo support other types of rolls
+            return this.getRollHTML(mode);
         } else {
             return super.renderHTML();
         }
