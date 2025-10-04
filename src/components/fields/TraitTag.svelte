@@ -31,7 +31,6 @@
     }
 
     function remove() {
-        console.log("Remove");
         let mod = spliceArrayItem(doc, path);
         doc.update({
             [mod.array_path]: mod.modified_array

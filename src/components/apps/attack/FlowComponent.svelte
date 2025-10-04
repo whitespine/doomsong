@@ -16,8 +16,8 @@
      */
     let flow = $derived(app.flow);
 
-    let attacker = $derived(fromUuidSync(flow.attack.attacker))
-    let defender = $derived(fromUuidSync(flow.target))
+    let attacker = $derived(fromUuidSync(flow.attack.attacker));
+    let defender = $derived(fromUuidSync(flow.target).actor); // Get the actor
 </script>
 
 {#if flow.step == FLOW_STEPS.DEFENSE}

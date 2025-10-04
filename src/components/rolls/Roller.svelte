@@ -68,18 +68,18 @@
                 return ui.notifications.warn("Must have a token selected or an actor associated with your user");
             }
             initiateAttack({
-                targets: targetedTokens().map(t => t.actor),
+                targets: targetedTokens().map(t => t.document),
                 attack: {
                     user: game.user.id,
                     attacker: attacker.uuid,
-                    type: "attack_b", // TODO prompt this elsewhere
+                    type: roll_type,
                     formula: formulaFor(mode, total_bonuses),
                 }
             });
         } else {
             // Handle immediately
             let formula = formulaFor(mode, total_bonuses);
-            rollCheck({  roll_type: roll_type, difficulty, formula });
+            rollCheck({  roll_type, difficulty, formula });
         }
     }
 </script>

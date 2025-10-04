@@ -111,14 +111,14 @@ Hooks.on("ready", () => {
 
 /** Provided by the Roller app to initiate an attack. Will be processed into an "AttackFlow" and emitted via socket
  * @typedef {object} InitiateAttackParams
- * @property {Token[]} targets An array of target tokens
+ * @property {TokenDocument[]} targets An array of target token documents
  * @property {AttackMetadata} attack Attack metadata
  */
 
 /** A specific attack in progress. 
  * @typedef {object} AttackFlow
  * @property {string} attack_id Unique id of this attack flow
- * @property {string} target UUID of the target actor
+ * @property {string} target UUID of the target token document
  * @property {AttackMetadata} attack Attack metadata
  * @property {FlowStep} step What stage in the flow we are
  * @property {number} footing_spent Footing spent in defense. Effectively increases to-hit. Can also be used to satisfy "do"

@@ -49,7 +49,7 @@
         </div>
         <div class="column participant">
             {#each defender_consequences as consequence}
-                <Consequence actor={attacker} {consequence} />
+                <Consequence actor={defender} {consequence} />
             {/each}
         </div>
     </div>
