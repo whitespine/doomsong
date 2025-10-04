@@ -1,8 +1,10 @@
 
 <script>
-    import Defense from "./Defense.svelte";
     import { FLOW_STEPS } from "../../../apps/dodge_prompt.svelte";
+    import Defense from "./Defense.svelte";
     import Roll from "./Roll.svelte";
+    import Resolve from "./Resolve.svelte";
+    import { inSuspense } from "../../../utils/suspense.svelte";
 
     /** @import { AttackFlow } from "../../../apps/dodge_prompt.svelte" */
 
@@ -20,8 +22,10 @@
 
 {#if flow.step == FLOW_STEPS.DEFENSE}
     <Defense {app} {flow} {attacker} {defender} />
-{:else if flow.step == FLOW_STEPS.ROLL}
+{:else if flow.step == FLOW_STEPS.RESOLVE && inSuspense(flow.roll_suspense)}
     <Roll {app} {flow} {attacker} {defender} />
+{:else if flow.step == FLOW_STEPS.RESOLVE}
+    <Resolve {app} {flow} {attacker} {defender} />
 {:else}
     {JSON.stringify(flow)}
 {/if}

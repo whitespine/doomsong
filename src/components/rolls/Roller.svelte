@@ -1,5 +1,5 @@
 <script>
-    import { targeted_tokens } from "../../utils/target.svelte";
+    import { targetedTokens } from "../../utils/target.svelte";
     import { FALLBACK_RESULT_TABLE, formulaFor, resultTables, rollCheck } from "../../utils/roll.svelte";
     import { initiateAttack } from "../../apps/dodge_prompt.svelte";
     import Incrementer from "../fields/Incrementer.svelte";
@@ -36,9 +36,9 @@
     let result_table = $derived(resultTables()[roll_type] ?? FALLBACK_RESULT_TABLE);
     let choices = $state(defaultChoices());
     let difficulty = $derived.by(() => {
-        if (roll_type.includes("attack") && targeted_tokens.length >= 1) {
+        if (roll_type.includes("attack") && targetedTokens().length >= 1) {
             // Use their toughness + protection instead
-            return targeted_tokens[0].actor.system.attack_difficulty ?? 5;
+            return targetedTokens()[0].actor.system.attack_difficulty ?? 5;
         }
         return result_table.defaultDifficulty;
     });
@@ -61,18 +61,18 @@
 
         if (
             roll_type.includes("attack") &&
-            targeted_tokens.length != 0 &&
+            targetedTokens().length != 0 &&
             attacker
         ) {
             if(!attacker) {
                 return ui.notifications.warn("Must have a token selected or an actor associated with your user");
             }
             initiateAttack({
-                targets: targeted_tokens.map(t => t.actor),
+                targets: targetedTokens().map(t => t.actor),
                 attack: {
                     user: game.user.id,
                     attacker: attacker.uuid,
-                    type: "bludgeoning", // TODO prompt this elsewhere
+                    type: "attack_b", // TODO prompt this elsewhere
                     formula: formulaFor(mode, total_bonuses),
                 }
             });

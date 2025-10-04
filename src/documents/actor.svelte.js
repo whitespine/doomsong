@@ -1,3 +1,5 @@
+/** @import {Consequence} from "../utils/roll.svelte" */
+
 /**
  * Our custom class for Icon Actors
  */
@@ -63,4 +65,23 @@ export class DoomsongActor extends Actor {
         this.system.attack_difficulty = Math.max(this.system.toughness + this.system.protection, this.system.min_difficulty || 0);
     }
 
+    /**
+     * 
+     * @param {Consequence} consequence 
+     */
+    async applyConsequence(consequence) {
+        if(consequence.toughness) {
+            await this.update({
+                "system.toughness": this.system.toughness + consequence.toughness
+            });
+        }
+        if(consequence.footing) {
+            await this.update({
+                "system.footing": this.system.footing + consequence.footing
+            });
+        }
+
+        // TODO: Batch updates
+        // TODO: Do Rest
+    }
 }

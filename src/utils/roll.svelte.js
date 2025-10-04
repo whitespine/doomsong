@@ -6,7 +6,6 @@ import { suspense } from "./suspense.svelte";
  * @property {string} roll_type What result table id are we rolling on
  * @property {string} formula The formula for the roll
  * @property {number} difficulty The difficulty of the roll
- * @property {AttackMetadata} [attack] Attack metadata, in case it is an attack
  */
 
 /**
@@ -24,7 +23,10 @@ export function formulaFor(roll_type, bonus) {
 /**
  * 
  * @param {CheckParams} check_details 
- * @returns 
+ * @returns {({
+ *   message: ChatMessage,
+ *   roll: Roll
+ * })}
  */
 export async function rollCheck(check_details) {
     let { roll_type = "standard", difficulty = 5, formula, speaker = null } = check_details;
@@ -328,6 +330,7 @@ export class ResultTable {
  */
 
 let result_tables = $state({});
+
 
 /**
  * Populates result tables from embedded json and, eventually, foundry roll tables etc

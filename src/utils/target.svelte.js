@@ -1,5 +1,8 @@
 // Use this in components to track targeted tokens
-export let targeted_tokens = $state([]);
+let targeted_tokens = $state([]);
+export function targetedTokens() {
+    return targeted_tokens;
+}
 
 Hooks.on("targetToken", (user, token, targeted) => {
     if(game.user == user) {

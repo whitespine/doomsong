@@ -56,7 +56,6 @@ export class AttackFlowApp extends SvelteApplicationMixin(foundry.applications.a
             if (close) {
                 // Do nothing
             } else {
-                console.error("Making new flow window");
                 // Start and render a new one
                 let attacker = fromUuidSync(flow.attack.attacker);
                 let defender = fromUuidSync(flow.target);
@@ -87,7 +86,6 @@ const IN_PROGRESS_APPS = {};
 export const FLOW_STEPS = {
     INITIATE: "UNUSED_FOR_NOW",
     DEFENSE: "DEFEND_YOURSELF",
-    ROLL: "ROLL_THOSE_BONES",
     RESOLVE: "FLIP_THE_COIN_COWARD",
     COMPLETE: "IT_ALL_ENDS_SOMEDAY"
 };
@@ -103,7 +101,7 @@ Hooks.on("ready", () => {
  * @typedef {object} AttackMetadata
  * @property {string} user id of the user initiating this attack
  * @property {string} attacker UUID of the actor(!) initiating this attack
- * @property {("bludgeoning" | "piercing" | "slashing")} [type] If provided, the type of damage used for selecting damage tables. 
+ * @property {("attack_b" | "attack_p" | "attack_s")} [type] If provided, the type of damage used for selecting damage tables. 
  * @property {string} [formula] Determines how dice are rolled (if at all) for this attack. If not provided, the attack hits automatically, 
  *                              and will not be prompted unless dodge_footing is specified.
  * @property {boolean} [double_footing] If true, then footing spent to dodge this attack is doubled
@@ -125,8 +123,9 @@ Hooks.on("ready", () => {
  * @property {FlowStep} step What stage in the flow we are
  * @property {number} footing_spent Footing spent in defense. Effectively increases to-hit. Can also be used to satisfy "do"
  * @property {number} bonus_dodge Augments footing spent, but does not cost footing
- * @property {number} final_target Populated after defense submitted. The difficulty of the check
- * @property {number} roll_result The number we rolled
+ * @property {number} final_target Populated after defense submitted. The difficulty of the check. Also housed in message
+ * @property {string} [message_id] The id of the message corresponding to this flow's actual roll. Contains roll information and controls flipping
+ * @property {string} [roll_suspense] The number we rolled
  * @property {Consequence[]} defender_consequences The remaining defender consequences that we can apply
  * @property {Consequence[]} attacker_consequences The remaining attacker consequences that we can apply.
  */
