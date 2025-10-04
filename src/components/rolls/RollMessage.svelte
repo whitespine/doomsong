@@ -7,7 +7,7 @@
         FALLBACK_RESULT_TABLE,
         resultTables,
     } from "../../utils/roll.svelte";
-    import { inSuspense } from "../../utils/suspense.svelte";
+    import { suspense, inSuspense } from "../../utils/suspense.svelte";
     /** @import { RollMessageData, ResultEntry } from "../../utils/roll.svelte" */
 
     let { message } = $props();
@@ -111,7 +111,7 @@
                     </span>
                 {/if}
             </div>
-            <div class={{ chosen: final_result_key == result_key }}>
+            <div class={{ chosen: (final_result_key == result_key) && !inSuspense(roll_data.coin_suspense) }}>
                 <p>
                     <span class="label">{result_entry.label}.</span>
                     <span>{result_entry.text}</span>
