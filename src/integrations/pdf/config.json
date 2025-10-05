@@ -6,10 +6,10 @@
     "formFillPdf": true,
     "actorConfig": {
         "Text112": "name",
-        "Text5": "system.max_toughness",
-        "Text6": "system.toughness",
-        "Text7": "system.max_footing",
-        "Text8": "system.footing",
+        "Text5": "system.toughness.max",
+        "Text6": "system.toughness.value",
+        "Text7": "system.footing.max",
+        "Text8": "system.footing.value",
         "Text9": "system.protection"
     }
 }

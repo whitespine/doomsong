@@ -1,16 +1,17 @@
 <script>
     import UpdateInput from "../fields/UpdateInput.svelte";
+    import {resolveDotpath} from "../../utils/paths";
     let { context } = $props();
     let actor = $derived(context.document);
 </script>
 
 <div class="shield">
-    {#each ["max_toughness", "toughness", "max_footing", "footing"] as path}
+    {#each ["system.toughness.max", "system.toughness.value", "system.footing.max", "system.footing.value"] as path}
         <UpdateInput
-            name={`system.${path}`}
+            name={path}
             doc={actor}
-            path={`system.${path}`}
-            value={actor.system[path]}
+            path={path}
+            value={resolveDotpath(actor, path, 0)}
             type="number"
         />
     {/each}

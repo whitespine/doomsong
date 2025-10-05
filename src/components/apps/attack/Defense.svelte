@@ -27,12 +27,19 @@
 
     async function submit(e) {
         stop(e);
+        // Do the roll!
         let result = await rollCheck({
             roll_type: app.flow.attack.type,
             difficulty: total_difficulty,
             formula: app.flow.attack.formula,
         });
 
+        // Deduct the footing!
+        defender.update({
+            "system.footing.value": defender.system.footing.value - app.flow.footing_spent,
+        });
+
+        // Broadcast the flow!
         app.flow.step = FLOW_STEPS.RESOLVE; // We move on to the resolution step
         app.flow.message_id = result.message._id;
         app.flow.final_target = total_difficulty;
@@ -56,7 +63,7 @@
         <Incrementer
             name="footing_spent"
             min="0"
-            max={defender.system.footing}
+            max={defender.system.footing.value}
             bind:value={app.flow.footing_spent}
             style={"margin-left: auto"}
             width="140px"
@@ -83,7 +90,8 @@
         class={{
             devote: true,
             elevated: true,
-            disabled: defender.permission < CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER
+            disabled:
+                defender.permission < CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
         }}>Commit</button
     >
 </form>

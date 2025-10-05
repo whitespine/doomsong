@@ -15,11 +15,17 @@ export class ActorModel extends DoomsongDataModel {
     static defineSchema() {
         return {
             // Basic combat stats
-            toughness: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
-            max_toughness: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
             protection: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
-            footing: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
-            max_footing: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
+            toughness: new fields.SchemaField({
+                // min: NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
+                max: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
+                value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
+            }),
+            footing: new fields.SchemaField({
+                // min: NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
+                max: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
+                value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
+            }),
 
             // Combat moves
             base_action_dice: new fields.NumberField({ nullable: false, integer: true, min: 1, initial: 1 }), // How many ya got, initially?
@@ -57,16 +63,5 @@ export class ActorModel extends DoomsongDataModel {
         };
     }
 
-    // For display purposes
-    toughness_bar = $derived({
-        min: 0,
-        max: this.max_toughness,
-        value: this.toughness
-    });
-    footing_bar = $derived({
-        min: 0,
-        max: this.max_footing,
-        value: this.footing
-    });
-    attack_difficulty = $derived(Math.max(this.toughness + this.protection, this.min_difficulty || 0));
+    attack_difficulty = $derived(Math.max(this.toughness.value + this.protection, this.min_difficulty || 0));
 }

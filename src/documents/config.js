@@ -14,7 +14,7 @@ export function setupDocuments() {
     CONFIG.Combatant.documentClass = DoomsongCombatant;
 
     CONFIG.Actor.trackableAttributes["player"] = {
-        bar: ["footing_bar", "toughness_bar"],
+        bar: ["footing", "toughness"],
         value: ["protection"]
     };
 }
@@ -26,10 +26,10 @@ export async function initTokenSettings() {
         disposition: 0,
         displayBars: 50,
         bar1: {
-            attribute: "footing_bar"
+            attribute: "footing"
         },
         bar2: {
-            attribute: "toughness_bar"
+            attribute: "toughness"
         }
     });
 }

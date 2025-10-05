@@ -36,7 +36,8 @@ export class DoomsongTokenDocument extends foundry.documents.TokenDocument {
     // Fix our bars to be editable
     getBarAttribute(s) {
         let sub = super.getBarAttribute(s);
-        if (sub?.attribute == "toughness_bar" || sub?.attribute == "footing_bar") {
+        console.warn("Try disabling these");
+        if (sub?.attribute == "toughness" || sub?.attribute == "footing") {
             sub.editable = true;
         }
         return sub;

@@ -27,7 +27,6 @@
         });
     }
 
-
     // Remove the specified move
     function deleteMove(act, move_id) {
         actor.update({
@@ -100,9 +99,13 @@
                 {@render field(
                     "max_toughness",
                     "Max Toughness",
-                    "system.max_toughness",
+                    "system.toughness.max",
                 )}
-                {@render field("toughness", "Toughness", "system.toughness")}
+                {@render field(
+                    "toughness",
+                    "Toughness",
+                    "system.toughness.value",
+                )}
                 {@render field("protection", "Protection", "system.protection")}
                 {@render field(
                     "action_dice",
@@ -112,9 +115,9 @@
                 {@render field(
                     "max_footing",
                     "Max Footing",
-                    "system.max_footing",
+                    "system.footing.max",
                 )}
-                {@render field("footing", "Footing", "system.footing")}
+                {@render field("footing", "Footing", "system.footing.value")}
                 {@render field(
                     "min_difficulty",
                     "Min Difficulty",
@@ -135,10 +138,7 @@
                     Add a trait!
                 {:else}
                     {#each actor.system.traits as trait, index}
-                        <TraitTag
-                            doc={actor}
-                            path={`system.traits.${index}`}
-                        />
+                        <TraitTag doc={actor} path={`system.traits.${index}`} />
                     {/each}
                 {/if}
                 <button onclick={addTrait}>Add Trait</button>
@@ -173,7 +173,12 @@
                         path={`system.abilities.${ability_id}.level_text.0`}
                     />
                 </div>
-                <button aria-label="Delete ability" class="delete" onclick={() => deleteAbility(ability_id)}><i class="fas fa-trash"></i></button>
+                <button
+                    aria-label="Delete ability"
+                    class="delete"
+                    onclick={() => deleteAbility(ability_id)}
+                    ><i class="fas fa-trash"></i></button
+                >
             </div>
         {/each}
         <button onclick={addAbility}>Add an Ability</button>
@@ -276,7 +281,6 @@
                 & > * {
                     padding: 5px;
                 }
-
 
                 .name {
                     flex-grow: 1;
