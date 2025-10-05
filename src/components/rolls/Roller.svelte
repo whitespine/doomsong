@@ -4,6 +4,12 @@
     import { initiateAttack } from "../../apps/dodge_prompt.svelte";
     import Incrementer from "../fields/Incrementer.svelte";
 
+    let { context } = $props();
+    /** @import {RollerApp} from "../../apps/roll_app.svelte" */
+
+    /** @type {RollerApp} */
+    let app = $derived(context.app);
+
     // Gives tooltips for a given value
     function valueTooltip(value) {
         return {
@@ -57,17 +63,12 @@
     // Roll handler
     async function roll(mode) {
         let total_bonuses = Object.values(choices).reduce((x, y) => x + y, 0);
-        let attacker = _token?.actor ?? game.user.character;
-
+        app._callback_on_close = false;
         if (
             roll_type.includes("attack") &&
-            targetedTokens().length != 0 &&
-            attacker
+            targetedTokens().length != 0
         ) {
-            if(!attacker) {
-                return ui.notifications.warn("Must have a token selected or an actor associated with your user");
-            }
-            initiateAttack({
+            let flow = initiateAttack({
                 targets: targetedTokens().map(t => t.document),
                 attack: {
                     user: game.user.id,
@@ -76,11 +77,14 @@
                     formula: formulaFor(mode, total_bonuses),
                 }
             });
+            if(app.callback) app.callback(flow);
         } else {
-            // Handle immediately
             let formula = formulaFor(mode, total_bonuses);
-            rollCheck({  roll_type, difficulty, formula });
+            rollCheck({  roll_type, difficulty, formula }).then(result => {
+                if(app.callback) app.callback(result.message)
+            });
         }
+        app.close();
     }
 </script>
 
@@ -165,6 +169,7 @@
         z-index: calc(var(--z-index-ui) + 10);
         pointer-events: all;
         color: black;
+        margin: -1rem;
     }
 
     .header {

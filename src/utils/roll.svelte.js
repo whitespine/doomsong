@@ -23,10 +23,10 @@ export function formulaFor(roll_type, bonus) {
 /**
  * 
  * @param {CheckParams} check_details 
- * @returns {({
+ * @returns {Promise<{
  *   message: ChatMessage,
  *   roll: Roll
- * })}
+ * }>}
  */
 export async function rollCheck(check_details) {
     let { roll_type = "standard", difficulty = 5, formula, speaker = null } = check_details;
@@ -323,7 +323,11 @@ export class ResultTable {
  * @typedef {object} Consequence
  * @property {string} label The text to show for the consequence
  * @property {string} [toughness] Delta of toughness to apply
+ * @property {string} [min_toughness] Minimum toughness can go to via this consequence
+ * @property {string} [max_toughness] Maximum toughness can go to via this consequence
  * @property {string} [footing] Delta of footing to apply
+ * @property {string} [min_footing] Minimum footing can go to via this consequence
+ * @property {string} [max_footing] Maximum footing can go to via this consequence
  * @property {string} [resist_death] Whether the target should resist death
  * @property {string} [injury] The name of an injury to add
  * @property {string} [condition] The name of an condition to add

@@ -147,17 +147,16 @@ export function broadcastFlow(flow) {
 }
 
 
-// Begin an attack flow. User should be a user id. Attacker should be an actor, targets should be an array of actors, bonus should be a flat number indicating the original to-hit
-/**
- * 
+/** Begin an attack flow. User should be a user id. Attacker should be an actor, targets should be an array of actors, bonus should be a flat number indicating the original to-hit 
  * @param {InitiateAttackParams} data 
+ * @returns {AttackFlow | null} Null iff nobody can handle the attack
  */
 export function initiateAttack(data) {
     for (let target of data.targets) {
         let owners = onlineOwners(target);
         if (owners.length == 0) {
             ui.notifications.error("Nobody is online who has sufficient ownership to handle this attack");
-            return;
+            return null;
         } else {
             /** @type {AttackFlow} */
             let flow = {
@@ -176,6 +175,7 @@ export function initiateAttack(data) {
                 flow.step = FLOW_STEPS.RESOLVE;
             }
             broadcastFlow(flow);
+            return flow;
         }
     }
 }

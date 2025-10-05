@@ -7,7 +7,7 @@ import { initCombatSettings, initTokenSettings, setupDocuments } from './documen
 import { initPdfPager } from './integrations/pdf/pager';
 import { retry, sleep } from './utils/time';
 import { mount } from 'svelte';
-import Roller from "./components/rolls/Roller.svelte";
+import RollerButton from "./components/rolls/HotbarButton.svelte";
 import { DoomsongCombatTracker } from './overrides/DoomsongCombatTracker.svelte';
 import { DoomsongChatMessage } from './overrides/DoomsongChatMessage.svelte';
 import { DoomsongActor } from './documents/actor.svelte';
@@ -92,9 +92,8 @@ Hooks.once('ready', async function () {
 
 // Mount our ui components
 Hooks.once('ready', async function () {
-  let ui_bottom = document.querySelector("#ui-bottom");
-  // let ui_bottom = document.querySelector("#ui-right-column-1");
-  mount(Roller, {
+  let ui_bottom = document.querySelector("#hotbar");
+  mount(RollerButton, {
     target: ui_bottom
   });
 });

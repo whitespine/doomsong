@@ -1,5 +1,7 @@
 /** @import {Consequence} from "../utils/roll.svelte" */
 
+import { rollCheck } from "../utils/roll.svelte";
+
 /**
  * Our custom class for Icon Actors
  */
@@ -71,17 +73,34 @@ export class DoomsongActor extends Actor {
      */
     async applyConsequence(consequence) {
         if(consequence.toughness) {
+            let new_toughness = this.system.toughness + consequence.toughness;
+            if(consequence.min_toughness && this.system.toughness >= consequence.min_toughness && new_toughness < consequence.min_toughness) new_toughness = consequence.min_toughness;
+            if(consequence.max_toughness && this.system.toughness <= consequence.max_toughness && new_toughness > consequence.max_toughness) new_toughness = consequence.max_toughness;
             await this.update({
-                "system.toughness": this.system.toughness + consequence.toughness
+                "system.toughness": new_toughness
             });
         }
         if(consequence.footing) {
+            let new_footing = this.system.footing + consequence.footing;
+            if(consequence.min_footing && this.system.footing >= consequence.min_footing && new_footing < consequence.min_footing) new_footing = consequence.min_footing;
+            if(consequence.max_footing && this.system.footing <= consequence.max_footing && new_footing > consequence.max_footing) new_footing = consequence.max_footing;
             await this.update({
-                "system.footing": this.system.footing + consequence.footing
+                "system.footing": new_footing
             });
+        }
+        if(consequence.resist_death) {
+            // TODO: handle death resist
+            rollCheck({
+
+            })
+        }
+        if(consequence.injury) {
+            // TODO: Add some sort of injury status effect
+        }
+        if(consequence.condition) {
+            // TODO: Add a condition
         }
 
         // TODO: Batch updates
-        // TODO: Do Rest
     }
 }
