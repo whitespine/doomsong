@@ -121,11 +121,21 @@ export class DoomsongActor extends Actor {
             await this.createEmbeddedDocuments("ActiveEffect", [{
                 name: consequence.injury.name,
                 img: consequence.injury.icon ?? "icons/svg/bones.svg",
+                flags: {
+                    [game.system.id]: {
+                        type: "injury"
+                    }
+                }
             }]);
         } else if (consequence.condition) {
             await this.createEmbeddedDocuments("ActiveEffect", [{
                 name: consequence.condition.name,
                 img: consequence.condition.icon ?? "icons/svg/daze.svg",
+                flags: {
+                    [game.system.id]: {
+                        type: "condition"
+                    }
+                }
             }]);
         } else {
             ui.notifications.warn("This isn't automated yet");
