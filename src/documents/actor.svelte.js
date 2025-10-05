@@ -121,6 +121,7 @@ export class DoomsongActor extends Actor {
             await this.createEmbeddedDocuments("ActiveEffect", [{
                 name: consequence.injury.name,
                 img: consequence.injury.icon ?? "icons/svg/bones.svg",
+                statuses: ["cursed"],
                 flags: {
                     [game.system.id]: {
                         type: "injury"
@@ -131,6 +132,7 @@ export class DoomsongActor extends Actor {
             await this.createEmbeddedDocuments("ActiveEffect", [{
                 name: consequence.condition.name,
                 img: consequence.condition.icon ?? "icons/svg/daze.svg",
+                statuses: ["paralyzed"],
                 flags: {
                     [game.system.id]: {
                         type: "condition"
