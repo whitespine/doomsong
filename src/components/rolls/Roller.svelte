@@ -72,7 +72,7 @@
                 targets: targetedTokens().map(t => t.document),
                 attack: {
                     user: game.user.id,
-                    attacker: attacker.uuid,
+                    attacker: app.actor.uuid,
                     type: roll_type,
                     formula: formulaFor(mode, total_bonuses),
                 }

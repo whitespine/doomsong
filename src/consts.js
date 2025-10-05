@@ -35,7 +35,7 @@ export const DOOMSONG = {
     },
 
     socket: {
-        update_attack: "UPDATE_ATTACK_FLOW",
+        attack: "UPDATE_ATTACK_FLOW",
         suspense: "SUSPENSE"
     },
 

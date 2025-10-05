@@ -2,6 +2,7 @@ import AttackFlowComponent from "../components/apps/attack/FlowComponent.svelte"
 import { DOOMSONG } from "../consts";
 import { SvelteApplicationMixin } from "../overrides/svelte_mixin.svelte";
 import { onlineOwners } from "../utils/ownership";
+import { sendSocket } from "../utils/socket.svelte";
 
 export class AttackFlowApp extends SvelteApplicationMixin(foundry.applications.api.ApplicationV2) {
     /** @type {AttackFlow} */
@@ -90,13 +91,6 @@ export const FLOW_STEPS = {
     COMPLETE: "IT_ALL_ENDS_SOMEDAY"
 };
 
-
-// Init our attack socket event
-Hooks.on("ready", () => {
-    // Socket event to roll defense
-    game.socket.on(`${game.system.id}.${DOOMSONG.socket.update_attack}`, (flow) => AttackFlowPrompt.showFlow(flow));
-});
-
 /** 
  * @typedef {object} AttackMetadata
  * @property {string} user id of the user initiating this attack
@@ -141,7 +135,7 @@ Hooks.on("ready", () => {
  */
 export function broadcastFlow(flow) {
     return Promise.all([
-        game.socket.emit(`${game.system.id}.${DOOMSONG.socket.update_attack}`, flow),
+        sendSocket(DOOMSONG.socket.attack, flow),
         AttackFlowApp.showFlow(flow)
     ]);
 }

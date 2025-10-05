@@ -20,7 +20,7 @@ export class RollerApp extends SvelteApplicationMixin(foundry.applications.api.A
     _callback_on_close = true;
 
     constructor(actor, options = {}) {
-        if(!(actor instanceof Actor)) {
+        if (!(actor instanceof Actor)) {
             throw new TypeError("Provided actor must be an actor");
         }
         options.window ||= {};
@@ -60,20 +60,14 @@ export class RollerApp extends SvelteApplicationMixin(foundry.applications.api.A
 
     /**
      * @param {Actor} actor The actor this roll should be done as
-     * @returns {Promise<ChatMessage>} The ChatMessage if one is created, null otherwise
+     * @returns {Promise<ChatMessage | AttackFlow | null>} The ChatMessage/AttackFlow if one is created, null otherwise
      */
     static prompt(actor) {
-        return new Promise((succ, rej) => {
+        return new Promise((succ) => {
             let app = new RollerApp(actor, {
-                callback: (x) => {
-                    if (x) {
-                        succ(x);
-                    } else {
-                        rej(x);
-                    }
-                }
+                callback: succ
             });
-            app.render({force: true});
+            app.render({ force: true });
         });
     }
 }

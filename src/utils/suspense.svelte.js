@@ -56,19 +56,11 @@ async function wait(roll) {
  * Handle incoming suspense events
  * @param {SuspenseBroadcast} broadcast Broadcast received from
  */
-function onReceiveSuspense(broadcast) {
+export function onReceiveSuspense(broadcast) {
     // Hydrate roll and dsn it
     let roll = Roll.fromData(broadcast);
     wait(roll).then(() => suspenseSet.delete(id));
 }
-
-/**
- * Setup function for socket events
- */
-export function initNetworkedSuspense() {
-    game.socket.on(`${game.system.id}.${DOOMSONG.socket.suspense}`, onReceiveSuspense);
-}
-
 // Our current things in suspense
 const suspenseSet = new SvelteSet();
 

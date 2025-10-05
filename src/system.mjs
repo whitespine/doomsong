@@ -15,11 +15,14 @@ import { DoomsongTokenDocument } from './documents/token';
 import { setupSheets } from './sheets/config';
 import { AttackFlowApp } from './apps/dodge_prompt.svelte';
 import { injectAllCoreDocumentsReactivity, injectEmbeddedCollectionsReactivity } from './utils/reactor.svelte';
+import { initSockets } from './utils/socket.svelte';
 
 Hooks.once('init', async function () {
   console.log("Initializing DOOMSONG RPG")
   injectAllCoreDocumentsReactivity();
   injectEmbeddedCollectionsReactivity();
+
+
   setupDocuments();
   setupModels();
   setupSettings();
@@ -62,7 +65,12 @@ Hooks.once("ready", async function () {
       ui.notifications.info("Initialized combat");
     });
   }
-})
+});
+
+// Init sockets
+Hooks.once("ready", async function () {
+  initSockets();
+});
 
 // Setup calendar
 Hooks.once('simple-calendar-ready', async function () {
