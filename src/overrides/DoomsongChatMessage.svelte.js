@@ -8,6 +8,7 @@ export class DoomsongChatMessage extends ChatMessage {
     // State
     doomsong = $state({});
     _svelte_wrappers = {};
+    _svelte_components = {};
 
     // Populate this as the specified component. Cannot be changed once populated
     async populateAsComponent(component, mode) {
@@ -18,7 +19,7 @@ export class DoomsongChatMessage extends ChatMessage {
             let wrapper =  document.createElement("li")
             this._svelte_wrappers[mode] = wrapper;
             wrapper.classList.add("chat-message")
-            this._svelte_component = mount(component, { props: {
+            this._svelte_components[mode] = mount(component, { props: {
                 message: this
             }, target: wrapper });
         }
@@ -55,7 +56,9 @@ Hooks.on('diceSoNiceRollStart', (messageId, context) => {
 // Create a cleanup hook
 Hooks.on("deleteChatMessage", (message) => {
     if(message._svelte_component) {
-        unmount(message._svelte_component);
-        globalThis.$(message._svelte_wrapper).remove();
+        for(let [k, v] of Object.entries(message._svelte_wrappers)) {
+            unmount(message._svelte_components[k]);
+            globalThis.$(v).remove();
+        }
     }
 });

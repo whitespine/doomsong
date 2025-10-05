@@ -1,5 +1,3 @@
-import { svelte_render_override } from "../overrides/svelte_application_utils.svelte";
-
 export class DoomsongActorSheet extends foundry.applications.sheets.ActorSheetV2 {
     static DEFAULT_OPTIONS = {
         classes: ["doomsong", "actor"],
@@ -15,7 +13,6 @@ export class DoomsongActorSheet extends foundry.applications.sheets.ActorSheetV2
 
     async _prepareContext(options) {
         let context = await super._prepareContext(options);
-        context.app = this;
         context.actor = this.actor;
         return context;
     }

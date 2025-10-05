@@ -4,11 +4,12 @@
     import { initiateAttack } from "../../apps/dodge_prompt.svelte";
     import Incrementer from "../fields/Incrementer.svelte";
 
-    let { context } = $props();
     /** @import {RollerApp} from "../../apps/roll_app.svelte" */
 
-    /** @type {RollerApp} */
-    let app = $derived(context.app);
+    /**
+     * @type {({ app: RollerApp })}
+     */
+    let { app } = $props();
 
     // Gives tooltips for a given value
     function valueTooltip(value) {

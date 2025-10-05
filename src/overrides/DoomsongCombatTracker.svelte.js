@@ -57,21 +57,6 @@ export class DoomsongCombatTracker extends SvelteApplicationMixin(foundry.applic
         this.props.highlighted = hovered ? combatant : null;
     }
 
-    /*async _render(force = false, options = {}) {
-        options.resizable ??= this.popOut;
-        await svelte_render_override(this, DoomsongCombatTrackerComponent, () => {
-            let wrapper = document.createElement("section");
-            wrapper.id = "combat";
-            for (let c of ["tab", "sidebar-tab", "combat-sidebar"]) {
-                wrapper.classList.add(c);
-            }
-            wrapper.setAttribute("data-tab", "combat");
-            globalThis.$("template#combat").replaceWith(wrapper);
-            return wrapper
-        }, force, options);
-    }*/
-
-
     /** @inheritDoc */
     /*
     async _onFirstRender(context, options) {

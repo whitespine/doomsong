@@ -24,14 +24,6 @@ export class AttackFlowApp extends SvelteApplicationMixin(foundry.applications.a
         }
     }
 
-    async _prepareContext(options) {
-        let context = {
-            ...await super._prepareContext(options),
-            app: this // Via which we can access the flow in a stateful manner
-        };
-        return context;
-    }
-
     // Cleanup
     async close(options) {
         if (this.flow.attack.attack_id) {

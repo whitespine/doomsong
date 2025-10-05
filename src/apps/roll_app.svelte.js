@@ -52,14 +52,6 @@ export class RollerApp extends SvelteApplicationMixin(foundry.applications.api.A
         return super.close(options);
     }
 
-    async _prepareContext(options) {
-        let context = {
-            ...await super._prepareContext(options),
-            app: this
-        };
-        return context;
-    }
-
     /**
      * @param {Actor} actor The actor this roll should be done as
      * @param {object} options Options to include

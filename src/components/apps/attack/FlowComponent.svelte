@@ -1,4 +1,3 @@
-
 <script>
     import { FLOW_STEPS } from "../../../apps/dodge_prompt.svelte";
     import Defense from "./Defense.svelte";
@@ -6,17 +5,19 @@
     import Resolve from "./Resolve.svelte";
     import { inSuspense } from "../../../utils/suspense.svelte";
 
-    /** @import { AttackFlow } from "../../../apps/dodge_prompt.svelte" */
+    /** @import { AttackFlow, AttackFlowApp } from "../../../apps/dodge_prompt.svelte" */
 
-    let { context } = $props();
-    let app = $derived(context.app);
+    /** @type {({
+         app: AttackFlowApp
+    })}
+    */
+    let { app } = $props();
 
-    /**
-     * @type {AttackFlow}
-     */
     let flow = $derived(app.flow);
 
-    let message = $derived(flow.message_id ? game.messages.get(flow.message_id) : null);
+    let message = $derived(
+        flow.message_id ? game.messages.get(flow.message_id) : null,
+    );
     let attacker = $derived(fromUuidSync(flow.attack.attacker));
     let defender = $derived(fromUuidSync(flow.target).actor); // Get the actor
 </script>

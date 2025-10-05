@@ -3,7 +3,7 @@
     import UpdateInput from "../fields/UpdateInput.svelte";
     import Die from "../rolls/Die.svelte";
     import { stop } from "../../utils/handlers";
-    let { context } = $props();
+    let { app, context } = $props();
     let actor = $derived(context.document);
 
     // Add a new basic move
@@ -81,7 +81,7 @@
             class="portrait"
             src={actor.img}
             alt="potrait"
-            onclick={() => context.app.editImage("img")}
+            onclick={() => app.editImage("img")}
         />
         <div class="stat-area">
             <div class="stat-grid">
