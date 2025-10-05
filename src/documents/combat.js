@@ -275,6 +275,7 @@ export class DoomsongCombatant extends Combatant {
         return canvas.ping(token.center);
     }
 
+    // TODO: remove these
     // Helper shorthand. Do we own this combatant?
     get owner() {
         return this.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;

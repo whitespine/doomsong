@@ -78,6 +78,13 @@
             color: black;
         }
 
+        // For disabling buttons
+        .disabled {
+            opacity: 50%;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
         // Sharp edges!
         button,
         select {

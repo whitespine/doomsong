@@ -21,8 +21,6 @@ Hooks.once('init', async function () {
   console.log("Initializing DOOMSONG RPG")
   injectAllCoreDocumentsReactivity();
   injectEmbeddedCollectionsReactivity();
-
-
   setupDocuments();
   setupModels();
   setupSettings();
