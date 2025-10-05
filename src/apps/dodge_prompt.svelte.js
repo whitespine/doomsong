@@ -119,7 +119,6 @@ export const FLOW_STEPS = {
  * @property {number} bonus_dodge Augments footing spent, but does not cost footing
  * @property {number} final_target Populated after defense submitted. The difficulty of the check. Also housed in message
  * @property {string} [message_id] The id of the message corresponding to this flow's actual roll. Contains roll information and controls flipping
- * @property {string} [roll_suspense] The number we rolled
  * @property {Consequence[]} defender_consequences The remaining defender consequences that we can apply
  * @property {Consequence[]} attacker_consequences The remaining attacker consequences that we can apply.
  */

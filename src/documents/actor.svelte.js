@@ -67,37 +67,59 @@ export class DoomsongActor extends Actor {
         this.system.attack_difficulty = Math.max(this.system.toughness + this.system.protection, this.system.min_difficulty || 0);
     }
 
+    // Apply the dead status effect
+    async markDead() {
+        if (!this.statuses.has("dead")) {
+            await this.createEmbeddedDocuments("ActiveEffect", [{
+                name: "Dead",
+                img: "icons/svg/skull.svg",
+                statuses: ["dead"],
+                flags: {
+                    core: {
+                        overlay: true
+                    }
+                }
+            }]);
+        }
+    }
+
     /**
      * 
      * @param {Consequence} consequence 
      */
     async applyConsequence(consequence) {
-        if(consequence.toughness) {
+        if (consequence.toughness) {
             let new_toughness = this.system.toughness + consequence.toughness;
-            if(consequence.min_toughness && this.system.toughness >= consequence.min_toughness && new_toughness < consequence.min_toughness) new_toughness = consequence.min_toughness;
-            if(consequence.max_toughness && this.system.toughness <= consequence.max_toughness && new_toughness > consequence.max_toughness) new_toughness = consequence.max_toughness;
+            if (consequence.min_toughness && this.system.toughness >= consequence.min_toughness && new_toughness < consequence.min_toughness) new_toughness = consequence.min_toughness;
+            if (consequence.max_toughness && this.system.toughness <= consequence.max_toughness && new_toughness > consequence.max_toughness) new_toughness = consequence.max_toughness;
             await this.update({
                 "system.toughness": new_toughness
             });
         }
-        if(consequence.footing) {
+        if (consequence.footing) {
             let new_footing = this.system.footing + consequence.footing;
-            if(consequence.min_footing && this.system.footing >= consequence.min_footing && new_footing < consequence.min_footing) new_footing = consequence.min_footing;
-            if(consequence.max_footing && this.system.footing <= consequence.max_footing && new_footing > consequence.max_footing) new_footing = consequence.max_footing;
+            if (consequence.min_footing && this.system.footing >= consequence.min_footing && new_footing < consequence.min_footing) new_footing = consequence.min_footing;
+            if (consequence.max_footing && this.system.footing <= consequence.max_footing && new_footing > consequence.max_footing) new_footing = consequence.max_footing;
             await this.update({
                 "system.footing": new_footing
             });
         }
-        if(consequence.resist_death) {
-            // TODO: handle death resist
-            rollCheck({
+        if (consequence.resist_death) {
+            if (this.type == "npc" && this.system.action_dice == 1) {
+                // Die instantly
+                await this.markDead();
+            } else {
+                ui.notifications.warn("You'll need to roll this yourself");
+                // TODO: handle death resist
+                //rollCheck({
 
-            })
+                //})
+            }
         }
-        if(consequence.injury) {
+        if (consequence.injury) {
             // TODO: Add some sort of injury status effect
         }
-        if(consequence.condition) {
+        if (consequence.condition) {
             // TODO: Add a condition
         }
 

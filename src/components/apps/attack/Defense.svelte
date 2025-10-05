@@ -19,7 +19,8 @@
 
     let total_difficulty = $derived.by(() => {
         let total = defender.system.attack_difficulty; // Baseline from toughness and protection
-        total += (app.flow.attack.double_footing ? 2 : 1) * app.flow.footing_spent; // Dodge footing. Double if double footing
+        total +=
+            (app.flow.attack.double_footing ? 2 : 1) * app.flow.footing_spent; // Dodge footing. Double if double footing
         total += app.flow.bonus_dodge; // Shield etc bonuses
         return total;
     });
@@ -35,7 +36,6 @@
         app.flow.step = FLOW_STEPS.RESOLVE; // We move on to the resolution step
         app.flow.message_id = result.message._id;
         app.flow.final_target = total_difficulty;
-        app.flow.roll_suspense = suspense(result.roll);
         broadcastFlow(app.flow);
     }
 </script>
@@ -79,7 +79,13 @@
 
     <p>Total difficulty: {total_difficulty}</p>
 
-    <button class="devote elevated">Commit</button>
+    <button
+        class={{
+            devote: true,
+            elevated: true,
+            disabled: defender.permission < CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER
+        }}>Commit</button
+    >
 </form>
 
 <style lang="scss">

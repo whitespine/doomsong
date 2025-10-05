@@ -1,6 +1,7 @@
 import { DOOMSONG } from "../consts";
 import { sleep } from "./time";
 import { SvelteSet } from "svelte/reactivity";
+import { sendSocket } from "./socket.svelte";
 
 /**
  * Add a bit of suspense to your roll. This will either resolve via dice-so-nice, if enabled, or
@@ -15,7 +16,7 @@ import { SvelteSet } from "svelte/reactivity";
 export function suspense(roll) {
     // Moves the result up or down by one
     let id = foundry.utils.randomID();
-    if(!roll.result) throw new TypeError("Roll must be rolled before you suspense it");
+    if (!roll.result) throw new TypeError("Roll must be rolled before you suspense it");
 
     suspenseSet.add(id);
 
@@ -28,7 +29,7 @@ export function suspense(roll) {
         id,
         roll_json: roll.toJSON()
     };
-    game.socket.emit(`${game.system.id}.${DOOMSONG.socket.suspense}`, payload);
+    sendSocket(DOOMSONG.socket.suspense, payload);
 
     return id;
 }
@@ -49,16 +50,18 @@ async function wait(roll) {
         await game.dice3d.showForRoll(roll, game.user, true);
     } else {
         await sleep(1000);
-    } 
+    }
 }
 
 /**
  * Handle incoming suspense events
- * @param {SuspenseBroadcast} broadcast Broadcast received from
+ * @param {SuspenseBroadcast} payload Broadcast received from
  */
-export function onReceiveSuspense(broadcast) {
+export function onReceiveSuspense(payload) {
     // Hydrate roll and dsn it
-    let roll = Roll.fromData(broadcast);
+    let { roll_json, id } = payload;
+    suspenseSet.add(id);
+    let roll = Roll.fromData(roll_json);
     wait(roll).then(() => suspenseSet.delete(id));
 }
 // Our current things in suspense
