@@ -84,7 +84,7 @@
                 ],
                 "target_penalties": [
                     {
-                        "label": "Lost -1 toughness",
+                        "label": "Lose -1 toughness",
                         "toughness": -1
                     }
                 ]
@@ -125,7 +125,7 @@
                 "text": "The target loses -1 toughness. Additionally, the target gains the Smashed Face injury and must resist [death].",
                 "target_penalties": [
                     {
-                        "label": "Lose -1 tougness",
+                        "label": "Lose -1 toughness",
                         "toughness": -1
                     },
                     {
@@ -309,7 +309,7 @@
                         "toughness": -1
                     },
                     {
-                        "label": "Scar",
+                        "label": "Gain the Scar injury",
                         "injury": {
                             "name": "Scar"
                         }
@@ -329,15 +329,15 @@
                         "toughness": -1
                     },
                     {
-                        "label": "Missing Ear",
+                        "label": "Gain the Missing Ear permanent injury",
                         "injury": {
-                            "name": "Missing Ear"
+                            "name": "Missing Ear (permanent)"
                         }
                     },
                     {
-                        "label": "Missing Eye",
+                        "label": "Gain the Missing Eye permanent injury",
                         "injury": {
-                            "name": "Missing Eye"
+                            "name": "Missing Eye (permanent)"
                         }
                     },
                     {
@@ -376,27 +376,27 @@
                         "footing": -999
                     },
                     {
-                        "label": "Missing leg",
+                        "label": "Gain the Missing Leg permanent injury",
                         "injury": {
-                            "name": "Missing leg"
+                            "name": "Missing Leg (permanent)"
                         }
                     },
                     {
-                        "label": "Missing foot",
+                        "label": "Gain the Missing Foot permanent injury",
                         "injury": {
-                            "name": "Missing foot"
+                            "name": "Missing Foot (permanent)"
                         }
                     },
                     {
-                        "label": "Missing arm",
+                        "label": "Gain the Missing Arm permanent injury",
                         "injury": {
-                            "name": "Missing arm"
+                            "name": "Missing Arm (permanent)"
                         }
                     },
                     {
-                        "label": "Missing hand",
+                        "label": "Gain the Missing Hand permanent injury",
                         "injury": {
-                            "name": "Missing hand"
+                            "name": "Missing Hand (permanent)"
                         }
                     },
                     {
@@ -484,34 +484,111 @@
                 ],
                 "target_penalties": [
                     {
-                        "label": "Lost -1 toughness",
+                        "label": "Lose -1 toughness",
                         "toughness": -1
                     }
                 ]
             },
             "1 over": {
                 "label": "Pricked",
-                "text": "The target loses -2 toughness."
+                "text": "The target loses -2 toughness.",
+                "target_penalties": [
+                    {
+                        "label": "Lose -2 toughness",
+                        "toughness": -2
+                    }
+                ]
             },
             "2 over": {
                 "label": "Stuck",
-                "text": "The target loses -2 toughness. Then they lose -2 footing."
+                "text": "The target loses -2 toughness. Then they lose -2 footing.",
+                "target_penalties": [
+                    {
+                        "label": "Lose -2 toughness",
+                        "toughness": -2
+                    },
+                    {
+                        "label": "Lose -2 footing",
+                        "footing": -2
+                    }
+                ]
             },
             "3 over": {
                 "label": "Punctured Eye",
-                "text": "The target loses -1 toughness. Target gains the Missing Eye permanent injury and must resist [death]."
+                "text": "The target loses -1 toughness. Target gains the Missing Eye permanent injury and must resist [death].",
+                "target_penalties": [
+                    {
+                        "label": "Lose -1 toughness",
+                        "toughness": -1
+                    },
+                    {
+                        "label": "Gain the Missing Eye permanent injury",
+                        "injury": {
+                            "name": "Missing Eye (perm)"
+                        }
+                    }
+                ]
             },
             "4 over": {
                 "label": "Femoral Artery",
-                "text": "The target loses -1 toughness. Target gains the Bleeding condition. This is not an injury. The target also loses D6 additional toughness."
+                "text": "The target loses -1 toughness. Target gains the Bleeding condition. This is not an injury. The target also loses D6 additional toughness.",
+                "target_penalties": [
+                    {
+                        "label": "Lose -1 - 1d6 toughness",
+                        "toughness": "-(1 + 1d6)"
+                    },
+                    {
+                        "label": "Gain the Bleeding condition",
+                        "condition": {
+                            "name": "Bleeding",
+                            "icon": "icons/svg/blood.svg"
+                        }
+                    }
+                ]
             },
             "5 over": {
                 "label": "Pinned Arm",
-                "text": "The target loses -2 toughness. Target drops any item they are holding. They cannot move until they take an open action to free themselves."
+                "text": "The target loses -2 toughness. Target drops any item they are holding. They cannot move until they take an open action to free themselves.",
+                "target_penalties": [
+                    {
+                        "label": "Lose -2 toughness",
+                        "toughness": 2
+                    },
+                    {
+                        "label": "Target drops any item they are holding"
+                    },
+                    {
+                        "label": "Cannot move until they take an open action to free themself",
+                        "condition": {
+                            "name": "Pinned",
+                            "icon": "icons/svg/anchor.svg"
+                        }
+                    }
+                ]
             },
             "6 over": {
                 "label": "Impaled",
-                "text": "The target loses -1 toughness. The target gains the Puncture Wound injury and must resist [death]. If there is a foe directly behind the target, they lose -2 toughness."
+                "text": "The target loses -1 toughness. The target gains the Puncture Wound injury and must resist [death]. If there is a foe directly behind the target, they lose -2 toughness.",
+                "target_penalties": [
+                    {
+                        "label": "Lose -1 toughness",
+                        "toughness": -1
+                    },
+                    {
+                        "label": "Gain the Puncture Wound injury",
+                        "injury": {
+                            "name": "Puncture Wound",
+                            "icon": "icons/svg/blood.svg"
+                        }
+                    },
+                    {
+                        "label": "Resist [death]",
+                        "resist_death": true
+                    },
+                    {
+                        "label": "A foe directly behind the target loses -2 toughness"
+                    }
+                ]
             },
             "crest": {
                 "label": "Critical",
