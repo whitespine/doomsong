@@ -23,13 +23,13 @@
 
     // Our default choices
     function defaultChoices() {
-        return {
+        return foundry.utils.mergeObject({
             Traits: 0,
             Gear: 0,
             Conditions: 0,
             Allies: 0,
             Extra: 0,
-        };
+        }, app.options.roll?.preset_choices ?? {});
     }
 
     // Callback for setting a roll type
@@ -38,7 +38,7 @@
     }
 
     // Our currently selected options
-    let roll_type = $state("standard");
+    let roll_type = $derived(app.options.roll?.roll_type ?? "standard"); // Intended to be mutated
     let result_table = $derived(resultTables()[roll_type] ?? FALLBACK_RESULT_TABLE);
     let choices = $state(defaultChoices());
     let difficulty = $derived.by(() => {
@@ -46,7 +46,7 @@
             // Use their toughness + protection instead
             return targetedTokens()[0].actor.system.attack_difficulty ?? 5;
         }
-        return result_table.defaultDifficulty;
+        return app.options.roll?.difficulty ?? result_table.defaultDifficulty;
     });
 
     // Reset the above two to their default values

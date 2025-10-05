@@ -49,7 +49,8 @@
                         "label": "Foe may take an opportunity action against you"
                     },
                     {
-                        "label": "You lose all footing and fall prone"
+                        "label": "You lose all footing and fall prone",
+                        "footing": -999
                     },
                     {
                         "label": "Some other terrible consequence"
@@ -61,8 +62,9 @@
                 "text": "Lower your own footing by -1 (to a minimum of 1); if you attacked unarmed, lose -1 toughness.",
                 "penalties": [
                     {
-                        "label": "Lower your own footing by -1, (to a minimum of 1)",
-                        "footing": -1
+                        "label": "Lower footing by -1, (to a minimum of 1)",
+                        "footing": -1,
+                        "min_footing": 1
                     },
                     {
                         "label": "Lose -1 toughness",
@@ -75,8 +77,9 @@
                 "text": "Lower your own footing by -1 (to a minimum of 1). The target loses -1 toughness.",
                 "penalties": [
                     {
-                        "label": "Lower your own footing by -1, (to a minimum of 1)",
-                        "footing": -1
+                        "label": "Lower footing by -1, (to a minimum of 1)",
+                        "footing": -1,
+                        "min_footing": 1
                     }
                 ],
                 "target_penalties": [
@@ -109,7 +112,11 @@
                         "toughness": -1
                     },
                     {
-                        "label": "A piece of armor gains the ill-fitting property"
+                        "label": "A piece of armor gains the ill-fitting property",
+                        "condition": {
+                            "name": "Ill Fitting Armor",
+                            "icon": "icons/svg/ice-aura.svg"
+                        }
                     }
                 ]
             },
@@ -118,7 +125,15 @@
                 "text": "The target loses -1 toughness. Additionally, the target gains the Smashed Face injury and must resist [death].",
                 "target_penalties": [
                     {
-                        "label": "Gains the Smashed Face injury"
+                        "label": "Lose -1 tougness",
+                        "toughness": -1
+                    },
+                    {
+                        "label": "Gain the Smashed Face injury",
+                        "injury": {
+                            "name": "Smashed Face",
+                            "icon": "icons/svg/terror.svg"
+                        }
                     },
                     {
                         "label": "Resist [death]",
@@ -131,11 +146,23 @@
                 "text": "The target loses -1 toughness. Additionally, the target must resist [death]. Even if they succeed, they lose all footing and are knocked unconscious for D6 rounds.",
                 "target_penalties": [
                     {
-                        "label": "Gain the Smashed Face injury"
+                        "label": "Lose -1 tougness",
+                        "toughness": -1
                     },
                     {
                         "label": "Resist [death]",
                         "resist_death": true
+                    },
+                    {
+                        "label": "Lose all footing",
+                        "footing": -999
+                    },
+                    {
+                        "label": "Go unconscious for d6 rounds",
+                        "condition": {
+                            "name": "Unconscious",
+                            "icon": "icons/svg/sleep.svg"
+                        }
                     }
                 ]
             },
@@ -144,7 +171,18 @@
                 "text": "The target loses -1 toughness. Additionally, if the target blocked this [attack], the item they used to block is destroyed. Then, they gain the Broken Arm injury and must resist [death].",
                 "target_penalties": [
                     {
-                        "label": "Gain the Smashed Face injury"
+                        "label": "Lose -1 tougness",
+                        "toughness": -1
+                    },
+                    {
+                        "label": "Destroy the item that blocked this attack"
+                    },
+                    {
+                        "label": "Gain the broken arm injury",
+                        "injury": {
+                            "name": "Broken Arm",
+                            "icon": "icons/svg/bones.svg"
+                        }
                     },
                     {
                         "label": "Resist [death]",
@@ -157,11 +195,18 @@
                 "text": "The target loses -1 toughness. Additionally, target falls prone and loses all footing. A piece of armour they are wearing is destroyed and then they suffer bludgeoning damage (again)",
                 "target_penalties": [
                     {
-                        "label": "Gain the Smashed Face injury"
+                        "label": "Lose -1 tougness",
+                        "toughness": -1
                     },
                     {
-                        "label": "Resist [death]",
-                        "resist_death": true
+                        "label": "Fall prone",
+                        "footing": -999
+                    },
+                    {
+                        "label": "Destroy a piece of armor"
+                    },
+                    {
+                        "label": "Suffer bludgeoning damage"
                     }
                 ]
             },
@@ -198,7 +243,8 @@
                         "label": "Foe may take an opportunity action against you"
                     },
                     {
-                        "label": "You lose all footing and fall prone"
+                        "label": "You lose all footing and fall prone",
+                        "footing": -999
                     },
                     {
                         "label": "Some other terrible consequence"
@@ -211,7 +257,8 @@
                 "penalties": [
                     {
                         "label": "Lower your own footing by -1, (to a minimum of 1)",
-                        "footing": -1
+                        "footing": -1,
+                        "min_footing": 1
                     },
                     {
                         "label": "Lose -1 toughness",
@@ -224,40 +271,152 @@
                 "text": "Lower your own footing by -1 (to a minimum of 1). The target loses -1 toughness.",
                 "penalties": [
                     {
-                        "label": "Lower your own footing by -1, (to a minimum of 1)",
-                        "footing": -1
+                        "label": "Lower footing by -1, (to a minimum of 1)",
+                        "footing": -1,
+                        "min_footing": 1
                     }
                 ],
                 "target_penalties": [
                     {
-                        "label": "Lost -1 toughness",
+                        "label": "Lose -1 toughness",
                         "toughness": -1
                     }
                 ]
             },
             "1 over": {
                 "label": "Grazed",
-                "text": "The target gains the Bleeding condition. This is not an injury."
+                "text": "The target loses -1 toughness. The target gains the Bleeding condition. This is not an injury.",
+                "target_penalties": [
+                    {
+                        "label": "Lose -1 toughness",
+                        "toughness": -1
+                    },
+                    {
+                        "label": "Gain the bleeding condition",
+                        "condition": {
+                            "name": "Bleeding",
+                            "icon": "icons/svg/blood.svg"
+                        }
+                    }
+                ]
             },
             "2 over": {
                 "label": "Scarred",
-                "text": "Target gains the Scar injury on a location of the GM’s choice and must resist [death]."
+                "text": "The target loses -1 toughness. Target gains the Scar injury on a location of the GM’s choice and must resist [death].",
+                "target_penalties": [
+                    {
+                        "label": "Lose -1 toughness",
+                        "toughness": -1
+                    },
+                    {
+                        "label": "Scar",
+                        "injury": {
+                            "name": "Scar"
+                        }
+                    },
+                    {
+                        "label": "Resist [death]",
+                        "resist_death": true
+                    }
+                ]
             },
             "3 over": {
                 "label": "Sliced Face",
-                "text": "Target gains the Missing Ear or Eye permanent injury and must resist [death]."
+                "text": "The target loses -1 toughness. Target gains the Missing Ear or Eye permanent injury and must resist [death].",
+                "target_penalties": [
+                    {
+                        "label": "Lose -1 toughness",
+                        "toughness": -1
+                    },
+                    {
+                        "label": "Missing Ear",
+                        "injury": {
+                            "name": "Missing Ear"
+                        }
+                    },
+                    {
+                        "label": "Missing Eye",
+                        "injury": {
+                            "name": "Missing Eye"
+                        }
+                    },
+                    {
+                        "label": "Resist [death]",
+                        "resist_death": true
+                    }
+                ]
             },
             "4 over": {
                 "label": "Guts",
-                "text": "Target must resist [death].  Even if they succeed, they will die in D6 rounds unless they gain at least +1 toughness."
+                "text": "The target loses -1 toughness. Target must resist [death]. Even if they succeed, they will die in D6 rounds unless they gain at least +1 toughness.",
+                "target_penalties": [
+                    {
+                        "label": "Lose -1 toughness",
+                        "toughness": -1
+                    },
+                    {
+                        "label": "Resist [death]",
+                        "resist_death": true
+                    },
+                    {
+                        "label": "Die in D6 rounds unless they regain at least +1 toughness"
+                    }
+                ]
             },
             "5 over": {
                 "label": "Cleaved Limb",
-                "text": "Target loses D6 additional toughness, loses all footing, gains the Missing Leg, Foot, Hand or Arm permanent injury and must resist [death]."
+                "text": "The target loses -1 toughness. Target loses D6 additional toughness, loses all footing, gains the Missing Leg, Foot, Hand or Arm permanent injury and must resist [death].",
+                "target_penalties": [
+                    {
+                        "label": "Lose -1 - 1d6 toughness",
+                        "toughness": "-(1 + 1d6)"
+                    },
+                    {
+                        "label": "Lose all footing",
+                        "footing": -999
+                    },
+                    {
+                        "label": "Missing leg",
+                        "injury": {
+                            "name": "Missing leg"
+                        }
+                    },
+                    {
+                        "label": "Missing foot",
+                        "injury": {
+                            "name": "Missing foot"
+                        }
+                    },
+                    {
+                        "label": "Missing arm",
+                        "injury": {
+                            "name": "Missing arm"
+                        }
+                    },
+                    {
+                        "label": "Missing hand",
+                        "injury": {
+                            "name": "Missing hand"
+                        }
+                    },
+                    {
+                        "label": "Resist [death]",
+                        "resist_death": true
+                    }
+                ]
             },
             "6 over": {
                 "label": "Wide Swing",
-                "text": "Target loses D6 additional toughness. If there is an adjacent foe with less maximum toughness than the target, that foe suffers slashing damage."
+                "text": "The target loses -1 toughness. Target loses D6 additional toughness. If there is an adjacent foe with less maximum toughness than the target, that foe suffers slashing damage.",
+                "target_penalties": [
+                    {
+                        "label": "Lose -1 - 1d6 toughness",
+                        "toughness": "-(1 + 1d6)"
+                    },
+                    {
+                        "label": "An adjacent foe with less maximum toughness than the target suffers slashing damage"
+                    }
+                ]
             },
             "crest": {
                 "label": "Critical",
@@ -292,7 +451,8 @@
                         "label": "Foe may take an opportunity action against you"
                     },
                     {
-                        "label": "You lose all footing and fall prone"
+                        "label": "You lose all footing and fall prone",
+                        "footing": -999
                     },
                     {
                         "label": "Some other terrible consequence"
@@ -304,7 +464,7 @@
                 "text": "Lower your own footing by -1 (to a minimum of 1); if you attacked unarmed, lose -1 toughness.",
                 "penalties": [
                     {
-                        "label": "Lower your own footing by -1, (to a minimum of 1)",
+                        "label": "Lower footing by -1, (to a minimum of 1)",
                         "footing": -1
                     },
                     {
@@ -318,7 +478,7 @@
                 "text": "Lower your own footing by -1 (to a minimum of 1). The target loses -1 toughness.",
                 "penalties": [
                     {
-                        "label": "Lower your own footing by -1, (to a minimum of 1)",
+                        "label": "Lower footing by -1, (to a minimum of 1)",
                         "footing": -1
                     }
                 ],
@@ -331,27 +491,27 @@
             },
             "1 over": {
                 "label": "Pricked",
-                "text": "The target loses an additional -1 toughness."
+                "text": "The target loses -2 toughness."
             },
             "2 over": {
                 "label": "Stuck",
-                "text": "Target loses an additional -1 toughness. Then they lose -2 footing."
+                "text": "The target loses -2 toughness. Then they lose -2 footing."
             },
             "3 over": {
                 "label": "Punctured Eye",
-                "text": "Target gains the Missing Eye permanent injury and must resist [death]."
+                "text": "The target loses -1 toughness. Target gains the Missing Eye permanent injury and must resist [death]."
             },
             "4 over": {
                 "label": "Femoral Artery",
-                "text": " Target gains the Bleeding condition. This is not an injury. The target also loses D6 additional toughness."
+                "text": "The target loses -1 toughness. Target gains the Bleeding condition. This is not an injury. The target also loses D6 additional toughness."
             },
             "5 over": {
                 "label": "Pinned Arm",
-                "text": "Target loses an additional -1 toughness and drops any item they are holding. They cannot move until they take an open action to free themselves."
+                "text": "The target loses -2 toughness. Target drops any item they are holding. They cannot move until they take an open action to free themselves."
             },
             "6 over": {
                 "label": "Impaled",
-                "text": "The target gains the Puncture Wound injury and must resist [death]. If there is a foe directly behind the target, they lose -2 toughness."
+                "text": "The target loses -1 toughness. The target gains the Puncture Wound injury and must resist [death]. If there is a foe directly behind the target, they lose -2 toughness."
             },
             "crest": {
                 "label": "Critical",

@@ -1,6 +1,7 @@
 /** @import {Consequence} from "../utils/roll.svelte" */
 
 import { rollCheck } from "../utils/roll.svelte";
+import { RollerApp } from "../apps/roll_app.svelte";
 
 /**
  * Our custom class for Icon Actors
@@ -76,7 +77,7 @@ export class DoomsongActor extends Actor {
                 statuses: ["dead"],
                 flags: {
                     core: {
-                        overlay: true
+                        overlay: true // Makes it big
                     }
                 }
             }]);
@@ -89,40 +90,45 @@ export class DoomsongActor extends Actor {
      */
     async applyConsequence(consequence) {
         if (consequence.toughness) {
-            let new_toughness = this.system.toughness + consequence.toughness;
-            if (consequence.min_toughness && this.system.toughness >= consequence.min_toughness && new_toughness < consequence.min_toughness) new_toughness = consequence.min_toughness;
-            if (consequence.max_toughness && this.system.toughness <= consequence.max_toughness && new_toughness > consequence.max_toughness) new_toughness = consequence.max_toughness;
+            let delta = (typeof consequence.toughness == "string") ? (await new Roll(consequence.toughness).roll()).total : consequence.toughness;
+            let new_toughness = this.system.toughness + delta;
+            if (consequence.min_toughness != null && this.system.toughness >= consequence.min_toughness && new_toughness < consequence.min_toughness) new_toughness = consequence.min_toughness;
+            if (consequence.max_toughness != null && this.system.toughness <= consequence.max_toughness && new_toughness > consequence.max_toughness) new_toughness = consequence.max_toughness;
             await this.update({
                 "system.toughness": new_toughness
             });
-        }
-        if (consequence.footing) {
-            let new_footing = this.system.footing + consequence.footing;
-            if (consequence.min_footing && this.system.footing >= consequence.min_footing && new_footing < consequence.min_footing) new_footing = consequence.min_footing;
-            if (consequence.max_footing && this.system.footing <= consequence.max_footing && new_footing > consequence.max_footing) new_footing = consequence.max_footing;
+        } else if (consequence.footing) {
+            let delta = (typeof consequence.footing == "string") ? (await new Roll(consequence.footing).roll()).total : consequence.footing;
+            let new_footing = this.system.footing + delta;
+            if (consequence.min_footing != null && this.system.footing >= consequence.min_footing && new_footing < consequence.min_footing) new_footing = consequence.min_footing;
+            if (consequence.max_footing != null && this.system.footing <= consequence.max_footing && new_footing > consequence.max_footing) new_footing = consequence.max_footing;
             await this.update({
                 "system.footing": new_footing
             });
-        }
-        if (consequence.resist_death) {
+        } else if (consequence.resist_death) {
             if (this.type == "npc" && this.system.action_dice == 1) {
                 // Die instantly
                 await this.markDead();
             } else {
-                ui.notifications.warn("You'll need to roll this yourself");
-                // TODO: handle death resist
-                //rollCheck({
-
-                //})
+                RollerApp.prompt(this, {
+                    roll: {
+                        difficulty: 3, // TODO track # of death resists
+                        roll_type: "death"
+                    }
+                });
             }
+        } else if (consequence.injury) {
+            await this.createEmbeddedDocuments("ActiveEffect", [{
+                name: consequence.injury.name,
+                img: consequence.injury.icon ?? "icons/svg/bones.svg",
+            }]);
+        } else if (consequence.condition) {
+            await this.createEmbeddedDocuments("ActiveEffect", [{
+                name: consequence.condition.name,
+                img: consequence.condition.icon ?? "icons/svg/daze.svg",
+            }]);
+        } else {
+            ui.notifications.warn("This isn't automated yet");
         }
-        if (consequence.injury) {
-            // TODO: Add some sort of injury status effect
-        }
-        if (consequence.condition) {
-            // TODO: Add a condition
-        }
-
-        // TODO: Batch updates
     }
 }

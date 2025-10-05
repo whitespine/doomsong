@@ -329,8 +329,14 @@ export class ResultTable {
  * @property {string} [min_footing] Minimum footing can go to via this consequence
  * @property {string} [max_footing] Maximum footing can go to via this consequence
  * @property {string} [resist_death] Whether the target should resist death
- * @property {string} [injury] The name of an injury to add
- * @property {string} [condition] The name of an condition to add
+ * @property {({
+ *  name: string,
+ *  icon?: string 
+ * })} [injury] The name of an injury to add. If icon is not provided, use a broken bone icon
+ * @property {({
+ *  name: string,
+ *  icon?: string
+ * })} [condition] The name of an condition to add. If icon is not provided, then just use a generic sprite
  */
 
 let result_tables = $state({});
