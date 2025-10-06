@@ -7,15 +7,6 @@ export function once(fn) {
     };
 }
 
-// Function will prevent default
-export function preventDefault(fn) {
-    return function (event) {
-        event.preventDefault();
-        fn.call(this, event);
-    };
-}
-
-
 // Stop events dead in their tracks
 export function stop(evt) {
     evt.preventDefault();
