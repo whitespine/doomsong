@@ -38,7 +38,14 @@ export default defineConfig({
   plugins: [
     fixSystemJson(),
     svelte()
-  ]
+  ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ['mixed-decls', 'color-functions', 'global-builtin', 'import']
+      }
+    }
+  }
 });
 
 // Handles not release versions
