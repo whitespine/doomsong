@@ -1,12 +1,12 @@
 {
     "Actor": {
         "types": ["player", "npc"],
-        "htmlFields": ["notes"],
+        "htmlFields": ["notes", "biography"],
         "player": {},
         "npc": {}
     },
     "Item": {
-        "types": ["ability"],
+        "types": ["ability", "weapon", "gear", "armor"],
         "htmlFields": []
     }
 }
