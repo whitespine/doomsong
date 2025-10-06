@@ -3,7 +3,7 @@
     let { doc, path } = $props();
 
 
-    let value = $derived(resolveDotpath(actor, path, ""));
+    let value = $derived(resolveDotpath(doc, path, ""));
     let clean_value = $derived(value.replaceAll("+", ""));
     let clazz = $derived.by(() => {
         let leading_plusses = 0;

@@ -1,11 +1,28 @@
 import { ActorModel } from "./actor.svelte";
 import PlayerDefaultMoves from "./player_moves.json"
 
+const fields = foundry.data.fields;
 
 export class PlayerModel extends ActorModel {
     static defineSchema() {
         return {
             ...super.defineSchema(),
+
+            // Names - there are three!
+            birth_name: new fields.StringField({ nullable: false, required: true, initial: "" }),
+            player_name: new fields.StringField({ nullable: false, required: true, initial: "" }),
+            nickname: new fields.StringField({ nullable: false, required: true, initial: "" }),
+
+            // XP tracking
+            goal: new fields.StringField({ nullable: false, required: true, initial: "" }),
+            xp: new fields.NumberField({ nullable: false, required: true, initial: 0, min: 0, max: 10 }),
+
+            // Wycce Shit
+            heresy: new fields.StringField({ nullable: false, required: true, initial: "" }),
+            vow: new fields.StringField({ nullable: false, required: true, initial: "" }),
+
+            // Biography - todo
+            biography: new fields.HTMLField({ nullable: false, required: true, initial: "" }),
         }
     }
 

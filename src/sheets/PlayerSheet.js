@@ -13,7 +13,7 @@ export class DoomsongPlayerSheet extends SvelteApplicationMixin(DoomsongActorShe
         },
         position: {
             width: 400,
-            height: "auto"
+            height: 700
         },
         actions: {
             toggleEdit: DoomsongPlayerSheet.toggleEdit
