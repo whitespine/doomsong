@@ -51,6 +51,9 @@ const CORE_INJECTS = [
         target: Actor,
         keys: ["name", "img", "system"]
     }, {
+        target: Item,
+        keys: ["name", "img", "system"]
+    }, {
         target: Combat,
         keys: ["system"]
     }, {

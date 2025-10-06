@@ -1,11 +1,13 @@
 import { DoomsongChatMessage } from "../overrides/DoomsongChatMessage.svelte";
 import { DoomsongActor } from "./actor.svelte";
 import { DoomsongCombat, DoomsongCombatant } from "./combat";
+import { DoomsongItem } from "./item.svelte";
 import { DoomsongToken, DoomsongTokenDocument } from "./token";
 
 export function setupDocuments() {
     // CONFIG.Item.documentClass = IconItem;
     CONFIG.Actor.documentClass = DoomsongActor;
+    CONFIG.Item.documentClass = DoomsongItem;
     CONFIG.ChatMessage.documentClass = DoomsongChatMessage;
     // CONFIG.ActiveEffect.documentClass = LancerActiveEffect;
     CONFIG.Token.documentClass = DoomsongTokenDocument;

@@ -3,6 +3,7 @@
     import UpdateInput from "../fields/UpdateInput.svelte";
     import Die from "../rolls/Die.svelte";
     import { stop } from "../../utils/handlers";
+    import EditAbility from "../items/EditAbility.svelte";
     let { app, context } = $props();
     let actor = $derived(context.document);
 
@@ -15,16 +16,7 @@
 
     // Add a new blank ability
     function addAbility() {
-        actor.update({
-            [`system.abilities.${foundry.utils.randomID()}`]: null, // Let the field autopopulate
-        });
-    }
-
-    // Remove the specified ability
-    function deleteAbility(ability_id) {
-        actor.update({
-            [`system.abilities.-=${ability_id}`]: null,
-        });
+        actor.createEmbeddedDocuments("Item", [{ type: "ability", name: "New Ability" }]);
     }
 
     // Remove the specified move
@@ -149,37 +141,8 @@
         {#if Object.keys(actor.system.abilities).length == 0}
             <span>Try adding a new ability, if this npc has one</span>
         {/if}
-        {#each Object.entries(actor.system.abilities) as [ability_id, ability]}
-            <div class="ability">
-                <div class="name">
-                    <label for={`${ability_id}.name`}>Name:</label>
-                    <UpdateInput
-                        tag="input"
-                        type="text"
-                        name={`${ability_id}.name`}
-                        doc={actor}
-                        path={`system.abilities.${ability_id}.name`}
-                    />
-                </div>
-
-                <!-- Only accept level one abilities on npcs -->
-                <div class="text">
-                    <label for={`${ability_id}.level_text.0`}>Text:</label>
-                    <UpdateInput
-                        tag="input"
-                        type="text"
-                        name={`${ability_id}.level_text.0`}
-                        doc={actor}
-                        path={`system.abilities.${ability_id}.level_text.0`}
-                    />
-                </div>
-                <button
-                    aria-label="Delete ability"
-                    class="delete"
-                    onclick={() => deleteAbility(ability_id)}
-                    ><i class="fas fa-trash"></i></button
-                >
-            </div>
+        {#each actor.system.abilities as ability}
+            <EditAbility {ability} /> 
         {/each}
         <button onclick={addAbility}>Add an Ability</button>
     </div>
@@ -274,28 +237,6 @@
             display: flex;
             flex-direction: column;
 
-            .ability {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                & > * {
-                    padding: 5px;
-                }
-
-                .name {
-                    flex-grow: 1;
-                    flex-basis: 20%;
-                }
-
-                .text {
-                    flex-grow: 1;
-                    flex-basis: 100%;
-                }
-
-                .delete {
-                    color: white;
-                }
-            }
         }
 
         .moves {

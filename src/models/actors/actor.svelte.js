@@ -45,23 +45,9 @@ export class ActorModel extends DoomsongDataModel {
                     { nullable: false }
                 )
             ),
-
-            // Abilities. Mostly geared towards players
-            abilities: new fields.TypedObjectField(
-                new fields.SchemaField({
-                    name: new fields.StringField({ nullable: false, initial: "New Ability" }),
-                    level: new fields.NumberField({ nullable: false, initial: 1, integer: true, min: 1 }), // Abilities start at level 1. Just correct based on index
-                    level_text: new fields.ArrayField(
-                        new fields.StringField({ nullable: false }),
-                        {
-                            nullable: false,
-                            clean: (value) => (Array.isArray(value) && value.length == 0) ? value : ["Ability Text"] // Force to be at least length 1
-                        }),
-                    page: new fields.StringField({ nullable: false, initial: "DS:???" }),
-                })
-            )
         };
     }
 
     attack_difficulty = $derived(Math.max(this.toughness.value + this.protection, this.min_difficulty || 0));
+    abilities = $derived(this.parent.items.filter(i => i.type == "ability"));
 }

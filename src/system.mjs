@@ -11,6 +11,7 @@ import RollerButton from "./components/rolls/HotbarButton.svelte";
 import { DoomsongCombatTracker } from './overrides/DoomsongCombatTracker.svelte';
 import { DoomsongChatMessage } from './overrides/DoomsongChatMessage.svelte';
 import { DoomsongActor } from './documents/actor.svelte';
+import { DoomsongItem } from './documents/item.svelte';
 import { DoomsongTokenDocument } from './documents/token';
 import { setupSheets } from './sheets/config';
 import { AttackFlowApp } from './apps/dodge_prompt.svelte';
@@ -34,6 +35,7 @@ Hooks.once('init', async function () {
     combat: {},
     documents: {
       actor: DoomsongActor,
+      item: DoomsongItem,
       message: DoomsongChatMessage,
       token: DoomsongTokenDocument
     },

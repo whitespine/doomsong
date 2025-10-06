@@ -27,13 +27,13 @@
         <Shield context={context}></Shield>
     </div>
     <div class="abilities">
-        {#each Object.entries(actor.system.abilities) as [ability_id, ability]}
+        {#each actor.system.abilities as ability}
             <p class="ability">
                 <span class="name">
                     {ability.name}.
                 </span>
                 <span class="text">
-                    {ability.level_text[0]}
+                    {ability.system.sorted_ranks[0]?.text}
                 </span>
             </p>
         {/each}
