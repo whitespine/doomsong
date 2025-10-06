@@ -17,21 +17,7 @@
   "relationships": {
     "systems": [],
     "requires": [
-      {
-        "id": "pdf-pager",
-        "type": "module",
-        "manifest": "https://github.com/farling42/fvtt-pdf-pager/releases/download/1.6.6/module.json",
-        "compatibility": {
-          "verified": "1.6.6"
-        }
-      }, {
-        "id": "lib-wrapper",
-        "type": "module",
-        "compatibility": {
-            "minimum": "1.0.0.0",
-            "verified": "1.12.6.0"
-        }
-      }
+
     ]
   },
   "esmodules": [
