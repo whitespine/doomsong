@@ -34,6 +34,7 @@ export class DoomsongToken extends foundry.canvas.placeables.Token {
 
 export class DoomsongTokenDocument extends foundry.documents.TokenDocument {
     // Fix our bars to be editable
+    /*
     getBarAttribute(s) {
         let sub = super.getBarAttribute(s);
         console.warn("Try disabling these");
@@ -42,4 +43,5 @@ export class DoomsongTokenDocument extends foundry.documents.TokenDocument {
         }
         return sub;
     }
+        */
 }
