@@ -1,0 +1,11 @@
+$enable-cssgrid: false;
+$grid-gutter-width: 0.5rem !default;
+@import "~bootstrap/scss/functions"; // Required
+@import "~bootstrap/scss/variables"; // Required
+@import "~bootstrap/scss/mixins"; // Required
+@import "~bootstrap/scss/maps"; // Required
+
+@import "~bootstrap/scss/root"; // Required
+// @import "~bootstrap/scss/reboot"; // Required, but not really if we just want grid
+
+@import "~bootstrap/scss/grid";

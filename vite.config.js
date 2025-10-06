@@ -9,7 +9,8 @@ export default defineConfig({
   publicDir: "../public",
   resolve: {
     alias: {
-      $assets: resolve('public/assets')
+      $assets: resolve('public/assets'),
+      '~bootstrap': resolve(__dirname, 'node_modules/bootstrap'),
     }
   },
   server: {

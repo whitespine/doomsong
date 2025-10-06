@@ -1,34 +1,22 @@
 @use "./fonts.scss";
-
-
-// Bootstrap
-@import "bootstrap/scss/functions"; // Required
-@import "bootstrap/scss/variables"; // Required
-@import "bootstrap/scss/mixins"; // Required
-@import "bootstrap/scss/maps"; // Required
-
-@import "bootstrap/scss/root"; // Required
-@import "bootstrap/scss/reboot"; // Required
-
-@import "bootstrap/scss/grid";
+@use "./bootstrap.scss";
 
 @layer system {
-    #ui-middle {
-        width: 45%
-    }
-
-    #ui-bottom {
-        display: flex;
-        flex-direction: row;
-        align-items: end;
-        justify-content: space-between;
-    }
 
     .doomsong {
         --color-text-primary: black;
         --color-text-emphatic: black;
         --color-light-1: black;
 
+        /*
+    */
+
+        .window-title {
+            color: black;
+            font-family: "IM Fell Double Pica";
+            font-size: large;
+
+        }
 
         .clip-text {
             white-space: nowrap;
@@ -122,7 +110,7 @@
             background-color: white;
             color: black;
         }
-        
+
         // Fix headers for non-sheet styled
         header {
             --color-text-primary: white;
