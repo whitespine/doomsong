@@ -12,6 +12,7 @@
         gear: "Gear",
         combat: "Combat",
         notes: "Notes",
+        conditions: "Conditions",
     };
     let tab = $state("bio");
     let edit = $state(true);
@@ -51,6 +52,8 @@
         {:else if tab == "combat"}
             <PlayerCombat {app} {context} />
         {:else if tab == "notes"}
+            <PlayerNotes {app} {context} />
+        {:else if tab == "conditions"}
             <PlayerNotes {app} {context} />
         {/if}
     </div>

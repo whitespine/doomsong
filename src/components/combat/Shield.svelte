@@ -1,8 +1,7 @@
 <script>
     import UpdateInput from "../fields/UpdateInput.svelte";
     import {resolveDotpath} from "../../utils/paths";
-    let { context } = $props();
-    let actor = $derived(context.document);
+    let { actor } = $props();
 </script>
 
 <div class="shield">
@@ -35,6 +34,7 @@
         max-height: var(--shield-height);
         background-image: url("$assets/misc/StatusShield.png");
         background-size: 100% auto;
+        background-repeat: no-repeat;
 
         display: grid;
         grid-template: 1fr 1fr / 1fr 1fr;

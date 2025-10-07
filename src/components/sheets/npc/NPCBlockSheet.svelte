@@ -20,7 +20,7 @@
                 {/each}
             </div>
         </div>
-        <Shield {context}></Shield>
+        <Shield {actor} />
     </div>
     <div class="abilities">
         {#each actor.system.abilities as ability}

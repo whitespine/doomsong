@@ -1,7 +1,6 @@
 <script>
-    import { resolveDotpath, spliceArrayItem, stepwiseResolveDotpath } from "../../utils/paths";
+    import { resolveDotpath } from "../../utils/paths";
     let { doc, path } = $props();
-
 
     let value = $derived(resolveDotpath(doc, path, ""));
     let clean_value = $derived(value.replaceAll("+", ""));
@@ -32,19 +31,20 @@
 
     function remove() {
         let split_path = path.split(".");
-        split_path[split_path.length - 1] = `-=${split_path[split_path.length - 1]}`;
+        split_path[split_path.length - 1] =
+            `-=${split_path[split_path.length - 1]}`;
         let removal_path = split_path.join(".");
         doc.update({
-            [removal_path]: null
+            [removal_path]: null,
         });
     }
 </script>
 
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div onclick={cycle} oncontextmenu={remove} class={clazz}>
     {clean_value}
 </div>
-<!-- svelte-ignore a11y_click_events_have_key_events -->
-<!-- svelte-ignore a11y_no_static_element_interactions -->
 
 <style lang="scss">
     div {

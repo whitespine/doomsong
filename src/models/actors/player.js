@@ -23,6 +23,10 @@ export class PlayerModel extends ActorModel {
 
             // Biography - todo
             biography: new fields.HTMLField({ nullable: false, required: true, initial: "Put bio here" }),
+
+            // Total bulk we can carry
+            ready_load: new fields.NumberField({nullable: false, integer: true, initial: 6}),
+            stowed_load: new fields.NumberField({nullable: false, integer: true, initial: 12})
         }
     }
 
