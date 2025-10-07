@@ -12,10 +12,10 @@ export class AbilityModel extends ItemModel {
 
             // Keyed with random ids, basically
             ranks: new fields.TypedObjectField(new fields.SchemaField({
-                rank: new fields.NumberField({ nullable: false, initial: 1, min: 1, integer: true}),
+                rank: new fields.NumberField({ nullable: false, initial: 1, min: 1, integer: true }),
                 text: new fields.StringField({ nullable: false })
             }), {
-                nullable: false, 
+                nullable: false,
                 initial: {
                     [foundry.utils.randomID()]: {
                         rank: 1,
@@ -40,4 +40,7 @@ export class AbilityModel extends ItemModel {
         levels_with_ids.sort((a, b) => a.rank - b.rank)
         return levels_with_ids;
     });
+
+    // As sorted_ranks, but only the unlocked ones
+    unlocked_ranks = $derived(this.sorted_ranks.filter(r => r.rank <= this.rank))
 }

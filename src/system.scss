@@ -12,7 +12,6 @@
     */
 
         .window-title {
-            color: black;
             font-family: "IM Fell Double Pica";
             font-size: large;
 
@@ -131,7 +130,11 @@
                 margin-right: 10px;
                 background: none;
                 border: none;
-                color: black;
+
+                h1 {
+                    color: black;
+                }
+
             }
 
             &>section.window-content {

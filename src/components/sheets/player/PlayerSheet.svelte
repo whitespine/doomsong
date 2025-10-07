@@ -1,8 +1,6 @@
 <script>
     import { stop } from "../../../utils/handlers";
-    import Moves from "../../combat/Moves.svelte";
-    import PlayerAbilitiesEdit from "./PlayerAbilitiesEdit.svelte";
-    import PlayerAbilitiesView from "./PlayerAbilitiesView.svelte";
+    import PlayerAbilities from "./PlayerAbilities.svelte";
     import PlayerBioEdit from "./PlayerBioEdit.svelte";
     import PlayerCombatView from "./PlayerCombatView.svelte";
     let { app, context } = $props();
@@ -22,7 +20,7 @@
     }
 </script>
 
-<form class="root">
+<form class="root" onsubmit={stop}>
     <button hidden disabled>Snake Eater</button>
     <div class="tabs">
         {#each Object.entries(TABS) as [tab_id, tab_label]}
@@ -32,6 +30,7 @@
             >
         {/each}
         <button
+            hidden={!["bio"].includes(tab)}
             aria-label="Toggle Edit"
             onclick={(e) => (stop(e), (edit = !edit))}
             class={{ invert: edit }}
@@ -49,11 +48,7 @@
                 <span>TODO: More visually appealing player bio</span>
             {/if}
         {:else if tab == "abilities"}
-            {#if edit}
-                <PlayerAbilitiesEdit {app} {context} />
-            {:else}
-                <PlayerAbilitiesView {app} {context} />
-            {/if}
+            <PlayerAbilities {app} {context} />
         {:else if tab == "gear"}
             <span>Gear up</span>
         {:else if tab == "combat"}

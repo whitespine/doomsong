@@ -16,10 +16,16 @@
             >
                 <i class="fas fa-edit"></i>
             </button>
+            <button
+                onclick={(e) => (stop(e), ability.delete())}
+                aria-label="Delete ability {ability.name}"
+            >
+                <i class="fas fa-trash"></i>
+            </button>
         {/if}
     </div>
 
-    {#each ability.system.sorted_ranks as rank}
+    {#each ability.system.unlocked_ranks as rank}
         <div class="rank">
             <span class="bold">
                 Level {rank.rank}:

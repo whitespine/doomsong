@@ -35,6 +35,13 @@
             },
         });
     }
+
+    function setRank(number) {
+        if (ability.system.rank == number) {
+            number--;
+        }
+        ability.update({ "system.rank": number }); // Do not allow level 0
+    }
 </script>
 
 <div class="ability">
@@ -56,9 +63,18 @@
     <div class="ranks">
         {#each ability.system.sorted_ranks as rank}
             <div class="rank">
-                <label for={`${ability._id}.${rank._id}.text`}
-                    >Level {rank.rank}:</label
+                <button
+                    class={{
+                        level: true,
+                        checked: ability.system.rank >= rank.rank,
+                    }}
+                    onclick={(e) => (stop(e), setRank(rank.rank))}
+                    aria-label={`Set ability level to ${rank.rank == ability.system.rank ? rank.rank - 1 : rank.rank}`}
                 >
+                </button>
+                <label for={`${ability._id}.${rank._id}.text`}>
+                    Level {rank.rank}:
+                </label>
                 <UpdateInput
                     tag="input"
                     type="text"
@@ -85,9 +101,6 @@
     }
     .ability {
         flex-direction: column;
-        border: solid black 1px;
-        margin: 4px;
-        padding: 4px;
 
         .header {
             align-items: center;
@@ -106,6 +119,22 @@
                 flex-direction: row;
                 align-items: center;
                 margin-bottom: 5px;
+
+                button.level {
+                    --size: 16px;
+                    min-width: var(--size);
+                    max-width: var(--size);
+                    min-height: var(--size);
+                    max-height: var(--size);
+                    padding: 0px;
+
+                    border: solid black 2px;
+                    background-color: white;
+                    margin: 1px;
+                    &.checked {
+                        background-color: black;
+                    }
+                }
 
                 label {
                     width: 60px;

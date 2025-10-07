@@ -3,6 +3,12 @@
         "Actor": {
             "npc": "NPC",
             "player": "Player"
+        },
+        "Item": {
+            "ability": "Ability",
+            "armor": "Armor",
+            "weapon": "Weapon",
+            "gear": "Gear"
         }
     },
     "DS": {
