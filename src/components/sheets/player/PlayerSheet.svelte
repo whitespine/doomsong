@@ -1,8 +1,10 @@
 <script>
     import { stop } from "../../../utils/handlers";
     import PlayerAbilities from "./PlayerAbilities.svelte";
-    import PlayerBioEdit from "./PlayerBioEdit.svelte";
-    import PlayerCombatView from "./PlayerCombatView.svelte";
+    import PlayerBio from "./PlayerBio.svelte";
+    import PlayerCombat from "./PlayerCombat.svelte";
+    import PlayerGear from "./PlayerGear.svelte";
+    import PlayerNotes from "./PlayerNotes.svelte";
     let { app, context } = $props();
     const TABS = {
         bio: "Biography",
@@ -30,7 +32,7 @@
             >
         {/each}
         <button
-            hidden={!["bio"].includes(tab)}
+            hidden={![].includes(tab)}
             aria-label="Toggle Edit"
             onclick={(e) => (stop(e), (edit = !edit))}
             class={{ invert: edit }}
@@ -41,20 +43,15 @@
 
     <div class="body">
         {#if tab == "bio"}
-            {#if edit}
-                <PlayerBioEdit {app} {context} />
-            {:else}
-                <!-- TODO: Display -->
-                <span>TODO: More visually appealing player bio</span>
-            {/if}
+            <PlayerBio {app} {context} />
         {:else if tab == "abilities"}
             <PlayerAbilities {app} {context} />
         {:else if tab == "gear"}
-            <span>Gear up</span>
+            <PlayerGear {app} {context} />
         {:else if tab == "combat"}
-            <PlayerCombatView {app} {context} />
+            <PlayerCombat {app} {context} />
         {:else if tab == "notes"}
-            <span>Notes edit tbd!</span>
+            <PlayerNotes {app} {context} />
         {/if}
     </div>
 </form>

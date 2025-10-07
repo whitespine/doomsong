@@ -12,8 +12,6 @@ export class NpcModel extends ActorModel {
 
             // Vibes. Just a string, comma separated
             vibes: new fields.StringField({ nullable: false, required: true, initial: "" }),
-
-
         }
     }
 }

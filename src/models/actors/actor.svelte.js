@@ -18,13 +18,13 @@ export class ActorModel extends DoomsongDataModel {
             protection: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
             toughness: new fields.SchemaField({
                 // min: NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
-                max: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
-                value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
+                max: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
+                value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
             }),
             footing: new fields.SchemaField({
                 // min: NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
-                max: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
-                value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
+                max: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
+                value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
             }),
 
             // Combat moves
@@ -45,6 +45,9 @@ export class ActorModel extends DoomsongDataModel {
                     { nullable: false }
                 )
             ),
+
+            // Notes. Handy to have, might not keep forever
+            notes: new fields.HTMLField({ nullable: false, required: true, initial: "Put notes here" })
         };
     }
 

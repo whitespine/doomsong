@@ -22,7 +22,7 @@ export class PlayerModel extends ActorModel {
             vow: new fields.StringField({ nullable: false, required: true, initial: "" }),
 
             // Biography - todo
-            biography: new fields.HTMLField({ nullable: false, required: true, initial: "" }),
+            biography: new fields.HTMLField({ nullable: false, required: true, initial: "Put bio here" }),
         }
     }
 

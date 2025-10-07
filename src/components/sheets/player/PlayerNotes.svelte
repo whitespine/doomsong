@@ -10,7 +10,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="bioblock">
+        <div class="col">
             <label for="biography">Biography:</label>
             <UpdateInput
                 name="biography"
@@ -22,12 +22,24 @@
             />
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <label for="notes">Notes:</label>
+            <UpdateInput
+                name="notes"
+                doc={actor}
+                path="system.notes"
+                type="text"
+                tag="textarea"
+                style="height: 15em"
+            />
+        </div>
+    </div>
 </div>
 
 <style lang="scss">
-    .bioblock {
+    .col {
         display: flex;
         flex-direction: column;
     }
-
 </style>

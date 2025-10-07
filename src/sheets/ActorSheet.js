@@ -98,7 +98,7 @@ export class DoomsongPlayerSheet extends SvelteApplicationMixin(DoomsongActorShe
             component: PlayerSheetComponent
         },
         position: {
-            width: 400,
+            width: 600,
             height: 700
         },
         actions: {

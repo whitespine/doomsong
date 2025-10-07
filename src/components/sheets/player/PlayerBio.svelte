@@ -44,11 +44,6 @@
 </div>
 
 <style lang="scss">
-    .bioblock {
-        display: flex;
-        flex-direction: column;
-    }
-
     .xp {
         background-color: unset;
     }
