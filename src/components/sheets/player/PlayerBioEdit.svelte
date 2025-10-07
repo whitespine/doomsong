@@ -1,6 +1,7 @@
 <script>
     import { stop } from "../../../utils/handlers";
     import Experience from "../../fields/Experience.svelte";
+    import Portrait from "../../fields/Portrait.svelte";
     import UpdateInput from "../../fields/UpdateInput.svelte";
     let { app, context } = $props();
     let actor = $derived(context.actor);
@@ -18,7 +19,7 @@
     {/snippet}
     <div class="row portrait-row">
         <div class="col">
-        <Portrait doc={actor} path="img" callback={(img) => app.setImage(img)} />
+        <Portrait doc={actor} path="img" callback={(img) => app.setImage(img)} addStyle="margin-left: auto; margin-right: auto" />
         </div>
     </div>
     <div class="row">
