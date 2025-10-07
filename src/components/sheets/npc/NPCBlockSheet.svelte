@@ -1,6 +1,5 @@
 <script>
     import TraitDisplay from "../../fields/TraitDisplay.svelte";
-    import Die from "../../rolls/Die.svelte";
     import Shield from "../../combat/Shield.svelte";
     import Moves from "../../combat/Moves.svelte";
     let { context } = $props();
@@ -20,7 +19,7 @@
                 {/each}
             </div>
         </div>
-        <Shield {actor} />
+        <Shield {actor} --size="140px" />
     </div>
     <div class="abilities">
         {#each actor.system.abilities as ability}

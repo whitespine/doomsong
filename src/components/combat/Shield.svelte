@@ -29,6 +29,7 @@
         // Fix width image
         container-type: size;
         aspect-ratio: 489 / 545; // The dimensions of the shield image
+        height: var(--size, unset);
         background-image: url("$assets/misc/StatusShield.png");
         background-size: contain;
         background-repeat: no-repeat;
