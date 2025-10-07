@@ -5,34 +5,41 @@
 </script>
 
 <div class="shield">
-    {#each ["system.toughness.max", "system.toughness.value", "system.footing.max", "system.footing.value"] as path}
-        <UpdateInput
-            name={path}
-            doc={actor}
-            {path}
-            value={resolveDotpath(actor, path, 0)}
-            type="number"
-            style="height: 40cqh"
-        />
-    {/each}
+    <div class="stats">
+        {#each ["system.toughness.max", "system.toughness.value", "system.footing.max", "system.footing.value"] as path}
+            <div style:grid-area={path.replaceAll(".", "")}>
+                <UpdateInput
+                    name={path}
+                    doc={actor}
+                    {path}
+                    value={resolveDotpath(actor, path, 0)}
+                    type="number"
+                    style="height: 100%"
+                />
+            </div>
+        {/each}
+    </div>
 </div>
 
 <style lang="scss" module>
     .shield {
+        // Fix width image
         container-type: size;
-
-        padding-top: 28%;
-        padding-left: 5%;
-        padding-right: 30%;
-        padding-bottom: 12%;
-
-        aspect-ratio: 489 / 545;
+        aspect-ratio: 489 / 545; // The dimensions of the shield image
         background-image: url("$assets/misc/StatusShield.png");
         background-size: contain;
         background-repeat: no-repeat;
 
-        display: grid;
-        grid-template: 1fr 1fr / 1fr 1fr;
+        .stats {
+            padding-top: 17%;
+            padding-left: 5%;
+            width: 67%;
+            height: 85%;
+            display: grid;
+            grid-template:
+                "systemtoughnessmax   systemtoughnessvalue" 50%
+                "systemfootingmax     systemfootingvalue  " 50% / 50% 50%;
+        }
 
         input {
             // max-width: 25px;
@@ -41,7 +48,7 @@
             border: none;
             padding: 0px;
             color: black;
-            font-size: 30cqh;
+            font-size: 18cqh;
         }
     }
 </style>
