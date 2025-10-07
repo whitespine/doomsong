@@ -19,6 +19,9 @@
             </div>
         {/each}
     </div>
+    <span class="protection">
+        {actor.system.protection}
+    </span>
 </div>
 
 <style lang="scss" module>
@@ -30,15 +33,27 @@
         background-size: contain;
         background-repeat: no-repeat;
 
+        // Make protection and stats overlap just fine
+        position: relative;
+        & > * {
+            position: absolute;
+        }
+
         .stats {
-            padding-top: 17%;
-            padding-left: 5%;
+            top: 17%;
+            left: 5%;
             width: 67%;
-            height: 85%;
+            height: 65%;
             display: grid;
             grid-template:
                 "systemtoughnessmax   systemtoughnessvalue" 50%
                 "systemfootingmax     systemfootingvalue  " 50% / 50% 50%;
+        }
+
+        .protection {
+            top: 8%;
+            left: 75%;
+            font-size: 18cqh;
         }
 
         input {
