@@ -2,13 +2,9 @@
     import TraitDisplay from "../../fields/TraitDisplay.svelte";
     import Die from "../../rolls/Die.svelte";
     import Shield from "../../combat/Shield.svelte";
+    import Moves from "../../combat/Moves.svelte";
     let { context } = $props();
     let actor = $derived(context.actor);
-    let acts_to_show = $derived.by(() => {
-        return [1, 2, 3, 4, 5, 6].filter(
-            (act) => Object.keys(actor.system.moves[act]).length > 0,
-        );
-    });
 </script>
 
 <div class="frame-body">
@@ -24,7 +20,7 @@
                 {/each}
             </div>
         </div>
-        <Shield context={context}></Shield>
+        <Shield {context}></Shield>
     </div>
     <div class="abilities">
         {#each actor.system.abilities as ability}
@@ -38,21 +34,7 @@
             </p>
         {/each}
     </div>
-    <div class="acts">
-        {#each acts_to_show as act, displayed_act_index}
-            <div class="act" class:grey={displayed_act_index % 2 == 0}>
-                <Die value={act} />
-                <div class="moves">
-                    {#each Object.values(actor.system.moves[act]) as move}
-                        <p>
-                            <span class="name">{move.name}:</span>
-                            <span class="text">{move.text}</span>
-                        </p>
-                    {/each}
-                </div>
-            </div>
-        {/each}
-    </div>
+    <Moves style="width: 100%" {actor} moves={actor.system.moves} />
 </div>
 
 <style lang="scss" module>
@@ -96,33 +78,6 @@
         .abilities {
             .name {
                 font-weight: bolder;
-            }
-        }
-
-        .acts {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-
-            .act {
-                flex-grow: 1;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                padding: 5px;
-
-                &.grey {
-                    background-color: lightgray;
-                }
-
-                .moves {
-                    display: flex;
-                    flex-direction: column;
-                    .name {
-                        font-weight: bold;
-                    }
-                }
             }
         }
     }

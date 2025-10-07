@@ -1,5 +1,4 @@
 <script>
-    import { zip } from "../../utils/zip";
     let { combat } = $props();
 </script>
 

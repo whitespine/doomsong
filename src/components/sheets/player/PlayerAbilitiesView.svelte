@@ -1,6 +1,5 @@
 <script>
-    import { stop } from "../../../utils/handlers";
-    import EditAbility from "../../items/EditAbility.svelte";
+    import ViewAbility from "../../items/ViewAbility.svelte";
     let { context } = $props();
     let actor = $derived(context.actor);
 </script>
@@ -10,9 +9,8 @@
         <span>You have no abilities!</span>
     {/if}
     {#each actor.system.abilities as ability}
-        <EditAbility {ability} />
+        <ViewAbility {ability} />
     {/each}
-    <button onclick={(e) => (stop(e), addAbility())}>Add an Ability</button>
 </div>
 
 <style lang="scss">

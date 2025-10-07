@@ -1,6 +1,7 @@
 <script>
     import { stop } from "../../../utils/handlers";
     import PlayerAbilitiesEdit from "./PlayerAbilitiesEdit.svelte";
+    import PlayerAbilitiesView from "./PlayerAbilitiesView.svelte";
     import PlayerBioEdit from "./PlayerBioEdit.svelte";
     let { app, context } = $props();
     const TABS = {
@@ -11,7 +12,7 @@
         notes: "Notes",
     };
     let tab = $state("bio");
-    let edit = $state(false);
+    let edit = $state(true);
 
     function swapTab(e, tab_id) {
         stop(e);
@@ -31,6 +32,7 @@
         <button
             aria-label="Toggle Edit"
             onclick={(e) => (stop(e), (edit = !edit))}
+            class={{ invert: edit }}
         >
             <i class="fas fa-edit"></i>
         </button>
@@ -48,8 +50,7 @@
             {#if edit}
                 <PlayerAbilitiesEdit {app} {context} />
             {:else}
-                <!-- TODO: Display -->
-                 <span>TODO: Non-edit abilities</span>
+                <PlayerAbilitiesView {app} {context} />
             {/if}
         {:else if tab == "gear"}
             <span>Gear up</span>

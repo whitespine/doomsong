@@ -1,7 +1,7 @@
 <script>
     import SetPhase from "./SetPhase.svelte";
     import ActsPhase from "./ActsPhase.svelte";
-    import Die from "../rolls/Die.svelte";
+    import Die from "../../rolls/Die.svelte";
     import BeginPhase from "./BeginPhase.svelte";
 
     // A clunky bit of state, stands for current combat. Needed to get past svelte "optimization" until theres a proper invalidate rune

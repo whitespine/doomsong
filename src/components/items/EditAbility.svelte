@@ -71,7 +71,7 @@
                 <button
                     aria-label={`Delete rank ${rank.rank}`}
                     class="delete"
-                    onclick={() => deleteRank(rank._id)}
+                    onclick={(e) => (stop(e), deleteRank(rank._id))}
                     ><i class="fas fa-trash"></i></button
                 >
             </div>

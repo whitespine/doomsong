@@ -1,5 +1,4 @@
 <script>
-    import { zip } from "../../utils/zip";
     import SetPlanner from "./SetPlanner.svelte";
     let { combat } = $props();
 </script>
