@@ -2,6 +2,7 @@
     import { stop } from "../../../utils/handlers";
     import Experience from "../../fields/Experience.svelte";
     import Portrait from "../../fields/Portrait.svelte";
+    import TraitTag from "../../fields/TraitTag.svelte";
     import UpdateInput from "../../fields/UpdateInput.svelte";
     let { app, context } = $props();
     let actor = $derived(context.actor);
@@ -19,7 +20,12 @@
     {/snippet}
     <div class="row portrait-row">
         <div class="col">
-        <Portrait doc={actor} path="img" callback={(img) => app.setImage(img)} addStyle="margin-left: auto; margin-right: auto" />
+            <Portrait
+                doc={actor}
+                path="img"
+                callback={(img) => app.setImage(img)}
+                addStyle="margin-left: auto; margin-right: auto"
+            />
         </div>
     </div>
     <div class="row">
@@ -41,10 +47,29 @@
             <Experience {actor} />
         </div>
     </div>
+    <div class="row">
+        <div class="col traits">
+            {#each Object.keys(actor.system.traits) as trait_id}
+                <TraitTag doc={actor} path={`system.traits.${trait_id}`} />
+            {/each}
+            <button class="add" onclick={() => actor.promptAddTrait()}>
+                Add Trait
+            </button>
+        </div>
+    </div>
 </div>
 
 <style lang="scss">
     .xp {
         background-color: unset;
+    }
+
+    .traits {
+        display: flex;
+        flex-direction: row;
+
+        .add {
+            margin-left: auto;
+        }
     }
 </style>
