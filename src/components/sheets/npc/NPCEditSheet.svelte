@@ -17,7 +17,9 @@
 
     // Add a new blank ability
     function addAbility() {
-        actor.createEmbeddedDocuments("Item", [{ type: "ability", name: "New Ability" }]);
+        actor.createEmbeddedDocuments("Item", [
+            { type: "ability", name: "New Ability" },
+        ]);
     }
 
     // Remove the specified move
@@ -26,42 +28,6 @@
             [`system.moves.${act}.-=${move_id}`]: null,
         });
     }
-
-    // Add a new tag
-    function addTrait() {
-        const callback = (form, prefix) => {
-            let trait = form.elements.trait.value;
-            let existing_traits = [...actor.system.traits];
-            existing_traits.push(`${prefix}${trait}`);
-            actor.update({
-                "system.traits": existing_traits,
-            });
-        };
-        new foundry.applications.api.DialogV2({
-            window: { title: "Add a Tag" },
-            content: `<input type="text" name="trait" autofocus></input>`,
-            buttons: [
-                {
-                    action: "add",
-                    label: "Add",
-                    callback: (evt, button, dialog) =>
-                        callback(button.form, ""),
-                },
-                {
-                    action: "add_defining",
-                    label: "Defining",
-                    callback: (evt, button, dialog) =>
-                        callback(button.form, "+"),
-                },
-                {
-                    action: "add_super_defining",
-                    label: "Epitome",
-                    callback: (evt, button, dialog) =>
-                        callback(button.form, "++"),
-                },
-            ],
-        }).render({ force: true });
-    }
 </script>
 
 <div class="npc-sheet" onsubmit={stop}>
@@ -69,7 +35,11 @@
     <div class="header">
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-        <Portrait doc={actor} path="img" callback={(img) => app.setImage(img)} />
+        <Portrait
+            doc={actor}
+            path="img"
+            callback={(img) => app.setImage(img)}
+        />
         <div class="stat-area">
             <div class="stat-grid">
                 {#snippet field(key, label, path)}
@@ -125,11 +95,16 @@
                 {#if actor.system.traits.length == 0}
                     Add a trait!
                 {:else}
-                    {#each actor.system.traits as trait, index}
-                        <TraitTag doc={actor} path={`system.traits.${index}`} />
+                    {#each Object.keys(actor.system.traits) as trait_id}
+                        <TraitTag
+                            doc={actor}
+                            path={`system.traits.${trait_id}`}
+                        />
                     {/each}
                 {/if}
-                <button onclick={addTrait}>Add Trait</button>
+                <button onclick={(e) => (stop(e), actor.promptAddTrait())}
+                    >Add Trait</button
+                >
             </div>
         </div>
     </div>
@@ -138,7 +113,7 @@
             <span>Try adding a new ability, if this npc has one</span>
         {/if}
         {#each actor.system.abilities as ability}
-            <EditAbility {ability} /> 
+            <EditAbility {ability} />
         {/each}
         <button onclick={addAbility}>Add an Ability</button>
     </div>
@@ -232,7 +207,6 @@
         .abilities {
             display: flex;
             flex-direction: column;
-
         }
 
         .moves {

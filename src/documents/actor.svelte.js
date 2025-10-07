@@ -65,12 +65,12 @@ export class DoomsongActor extends Actor {
      */
     _showDeltaStats() {
         let tough_delta = this.system.toughness.value - this._oldToughness;
-        if(tough_delta) {
+        if (tough_delta) {
             this._oldToughness = this.system.toughness.value;
             this._displayScrollingDelta("Toughness", tough_delta);
         }
         let footing_delta = this.system.footing.value - this._oldFooting;
-        if(footing_delta) {
+        if (footing_delta) {
             this._oldFooting = this.system.footing.value;
             this._displayScrollingDelta("Footing", footing_delta);
         }
@@ -103,58 +103,93 @@ export class DoomsongActor extends Actor {
      * @param {Consequence} consequence 
      */
     async applyConsequence(consequence) {
-    if (consequence.toughness) {
-        let delta = (typeof consequence.toughness == "string") ? (await new Roll(consequence.toughness).roll()).total : consequence.toughness;
-        let new_toughness = this.system.toughness.value + delta;
-        if (consequence.min_toughness != null && this.system.toughness.value >= consequence.min_toughness && new_toughness < consequence.min_toughness) new_toughness = consequence.min_toughness;
-        if (consequence.max_toughness != null && this.system.toughness.value <= consequence.max_toughness && new_toughness > consequence.max_toughness) new_toughness = consequence.max_toughness;
-        await this.update({
-            "system.toughness.value": new_toughness
-        });
-    } else if (consequence.footing) {
-        let delta = (typeof consequence.footing == "string") ? (await new Roll(consequence.footing).roll()).total : consequence.footing;
-        let new_footing = this.system.footing.value + delta;
-        if (consequence.min_footing != null && this.system.footing.value >= consequence.min_footing && new_footing < consequence.min_footing) new_footing = consequence.min_footing;
-        if (consequence.max_footing != null && this.system.footing.value <= consequence.max_footing && new_footing > consequence.max_footing) new_footing = consequence.max_footing;
-        await this.update({
-            "system.footing.value": new_footing
-        });
-    } else if (consequence.resist_death) {
-        if (this.type == "npc" && this.system.action_dice == 1) {
-            // Die instantly
-            await this.markDead();
-        } else {
-            RollerApp.prompt(this, {
-                roll: {
-                    difficulty: 3, // TODO track # of death resists
-                    roll_type: "death"
-                }
+        if (consequence.toughness) {
+            let delta = (typeof consequence.toughness == "string") ? (await new Roll(consequence.toughness).roll()).total : consequence.toughness;
+            let new_toughness = this.system.toughness.value + delta;
+            if (consequence.min_toughness != null && this.system.toughness.value >= consequence.min_toughness && new_toughness < consequence.min_toughness) new_toughness = consequence.min_toughness;
+            if (consequence.max_toughness != null && this.system.toughness.value <= consequence.max_toughness && new_toughness > consequence.max_toughness) new_toughness = consequence.max_toughness;
+            await this.update({
+                "system.toughness.value": new_toughness
             });
+        } else if (consequence.footing) {
+            let delta = (typeof consequence.footing == "string") ? (await new Roll(consequence.footing).roll()).total : consequence.footing;
+            let new_footing = this.system.footing.value + delta;
+            if (consequence.min_footing != null && this.system.footing.value >= consequence.min_footing && new_footing < consequence.min_footing) new_footing = consequence.min_footing;
+            if (consequence.max_footing != null && this.system.footing.value <= consequence.max_footing && new_footing > consequence.max_footing) new_footing = consequence.max_footing;
+            await this.update({
+                "system.footing.value": new_footing
+            });
+        } else if (consequence.resist_death) {
+            if (this.type == "npc" && this.system.action_dice == 1) {
+                // Die instantly
+                await this.markDead();
+            } else {
+                RollerApp.prompt(this, {
+                    roll: {
+                        difficulty: 3, // TODO track # of death resists
+                        roll_type: "death"
+                    }
+                });
+            }
+        } else if (consequence.injury) {
+            await this.createEmbeddedDocuments("ActiveEffect", [{
+                name: consequence.injury.name,
+                img: consequence.injury.icon ?? "icons/svg/bones.svg",
+                statuses: ["cursed"],
+                flags: {
+                    [game.system.id]: {
+                        type: "injury"
+                    }
+                }
+            }]);
+        } else if (consequence.condition) {
+            await this.createEmbeddedDocuments("ActiveEffect", [{
+                name: consequence.condition.name,
+                img: consequence.condition.icon ?? "icons/svg/daze.svg",
+                statuses: ["paralyzed"],
+                flags: {
+                    [game.system.id]: {
+                        type: "condition"
+                    }
+                }
+            }]);
+        } else {
+            ui.notifications.warn("This isn't automated yet");
         }
-    } else if (consequence.injury) {
-        await this.createEmbeddedDocuments("ActiveEffect", [{
-            name: consequence.injury.name,
-            img: consequence.injury.icon ?? "icons/svg/bones.svg",
-            statuses: ["cursed"],
-            flags: {
-                [game.system.id]: {
-                    type: "injury"
-                }
-            }
-        }]);
-    } else if (consequence.condition) {
-        await this.createEmbeddedDocuments("ActiveEffect", [{
-            name: consequence.condition.name,
-            img: consequence.condition.icon ?? "icons/svg/daze.svg",
-            statuses: ["paralyzed"],
-            flags: {
-                [game.system.id]: {
-                    type: "condition"
-                }
-            }
-        }]);
-    } else {
-        ui.notifications.warn("This isn't automated yet");
     }
-}
+
+
+    // Add a new tag
+    promptAddTrait() {
+        const callback = (form, prefix) => {
+            let trait = form.elements.trait.value;
+            this.update({
+                [`system.traits.${foundry.utils.randomID()}`]: `${prefix}${trait}`,
+            });
+        };
+        new foundry.applications.api.DialogV2({
+            window: { title: "Add a Tag" },
+            content: `<input type="text" name="trait" autofocus></input>`,
+            buttons: [
+                {
+                    action: "add",
+                    label: "Add",
+                    callback: (evt, button, dialog) =>
+                        callback(button.form, ""),
+                },
+                {
+                    action: "add_defining",
+                    label: "Defining",
+                    callback: (evt, button, dialog) =>
+                        callback(button.form, "+"),
+                },
+                {
+                    action: "add_super_defining",
+                    label: "Epitome",
+                    callback: (evt, button, dialog) =>
+                        callback(button.form, "++"),
+                },
+            ],
+        }).render({ force: true });
+    }
 }

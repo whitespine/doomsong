@@ -31,9 +31,11 @@
     }
 
     function remove() {
-        let mod = spliceArrayItem(doc, path);
+        let split_path = path.split(".");
+        split_path[split_path.length - 1] = `-=${split_path[split_path.length - 1]}`;
+        let removal_path = split_path.join(".");
         doc.update({
-            [mod.array_path]: mod.modified_array
+            [removal_path]: null
         });
     }
 </script>
