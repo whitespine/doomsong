@@ -29,6 +29,89 @@
         }
     },
     {
+        "id": "attack_i",
+        "label": "Attack (Improvised)",
+        "tooltip": "Ye sorry bastard - make do with what you have",
+        "default_difficulty": 5,
+        "difficulty_tooltip": "Set to equal the defender's current toughness plus protection. If the defender is aware of the attacker, they may spend footing to dodge or block. This increases the difficulty by 1 for each footing spent, with an additional +1 if the defender is blocking using a shield.",
+        "results": {
+            "skull": {
+                "label": "Fumble",
+                "text": "Something goes wrong, such as: you lose or break your weapon; your foe may take an opportunity action against you; an unintended target must suffer damage; you lose all footing and fall prone. Alternatively, the GM may decide your fumble has some other terrible consequence.",
+                "penalties": [
+                    {
+                        "label": "Lose or break your weapon"
+                    },
+                    {
+                        "label": "Reduced to D6 arrows"
+                    },
+                    {
+                        "label": "Foe may take an opportunity action against you"
+                    },
+                    {
+                        "label": "You lose all footing and fall prone",
+                        "footing": -999
+                    },
+                    {
+                        "label": "Some other terrible consequence"
+                    }
+                ]
+            },
+            "under": {
+                "label": "Off Balance",
+                "text": "Lower your own footing by -1 (to a minimum of 1); if you attacked unarmed, lose -1 toughness.",
+                "penalties": [
+                    {
+                        "label": "Lower footing by -1, (to a minimum of 1)",
+                        "footing": -1,
+                        "min_footing": 1
+                    },
+                    {
+                        "label": "Lose -1 toughness",
+                        "toughness": -1
+                    }
+                ]
+            },
+            "equal": {
+                "label": "Graze",
+                "text": "Lower your own footing by -1 (to a minimum of 1). The target loses -1 toughness.",
+                "penalties": [
+                    {
+                        "label": "Lower footing by -1, (to a minimum of 1)",
+                        "footing": -1,
+                        "min_footing": 1
+                    }
+                ],
+                "target_penalties": [
+                    {
+                        "label": "Lose -1 toughness",
+                        "toughness": -1
+                    }
+                ]
+            },
+            "over": {
+                "label": "Damage",
+                "text": "The target loses -1 toughness.",
+                "target_penalties": [
+                    {
+                        "label": "Lose -1 toughness",
+                        "toughness": -1
+                    }
+                ]
+            },
+            "crest": {
+                "label": "Paltry Critical",
+                "text": "The target loses a total of -2 toughness.",
+                "target_penalties": [
+                    {
+                        "label": "Lose -2 toughness",
+                        "toughness": -2
+                    }
+                ]
+            }
+        }
+    },
+    {
         "id": "attack_b",
         "label": "Attack (Bludgeoning)",
         "tooltip": "Onwards! Tear down any who dare stand against our righteous cause!",
