@@ -1,3 +1,7 @@
+import { SvelteApplicationMixin } from "../overrides/svelte_mixin.svelte";
+import NPCSheetComponent from "../components/sheets/npc/NPCSheet.svelte";
+import PlayerSheetComponent from "../components/sheets/player/PlayerSheet.svelte";
+
 export class DoomsongActorSheet extends foundry.applications.sheets.ActorSheetV2 {
     static DEFAULT_OPTIONS = {
         classes: ["doomsong", "actor"],
@@ -42,23 +46,63 @@ export class DoomsongActorSheet extends foundry.applications.sheets.ActorSheetV2
             return this.actor.update(update);
         }
     }
+}
 
-    // Stolen from foundry, modified
-    async editImage(attr) {
-        const current = foundry.utils.getProperty(this.document._source, attr);
-        const defaultArtwork = this.document.constructor.getDefaultArtwork?.(this.document._source) ?? {};
-        const defaultImage = foundry.utils.getProperty(defaultArtwork, attr);
-        // const fp = new FilePicker.implementation({ // v13
-        const fp = new FilePicker({
-            current,
-            type: "image",
-            redirectToRoot: defaultImage ? [defaultImage] : [],
-            callback: path => this.setImage(path),
-            position: {
-                top: this.position.top + 40,
-                left: this.position.left + 10
+export class DoomsongNPCSheet extends SvelteApplicationMixin(DoomsongActorSheet) {
+    static DEFAULT_OPTIONS = {
+        classes: ["npc"],
+        svelte: {
+            component: NPCSheetComponent,
+            props: {
+                block: true
             }
+        },
+        position: {
+            width: 400,
+            height: "auto"
+        },
+        actions: {
+            toggleEdit: DoomsongNPCSheet.toggleEdit
+        },
+        window: {
+            controls: [
+                {
+                    // font awesome icon
+                    icon: 'fa-solid fa-edit',
+                    // string that will be run through localization
+                    label: "Toggle Edit",
+                    // string that MUST match one of your `actions`
+                    // action: "toggleEdit",
+                    action: "toggleEdit",
+                }
+            ]
+        }
+    }
+
+    static toggleEdit(_evt, _target) {
+        // Due to weird bindings, we can use `this`
+        let block = this.props.block ?? true;
+        block = !block;
+        this.props.block = block;
+        this.setPosition({
+            width: block ? 400 : 800,
+            height: block ? "auto" : 800,
         });
-        await fp.browse();
+    }
+}
+
+export class DoomsongPlayerSheet extends SvelteApplicationMixin(DoomsongActorSheet) {
+    static DEFAULT_OPTIONS = {
+        classes: ["player"],
+        svelte: {
+            component: PlayerSheetComponent
+        },
+        position: {
+            width: 400,
+            height: 700
+        },
+        actions: {
+            toggleEdit: DoomsongPlayerSheet.toggleEdit
+        }
     }
 }
