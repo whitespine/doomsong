@@ -7,7 +7,12 @@ export class WeaponModel extends GearModel {
     static defineSchema() {
         return {
             ...super.defineSchema(),
-            heavy: new fields.BooleanField({ initial: false, nullable: false })
+            attack_type: new fields.StringField({ 
+                initial: "attack_b", 
+                nullable: false, 
+                validateType: (v) => ["attack_b", "attack_i", "attack_p", "attack_s"].includes(v)
+            })
+            // heavy: new fields.BooleanField({ initial: false, nullable: false })
         };
     }
 }

@@ -10,7 +10,10 @@
     let weapons = $derived(items.filter((i) => i.type == "weapon"));
     let unarmed = new DoomsongItem({
         type: "weapon",
-        name: "unarmed"
+        name: "Unarmed",
+        system: {
+            roll_type: "attack_i"
+        }
     }); // An ephemeral item just for display purposes
 </script>
 
