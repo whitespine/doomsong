@@ -1,4 +1,4 @@
-import NPCSheetComponent from "../components/sheets/NPCSheet.svelte";
+import NPCSheetComponent from "../components/sheets/npc/NPCSheet.svelte";
 import { SvelteApplicationMixin } from "../overrides/svelte_mixin.svelte";
 import { DoomsongActorSheet } from "./ActorSheet";
 

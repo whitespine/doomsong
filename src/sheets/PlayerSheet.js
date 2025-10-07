@@ -1,4 +1,4 @@
-import PlayerSheetComponent from "../components/sheets/PlayerSheet.svelte";
+import PlayerSheetComponent from "../components/sheets/player/PlayerSheet.svelte";
 import { SvelteApplicationMixin } from "../overrides/svelte_mixin.svelte";
 import { DoomsongActorSheet } from "./ActorSheet";
 

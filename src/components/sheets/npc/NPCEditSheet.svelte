@@ -1,9 +1,9 @@
 <script>
-    import TraitTag from "../fields/TraitTag.svelte";
-    import UpdateInput from "../fields/UpdateInput.svelte";
-    import Die from "../rolls/Die.svelte";
-    import { stop } from "../../utils/handlers";
-    import EditAbility from "../items/EditAbility.svelte";
+    import TraitTag from "../../fields/TraitTag.svelte";
+    import UpdateInput from "../../fields/UpdateInput.svelte";
+    import Die from "../../rolls/Die.svelte";
+    import { stop } from "../../../utils/handlers";
+    import EditAbility from "../../items/EditAbility.svelte";
     let { app, context } = $props();
     let actor = $derived(context.document);
 

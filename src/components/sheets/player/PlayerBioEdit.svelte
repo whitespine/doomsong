@@ -1,8 +1,7 @@
 <script>
-    import { stop } from "../../utils/handlers";
-    import ProsemirrorField from "../fields/ProsemirrorField.svelte";
-    import Experience from "../fields/Experience.svelte";
-    import UpdateInput from "../fields/UpdateInput.svelte";
+    import { stop } from "../../../utils/handlers";
+    import Experience from "../../fields/Experience.svelte";
+    import UpdateInput from "../../fields/UpdateInput.svelte";
     let { app, context } = $props();
     let actor = $derived(context.actor);
     /*
@@ -17,6 +16,14 @@
             <UpdateInput name={key} doc={actor} {path} type="text" />
         </div>
     {/snippet}
+    <div class="row portrait-row">
+        <img
+            class="col"
+            src={actor.img}
+            alt="potrait"
+            onclick={() => app.editImage("img")}
+        />
+    </div>
     <div class="row">
         {@render field("birth_name", "Birth Name", "system.birth_name")}
         {@render field("nickname", "Nickname", "system.nickname")}
@@ -36,22 +43,12 @@
             <Experience {actor} />
         </div>
     </div>
-    <div class="row">
-        <div class="bioblock">
-            <label for="biography">Biography:</label>
-            <UpdateInput
-                name="biography"
-                doc={actor}
-                path="system.biography"
-                type="text"
-                tag="textarea"
-                style="height: 15em"
-            />
-        </div>
-    </div>
 </div>
 
 <style lang="scss">
+    img {
+        max-width: 256px;
+    }
     .bioblock {
         display: flex;
         flex-direction: column;

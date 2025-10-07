@@ -1,7 +1,7 @@
 <script>
-    import TraitDisplay from "../fields/TraitDisplay.svelte";
-    import Die from "../rolls/Die.svelte";
-    import Shield from "../combat/Shield.svelte";
+    import TraitDisplay from "../../fields/TraitDisplay.svelte";
+    import Die from "../../rolls/Die.svelte";
+    import Shield from "../../combat/Shield.svelte";
     let { context } = $props();
     let actor = $derived(context.actor);
     let acts_to_show = $derived.by(() => {
