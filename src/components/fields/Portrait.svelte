@@ -1,12 +1,13 @@
 <script>
     import { stop } from "../../utils/handlers";
 
-    let { doc, path, callback = null, addStyle="", restArgs } = $props();
-
+    let { doc, path, callback = null, addStyle = "", restArgs } = $props();
 
     let current = $derived(foundry.utils.getProperty(doc, path));
     let restArgsWithDefaultStyle = $derived({
-        style: "min-width: 256px; max-width: 256px; min-height: 256px; max-height: 256px;" + addStyle,
+        style:
+            "min-width: 256px; max-width: 256px; min-height: 256px; max-height: 256px;" +
+            addStyle,
         ...restArgs,
     });
 
@@ -21,7 +22,7 @@
             current,
             type: "image",
             redirectToRoot: defaultImage ? [defaultImage] : [],
-            callback: callback,
+            callback: callback || ((img) => doc.update({ [path]: img })),
             // position: {
             // top: this.position.top + 40,
             // left: this.position.left + 10
@@ -33,7 +34,12 @@
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-<img src={current} alt="potrait" onclick={editImage} {...restArgsWithDefaultStyle} />
+<img
+    src={current}
+    alt="potrait"
+    onclick={editImage}
+    {...restArgsWithDefaultStyle}
+/>
 
 <style lang="scss">
     img {
