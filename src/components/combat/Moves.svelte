@@ -100,6 +100,10 @@
                 .name {
                     font-weight: bold;
                 }
+
+                p {
+                    margin: 0.1em;
+                }
             }
         }
     }

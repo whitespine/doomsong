@@ -1,4 +1,4 @@
-import DoomsongCombatTrackerComponent from '../components/combat/CombatTracker.svelte'
+import DoomsongCombatTrackerComponent from '../components/combat/tracker/CombatTracker.svelte'
 import { SvelteApplicationMixin } from './svelte_mixin.svelte';
 
 export class DoomsongCombatTracker extends SvelteApplicationMixin(foundry.applications.sidebar.AbstractSidebarTab) {

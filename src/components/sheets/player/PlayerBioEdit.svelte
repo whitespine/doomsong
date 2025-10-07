@@ -17,12 +17,9 @@
         </div>
     {/snippet}
     <div class="row portrait-row">
-        <img
-            class="col"
-            src={actor.img}
-            alt="potrait"
-            onclick={() => app.editImage("img")}
-        />
+        <div class="col">
+        <Portrait doc={actor} path="img" callback={(img) => app.setImage(img)} />
+        </div>
     </div>
     <div class="row">
         {@render field("birth_name", "Birth Name", "system.birth_name")}
@@ -46,9 +43,6 @@
 </div>
 
 <style lang="scss">
-    img {
-        max-width: 256px;
-    }
     .bioblock {
         display: flex;
         flex-direction: column;

@@ -1,8 +1,10 @@
 <script>
     import { stop } from "../../../utils/handlers";
+    import Moves from "../../combat/Moves.svelte";
     import PlayerAbilitiesEdit from "./PlayerAbilitiesEdit.svelte";
     import PlayerAbilitiesView from "./PlayerAbilitiesView.svelte";
     import PlayerBioEdit from "./PlayerBioEdit.svelte";
+    import PlayerCombatView from "./PlayerCombatView.svelte";
     let { app, context } = $props();
     const TABS = {
         bio: "Biography",
@@ -55,7 +57,7 @@
         {:else if tab == "gear"}
             <span>Gear up</span>
         {:else if tab == "combat"}
-            <span>Combat edit tbd!</span>
+            <PlayerCombatView {app} {context} />
         {:else if tab == "notes"}
             <span>Notes edit tbd!</span>
         {/if}

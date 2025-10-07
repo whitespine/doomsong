@@ -4,6 +4,7 @@
     import Die from "../../rolls/Die.svelte";
     import { stop } from "../../../utils/handlers";
     import EditAbility from "../../items/EditAbility.svelte";
+    import Portrait from "../../fields/Portrait.svelte";
     let { app, context } = $props();
     let actor = $derived(context.document);
 
@@ -68,12 +69,7 @@
     <div class="header">
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-        <img
-            class="portrait"
-            src={actor.img}
-            alt="potrait"
-            onclick={() => app.editImage("img")}
-        />
+        <Portrait doc={actor} path="img" callback={(img) => app.setImage(img)} />
         <div class="stat-area">
             <div class="stat-grid">
                 {#snippet field(key, label, path)}
