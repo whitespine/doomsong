@@ -6,8 +6,8 @@
 
     let { app, context } = $props();
     let actor = $derived(context.actor);
-    let items = $derived(Array.from(Object.values(context.actor.items.svelte)));
-    let weapons = $derived(items.filter((i) => i.type == "weapon"));
+    let items = $derived(Array.from(context.actor.items.svelte.values()));
+    let weapons = $derived(items.filter((i) => i.type == "weapon" && i.system.ready));
     let unarmed = $derived(new DoomsongItem(
         {
             type: "weapon",

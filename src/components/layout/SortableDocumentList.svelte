@@ -7,6 +7,7 @@
         update_callback,
         update_item_processor = null,
         child,
+        type=undefined,
         flip_duration_ms = 300
     } = $props();
 
@@ -42,7 +43,7 @@
 
 <div
     class="list"
-    use:dndzone={{ items: wrapped_documents, flipDurationMs: flip_duration_ms }}
+    use:dndzone={{ items: wrapped_documents, flipDurationMs: flip_duration_ms, type }}
     onconsider={handleDndConsider}
     onfinalize={handleDndFinalize}
 >

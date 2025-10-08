@@ -8,6 +8,7 @@
     let actor = $derived(context.actor);
     let items = $derived(Array.from(context.actor.items.svelte.values()));
     let all_gear = $derived(items.filter((i) => i.type != "ability"));
+    let dnd_key = foundry.utils.randomID();
 
     function createGear(e, type) {
         stop(e);
@@ -38,6 +39,7 @@
             <SortableDocumentList
                 {child}
                 documents={ready_gear}
+                type={dnd_key}
                 update_callback={(updates) =>
                     actor.updateEmbeddedDocuments("Item", updates)}
                 update_item_processor={(_) => ({ "system.ready": true })}
@@ -52,6 +54,7 @@
             <SortableDocumentList
                 {child}
                 documents={stowed_gear}
+                type={dnd_key}
                 update_callback={(updates) =>
                     actor.updateEmbeddedDocuments("Item", updates)}
                 update_item_processor={(_) => ({ "system.ready": false })}
