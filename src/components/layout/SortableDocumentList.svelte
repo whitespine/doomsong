@@ -23,7 +23,9 @@
     }
 
     function handleDndFinalize(e) {
-        // Solidify
+        wrapped_documents = e.detail.items;
+
+        // Do actual persisting
         let updates = e.detail.items.map((bundle, index) => {
             let base = update_item_processor
                 ? update_item_processor(bundle.item)
