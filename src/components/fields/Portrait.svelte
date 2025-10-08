@@ -1,15 +1,9 @@
 <script>
     import { stop } from "../../utils/handlers";
 
-    let { doc, path, callback = null, addStyle = "", restArgs } = $props();
+    let { doc, path, callback = null, restArgs, fallback="" } = $props();
 
     let current = $derived(foundry.utils.getProperty(doc, path));
-    let restArgsWithDefaultStyle = $derived({
-        style:
-            "min-width: 256px; max-width: 256px; min-height: 256px; max-height: 256px;" +
-            addStyle,
-        ...restArgs,
-    });
 
     // Stolen from foundry, modified
     async function editImage(e) {
@@ -35,10 +29,10 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <img
-    src={current}
-    alt="potrait"
+    src={current ?? fallback}
+    alt="Icon of {doc.name}"
     onclick={editImage}
-    {...restArgsWithDefaultStyle}
+    {...restArgs}
 />
 
 <style lang="scss">
@@ -46,5 +40,9 @@
         cursor: pointer;
         object-fit: contain;
         border: 2px solid black;
+        max-width: var(--size, 128px);
+        max-height: var(--size, 128px);
+        margin-left: auto;
+        margin-right: auto;
     }
 </style>

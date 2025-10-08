@@ -14,6 +14,7 @@
         actor.createEmbeddedDocuments("ActiveEffect", [
             {
                 name: `New ${type}`,
+                [`flags.${game.system.id}.show`]: true
             },
         ]);
     }

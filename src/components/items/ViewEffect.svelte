@@ -1,12 +1,18 @@
 
 <script>
+    import Portrait from "../fields/Portrait.svelte";
     import UpdateInput from "../fields/UpdateInput.svelte";
 
     let { effect, edit = false } = $props();
 </script>
 
 <div class="root">
-    <img class="thumbnail" src={effect.img ?? "icons/svg/aura.svg"} alt="{effect.name} icon">
+        <Portrait
+            doc={effect}
+            path="img"
+            fallback="icons/svg/aura.svg"
+            --size="64px"
+        />
     {#if edit}
         <UpdateInput
             name={"name"}

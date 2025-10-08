@@ -39,6 +39,7 @@
             doc={actor}
             path="img"
             callback={(img) => app.setImage(img)}
+            --size="185px"
         />
         <div class="stat-area">
             <div class="stat-grid">

@@ -9,11 +9,9 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <Portrait
-                doc={context.item}
-                path="img"
-                addStyle="margin-left: auto; margin-right: auto"
-            />
+            <div style:margin-left="auto" style:margin-right="auto">
+                <Portrait doc={context.item} path="img" />
+            </div>
         </div>
     </div>
     <div class="row">

@@ -24,7 +24,7 @@
                 doc={actor}
                 path="img"
                 callback={(img) => app.setImage(img)}
-                addStyle="margin-left: auto; margin-right: auto"
+                --size="256px"
             />
         </div>
     </div>
