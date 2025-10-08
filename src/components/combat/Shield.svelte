@@ -18,9 +18,15 @@
             </div>
         {/each}
     </div>
-    <span class="protection">
-        {actor.system.protection}
-    </span>
+    <div class="protection">
+        <UpdateInput
+            name="system.protection"
+            doc={actor}
+            path="system.protection"
+            type="number"
+            style="height: 100%"
+        />
+    </div>
 </div>
 
 <style lang="scss" module>
@@ -52,8 +58,9 @@
 
         .protection {
             top: 8%;
-            left: 75%;
+            left: 60%;
             font-size: 18cqh;
+            height: 20%;
         }
 
         input {
