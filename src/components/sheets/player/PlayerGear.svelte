@@ -1,9 +1,8 @@
 <script>
     import { stop } from "../../../utils/handlers";
 
-    import { flip } from "svelte/animate";
-    import { dndzone } from "svelte-dnd-action";
     import ViewGear from "../../items/ViewGear.svelte";
+    import SortableDocumentList from "../../layout/SortableDocumentList.svelte";
 
     let { app, context } = $props();
     let actor = $derived(context.actor);
@@ -20,42 +19,15 @@
         ]);
     }
 
-    const flipDurationMs = 300;
-    function handleDndConsider(e, category) {
-        if(category == "ready") {
-            ready_gear = e.detail.items;
-        } else if(category == "stowed") {
-            stowed_gear = e.detail.items;
-        }
-    }
-    function handleDndFinalize(e, category) {
-        if(category == "ready") {
-            ready_gear = e.detail.items;
-        } else if(category == "stowed") {
-            stowed_gear = e.detail.items;
-        }
-    }
-
-    let ready_gear = $derived(
-        all_gear
-            .filter((i) => i.system.ready)
-            .map((i) => ({
-                id: i._id,
-                item: i,
-            })),
-    );
-    let stowed_gear = $derived(
-        all_gear
-            .filter((i) => !i.system.ready)
-            .map((i) => ({
-                id: i._id,
-                item: i,
-            })),
-    );
+    let ready_gear = $derived(all_gear.filter((i) => i.system.ready));
+    let stowed_gear = $derived(all_gear.filter((i) => !i.system.ready));
 </script>
 
 <div class="container">
     <div class="row">
+        {#snippet child(gear)}
+            <ViewGear {gear} edit={true} />
+        {/snippet}
         <div class="col-6 ready">
             <h1>
                 Ready Gear
@@ -63,18 +35,13 @@
                 /
                 {actor.system.ready_capacity}
             </h1>
-            <div
-                class="gearlist"
-                use:dndzone={{ items: ready_gear, flipDurationMs }}
-                onconsider={(e) => handleDndConsider(e, "ready")}
-                onfinalize={(e) => handleDndFinalize(e, "ready")}
-            >
-                {#each ready_gear as drag_gear (drag_gear.id)}
-                    <div animate:flip={{ duration: flipDurationMs }}>
-                        <ViewGear gear={drag_gear.item} edit={true} />
-                    </div>
-                {/each}
-            </div>
+            <SortableDocumentList
+                {child}
+                documents={ready_gear}
+                update_callback={(updates) =>
+                    actor.updateEmbeddedDocuments("Item", updates)}
+                update_item_processor={(_) => ({ "system.ready": true })}
+            />
         </div>
         <div class="col-6 stowed">
             <h1>
@@ -82,18 +49,13 @@
                 {actor.system.stowed_load} /
                 {actor.system.stowed_capacity}
             </h1>
-            <div
-                class="gearlist"
-                use:dndzone={{ items: stowed_gear, flipDurationMs }}
-                onconsider={(e) => handleDndConsider(e, "stowed")}
-                onfinalize={(e) => handleDndFinalize(e, "stowed")}
-            >
-                {#each stowed_gear as drag_gear (drag_gear.id)}
-                    <div animate:flip={{ duration: flipDurationMs }} >
-                        <ViewGear gear={drag_gear.item} edit={true} />
-                    </div>
-                {/each}
-            </div>
+            <SortableDocumentList
+                {child}
+                documents={stowed_gear}
+                update_callback={(updates) =>
+                    actor.updateEmbeddedDocuments("Item", updates)}
+                update_item_processor={(_) => ({ "system.ready": false })}
+            />
         </div>
     </div>
 
@@ -121,9 +83,3 @@
         >
     </div>
 </div>
-
-<style lang="scss">
-    .gearlist {
-        height: 100%;
-    }
-</style>
