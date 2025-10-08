@@ -25,24 +25,38 @@ export class PlayerModel extends ActorModel {
             biography: new fields.HTMLField({ nullable: false, required: true, initial: "Put bio here" }),
 
             // Total bulk we can carry
-            ready_load: new fields.NumberField({nullable: false, integer: true, initial: 6}),
-            stowed_load: new fields.NumberField({nullable: false, integer: true, initial: 12})
+            ready_capacity: new fields.NumberField({ nullable: false, integer: true, initial: 6 }),
+            stowed_capacity: new fields.NumberField({ nullable: false, integer: true, initial: 12 })
         }
     }
 
- async _preCreate(data, options, user) {
+    async _preCreate(data, options, user) {
         await super._preCreate(data, options, user);
 
         let mods = {
             base_action_dice: 2 // Players are "major"
         };
         // Add default moves
-        if(!data["moves"]) {
+        if (!data["moves"]) {
             mods["moves"] = PlayerDefaultMoves;
         }
 
         // Put in the basics
         this.updateSource(mods);
+    }
+
+    prepareDerivedData() {
+        this.ready_load = 0;
+        this.stowed_load = 0;
+        for(let item of this.parent.items.contents) {
+            if(!["gear", "weapon", "armor"].includes(item.type)) continue;
+            if(!Number.isInteger(item.system.bulk)) continue;
+            if(item.system.ready) {
+                this.ready_load += item.system.bulk;
+            } else {
+                this.stowed_load += item.system.bulk;
+            }
+        }
     }
 
 }
