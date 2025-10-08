@@ -1,10 +1,18 @@
 <script>
+    import UpdateInput from "../fields/UpdateInput.svelte";
+
     let { gear, edit = false } = $props();
 </script>
 
 <div class="root">
+    <!--<img class="thumbnail" src={gear.img} alt="{gear.name} icon">-->
     {#if edit}
-        <span>{gear.name}</span>
+        <UpdateInput
+            name={"name"}
+            doc={gear}
+            path="name"
+            type="text"
+        />
         <button onclick={() => gear.delete()} aria-label="Delete {gear.name}">
             <i class="fas fa-trash"> </i>
         </button>
@@ -19,9 +27,11 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        
-        span, input {
-            flex: 1
+        padding: 5px;
+
+        span,
+        input {
+            flex: 1;
         }
     }
 </style>
