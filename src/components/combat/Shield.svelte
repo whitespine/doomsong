@@ -12,7 +12,6 @@
                     name={path}
                     doc={actor}
                     {path}
-                    value={resolveDotpath(actor, path, 0)}
                     type="number"
                     style="height: 100%"
                 />
