@@ -15,6 +15,20 @@ export class DoomsongActor extends Actor {
 
         let mods = {}
 
+        // Set token defaults
+        if(data.prototypeToken?.displayBars) {
+            mods["prototypeToken.displayBars"] = 50;
+        }
+        if(data.prototypeToken?.displayName) {
+            mods["prototypeToken.displayName"] = 50;
+        }
+        if(data.prototypeToken?.bar1?.attribute) {
+            mods["prototypeToken.bar1.attribute"] = "toughness";
+        }
+        if(data.prototypeToken?.bar2?.attribute) {
+            mods["prototypeToken.bar2.attribute"] = "toughness";
+        }
+
         // Set actorlink defaults
         if (data.prototypeToken?.actorLink == undefined) {
             let link = data.type === "player";
@@ -191,5 +205,16 @@ export class DoomsongActor extends Actor {
                 },
             ],
         }).render({ force: true });
+    }
+
+
+    // Can be removed in v14, replaced with a flag
+    get temporaryEffects() {
+        const effects = [];
+        for (const effect of this.allApplicableEffects()) {
+            if (effect.active && effect.isTemporary) effects.push(effect);
+            else if(effect.flags[game.system.id]?.show) effects.push(effect);
+        }
+        return effects;
     }
 }

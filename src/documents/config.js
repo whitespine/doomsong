@@ -21,21 +21,6 @@ export function setupDocuments() {
     };
 }
 
-// Initializes tokens to by default display toughness/footing
-export async function initTokenSettings() {
-    return game.settings.set("core", "defaultToken", {
-        displayName: 50,
-        disposition: 0,
-        displayBars: 50,
-        bar1: {
-            attribute: "footing"
-        },
-        bar2: {
-            attribute: "toughness"
-        }
-    });
-}
-
 // Initializes combat tracker to have a pretty flashing pulse under them
 export async function initCombatSettings() {
     return game.settings.set("core", "combatTrackerConfig", {
