@@ -1,5 +1,6 @@
 import roll_types from "./roll_types.json";
 import { suspense } from "./suspense.svelte";
+import { targetedTokens } from "./target.svelte";
 
 /** An attempt to attack
  * @typedef {object} CheckParams
@@ -380,3 +381,15 @@ export const FALLBACK_RESULT_TABLE = new ResultTable(roll_types[0]); // Convenie
  * @property {string} [roll_suspense] ID of the roll suspense. Might be null
  * @property {string} [coin_suspense] ID of the coin suspense. Might be null
  */
+
+
+/** Get the current attack difficulty
+ * 
+ * @returns {number}
+ */
+export function currentAttackDifficulty() {
+    if(targetedTokens.length > 0) {
+            return targetedTokens()[0].actor.system.attack_difficulty ?? 5;
+    }
+    return 0; // If you're attacking like, a wall or something? This shouldn't ever really happen.
+}

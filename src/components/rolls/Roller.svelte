@@ -1,6 +1,6 @@
 <script>
     import { targetedTokens } from "../../utils/target.svelte";
-    import { FALLBACK_RESULT_TABLE, formulaFor, resultTables, rollCheck } from "../../utils/roll.svelte";
+    import { currentAttackDifficulty, FALLBACK_RESULT_TABLE, formulaFor, resultTables, rollCheck } from "../../utils/roll.svelte";
     import { initiateAttack } from "../../apps/dodge_prompt.svelte";
     import Incrementer from "../fields/Incrementer.svelte";
 
@@ -33,19 +33,13 @@
         }, app.options.roll?.preset_choices ?? {});
     }
 
-    // Callback for setting a roll type
-    function selectRollType(evt) {
-        roll_type = evt.target.value;
-    }
-
     // Our currently selected options
-    let roll_type = $derived(app.options.roll?.roll_type ?? "standard"); // Intended to be mutated
+    let roll_type = $state(app.options.roll?.roll_type ?? "standard"); // Intended to be mutated
     let result_table = $derived(resultTables()[roll_type] ?? FALLBACK_RESULT_TABLE);
     let choices = $state(defaultChoices());
     let difficulty = $derived.by(() => {
-        if (roll_type.includes("attack") && targetedTokens().length >= 1) {
-            // Use their toughness + protection instead
-            return targetedTokens()[0].actor.system.attack_difficulty ?? 5;
+        if (roll_type.includes("attack")) {
+            return currentAttackDifficulty();
         }
         return app.options.roll?.difficulty ?? result_table.defaultDifficulty;
     });
@@ -91,7 +85,7 @@
 
 <div class="doomsong container">
     <div class="header">
-        <select class="elevated" onchange={selectRollType}>
+        <select class="elevated" bind:value={roll_type}>
             {#each Object.entries(resultTables()) as [key, table]}
                 <option value={key}>{table.label}</option>
             {/each}

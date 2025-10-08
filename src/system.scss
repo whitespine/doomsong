@@ -116,6 +116,12 @@
             --color-light-1: white;
         }
 
+        img.thumbnail {
+            max-width: 64px;
+            max-height: 64px;
+            border: 1px solid black;
+        }
+
         &.actor.application {
             border: none;
             box-shadow: none;

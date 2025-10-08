@@ -1,5 +1,5 @@
 <script>
-    import {DoomsongItem} from "../../../documents/item.svelte";
+    import { DoomsongItem } from "../../../documents/item.svelte";
     import Moves from "../../combat/Moves.svelte";
     import Shield from "../../combat/Shield.svelte";
     import ViewWeapon from "../../items/ViewWeapon.svelte";
@@ -8,13 +8,17 @@
     let actor = $derived(context.actor);
     let items = $derived(Array.from(Object.values(context.actor.items.svelte)));
     let weapons = $derived(items.filter((i) => i.type == "weapon"));
-    let unarmed = new DoomsongItem({
-        type: "weapon",
-        name: "Unarmed",
-        system: {
-            roll_type: "attack_i"
-        }
-    }); // An ephemeral item just for display purposes
+    let unarmed = $derived(new DoomsongItem(
+        {
+            type: "weapon",
+            name: "Improvised",
+            img: "icons/skills/melee/unarmed-punch-fist-white.webp",
+            system: {
+                roll_type: "attack_i",
+            },
+        },
+        { parent: actor },
+    )); // An ephemeral item just for display purposes
 </script>
 
 <div class="container">
@@ -23,13 +27,12 @@
             <Moves actor={context.actor} moves={context.actor.system.moves} />
         </div>
     </div>
-    <div class="row sep">
-    </div>
+    <div class="row sep"></div>
     <div class="row">
         <div class="col-8 attack">
-            <h2>Attack!</h2>
+            <h1>Attack!</h1>
             {#each [...weapons, unarmed] as weapon}
-                <ViewWeapon {weapon}/>  
+                <ViewWeapon {weapon} />
             {/each}
         </div>
         <div class="col-4 shield">
