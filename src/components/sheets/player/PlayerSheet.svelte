@@ -3,6 +3,7 @@
     import PlayerAbilities from "./PlayerAbilities.svelte";
     import PlayerBio from "./PlayerBio.svelte";
     import PlayerCombat from "./PlayerCombat.svelte";
+    import PlayerConditions from "./PlayerConditions.svelte";
     import PlayerGear from "./PlayerGear.svelte";
     import PlayerNotes from "./PlayerNotes.svelte";
     let { app, context } = $props();
@@ -54,7 +55,7 @@
         {:else if tab == "notes"}
             <PlayerNotes {app} {context} />
         {:else if tab == "conditions"}
-            <PlayerNotes {app} {context} />
+            <PlayerConditions {app} {context} />
         {/if}
     </div>
 </form>
