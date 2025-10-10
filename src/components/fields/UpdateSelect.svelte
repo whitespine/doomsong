@@ -14,7 +14,7 @@
 </script>
 
 <select
-    oninput={(e) => commit(stop(e).target.checked)}
+    oninput={(e) => commit(stop(e).target.value)}
     {...restProps}
     {value}
 >

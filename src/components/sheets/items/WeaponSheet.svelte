@@ -1,5 +1,22 @@
 <script>
+    import {
+        griddedSelect,
+        griddedTextField,
+    } from "../GenericSheetSnippets.svelte";
     let { context, app } = $props();
+    let weapon = $derived(context.item);
+$inspect(weapon);
+
+    const attack_types = {
+        "attack_b": "Bludgeoning",
+        "attack_s": "Slashing",
+        "attack_p": "Piercing",
+        "attack_i": "Improvised",
+    }
 </script>
 
-<span>ABility</span>
+<div class="container">
+    {@render griddedTextField(weapon, "Name", "name")}
+    {@render griddedTextField(weapon, "Tags", "system.tags")}
+    {@render griddedSelect(weapon, "Damage Type", "system.attack_type", attack_types)}
+</div>

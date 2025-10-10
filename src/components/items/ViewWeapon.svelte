@@ -7,15 +7,16 @@
     import Portrait from "../fields/Portrait.svelte";
 
     let table = $derived(
-        resultTables()[weapon.system.roll_type] ?? resultTables()["attack_i"],
+        resultTables()[weapon.system.attack_type] ?? resultTables()["attack_i"],
     );
+    let table_name = $derived(table.label);
 </script>
 
 <div class="weapon">
     <Portrait doc={weapon} {edit} height="48px" />
     <div class="body">
         <h2>{weapon.name}</h2>
-        <p>{table.label}</p>
+        <p>{table_name}</p>
         <p class="tags"></p>
     </div>
     {#if strike}

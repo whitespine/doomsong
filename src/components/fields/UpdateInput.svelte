@@ -29,6 +29,5 @@
     onchange={(e) => commit(stop(e).target.value, 0)}
     oninput={(e) => commit(stop(e).target.value, 1000)}
     {...restProps}
-    class={className}
     {value}
 />
