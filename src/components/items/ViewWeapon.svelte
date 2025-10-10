@@ -2,6 +2,8 @@
     import { stop } from "../../utils/handlers";
     let { weapon, edit = false, strike = false } = $props();
     import { resultTables } from "../../utils/roll.svelte";
+    import DeleteButton from "../fields/DeleteButton.svelte";
+    import Portrait from "../fields/Portrait.svelte";
 
     let table = $derived(
         resultTables()[weapon.system.roll_type] ?? resultTables()["attack_i"],
@@ -9,7 +11,7 @@
 </script>
 
 <div class="weapon">
-    <img class="thumbnail" src={weapon.img} alt="{weapon.name} icon" />
+    <Portrait doc={weapon} {edit} height="48px" />
     <div class="body">
         <h2>{weapon.name}</h2>
         <p>{table.label}</p>
@@ -24,7 +26,7 @@
         </button>
     {/if}
     {#if edit}
-        <DeleteButton doc={gear} />
+        <DeleteButton doc={weapon} />
     {/if}
 </div>
 
