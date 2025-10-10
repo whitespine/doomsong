@@ -151,7 +151,7 @@ export class DoomsongCombat extends Combat {
         // this._clearMovementHistoryOnStartTurn(combatant, context)
         if(changed.system?.act) {
             let act = this.system.act;
-            this.combatantsByAct[act].forEach(c => c.token.clearMovementHistory());
+            this.combatantsByAct[act].forEach(c => c.combatant.token.clearMovementHistory());
         }
          // combatant.token.clearMovementHistory();
 
@@ -188,6 +188,12 @@ export class DoomsongCombat extends Combat {
     }
 
     // Returns an Object<ActNumber, Array<[combatant, dice_this_act]>>
+    /**
+     * @returns {({[key: number]: Array<{
+     *   combatant: Combatant,
+     *   actions: number
+     * }})}
+     */
     get combatantsByAct() {
         let result = {};
         for (let act = 1; act <= 6; act++) {
