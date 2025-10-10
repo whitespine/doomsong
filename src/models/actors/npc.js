@@ -11,7 +11,7 @@ export class NpcModel extends ActorModel {
             min_difficulty: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
 
             // Vibes. Just a string, comma separated
-            vibes: new fields.StringField({ nullable: false, required: true, initial: "" }),
+            vibes: new fields.StringField({ nullable: false, initial: "" }),
         }
     }
 }

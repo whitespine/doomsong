@@ -41,13 +41,12 @@ export class ActorModel extends DoomsongDataModel {
 
             // Traits. Precede with + or ++ to make defined/super defined
             traits: new fields.TypedObjectField(
-                new fields.StringField({ nullable: false, required: true, initial: "" },
-                    { nullable: false }
-                )
+                new fields.StringField({ nullable: false, initial: "" }),
+                { nullable: false }
             ),
 
             // Notes. Handy to have, might not keep forever
-            notes: new fields.HTMLField({ nullable: false, required: true, initial: "Put notes here" })
+            notes: new fields.HTMLField({ nullable: false, initial: "Put notes here" })
         };
     }
 

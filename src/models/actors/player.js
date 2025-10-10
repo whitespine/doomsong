@@ -9,20 +9,20 @@ export class PlayerModel extends ActorModel {
             ...super.defineSchema(),
 
             // Names - there are three!
-            birth_name: new fields.StringField({ nullable: false, required: true, initial: "" }),
-            player_name: new fields.StringField({ nullable: false, required: true, initial: "" }),
-            nickname: new fields.StringField({ nullable: false, required: true, initial: "" }),
+            birth_name: new fields.StringField({ nullable: false, initial: "" }),
+            player_name: new fields.StringField({ nullable: false, initial: "" }),
+            nickname: new fields.StringField({ nullable: false, initial: "" }),
 
             // XP tracking
-            goal: new fields.StringField({ nullable: false, required: true, initial: "" }),
-            xp: new fields.NumberField({ nullable: false, required: true, initial: 0, min: 0, max: 10 }),
+            goal: new fields.StringField({ nullable: false, initial: "" }),
+            xp: new fields.NumberField({ nullable: false, initial: 0, min: 0, max: 10 }),
 
             // Wycce Shit
-            heresy: new fields.StringField({ nullable: false, required: true, initial: "" }),
-            vow: new fields.StringField({ nullable: false, required: true, initial: "" }),
+            heresy: new fields.StringField({ nullable: false, initial: "" }),
+            vow: new fields.StringField({ nullable: false, initial: "" }),
 
             // Biography - todo
-            biography: new fields.HTMLField({ nullable: false, required: true, initial: "Put bio here" }),
+            biography: new fields.HTMLField({ nullable: false, initial: "Put bio here" }),
 
             // Total bulk we can carry
             ready_capacity: new fields.NumberField({ nullable: false, integer: true, initial: 6 }),

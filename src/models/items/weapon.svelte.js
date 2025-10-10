@@ -12,14 +12,15 @@ export class WeaponModel extends GearModel {
                 initial: "attack_i",
                 nullable: false,
                 validateType: (v) => ["attack_b", "attack_i", "attack_p", "attack_s"].includes(v)
-            })
+            }),
+            tags: new fields.StringField({ nullable: false, initial: "" })
             // heavy: new fields.BooleanField({ initial: false, nullable: false })
         };
     }
 
     // Begin an attack flow with this weapon
     beginAttack() {
-        if(!this.parent.actor) return ui.notifications.error("Not currently supported to attack with an unowned weapon");
+        if (!this.parent.actor) return ui.notifications.error("Not currently supported to attack with an unowned weapon");
         RollerApp.prompt(this.parent.actor, {
             roll: {
                 roll_type: this.attack_type
