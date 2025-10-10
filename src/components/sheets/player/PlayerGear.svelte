@@ -23,6 +23,8 @@
 
     let ready_gear = $derived(all_gear.filter((i) => i.system.ready));
     let stowed_gear = $derived(all_gear.filter((i) => !i.system.ready));
+    let ready_overencumbered = $derived(actor.system.ready_load > actor.system.ready_capacity);
+    let stowed_overencumbered = $derived(actor.system.stowed_load > actor.system.stowed_capacity);
 </script>
 
 <div class="container">
@@ -40,6 +42,10 @@
                 {actor.system.ready_load}
                 /
                 {actor.system.ready_capacity}
+
+                {#if ready_overencumbered}
+                    <i class="fas fa-warning" data-tooltip="Overencumbered! Drag some items to your stowed gear, or leave them behind" ></i>
+                {/if}
             </h1>
             <SortableDocumentList
                 {child}
@@ -55,6 +61,9 @@
                 Stowed Gear
                 {actor.system.stowed_load} /
                 {actor.system.stowed_capacity}
+                {#if stowed_overencumbered}
+                    <i class="fas fa-warning" data-tooltip="Overencumbered! Drag some items to your ready gear, or leave them behind" ></i>
+                {/if}
             </h1>
             <SortableDocumentList
                 {child}
