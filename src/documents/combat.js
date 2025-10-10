@@ -2,18 +2,23 @@ import { DOOMSONG } from "../consts";
 
 
 export class DoomsongCombat extends Combat {
+    // Return the first act with any combatants, or null if all unset
+    get #actsWithCombatants() {
+        let cba = this.combatantsByAct;
+        return [1,2,3,4,5,6].filter(act => cba[act].length != 0);
+    }
+
     // Advance this combat to the previous phase, or act within a phase
     async nextPhase(skipEmptyActs = true) {
         if (this.system.phase == "acts") {
             // Advance within acts, if there are remaining 
-            let new_act = this.system.act + 1;
-
-            // Skip empty acts using combatantsByAct
-            if (skipEmptyActs) {
-                let cba = this.combatantsByAct;
-                while (new_act <= 6 && cba[new_act].length == 0) new_act++;
+            let new_act;
+            if(skipEmptyActs) {
+                new_act = this.#actsWithCombatants.filter(act => act > this.system.act)[0] ?? 7;
+            } else {
+                new_act = this.system.act + 1;
             }
-
+            
             // If new_act is now 7+, change phase to retreat instead. Leave act unchanged
             if (new_act > 6) {
                 return this.update({
@@ -43,8 +48,7 @@ export class DoomsongCombat extends Combat {
                 await this.randomizeNPCActions();
 
                 if (skipEmptyActs) {
-                    let cba = this.combatantsByAct;
-                    update["system.act"] = [1, 2, 3, 4, 5, 6].find(act => cba[act].length != 0) || 1; // it doesn't really matter what act we end up on if literally nobody has any dice. Just do 1
+                    update["system.act"] = this.#actsWithCombatants[0] ?? 1;
                 } else {
                     update["system.act"] = 1; // Just do the first
                 }
@@ -64,15 +68,14 @@ export class DoomsongCombat extends Combat {
     prevPhase(skipEmptyActs = true) {
         if (this.system.phase == "acts") {
             // Regress within acts, if there are remaining 
-            let new_act = this.system.act - 1;
-
-            // Skip empty acts using combatantsByAct
-            if (skipEmptyActs) {
-                let cba = this.combatantsByAct;
-                while (new_act > 0 && cba[new_act].length == 0) new_act--;
+            let new_act;
+            if(skipEmptyActs) {
+                new_act = this.#actsWithCombatants.filter(act => act < this.system.act)[0] ?? 0;
+            } else {
+                new_act = this.system.act - 1;
             }
 
-            // If new_act is now <= 0, change phase to set instead. Leave act unchanged - it'll just be overridden when we jump back
+            // If new_act is now <= 0, change phase to set instead.
             if (new_act <= 0) {
                 return this.update({
                     "system.phase": "set"
@@ -92,6 +95,16 @@ export class DoomsongCombat extends Combat {
                 "end": "retreat",
                 "begin": "end",
             }[this.system.phase] || "begin";
+
+            // Reset act to 6 if we're entering acts (or the first empty)
+            if (next == "acts") {
+                // Before skipping any acts, we first randomize unset npc actions
+                if (skipEmptyActs) {
+                    update["system.act"] = this.#actsWithCombatants.reverse()[0] ?? 1;
+                } else {
+                    update["system.act"] = 6; // Just do the first
+                }
+            }
 
             // Finally perform our update
             return this.update({
@@ -133,6 +146,14 @@ export class DoomsongCombat extends Combat {
         super._onUpdate(changed, options, userId);
         // always update turn markers
         this._updateTurnMarkers();
+
+        // Clear movement histories 
+        // this._clearMovementHistoryOnStartTurn(combatant, context)
+        if(changed.system?.act) {
+            let act = this.system.act;
+            this.combatantsByAct[act].forEach(c => c.token.clearMovementHistory());
+        }
+         // combatant.token.clearMovementHistory();
 
         let stateChanged = true;
         if (this.active) {
