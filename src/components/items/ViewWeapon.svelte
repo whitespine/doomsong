@@ -3,6 +3,7 @@
     let { weapon, edit = false, strike = false } = $props();
     import { resultTables } from "../../utils/roll.svelte";
     import DeleteButton from "../fields/DeleteButton.svelte";
+    import EditButton from "../fields/EditButton.svelte";
     import Portrait from "../fields/Portrait.svelte";
 
     let table = $derived(
@@ -26,6 +27,7 @@
         </button>
     {/if}
     {#if edit}
+        <EditButton doc={weapon} />
         <DeleteButton doc={weapon} />
     {/if}
 </div>
@@ -47,5 +49,6 @@
         }
 
         border: 1px solid black;
+        padding-right: 5px;
     }
 </style>
