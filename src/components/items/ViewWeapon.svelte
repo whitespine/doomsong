@@ -1,6 +1,6 @@
 <script>
     import { stop } from "../../utils/handlers";
-    let { weapon } = $props();
+    let { weapon, edit = false, strike = false } = $props();
     import { resultTables } from "../../utils/roll.svelte";
 
     let table = $derived(
@@ -15,10 +15,17 @@
         <p>{table.label}</p>
         <p class="tags"></p>
     </div>
-    <button
-        class="elevated"
-        onclick={(e) => (stop(e), weapon.system.beginAttack())}>Strike!</button
-    >
+    {#if strike}
+        <button
+            class="elevated"
+            onclick={(e) => (stop(e), weapon.system.beginAttack())}
+        >
+            Strike!
+        </button>
+    {/if}
+    {#if edit}
+        <DeleteButton doc={gear} />
+    {/if}
 </div>
 
 <style lang="scss">

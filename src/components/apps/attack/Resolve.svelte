@@ -6,6 +6,7 @@
         resultTables,
     } from "../../../utils/roll.svelte";
     import Consequence from "../../combat/Consequence.svelte";
+    import Portrait from "../../fields/Portrait.svelte";
 
     /** @import { AttackFlow } from "../../../apps/dodge_prompt.svelte" */
 
@@ -16,7 +17,7 @@
 
     let message = $derived(game.messages.get(flow.message_id));
     let [key, entry] = $derived.by(() => {
-        if(!message) return [null]
+        if (!message) return [null];
         let roll_result = message?.rolls[0].total ?? -1;
         let coin = message?.doomsong.coin_result;
         let table = resultTables()[flow.attack.type] ?? FALLBACK_RESULT_TABLE;
@@ -26,28 +27,28 @@
     let defender_consequences = $derived(entry.target_penalties ?? []);
 </script>
 
-<div>
-    <div class="columns">
-        <div class="column">
-            <img src={attacker.img} />
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <Portrait doc={attacker} />
         </div>
-        <div class="column">
-            <img src={defender.img} />
+        <div class="col">
+            <Portrait doc={defender} />
         </div>
     </div>
-    <div class="desc">
-        <p>
+    <div class="row desc">
+        <p class="col">
             <span class="bold"> {entry.label}. </span>
             {entry.text}
         </p>
     </div>
-    <div class="columns">
-        <div class="column participant">
+    <div class="row">
+        <div class="col participant">
             {#each attacker_consequences as consequence}
                 <Consequence actor={attacker} {consequence} />
             {/each}
         </div>
-        <div class="column participant">
+        <div class="col participant">
             {#each defender_consequences as consequence}
                 <Consequence actor={defender} {consequence} />
             {/each}
@@ -56,15 +57,8 @@
 </div>
 
 <style lang="scss">
-    .columns {
-        display: flex;
-
-        .column {
-            flex: 50%;
-        }
-        .column:first-child {
-            border-right: solid black 1px;
-        }
+    .col:nth-child(2) {
+        border-left: solid black 1px;
     }
 
     .desc {
@@ -72,8 +66,12 @@
         border-top: solid black 1px;
     }
 
-    .bold {
-        font-weight: bold;
+    p {
+        padding-top: 1em;
+        .bold {
+            font-weight: bold;
+        }
+        text-align: center;
     }
 
     .participant {

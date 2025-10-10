@@ -1,7 +1,15 @@
 <script>
     import { stop } from "../../utils/handlers";
 
-    let { doc, path, callback = null, restArgs, fallback="" } = $props();
+    let {
+        doc,
+        path = "img",
+        callback = null,
+        restArgs,
+        fallback = "",
+        height=null,
+        edit = false,
+    } = $props();
 
     let current = $derived(foundry.utils.getProperty(doc, path));
 
@@ -31,18 +39,19 @@
 <img
     src={current ?? fallback}
     alt="Icon of {doc.name}"
-    onclick={editImage}
+    onclick={edit ? editImage : null}
+    class={{ "img-fluid": true, edit }}
+    style={height ? `max-height: ${height};` : ""}
     {...restArgs}
 />
 
 <style lang="scss">
     img {
-        cursor: pointer;
         object-fit: contain;
         border: 2px solid black;
-        max-width: var(--size, 128px);
-        max-height: var(--size, 128px);
-        margin-left: auto;
-        margin-right: auto;
+
+        &.edit {
+            cursor: pointer;
+        }
     }
 </style>

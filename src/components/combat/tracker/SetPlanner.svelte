@@ -44,7 +44,7 @@
                 />
             {:else}
                 <RollingDie
-                    discarded={true}
+                    discarded
                     data-tooltip="Intentions Unknown"
                     data-tooltip-class="doomsong actions"
                 />

@@ -1,6 +1,7 @@
 <script>
     import UpdateInput from "../fields/UpdateInput.svelte";
     import { stop } from "../../utils/handlers";
+    import DeleteButton from "../fields/DeleteButton.svelte";
 
     let { ability } = $props();
 
@@ -84,12 +85,7 @@
                     style="flex: 1"
                 />
 
-                <button
-                    aria-label={`Delete rank ${rank.rank}`}
-                    class="delete"
-                    onclick={(e) => (stop(e), deleteRank(rank._id))}
-                    ><i class="fas fa-trash"></i></button
-                >
+                <DeleteButton callback={() => deleteRank(rank._id)} label={`Delete rank ${rank.rank}`} />
             </div>
         {/each}
     </div>

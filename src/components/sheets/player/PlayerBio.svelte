@@ -19,12 +19,13 @@
         </div>
     {/snippet}
     <div class="row portrait-row">
-        <div class="col">
+        <div class="col portrait">
             <Portrait
                 doc={actor}
                 path="img"
                 callback={(img) => app.setImage(img)}
-                --size="256px"
+                height="200px"
+                edit
             />
         </div>
     </div>
@@ -62,6 +63,12 @@
 <style lang="scss">
     .xp {
         background-color: unset;
+    }
+
+    .portrait {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .traits {

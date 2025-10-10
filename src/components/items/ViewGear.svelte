@@ -1,4 +1,5 @@
 <script>
+    import DeleteButton from "../fields/DeleteButton.svelte";
     import UpdateInput from "../fields/UpdateInput.svelte";
 
     let { gear, edit = false } = $props();
@@ -13,9 +14,7 @@
             path="name"
             type="text"
         />
-        <button onclick={() => gear.delete()} aria-label="Delete {gear.name}">
-            <i class="fas fa-trash"> </i>
-        </button>
+        <DeleteButton doc={gear} />
     {:else}
         <span>{gear.name}</span>
     {/if}

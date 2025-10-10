@@ -11,7 +11,7 @@
         <div class="identity">
             <h1>{context.actor.name}</h1>
             <div class="traits">
-                {#each actor.system.traits as trait, index}
+                {#each Object.values(actor.system.traits) as trait, index}
                     {#if index > 0}
                         <span>•</span>
                     {/if}

@@ -1,6 +1,7 @@
 
 <script>
-    import Portrait from "../fields/Portrait.svelte";
+    import DeleteButton from "../fields/DeleteButton.svelte";
+import Portrait from "../fields/Portrait.svelte";
     import UpdateInput from "../fields/UpdateInput.svelte";
 
     let { effect, edit = false } = $props();
@@ -20,9 +21,7 @@
             path="name"
             type="text"
         />
-        <button onclick={() => effect.delete()} aria-label="Delete {effect.name}">
-            <i class="fas fa-trash"> </i>
-        </button>
+        <DeleteButton doc={effect} />
     {:else}
         <span>{effect.name}</span>
     {/if}

@@ -1,5 +1,6 @@
 <script>
     import { stop } from "../../utils/handlers";
+    import DeleteButton from "../fields/DeleteButton.svelte";
 
     let { ability, edit = true } = $props();
 </script>
@@ -16,12 +17,7 @@
             >
                 <i class="fas fa-edit"></i>
             </button>
-            <button
-                onclick={(e) => (stop(e), ability.delete())}
-                aria-label="Delete ability {ability.name}"
-            >
-                <i class="fas fa-trash"></i>
-            </button>
+            <DeleteButton doc={ability} />
         {/if}
     </div>
 

@@ -32,7 +32,7 @@
         <div class="col-8 attack">
             <h1>Attack!</h1>
             {#each [...weapons, unarmed] as weapon}
-                <ViewWeapon {weapon} />
+                <ViewWeapon {weapon} strike />
             {/each}
         </div>
         <div class="col-4 shield">

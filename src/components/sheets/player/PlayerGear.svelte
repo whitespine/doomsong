@@ -2,6 +2,7 @@
     import { stop } from "../../../utils/handlers";
 
     import ViewGear from "../../items/ViewGear.svelte";
+    import ViewWeapon from "../../items/ViewWeapon.svelte";
     import SortableDocumentList from "../../layout/SortableDocumentList.svelte";
 
     let { app, context } = $props();
@@ -27,7 +28,11 @@
 <div class="container">
     <div class="row">
         {#snippet child(gear)}
-            <ViewGear {gear} edit={true} />
+            {#if gear.type == "weapon"}
+                <ViewWeapon weapon={gear} edit />
+            {:else}
+                <ViewGear {gear} edit />
+            {/if}
         {/snippet}
         <div class="col-6 ready">
             <h1>

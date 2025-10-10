@@ -23,7 +23,7 @@
 <div class="container">
     <div class="row">
         {#snippet child(effect)}
-            <ViewEffect {effect} edit={true} />
+            <ViewEffect {effect} edit />
         {/snippet}
         <div class="col">
             <h1>Conditions</h1>
