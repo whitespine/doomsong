@@ -21,12 +21,13 @@ export function suspense(roll) {
     suspenseSet.add(id);
 
     // Handle locally
-    wait(roll).then(() => suspenseSet.delete(id));
+    wait(roll, game.user).then(() => suspenseSet.delete(id));
     // Tell everyone else to handle it
 
     /** @@type {SuspenseBroadcast} */
     let payload = {
         id,
+        user_id: game.user._id,
         roll_json: roll.toJSON()
     };
     sendSocket(DOOMSONG.socket.suspense, payload);
@@ -37,6 +38,7 @@ export function suspense(roll) {
 /** The broadcast for a suspense thingy
  * @typedef {object} SuspenseBroadcast
  * @property {string} id Unique id of this "suspense item"
+ * @property {string} user_id The id of the user performing the roll, for styling purposes
  * @property {object} roll_json The encoded roll of this suspense item. It should be resolved!
  */
 
@@ -45,9 +47,9 @@ export function suspense(roll) {
  * Wait for a roll to resolve via suspense settings
  * @param {Roll} roll 
  */
-async function wait(roll) {
+async function wait(roll, user) {
     if (game.dice3d) {
-        await game.dice3d.showForRoll(roll, game.user, true);
+        await game.dice3d.showForRoll(roll, user, false);
     } else {
         await sleep(1000);
     }
@@ -59,10 +61,11 @@ async function wait(roll) {
  */
 export function onReceiveSuspense(payload) {
     // Hydrate roll and dsn it
-    let { roll_json, id } = payload;
+    let { roll_json, user_id, id } = payload;
     suspenseSet.add(id);
     let roll = Roll.fromData(roll_json);
-    wait(roll).then(() => suspenseSet.delete(id));
+    let user = game.users.get(user_id) ?? game.user;
+    wait(roll, user).then(() => suspenseSet.delete(id));
 }
 // Our current things in suspense
 const suspenseSet = new SvelteSet();
