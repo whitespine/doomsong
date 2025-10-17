@@ -59,7 +59,6 @@ export class ActorModel extends DoomsongDataModel {
     // Migrations :/
     static migrateData(sourceData) {
         // Fix traits to be schema instead of + prefixed data
-        console.log(sourceData.traits);
         for (let [tk, text] of Object.key(sourceData.traits)) {
             if (typeof text == "string") {
                 let level = text.filter(c => c == "+").length

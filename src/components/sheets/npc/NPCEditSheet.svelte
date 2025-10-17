@@ -8,6 +8,7 @@
     import ViewAbility from "../../items/ViewAbility.svelte";
     let { app, context } = $props();
     let actor = $derived(context.document);
+    let edit = $derived(app.isEditable);
 
     // Add a new basic move
     function addMove(act) {
@@ -42,6 +43,7 @@
                 path="img"
                 height="175px"
                 callback={(img) => app.setImage(img)}
+                {edit}
             />
         </div>
         <div class="col-9 container">
@@ -104,12 +106,17 @@
                             <TraitTag
                                 doc={actor}
                                 path={`system.traits.${trait_id}`}
+                                {edit}
                             />
                         {/each}
                     {/if}
-                    <button onclick={(e) => (stop(e), actor.promptAddTrait())}>
-                        Add Trait
-                    </button>
+                    {#if edit}
+                        <button
+                            onclick={(e) => (stop(e), actor.promptAddTrait())}
+                        >
+                            Add Trait
+                        </button>
+                    {/if}
                 </div>
             </div>
         </div>
