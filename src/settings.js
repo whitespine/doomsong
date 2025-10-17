@@ -22,15 +22,6 @@ export function setupSettings() {
         default: false,
     });      
 
-    // Have we succesfully initialized pdf pager?
-    game.settings.register(game.system.id, DOOMSONG.settings.init.pdf, {
-        name: "Initialize PDF",
-        scope: "world",
-        config: false,
-        type: Boolean,
-        default: false,
-    });    
-
     // Combat view options
     game.settings.register(game.system.id, DOOMSONG.settings.combat.view_acts.key, {
         name: "Show enemy acts",
