@@ -18,16 +18,16 @@ export class DoomsongActor extends Actor {
         let mods = {}
 
         // Set token defaults
-        if(data.prototypeToken?.displayBars) {
+        if (data.prototypeToken?.displayBars) {
             mods["prototypeToken.displayBars"] = 50;
         }
-        if(data.prototypeToken?.displayName) {
+        if (data.prototypeToken?.displayName) {
             mods["prototypeToken.displayName"] = 50;
         }
-        if(data.prototypeToken?.bar1?.attribute) {
+        if (data.prototypeToken?.bar1?.attribute) {
             mods["prototypeToken.bar1.attribute"] = "toughness";
         }
-        if(data.prototypeToken?.bar2?.attribute) {
+        if (data.prototypeToken?.bar2?.attribute) {
             mods["prototypeToken.bar2.attribute"] = "toughness";
         }
 
@@ -175,14 +175,14 @@ export class DoomsongActor extends Actor {
     }
 
 
-    // Add a new tag
+    // Add a new trait
     async promptAddTrait() {
         let id = foundry.utils.randomID();
-        let path = `system.traits.${id}`; 
+        let path = `system.traits.${id}`;
         await this.update({
             [path]: null
         });
-        let app = new GenericComponentApp(EditTraitApp, { doc: this, path });
+        let app = new GenericComponentApp(EditTraitApp, { doc: this, path }, { window: { title: "Add a trait" } });
         app.render({ force: true });
     }
 
@@ -192,7 +192,7 @@ export class DoomsongActor extends Actor {
         const effects = [];
         for (const effect of this.allApplicableEffects()) {
             if (effect.active && effect.isTemporary) effects.push(effect);
-            else if(effect.flags[game.system.id]?.show) effects.push(effect);
+            else if (effect.flags[game.system.id]?.show) effects.push(effect);
         }
         return effects;
     }

@@ -42,7 +42,7 @@ export class ActorModel extends DoomsongDataModel {
             // Traits. Precede with + or ++ to make defined/super defined
             traits: new fields.TypedObjectField(
                 new fields.SchemaField({
-                    text: new fields.StringField({ nullable: false, initial: "New Tag" }),
+                    text: new fields.StringField({ nullable: false, initial: "New Trait" }),
                     level: new fields.NumberField({ nullable: false, integer: true, initial: 0, min: 0, max: 2 })
                 }, { nullable: false }),
                 { nullable: false }
@@ -59,9 +59,9 @@ export class ActorModel extends DoomsongDataModel {
     // Migrations :/
     static migrateData(sourceData) {
         // Fix traits to be schema instead of + prefixed data
-        for (let [tk, text] of Object.key(sourceData.traits)) {
+        for (let [tk, text] of Object.entries(sourceData.traits)) {
             if (typeof text == "string") {
-                let level = text.filter(c => c == "+").length
+                let level = [...text].filter(c => c == "+").length;
                 text = text.replaceAll("+", "");
                 sourceData.traits[tk] = {
                     level,
