@@ -2,7 +2,7 @@
     import { stop } from "../../../utils/handlers";
 
     import ViewEffect from "../../items/ViewEffect.svelte";
-    import SortableDocumentList from "../../layout/SortableDocumentList.svelte";
+    import SortableDocumentListActorImpl from "../../layout/dnd/SortableDocumentListActorImpl.svelte";
 
     let { app, context } = $props();
     let actor = $derived(context.actor);
@@ -27,7 +27,8 @@
         {/snippet}
         <div class="col">
             <h1>Conditions</h1>
-            <SortableDocumentList
+            <SortableDocumentListActorImpl
+                {actor}
                 {child}
                 documents={effects}
                 type={dnd_key}
