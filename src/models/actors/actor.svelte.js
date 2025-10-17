@@ -41,7 +41,10 @@ export class ActorModel extends DoomsongDataModel {
 
             // Traits. Precede with + or ++ to make defined/super defined
             traits: new fields.TypedObjectField(
-                new fields.StringField({ nullable: false, initial: "" }),
+                new fields.SchemaField({
+                    text: new fields.StringField({ nullable: false, initial: "New Tag" }),
+                    level: new fields.NumberField({ nullable: false, integer: true, initial: 0, min: 0, max: 2 })
+                }, { nullable: false }),
                 { nullable: false }
             ),
 
@@ -52,4 +55,20 @@ export class ActorModel extends DoomsongDataModel {
 
     attack_difficulty = $derived(Math.max(this.toughness.value + this.protection, this.min_difficulty || 0));
     abilities = $derived(this.parent.items.filter(i => i.type == "ability"));
+
+    // Migrations :/
+    static migrateData(sourceData) {
+        // Fix traits to be schema instead of + prefixed data
+        console.log(sourceData.traits);
+        for (let [tk, text] of Object.key(sourceData.traits)) {
+            if (typeof text == "string") {
+                let level = text.filter(c => c == "+").length
+                text = text.replaceAll("+", "");
+                sourceData.traits[tk] = {
+                    level,
+                    text
+                }
+            }
+        }
+    }
 }

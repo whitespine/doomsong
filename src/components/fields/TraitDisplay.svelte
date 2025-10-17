@@ -1,11 +1,11 @@
 <script>
     let { trait } = $props();
     let trait_body = $derived(trait.replaceAll("+", "").toLocaleUpperCase());
-    let defined = $derived(trait.startsWith("+"));
-    let epitome = $derived(trait.startsWith("++"));
+    let defined = $derived(trait.level >= 1);
+    let epitome = $derived(trait.level >= 2);
 </script>
 
-<span class={[defined && "defined", epitome && "epitome"]}>{trait_body}</span>
+<span class={[defined && "defined", epitome && "epitome"]}>{trait.text}</span>
 
 <style lang="scss">
     .defined {

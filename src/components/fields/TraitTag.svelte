@@ -1,56 +1,29 @@
 <script>
+    import EditButton from "./EditButton.svelte";
     import { resolveDotpath } from "../../utils/paths";
-    let { doc, path, edit, edit_button } = $props();
+    import { GenericComponentApp } from "../../apps/generic_app";
+    import EditTrait from "../apps/EditTraitApp.svelte";
+    let { doc, path, edit = false, edit_button } = $props();
 
-    let value = $derived(resolveDotpath(doc, path, ""));
-    let clean_value = $derived(value.replaceAll("+", ""));
-    let clazz = $derived.by(() => {
-        let leading_plusses = 0;
-        for (let c of value) {
-            if (c == "+") {
-                leading_plusses++;
-            } else break;
-        }
-        return ["", "defining", "super defining"][leading_plusses] || "";
-    });
+    let tag = $derived(resolveDotpath(doc, path, ""));
+    let text = $derived(tag.text);
+    let level = $derived(tag.level);
 
-    function cycle() {
-        if (!edit) return;
-        if (!value || !doc) return;
-        let new_value;
-        if (value?.startsWith("++")) {
-            new_value = clean_value;
-        } else if (value?.startsWith("+")) {
-            new_value = `++${clean_value}`;
-        } else if (value?.startsWith("")) {
-            new_value = `+${clean_value}`;
-        }
-        doc.update({
-            [path]: new_value,
-        });
-    }
-
-    function remove() {
-        if (!edit) return;
-        let split_path = path.split(".");
-        split_path[split_path.length - 1] =
-            `-=${split_path[split_path.length - 1]}`;
-        let removal_path = split_path.join(".");
-        doc.update({
-            [removal_path]: null,
-        });
+    function openEdit() {
+        let app = new GenericComponentApp(EditTrait, { doc, path });
+        app.render({ force: true });
     }
 </script>
 
-<!-- svelte-ignore a11y_click_events_have_key_events -->
-<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-    onclick={cycle}
-    oncontextmenu={remove}
-    class={clazz}
-    style:cursor={edit ? "pointer" : "inherit"}
+    style:text-decoration-line={level >= 1 ? "underline" : "unset"}
+    style:text-decoration-style={level >= 2 ? "double" : "single"}
 >
-    {clean_value}
+    <span>{text}</span>
+
+    {#if edit}
+        <EditButton callback={openEdit} />
+    {/if}
 </div>
 
 <style lang="scss">
@@ -59,13 +32,12 @@
         border-radius: 5px;
         margin: 2px;
         padding: 1px 3px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-        &.defining {
-            text-decoration-line: underline;
-        }
-
-        &.super.defining {
-            text-decoration-style: double;
+        span {
+            padding-right: 2px;
         }
     }
 </style>
