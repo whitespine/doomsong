@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col">
             <div style:margin-left="auto" style:margin-right="auto">
-                <Portrait doc={context.item} path="img" />
+                <Portrait height="128px" doc={context.item} path="img" />
             </div>
         </div>
     </div>

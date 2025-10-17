@@ -51,7 +51,7 @@ export class DoomsongAbilitySheet extends SvelteApplicationMixin(DoomsongItemShe
             component: AbilitySheetComponent
         },
         position: {
-            width: 400,
+            width: 600,
             height: "auto"
         }
     }

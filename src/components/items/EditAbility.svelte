@@ -77,7 +77,7 @@
                     Level {rank.rank}:
                 </label>
                 <UpdateInput
-                    tag="input"
+                    tag="textarea"
                     type="text"
                     name={`${ability._id}.${rank._id}.text`}
                     doc={ability}
