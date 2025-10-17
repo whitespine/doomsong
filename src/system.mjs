@@ -4,7 +4,6 @@ import { DOOMSONG } from './consts';
 import { initCalendar } from './integrations/calendar/calendar';
 import { setupModels } from './models/config';
 import { initCombatSettings, setupDocuments } from './documents/config';
-import { initPdfPager } from './integrations/pdf/pager';
 import { retry, sleep } from './utils/time';
 import { mount } from 'svelte';
 import RollerButton from "./components/rolls/HotbarButton.svelte";
@@ -73,21 +72,6 @@ Hooks.once('simple-calendar-ready', async function () {
       ui.notifications.info("Initialized calendar");
     });
   }
-});
-
-// Setup pdf character sheet. Provide your own? Or do we bundle?
-Hooks.once('ready', async function () {
-  await retry(async () => {
-    let need_init_pdf = !game.settings.get(game.system.id, DOOMSONG.settings.init.pdf);
-    if (need_init_pdf) {
-      await initPdfPager().then(async () => {
-        await game.settings.set(game.system.id, DOOMSONG.settings.init.pdf, true);
-        ui.notifications.info("Initialized pdf character sheets");
-      });
-    } else {
-      console.log("Skipping pdf initialization, as it has been completed");
-    }
-  }, 1000, 10);
 });
 
 // Mount our ui components
