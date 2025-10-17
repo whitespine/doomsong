@@ -15,8 +15,8 @@
     <div class="xp row">
         {#each { length: 10 } as _, i}
             <button
-                class={{ col: true, checked: xp >= i }}
-                onclick={(e) => (stop(e), clickXP(i))}
+                class={{ col: true, checked: xp >= i + 1 }}
+                onclick={(e) => (stop(e), clickXP(i + 1))}
                 aria-label={`Set xp to ${xp == i ? i - 1 : i}`}
             ></button>
         {/each}
