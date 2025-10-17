@@ -10,16 +10,22 @@
     let level = $derived(tag.level);
 
     function openEdit() {
-        let app = new GenericComponentApp(EditTrait, { doc, path });
+        let app = new GenericComponentApp(
+            EditTrait,
+            { doc, path },
+            { window: { title: "Edit trait" } },
+        );
         app.render({ force: true });
     }
 </script>
 
-<div
-    style:text-decoration-line={level >= 1 ? "underline" : "none"}
-    style:text-decoration-style={level >= 2 ? "double" : "single"}
->
-    <span>{text} {level}</span>
+<div>
+    <span
+        class={{
+            defining: level >= 1,
+            epitome: level >= 2,
+        }}>{text}</span
+    >
 
     {#if edit}
         <EditButton callback={openEdit} />
@@ -38,6 +44,13 @@
 
         span {
             padding-right: 2px;
+
+            &.defining {
+                text-decoration-line: underline;
+            }
+            &.epitome {
+                text-decoration-style: double;
+            }
         }
     }
 </style>
