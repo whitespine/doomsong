@@ -1,7 +1,10 @@
 export class DragArea {
     constructor({ document_class, type, collection = null, category = null }) {
-        /** @type {class} */
+        /** Something like ActiveEffect
+         * @type {class} 
+         */
         this.document_class = document_class;
+
         /** @type {string} */
         this.type = type;
         /** @type {Collection | null} */

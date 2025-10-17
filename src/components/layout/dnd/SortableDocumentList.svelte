@@ -12,6 +12,7 @@
      *   on_drag_from: DragFromCallback,
      *   on_drag_to: DragToCallback,
      *   allow_drop: AllowDropCallback,
+     *   allow_drag: boolean,
      * })}
      */
     let {
@@ -20,6 +21,7 @@
         on_drag_from,
         on_drag_to,
         allow_drop,
+        allow_drag=true,
         child, // How we render items. Should take DragItem as a parameter
         flip_duration_ms = 300,
     } = $props();
@@ -79,7 +81,7 @@
     let allow_drop_computed = $derived.by(() => {
         if(!allow_drop) return true;
         else if(!DRAG_STATE.dragging) return true;
-        else return allow_drop(DRAG_STATE.dragged);
+        else return allow_drop(DRAG_STATE.item);
     })
 </script>
 
@@ -89,7 +91,8 @@
         items: wrapped_documents,
         flipDurationMs: flip_duration_ms,
         type: area.type,
-        dropFromOthersDisabled: !allow_drop_computed
+        dropFromOthersDisabled: !allow_drop_computed,
+        dragDisabled: !allow_drag
     }}
     onconsider={handleDndConsider}
     onfinalize={handleDndFinalize}

@@ -5,7 +5,6 @@
     } from "../GenericSheetSnippets.svelte";
     let { context, app } = $props();
     let weapon = $derived(context.item);
-$inspect(weapon);
 
     const attack_types = {
         "attack_b": "Bludgeoning",

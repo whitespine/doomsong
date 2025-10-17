@@ -12,7 +12,7 @@ import Portrait from "../fields/Portrait.svelte";
             doc={effect}
             path="img"
             fallback="icons/svg/aura.svg"
-            --size="64px"
+            height="64px"
         />
     {#if edit}
         <UpdateInput

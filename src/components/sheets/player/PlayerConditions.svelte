@@ -2,19 +2,27 @@
     import { stop } from "../../../utils/handlers";
 
     import ViewEffect from "../../items/ViewEffect.svelte";
+    import { DragArea } from "../../layout/dnd/dnd.svelte";
     import SortableDocumentListActorImpl from "../../layout/dnd/SortableDocumentListActorImpl.svelte";
 
     let { app, context } = $props();
     let actor = $derived(context.actor);
     let effects = $derived(Array.from(context.actor.effects.svelte.values()));
-    let dnd_key = foundry.utils.randomID();
+    let area = $derived(
+        new DragArea({
+            document_class: ActiveEffect,
+            type: "effect",
+            category: "wedontgrouptheseyet",
+            collection: actor.effects,
+        }),
+    );
 
     function createCondition(e, type) {
         stop(e);
         actor.createEmbeddedDocuments("ActiveEffect", [
             {
                 name: `New ${type}`,
-                [`flags.${game.system.id}.show`]: true
+                [`flags.${game.system.id}.show`]: true,
             },
         ]);
     }
@@ -22,18 +30,17 @@
 
 <div class="container">
     <div class="row">
-        {#snippet child(effect)}
-            <ViewEffect {effect} edit />
+        {#snippet child(drag_effect)}
+            <ViewEffect effect={drag_effect.doc} edit />
         {/snippet}
         <div class="col">
             <h1>Conditions</h1>
             <SortableDocumentListActorImpl
                 {actor}
                 {child}
+                {area}
                 documents={effects}
-                type={dnd_key}
-                update_callback={(updates) =>
-                    actor.updateEmbeddedDocuments("ActiveEffect", updates)}
+                type="effect"
             />
         </div>
     </div>

@@ -9,9 +9,18 @@
      *   documents: Document[],
      *   area: DragArea,
      *   update_mod: (Document) => object
+     *   allow_drop: Optional<AllowDropCallback>
      * })}
      */
-    let { actor, child, documents, area, update_mod = null } = $props();
+    let {
+        actor,
+        child,
+        documents,
+        area,
+        update_mod = null,
+        allow_drop = null,
+        ...restProps
+    } = $props();
 
     const SORT_SPACING = 1000;
 
@@ -54,6 +63,21 @@
             { parent: actor },
         );
     };
+
+    /** @type {AllowDropCallback} */
+    const combined_allow_drop = (di) => {
+        // Also check that they're an owner of this document
+        let supa = restProps.allow_drop?.(di) || true;
+        return supa || actor.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
+    };
 </script>
 
-<SortableDocumentList {child} {area} {documents} {on_drag_from} {on_drag_to} />
+<SortableDocumentList
+    {child}
+    {area}
+    {documents}
+    {on_drag_from}
+    {on_drag_to}
+    allow_drop={combined_allow_drop}
+    {...restProps}
+/>
