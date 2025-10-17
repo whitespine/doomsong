@@ -18,6 +18,7 @@ export class DoomsongActorSheet extends foundry.applications.sheets.ActorSheetV2
     async _prepareContext(options) {
         let context = await super._prepareContext(options);
         context.actor = this.actor;
+        context.edit = this.actor.permission >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
         return context;
     }
 

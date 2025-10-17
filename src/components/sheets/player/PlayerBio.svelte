@@ -5,6 +5,7 @@
     import TraitTag from "../../fields/TraitTag.svelte";
     import UpdateInput from "../../fields/UpdateInput.svelte";
     let { app, context } = $props();
+    let edit = $derived(context.edit);
     let actor = $derived(context.actor);
     /*
     https://getbootstrap.com/docs/5.1/layout/css-grid/#responsive
@@ -51,7 +52,7 @@
     <div class="row">
         <div class="col traits">
             {#each Object.keys(actor.system.traits) as trait_id}
-                <TraitTag doc={actor} path={`system.traits.${trait_id}`} />
+                <TraitTag doc={actor} path={`system.traits.${trait_id}`} {edit} />
             {/each}
             <button class="add" onclick={() => actor.promptAddTrait()}>
                 Add Trait
