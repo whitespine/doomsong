@@ -16,10 +16,10 @@
 </script>
 
 <div
-    style:text-decoration-line={level >= 1 ? "underline" : "unset"}
+    style:text-decoration-line={level >= 1 ? "underline" : "none"}
     style:text-decoration-style={level >= 2 ? "double" : "single"}
 >
-    <span>{text}</span>
+    <span>{text} {level}</span>
 
     {#if edit}
         <EditButton callback={openEdit} />

@@ -1,6 +1,8 @@
 /** @import {Consequence} from "../utils/roll.svelte" */
 
+import { GenericComponentApp } from "../apps/generic_app";
 import { RollerApp } from "../apps/roll_app.svelte";
+import EditTraitApp from "../components/apps/EditTraitApp.svelte";
 
 /**
  * Our custom class for Icon Actors
@@ -174,37 +176,14 @@ export class DoomsongActor extends Actor {
 
 
     // Add a new tag
-    promptAddTrait() {
-        const callback = (form, prefix) => {
-            let trait = form.elements.trait.value;
-            this.update({
-                [`system.traits.${foundry.utils.randomID()}`]: `${prefix}${trait}`,
-            });
-        };
-        new foundry.applications.api.DialogV2({
-            window: { title: "Add a Tag" },
-            content: `<input type="text" name="trait" autofocus></input>`,
-            buttons: [
-                {
-                    action: "add",
-                    label: "Add",
-                    callback: (evt, button, dialog) =>
-                        callback(button.form, ""),
-                },
-                {
-                    action: "add_defining",
-                    label: "Defining",
-                    callback: (evt, button, dialog) =>
-                        callback(button.form, "+"),
-                },
-                {
-                    action: "add_super_defining",
-                    label: "Epitome",
-                    callback: (evt, button, dialog) =>
-                        callback(button.form, "++"),
-                },
-            ],
-        }).render({ force: true });
+    async promptAddTrait() {
+        let id = foundry.utils.randomID();
+        let path = `system.traits.${id}`; 
+        await this.update({
+            [path]: null
+        });
+        let app = new GenericComponentApp(EditTraitApp, { doc: this, path });
+        app.render({ force: true });
     }
 
 

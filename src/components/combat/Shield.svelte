@@ -1,6 +1,5 @@
 <script>
     import UpdateInput from "../fields/UpdateInput.svelte";
-    import { resolveDotpath } from "../../utils/paths";
     let { actor } = $props();
 </script>
 

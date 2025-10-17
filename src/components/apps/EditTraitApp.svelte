@@ -1,15 +1,16 @@
 <script>
     import { stop } from "../../utils/handlers";
     import UpdateInput from "../fields/UpdateInput.svelte";
+    import { resolveDotpath } from "../../utils/paths";
 
     let { doc, path, app } = $props();
 
-    let tag = $derived(resolveDotpath(doc, path, { text: "", level: 0}));
-    let level = $derived(tag.level);
+    let trait = $derived(resolveDotpath(doc, path, { text: "", level: 0}));
+    let level = $derived(trait.level);
 
-    function setLevel(prefix) {
+    function setLevel(new_level) {
         doc.update({
-            [path]: `${prefix}${clean_value}`,
+            [`${path}.level`]: new_level
         });
         app.close();
     }  
@@ -29,10 +30,10 @@
 <div>
     <UpdateInput {doc} path="{path}.text" name="text" />
     <div class="levels">
-        <button onclick={() => (stop(e), setLevel(0))} aria-label="Normal">Normal</button>
-        <button onclick={() => (stop(e), setLevel(1))} aria-label="Defining">Defining</button>
-        <button onclick={() => (stop(e), setLevel(2))} aria-label="Epitome">Epitome</button>
-        <button onclick={() => (stop(e), remove())} aria-label="Remove">Remove</button>
+        <button class={{invert: level == 0}} onclick={(e) => (stop(e), setLevel(0))} aria-label="Normal">Normal</button>
+        <button class={{invert: level == 1}} onclick={(e) => (stop(e), setLevel(1))} aria-label="Defining">Defining</button>
+        <button class={{invert: level == 2}} onclick={(e) => (stop(e), setLevel(2))} aria-label="Epitome">Epitome</button>
+        <button onclick={(e) => (stop(e), remove())} aria-label="Remove">Remove</button>
     </div>
 </div>
 
