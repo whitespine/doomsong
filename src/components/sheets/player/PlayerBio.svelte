@@ -5,7 +5,7 @@
     import TraitTag from "../../fields/TraitTag.svelte";
     import UpdateInput from "../../fields/UpdateInput.svelte";
     let { app, context } = $props();
-    let edit = $derived(context.edit);
+    let edit = $derived(app.isEditable);
     let actor = $derived(context.actor);
     /*
     https://getbootstrap.com/docs/5.1/layout/css-grid/#responsive
@@ -26,7 +26,7 @@
                 path="img"
                 callback={(img) => app.setImage(img)}
                 height="200px"
-                edit
+                {edit}
             />
         </div>
     </div>

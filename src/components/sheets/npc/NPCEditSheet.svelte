@@ -144,7 +144,6 @@
                     {#each Object.entries(moves) as [move_id, move]}
                         <div class="move">
                             <UpdateInput
-                                tag="input"
                                 type="text"
                                 doc={actor}
                                 path={`system.moves.${act}.${move_id}.name`}

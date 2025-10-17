@@ -49,7 +49,6 @@
     <div class="header">
         <label for={`${ability._id}.name`}>Ability:</label>
         <UpdateInput
-            tag="input"
             type="text"
             name={`${ability._id}.name`}
             doc={ability}
@@ -136,10 +135,6 @@
                     width: 60px;
                 }
             }
-        }
-
-        .delete {
-            color: white;
         }
     }
 </style>

@@ -2,7 +2,7 @@
     import { stop } from "../../utils/handlers";
     import DeleteButton from "../fields/DeleteButton.svelte";
 
-    let { ability, edit = true } = $props();
+    let { ability, edit = false } = $props();
 </script>
 
 <div class="ability">
