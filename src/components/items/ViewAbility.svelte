@@ -1,6 +1,7 @@
 <script>
     import { stop } from "../../utils/handlers";
     import DeleteButton from "../fields/DeleteButton.svelte";
+    import EditButton from "../fields/EditButton.svelte";
 
     let { ability, edit = false } = $props();
 </script>
@@ -11,12 +12,7 @@
             {ability.name}
         </h2>
         {#if edit}
-            <button
-                onclick={(e) => (stop(e), ability.sheet.render({ force: true }))}
-                aria-label="Edit ability {ability.name}"
-            >
-                <i class="fas fa-edit"></i>
-            </button>
+            <EditButton doc={ability} />
             <DeleteButton doc={ability} />
         {/if}
     </div>
