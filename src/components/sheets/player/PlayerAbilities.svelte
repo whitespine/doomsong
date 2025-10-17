@@ -1,8 +1,9 @@
 <script>
     import { stop } from "../../../utils/handlers";
     import ViewAbility from "../../items/ViewAbility.svelte";
-    let { context } = $props();
+    let { app, context } = $props();
     let actor = $derived(context.actor);
+    let edit = $derived(app.isEditable);
 
     // Add a new blank ability
     function addAbility(e) {
@@ -18,9 +19,11 @@
         <span>You have no abilities!</span>
     {/if}
     {#each actor.system.abilities as ability}
-        <ViewAbility {ability} />
+        <ViewAbility {ability} {edit} />
     {/each}
-    <button onclick={addAbility}>Add an Ability</button>
+    {#if edit}
+        <button onclick={addAbility}>Add an Ability</button>
+    {/if}
 </div>
 
 <style lang="scss">
