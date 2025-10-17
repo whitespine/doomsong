@@ -122,13 +122,15 @@
         </div>
         <div class="abilities row">
             <div class="col">
-                {#if Object.keys(actor.system.abilities).length == 0}
+                {#if edit && Object.keys(actor.system.abilities).length == 0}
                     <span>Try adding a new ability, if this npc has one</span>
                 {/if}
                 {#each actor.system.abilities as ability}
-                    <ViewAbility {ability} />
+                    <ViewAbility {ability} {edit} />
                 {/each}
-                <button onclick={addAbility}>Add an Ability</button>
+                {#if edit}
+                    <button onclick={addAbility}>Add an Ability</button>
+                {/if}
             </div>
         </div>
         {#each Object.entries(actor.system.moves) as [act, moves]}
