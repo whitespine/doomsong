@@ -5,10 +5,11 @@
         doc,
         path = "img",
         callback = null,
-        restArgs,
         fallback = "",
         height=null,
         edit = false,
+        style = "",
+        ...restArgs
     } = $props();
 
     let current = $derived(foundry.utils.getProperty(doc, path));
@@ -32,6 +33,8 @@
         });
         await fp.browse();
     }
+
+    let full_style = $derived(height ? `max-height: ${height}; ${style}` : style);
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -41,7 +44,7 @@
     alt="Icon of {doc.name}"
     onclick={edit ? editImage : null}
     class={{ "img-fluid": true, edit }}
-    style={height ? `max-height: ${height};` : ""}
+    style={full_style}
     {...restArgs}
 />
 
