@@ -27,7 +27,7 @@
     }
 </script>
 
-<div>
+<form>
     <UpdateInput {doc} path="{path}.text" name="text" />
     <div class="levels">
         <button class={{invert: level == 0}} onclick={(e) => (stop(e), setLevel(0))} aria-label="Normal">Normal</button>
@@ -35,7 +35,7 @@
         <button class={{invert: level == 2}} onclick={(e) => (stop(e), setLevel(2))} aria-label="Epitome">Epitome</button>
         <button onclick={(e) => (stop(e), remove())} aria-label="Remove">Remove</button>
     </div>
-</div>
+</form>
 
 <style lang="scss">
 
