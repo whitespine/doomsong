@@ -3,6 +3,7 @@
     import UpdateInput from "../../fields/UpdateInput.svelte";
     import Die from "../../rolls/Die.svelte";
     import { stop } from "../../../utils/handlers";
+    import { cleanup_paste, move_paste_handler } from "../../../utils/paste";
     import Portrait from "../../fields/Portrait.svelte";
     import DeleteButton from "../../fields/DeleteButton.svelte";
     import ViewAbility from "../../items/ViewAbility.svelte";
@@ -18,10 +19,11 @@
     }
 
     // Add a new blank ability
-    function addAbility() {
-        actor.createEmbeddedDocuments("Item", [
+    async function addAbility() {
+        let new_abilities = await actor.createEmbeddedDocuments("Item", [
             { type: "ability", name: "New Ability" },
         ]);
+        new_abilities[0].sheet.render({ force: true });
     }
 
     // Remove the specified move
@@ -161,6 +163,8 @@
                                 tag="textarea"
                                 doc={actor}
                                 path={`system.moves.${act}.${move_id}.text`}
+                                preprocess_value={cleanup_paste}
+                                update_callback={move_paste_handler(actor, `system.moves.${act}.${move_id}`)}
                             />
                             <!-- svelte-ignore a11y_click_events_have_key_events -->
                             <!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -216,6 +220,7 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
+                    min-height: 4em;
 
                     input {
                         width: 120px;
@@ -225,7 +230,7 @@
                     textarea {
                         margin-left: 10px;
                         flex-grow: 1;
-                        height: 2em;
+                        height: 4em;
                         resize: vertical;
                         min-height: 2em;
                     }

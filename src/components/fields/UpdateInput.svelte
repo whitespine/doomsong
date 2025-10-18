@@ -5,6 +5,7 @@
         tag = "input",
         doc,
         path,
+        preprocess_value = null,
         update_callback = null,
         ...restProps
     } = $props();
@@ -13,6 +14,7 @@
 
     let change_timeout = null;
     function commit(new_value, delay) {
+        if(preprocess_value) new_value = preprocess_value(new_value);
         value = new_value;
         if (change_timeout) {
             clearTimeout(change_timeout);

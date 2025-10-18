@@ -1,6 +1,7 @@
 <script>
     import UpdateInput from "../fields/UpdateInput.svelte";
     import { stop } from "../../utils/handlers";
+    import { cleanup_paste } from "../../utils/paste";
     import DeleteButton from "../fields/DeleteButton.svelte";
 
     let { ability } = $props();
@@ -81,6 +82,7 @@
                     name={`${ability._id}.${rank._id}.text`}
                     doc={ability}
                     path={`system.ranks.${rank._id}.text`}
+                    preprocess_value={cleanup_paste}
                     style="flex: 1"
                 />
 
