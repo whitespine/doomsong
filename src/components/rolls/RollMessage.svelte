@@ -69,7 +69,7 @@
 </script>
 
 <h2 class="doomsong">
-    <span>{result_table.label} - {message.speakerActor.name}</span>
+    <span>{result_table.label} - {message.speakerActor?.name ?? "???"}</span>
     {#if roll_data.coin_result == 0}
         <a
             class="doomcoin unflipped"
