@@ -19,9 +19,11 @@
 
     {#each ability.system.unlocked_ranks as rank}
         <div class="rank">
-            <span class="bold">
-                Level {rank.rank}:
-            </span>
+            {#if Object.keys(ability.system.ranks).length != 1}
+                <span class="bold">
+                    Level {rank.rank}:
+                </span>
+            {/if}
             <span>
                 {rank.text}
             </span>
