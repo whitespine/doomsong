@@ -8,10 +8,10 @@ export class NpcModel extends ActorModel {
             ...super.defineSchema(),
 
             // Minimum difficulty for targeting. Could be a general modifier, but helps to codify
-            min_difficulty: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
+            min_difficulty: new fields.NumberField({ integer: true, min: 0, initial: 0 }),
 
             // Vibes. Just a string, comma separated
-            vibes: new fields.StringField({ nullable: false, initial: "" }),
+            vibes: new fields.StringField({ initial: "" }),
         }
     }
 }

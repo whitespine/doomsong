@@ -3,8 +3,8 @@ import { DoomsongDataModel } from "../base.svelte";
 const fields = foundry.data.fields;
 
 const MoveField = () => new fields.SchemaField({
-    name: new fields.StringField({ nullable: false, initial: "New Move" }),
-    text: new fields.StringField({ nullable: false, initial: "Do something" }),
+    name: new fields.StringField({ initial: "New Move" }),
+    text: new fields.StringField({ initial: "Do something" }),
     // TODO: more attributes, such as check type, bonuses, etc
 });
 
@@ -15,20 +15,20 @@ export class ActorModel extends DoomsongDataModel {
     static defineSchema() {
         return {
             // Basic combat stats
-            protection: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
+            protection: new fields.NumberField({ integer: true, min: 0, initial: 0 }),
             toughness: new fields.SchemaField({
-                // min: NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
-                max: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
-                value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
+                // min: NumberField({ integer: true, min: 0, initial: 0 }), 
+                max: new fields.NumberField({ integer: true, min: 0, initial: 0 }),
+                value: new fields.NumberField({ integer: true, min: 0, initial: 0 }),
             }),
             footing: new fields.SchemaField({
-                // min: NumberField({ nullable: false, integer: true, min: 0, initial: 0 }), 
-                max: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
-                value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 0 }),
+                // min: NumberField({ integer: true, min: 0, initial: 0 }), 
+                max: new fields.NumberField({ integer: true, min: 0, initial: 0 }),
+                value: new fields.NumberField({ integer: true, min: 0, initial: 0 }),
             }),
 
             // Combat moves
-            base_action_dice: new fields.NumberField({ nullable: false, integer: true, min: 1, initial: 1 }), // How many ya got, initially?
+            base_action_dice: new fields.NumberField({ integer: true, min: 1, initial: 1 }), // How many ya got, initially?
             // Each sub-array is the moves possible at that act, a simple object we'll expand later for more convenient automation
             moves: new fields.SchemaField({
                 1: MovesList(),
@@ -42,14 +42,14 @@ export class ActorModel extends DoomsongDataModel {
             // Traits. Precede with + or ++ to make defined/super defined
             traits: new fields.TypedObjectField(
                 new fields.SchemaField({
-                    text: new fields.StringField({ nullable: false, initial: "New Trait" }),
-                    level: new fields.NumberField({ nullable: false, integer: true, initial: 0, min: 0, max: 2 })
+                    text: new fields.StringField({ initial: "New Trait" }),
+                    level: new fields.NumberField({ integer: true, initial: 0, min: 0, max: 2 })
                 }, { nullable: false }),
                 { nullable: false }
             ),
 
             // Notes. Handy to have, might not keep forever
-            notes: new fields.HTMLField({ nullable: false, initial: "Put notes here" })
+            notes: new fields.HTMLField({ initial: "Put notes here" })
         };
     }
 

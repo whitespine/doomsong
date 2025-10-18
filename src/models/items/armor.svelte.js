@@ -8,7 +8,7 @@ export class ArmorModel extends GearModel {
         return {
             ...super.defineSchema(),
             // Basic item info
-            protection: new fields.NumberField({ initial: 2, nullable: false, integer: true, min: 1 })
+            protection: new fields.NumberField({ initial: 2, integer: true, min: 1 })
         };
     }
 }

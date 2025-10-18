@@ -8,14 +8,13 @@ export class AbilityModel extends ItemModel {
         return {
             ...super.defineSchema(),
             // Basic item info
-            rank: new fields.NumberField({ nullable: false, initial: 1, integer: true, min: 1 }), // Abilities start at level 1. Just correct based on index
+            rank: new fields.NumberField({ initial: 1, integer: true, min: 1 }), // Abilities start at level 1. Just correct based on index
 
             // Keyed with random ids, basically
             ranks: new fields.TypedObjectField(new fields.SchemaField({
-                rank: new fields.NumberField({ nullable: false, initial: 1, min: 1, integer: true }),
+                rank: new fields.NumberField({ initial: 1, min: 1, integer: true }),
                 text: new fields.StringField({ nullable: false })
             }), {
-                nullable: false,
                 initial: {
                     [foundry.utils.randomID()]: {
                         rank: 1,
@@ -25,7 +24,7 @@ export class AbilityModel extends ItemModel {
             }),
 
             // Where in the book is it
-            page: new fields.StringField({ nullable: false, initial: "DS:???" }),
+            page: new fields.StringField({ initial: "DS:???" }),
         };
     }
 
