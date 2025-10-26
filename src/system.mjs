@@ -74,14 +74,6 @@ Hooks.once('simple-calendar-ready', async function () {
   }
 });
 
-// Mount our ui components
-Hooks.once('ready', async function () {
-  let ui_bottom = document.querySelector("#hotbar");
-  mount(RollerButton, {
-    target: ui_bottom
-  });
-});
-
 // HMR reload of various components
 if (import.meta.hot) {
   /*
@@ -91,3 +83,10 @@ if (import.meta.hot) {
   });
   */
 }
+Hooks.on('renderHotbar', function (_hotbar, element, _what, _meta) {
+  let ui_bottom = document.querySelector("#hotbar");
+  mount(RollerButton, {
+    target: ui_bottom
+  });
+});
+

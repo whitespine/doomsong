@@ -13,6 +13,7 @@ export function cleanup_paste(text) {
 
 
 /** Creates an UpdateInput update callback that will auto-populate the move name if 
+ * it matches formats commonly seen within data pasted from the pdf
  * 
  * @param {Document} doc The document to update moves within
  * @param {string} path The path to the move object
@@ -41,4 +42,14 @@ export function move_paste_handler(doc, path) {
             });
         }
     }
+}
+
+/** Creates an UpdateInput update callback that will auto-populate the move name if 
+ * 
+ * @param {Document} doc The document to update moves within
+ * @param {string} path The path to the move object
+ * @returns {(text: string) => Promise<void>} A callback to perform updates
+ */
+export function ability_paste_handler(doc, path) {
+   // todo
 }
