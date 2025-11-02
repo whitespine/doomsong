@@ -68,6 +68,7 @@
                 .traits {
                     display: flex;
                     flex-direction: row;
+                    flex-wrap: wrap;
                     justify-content: center;
                     padding-bottom: 10px;
 

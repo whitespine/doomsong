@@ -8,6 +8,10 @@
 <span class={[defined && "defined", epitome && "epitome"]}>{trait_body}</span>
 
 <style lang="scss">
+    span {
+        white-space: nowrap;
+    }
+
     .defined {
         text-decoration-line: underline;
     }
