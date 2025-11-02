@@ -62,7 +62,7 @@ export class DoomsongNPCSheet extends SvelteApplicationMixin(DoomsongActorSheet)
             height: "auto"
         },
         actions: {
-            toggleEdit: DoomsongNPCSheet.toggleEdit
+            toggleEdit: DoomsongNPCSheet.actionToggleEdit
         },
         window: {
             controls: [
@@ -79,7 +79,11 @@ export class DoomsongNPCSheet extends SvelteApplicationMixin(DoomsongActorSheet)
         }
     }
 
-    static toggleEdit(_evt, _target) {
+    static actionToggleEdit(_evt, _target) {
+        this.toggleEdit();
+    }
+
+    toggleEdit() {
         // Due to weird bindings, we can use `this`
         let block = this.props.block ?? true;
         block = !block;

@@ -2,8 +2,10 @@
     import TraitDisplay from "../../fields/TraitDisplay.svelte";
     import Shield from "../../combat/Shield.svelte";
     import Moves from "../../combat/Moves.svelte";
-    let { context } = $props();
+    import { stop } from "../../../utils/handlers";
+    let { app, context } = $props();
     let actor = $derived(context.actor);
+    let edit = $derived(app.isEditable);
 </script>
 
 <div class="frame-body">
@@ -18,6 +20,9 @@
                     <TraitDisplay {trait}></TraitDisplay>
                 {/each}
             </div>
+            {#if edit}
+                <button onclick={(e) => (stop(e), app.toggleEdit())}>Edit</button>
+            {/if}
         </div>
         <Shield {actor} --size="140px" />
     </div>

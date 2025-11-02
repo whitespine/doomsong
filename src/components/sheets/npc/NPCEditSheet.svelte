@@ -3,10 +3,15 @@
     import UpdateInput from "../../fields/UpdateInput.svelte";
     import Die from "../../rolls/Die.svelte";
     import { stop } from "../../../utils/handlers";
-    import { cleanup_whitespace, move_paste_handler } from "../../../utils/paste";
+    import {
+        cleanup_whitespace,
+        move_paste_handler,
+    } from "../../../utils/paste";
+    import { ImportApp }   from "../../../apps/import_app";
     import Portrait from "../../fields/Portrait.svelte";
     import DeleteButton from "../../fields/DeleteButton.svelte";
     import ViewAbility from "../../items/ViewAbility.svelte";
+
     let { app, context } = $props();
     let actor = $derived(context.document);
     let edit = $derived(app.isEditable);
@@ -32,6 +37,11 @@
             [`system.moves.${act}.-=${move_id}`]: null,
         });
     }
+
+    // Start an import flow
+    function startImport() {
+        new ImportApp(actor).render({force: true});
+    }
 </script>
 
 <div class="npc-sheet container" onsubmit={stop}>
@@ -47,6 +57,18 @@
                 callback={(img) => app.setImage(img)}
                 {edit}
             />
+            <div class="flexrow" style:max-width="175px">
+                <button onclick={(e) => (stop(e), startImport())}>
+                    Import
+                </button>
+                <button
+                    onclick={(e) => (
+                        stop(e), console.log(app), (app.props.block = true)
+                    )}
+                >
+                    Close Edit
+                </button>
+            </div>
         </div>
         <div class="col-9 container">
             {#snippet field(key, label, path)}
@@ -124,14 +146,13 @@
         </div>
         <div class="abilities row">
             <div class="col">
-                {#if edit && Object.keys(actor.system.abilities).length == 0}
-                    <span>Try adding a new ability, if this npc has one</span>
-                {/if}
                 {#each actor.system.abilities as ability}
                     <ViewAbility {ability} {edit} />
                 {/each}
                 {#if edit}
-                    <button onclick={addAbility}>Add an Ability</button>
+                    <button style:margin-left="auto" onclick={addAbility}
+                        >Add an Ability</button
+                    >
                 {/if}
             </div>
         </div>
