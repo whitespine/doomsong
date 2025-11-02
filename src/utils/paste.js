@@ -9,7 +9,7 @@
  */
 export function cleanup_whitespace(text, keep_newlines=false) {
     return text.trim().replaceAll(/\s+/g, (x) => {
-        if(x.includes("\n")) return "\n";
+        if(keep_newlines && x.includes("\n")) return "\n";
         return " ";
     });
 }
@@ -20,7 +20,7 @@ export function cleanup_whitespace(text, keep_newlines=false) {
  * @returns {{double: string | null, rest: string }}
  */
 export function get_double(text) {
-    const pattern = /\s*(\S.+\S)\s*\1\s*(\S.*)/;
+    const pattern = /\s*(\S.+\S)\s*\1\s*(\S[\s\S]*)/m;
     // Check for a leading string
     let match = text.match(pattern);
     if(!match) {

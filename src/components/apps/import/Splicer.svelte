@@ -13,7 +13,7 @@
     /** @import {SpliceResult} from "./splice" */
 
     /** @type {string}*/
-    let reformatted = $derived(cleanup_whitespace(text));
+    let reformatted = $derived(cleanup_whitespace(text, true));
 
     /** @type {string[]}*/
     let tokenized = $derived.by(() => {
@@ -90,6 +90,8 @@
                 text: buffer,
             });
         }
+
+        console.error(result);
         return result;
     }
 

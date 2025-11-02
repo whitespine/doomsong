@@ -91,7 +91,10 @@ export async function import_npc(npc, results) {
     }
 
     // Convert traits
-    update["system.traits"] = Object.fromEntries(traits.map(t => [foundry.utils.randomID(), cleanup_whitespace(t)]));
+    update["system.traits"] = {}; 
+    for(let t of traits) {
+        update["system.traits"][foundry.utils.randomID()] = cleanup_whitespace(t).replace("", "");
+    }
 
     // Convert moves
     for(let [act, moves] of Object.entries(moves_by_act)) {
@@ -99,7 +102,7 @@ export async function import_npc(npc, results) {
             let gd = get_double(move);
             update[`system.moves.${act}.${foundry.utils.randomID()}`] = {
                 name: gd.double?.replace(".", "") ?? "New Move",
-                text: gd.rest
+                text: cleanup_whitespace(gd.rest)
             };
         }
     }
