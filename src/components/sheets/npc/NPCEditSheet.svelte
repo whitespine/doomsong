@@ -3,7 +3,7 @@
     import UpdateInput from "../../fields/UpdateInput.svelte";
     import Die from "../../rolls/Die.svelte";
     import { stop } from "../../../utils/handlers";
-    import { cleanup_paste, move_paste_handler } from "../../../utils/paste";
+    import { cleanup_whitespace, move_paste_handler } from "../../../utils/paste";
     import Portrait from "../../fields/Portrait.svelte";
     import DeleteButton from "../../fields/DeleteButton.svelte";
     import ViewAbility from "../../items/ViewAbility.svelte";
@@ -147,10 +147,10 @@
                 </div>
                 <div class="col-11 move-options">
                     {#if Object.keys(moves).length == 0}
-                        <span
-                            >Click the die to add a move. Otherwise, this
-                            creature will be unable to do much in this act.</span
-                        >
+                        <span>
+                            Click the die to add a move. Otherwise, this
+                            creature will be unable to do much in this act.
+                        </span>
                     {/if}
                     {#each Object.entries(moves) as [move_id, move]}
                         <div class="move">
@@ -163,8 +163,11 @@
                                 tag="textarea"
                                 doc={actor}
                                 path={`system.moves.${act}.${move_id}.text`}
-                                preprocess_value={cleanup_paste}
-                                update_callback={move_paste_handler(actor, `system.moves.${act}.${move_id}`)}
+                                preprocess_value={cleanup_whitespace}
+                                update_callback={move_paste_handler(
+                                    actor,
+                                    `system.moves.${act}.${move_id}`,
+                                )}
                             />
                             <!-- svelte-ignore a11y_click_events_have_key_events -->
                             <!-- svelte-ignore a11y_no_static_element_interactions -->

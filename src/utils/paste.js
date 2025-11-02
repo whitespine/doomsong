@@ -5,12 +5,51 @@
 /** Aggressively prune whitespace and newlines in a string
  * 
  * @param {string} text text
+ * @param {string} keep_newlines Whether to condence whitespace including a newline to just a newline
  * @returns {string} The trimmed string
  */
-export function cleanup_paste(text) {
-    return text.trim().replaceAll(/\s+/g, " ");
+export function cleanup_whitespace(text, keep_newlines=false) {
+    return text.trim().replaceAll(/\s+/g, (x) => {
+        if(x.includes("\n")) return "\n";
+        return " ";
+    });
 }
 
+/** Removes doubled strings of the format "Hello Foo bar. Foo bar." -> "Hello Foo bar." in a string
+ * 
+ * @param {string} text text
+ * @returns {string} The deduplicated string
+ */
+export function cleanup_doubles(text) {
+    // const regex = \b(\w+)\s+\1\b
+    // const regex = /\b(\w+)\s+\1\b/g;
+    const regex = /( .*?.)\1/g;
+    return text.replaceAll(regex, (_, single) => single);
+}
+
+
+/**
+ * 
+ * @param {string} text 
+ * @returns {{double: string | null, rest: string }}
+ */
+export function get_double(text) {
+    // Check for a leading string
+    let lead = text.match(/.*?\./);
+    let double_lead = `${lead[0]} ${lead[0]}`;
+    if(lead && text.startsWith(double_lead)) {
+        // Remove both, set name with it
+        return {
+            double: lead,
+            rest: text.replaceAll(double_lead, "")
+        };
+    } else {
+        return {
+            double: null,
+            rest: text
+        };
+    }
+}
 
 /** Creates an UpdateInput update callback that will auto-populate the move name if 
  * it matches formats commonly seen within data pasted from the pdf

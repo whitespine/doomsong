@@ -24,8 +24,10 @@
         class={{
             defining: level >= 1,
             epitome: level >= 2,
-        }}>{text}</span
+        }}
     >
+        {text}
+    </span>
 
     {#if edit}
         <EditButton callback={openEdit} />
