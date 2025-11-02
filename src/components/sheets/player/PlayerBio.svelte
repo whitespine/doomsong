@@ -75,9 +75,11 @@
     .traits {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
 
         .add {
             margin-left: auto;
+            height: 38px;
         }
     }
 </style>
