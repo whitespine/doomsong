@@ -74,7 +74,7 @@ export async function import_npc(npc, results) {
     let update = {};
     let traits = [];
     let abilities = [];
-    let moves = {};
+    let moves_by_act = {};
     for(let item of results) {
         if(!item.splice) continue;
         if(item.splice.key == "name") {
@@ -84,7 +84,9 @@ export async function import_npc(npc, results) {
         } else if (item.splice.key == "ability") {
             abilities.push(item.text);
         } else if (item.splice.key.startsWith("move_")) {
-
+            let act = Number.parseInt(item.splice.key[5]);
+            moves_by_act[act] ??= [];
+            moves_by_act[act].push(item.text);
         }
     }
 
@@ -92,7 +94,39 @@ export async function import_npc(npc, results) {
     update["system.traits"] = Object.fromEntries(traits.map(t => [foundry.utils.randomID(), cleanup_whitespace(t)]));
 
     // Convert moves
-    for(let)
+    for(let [act, moves] of Object.entries(moves_by_act)) {
+        for(let move of moves) {
+            let gd = get_double(move);
+            update[`system.moves.${act}.${foundry.utils.randomID()}`] = {
+                name: gd.double?.replace(".", "") ?? "New Move",
+                text: gd.rest
+            };
+        }
+    }
+
+    // Apply base update
+    await npc.update(update);
 
     // Convert abilities (to items)
+    let new_items = abilities.map(a => {
+        let gd = get_double(a);
+        let name = gd.double ?? "New ability";
+        let text = gd.rest
+        return {
+            name,
+            type: "ability",
+            system: {
+                rank: 1,
+                ranks: {
+                    [foundry.utils.randomID()]: {
+                        rank: 1,
+                        text
+                    }
+                }
+            }
+        }
+    });
+
+    // Create items
+    await npc.createEmbeddedDocuments("Item", new_items);
 }

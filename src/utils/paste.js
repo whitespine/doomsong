@@ -1,7 +1,6 @@
 
 
 
-// 
 /** Aggressively prune whitespace and newlines in a string
  * 
  * @param {string} text text
@@ -15,38 +14,24 @@ export function cleanup_whitespace(text, keep_newlines=false) {
     });
 }
 
-/** Removes doubled strings of the format "Hello Foo bar. Foo bar." -> "Hello Foo bar." in a string
- * 
- * @param {string} text text
- * @returns {string} The deduplicated string
- */
-export function cleanup_doubles(text) {
-    // const regex = \b(\w+)\s+\1\b
-    // const regex = /\b(\w+)\s+\1\b/g;
-    const regex = /( .*?.)\1/g;
-    return text.replaceAll(regex, (_, single) => single);
-}
-
-
-/**
+/** 
  * 
  * @param {string} text 
  * @returns {{double: string | null, rest: string }}
  */
 export function get_double(text) {
+    const pattern = /\s*(\S.+\S)\s*\1\s*(\S.*)/;
     // Check for a leading string
-    let lead = text.match(/.*?\./);
-    let double_lead = `${lead[0]} ${lead[0]}`;
-    if(lead && text.startsWith(double_lead)) {
-        // Remove both, set name with it
-        return {
-            double: lead,
-            rest: text.replaceAll(double_lead, "")
-        };
-    } else {
+    let match = text.match(pattern);
+    if(!match) {
         return {
             double: null,
             rest: text
+        }
+    } else {
+        let [_, double, rest] = match;
+        return {
+            double, rest
         };
     }
 }

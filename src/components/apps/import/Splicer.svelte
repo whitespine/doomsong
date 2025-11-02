@@ -1,7 +1,5 @@
 <script>
-    import { cleanup_whitespace, cleanup_doubles } from "../../../utils/paste";
-    import { stop } from "../../../utils/handlers";
-    import { NULL_MARKER } from "./splice";
+    import { cleanup_whitespace } from "../../../utils/paste";
 
     /**
      * @type {({
@@ -82,7 +80,7 @@
                 buffer = "";
                 last_splice = splice;
             }
-            buffer += token;
+            buffer += " " + token;
         }
 
         // Wrap up

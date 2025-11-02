@@ -1,22 +1,31 @@
 <script>
     import { stop } from "../../../utils/handlers";
+    import { import_npc } from "./splice";
     import Splicer from "./Splicer.svelte";
 
     /**
      * @type {({
      *   type: string,
      *   text: string,
+     *   target: Document,
      *   marker_options: SpliceMarker[]
      * })}
      */
-    let { text = "", type, marker_options } = $props();
+    let { app, text = "", target, type, marker_options } = $props();
 
     /** @type {Splicer} */
     let splicer;
 
-
-    function commit() {
-        console.error(splicer.results());
+    async function commit() {
+        let results = splicer.results();
+        if(target instanceof Actor && target.type == "npc") {
+            await import_npc(target, results);
+        } else {
+            ui.notifications.warn("Unsupported import type");
+            return;
+        }
+        ui.notifications.info(`Import to ${target.name} complete`);
+        app.close();
     }
 </script>
 

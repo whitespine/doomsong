@@ -26,6 +26,7 @@ export class ImportApp extends SvelteApplicationMixin(foundry.applications.api.A
         options.svelte ??= {};
         options.svelte.props = {
             type,
+            target,
             marker_options: markers
         };
         

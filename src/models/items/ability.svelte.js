@@ -15,12 +15,12 @@ export class AbilityModel extends ItemModel {
                 rank: new fields.NumberField({ initial: 1, min: 1, integer: true }),
                 text: new fields.StringField({ nullable: false })
             }), {
-                initial: {
+                initial: () => ({
                     [foundry.utils.randomID()]: {
                         rank: 1,
                         text: "Level 1 Text"
                     }
-                }
+                })
             }),
 
             // Where in the book is it
