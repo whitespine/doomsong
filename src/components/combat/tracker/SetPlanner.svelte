@@ -70,6 +70,8 @@
             // background-color: black;
             grid-area: t;
             cursor: pointer;
+            background-color: grey;
+            border: none
         }
 
         .dice-box {

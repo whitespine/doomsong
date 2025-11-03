@@ -27,6 +27,7 @@
         .thumbnail {
             width: 64px;
             height: 64px;
+            background-color: grey;
         }
 
         span {

@@ -6,7 +6,6 @@
 
     // A clunky bit of state, stands for current combat. Needed to get past svelte "optimization" until theres a proper invalidate rune
     let { context, highlighted } = $props();
-    $inspect(highlighted);
     let combat = $derived(context.combat);
 </script>
 
@@ -48,13 +47,12 @@
         flex-direction: column;
         background-color: white;
         color: black;
-        height: 100%;
-        overflow: hidden auto;
+        // height: 100%;
+        // overflow: hidden auto;
         padding: 5px;
     }
 
     .phase {
-        height: 1px; // Trust me bro
         width: 100%;
     }
 
