@@ -97,7 +97,7 @@ export class DoomsongCombat extends Combat {
             }[this.system.phase] || "begin";
 
             // Reset act to 6 if we're entering acts (or the first empty)
-            if (next == "acts") {
+            if (prev == "acts") {
                 // Before skipping any acts, we first randomize unset npc actions
                 if (skipEmptyActs) {
                     update["system.act"] = this.#actsWithCombatants.reverse()[0] ?? 1;
