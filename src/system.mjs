@@ -16,6 +16,7 @@ import { setupSheets } from './sheets/config';
 import { AttackFlowApp } from './apps/dodge_prompt.svelte';
 import { injectAllCoreDocumentsReactivity, injectEmbeddedCollectionsReactivity } from './utils/reactor.svelte';
 import { initSockets } from './utils/socket.svelte';
+import { initDoomRenderHook } from './components/doomcoin/doomcoin_tracker';
 
 Hooks.once('init', async function () {
   console.log("Initializing DOOMSONG RPG")
@@ -25,6 +26,7 @@ Hooks.once('init', async function () {
   setupModels();
   setupSettings();
   setupSheets();
+  initDoomRenderHook();
   CONFIG.ui.combat = DoomsongCombatTracker;
   // CONFIG.debug.hooks = true;
   document.documentElement.style.setProperty("--font-primary", `"IM Fell Double Pica", serif `);

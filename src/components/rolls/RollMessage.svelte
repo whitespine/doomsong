@@ -3,6 +3,7 @@
     import RollingDie from "./RollingDie.svelte";
     import crest from "$assets/icons/crest.png";
     import skull from "$assets/icons/skull.png";
+    import { setDoomedUser } from "../doomcoin/doomcoin_tracker";
     import {
         FALLBACK_RESULT_TABLE,
         resultTables,
@@ -61,10 +62,11 @@
         // Moves the result up or down by one
         let doomcoin = await new Roll("1d2").roll();
         let flip_value = doomcoin.total == 2 ? 1 : -1;
-        return game.messages.get(message.id).update({
+        await game.messages.get(message.id).update({
             [`flags.${game.system.id}.coin_result`]: flip_value,
             [`flags.${game.system.id}.coin_suspense`]: suspense(doomcoin),
         });
+        setDoomedUser(game.user.isGM ? null : game.user);
     }
 </script>
 
