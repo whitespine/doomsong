@@ -18,6 +18,12 @@
     "systems": [],
     "requires": [
 
+    ], 
+    "recommends": [
+      {
+        "id": "doomsong-dice",
+        "type": "module"
+      }
     ]
   },
   "esmodules": [
