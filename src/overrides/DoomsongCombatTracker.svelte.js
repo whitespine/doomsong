@@ -54,7 +54,7 @@ export class DoomsongCombatTracker extends SvelteApplicationMixin(foundry.applic
     }
 
     hoverCombatant(combatant, hovered) {
-        this.props.highlighted = hovered ? combatant : null;
+        this.props.highlighted = hovered ? combatant.tokenId : null;
     }
 
     /** @inheritDoc */

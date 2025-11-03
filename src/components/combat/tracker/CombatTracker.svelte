@@ -5,7 +5,8 @@
     import BeginPhase from "./BeginPhase.svelte";
 
     // A clunky bit of state, stands for current combat. Needed to get past svelte "optimization" until theres a proper invalidate rune
-    let { context } = $props();
+    let { context, highlighted } = $props();
+    $inspect(highlighted);
     let combat = $derived(context.combat);
 </script>
 
@@ -22,11 +23,11 @@
         <div class="content">
             <div class="phase">
                 {#if combat.system.phase == "begin"}
-                    <BeginPhase {combat} />
+                    <BeginPhase {combat} {highlighted} />
                 {:else if combat.system.phase == "set"}
-                    <SetPhase {combat} />
+                    <SetPhase {combat} {highlighted} />
                 {:else if combat.system.phase == "acts"}
-                    <ActsPhase {combat} />
+                    <ActsPhase {combat} {highlighted} />
                 {:else if combat.system.phase == "retreat"}
                     {@html game.i18n.localize("DS.combat.phase_detail.retreat")}
                 {:else if combat.system.phase == "end"}

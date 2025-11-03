@@ -1,15 +1,17 @@
 <script>
     import Die from "../../rolls/Die.svelte";
     import RollingDie from "../../rolls/RollingDie.svelte";
-    let { combatant } = $props();
+    let { combatant, highlighted } = $props();
 
     let owner = $derived(combatant.owner);
     let visible_dice = $derived(combatant.visible_dice);
-    let set_cursor = $derived((owner && combatant.canSetDie()) ? "pointer" : "default");
+    let set_cursor = $derived(
+        owner && combatant.canSetDie() ? "pointer" : "default",
+    );
     let clear_cursor = $derived(owner ? "pointer" : "default");
 </script>
 
-<div class="planner">
+<div class={{ planner: true, hovered: combatant.token._id == highlighted }}>
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
     <img
@@ -19,14 +21,14 @@
         onclick={() => combatant.ping()}
         oncontextmenu={() => combatant.delete()}
     />
-    <h2>{combatant.name}</h2>
+    <h2 class="clip-text">{combatant.name}</h2>
     <div class="dice-box">
         {#each [1, 2, 3, 4, 5, 6] as act}
             <Die
                 style={`cursor: ${set_cursor}`}
                 value={act}
                 onclick={() => combatant.setDice(act)}
-                data-tooltip={ combatant.actTooltip(act) }
+                data-tooltip={combatant.actTooltip(act)}
                 data-tooltip-class="doomsong actions"
             />
         {/each}
@@ -38,8 +40,9 @@
                     value={visible_dice[set_index]}
                     style={`cursor: ${clear_cursor}`}
                     onclick={() => combatant.unsetDie(visible_dice[set_index])}
-                    oncontextmenu={() => combatant.unsetDie(visible_dice[set_index])}
-                    data-tooltip={ combatant.actTooltip(visible_dice[set_index]) }
+                    oncontextmenu={() =>
+                        combatant.unsetDie(visible_dice[set_index])}
+                    data-tooltip={combatant.actTooltip(visible_dice[set_index])}
                     data-tooltip-class="doomsong actions"
                 />
             {:else}
@@ -90,6 +93,11 @@
             align-items: center;
             grid-area: p;
             border-left: 1px solid black;
+        }
+
+        transition: background-color 100ms linear;
+        &.hovered {
+            background-color: grey;
         }
     }
 </style>

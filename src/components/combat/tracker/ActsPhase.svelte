@@ -1,5 +1,5 @@
 <script>
-    let { combat } = $props();
+    let { combat, highlighted } = $props();
     let act = $derived(combat.system.act);
 
     // An array containing [{combatant: combatant, actions: actions}] they can do in this act}
@@ -15,18 +15,30 @@
     {#each combatant_actions as c}
         {#if canSee(c.combatant)}
             <!-- svelte-ignore a11y_click_events_have_key_events -->
-            <div class="combatant" onclick={() => c.combatant.ping()} role="presentation" >
-                <div class="thumbnail">
+            <div
+                class={{
+                    combatant: true,
+                    hovered: c.combatant.token._id == highlighted,
+                }}
+                onclick={() => c.combatant.ping()}
+                role="presentation"
+            >
+                <div class="header">
                     <img
                         src={c.combatant.thumbnail}
                         alt={c.combatant.name}
                     />
+                    <div>
+                        <h2 class="clip-text">{c.combatant.name}</h2>
+                        <h4>
+                            Move a short distance and perform {c.actions} action{c.actions >
+                            1
+                                ? "s"
+                                : ""}
+                        </h4>
+                    </div>
                 </div>
-                <div class="header">
-                    <h2 class="clip-text">{c.combatant.name}</h2>
-                    <h4>Move a short distance and perform {c.actions} action{c.actions > 1 ? "s" : ""}</h4>
-                </div>
-                <ul class="actions">
+                <ul>
                     {#if !canSeeMoves(c.combatant)}
                         <li>This combatant's capabilities are a mystery</li>
                     {:else if !c.combatant.hasMovesDefined}
@@ -52,34 +64,35 @@
     }
 
     .combatant {
-        display: grid;
-        grid-template:
-            "portrait header" 76px
-            "actions actions" 1fr / 76px 1fr;
-
-        h2 {
-            margin-bottom: 3px;
-            border-bottom: none;
-        }
-
-        .thumbnail {
-            img {
-                max-width: 76px;
-                max-height: 74px;
-            }
-            grid-area: portrait;
-            border-bottom: 1px solid black;
-            border-top: 1px solid black;
-        }
+        display: flex;
+        flex-direction: column;
 
         .header {
-            grid-area: header;
+            display: flex;
             border-bottom: 1px solid black;
             border-top: 1px solid black;
+            width: 100%;
+            --portrait: 76px;
+
+            div {
+                max-width: calc(100% - 76px);
+            }
+
+            h2 {
+                margin-bottom: 3px;
+            }
+
+            img {
+                min-width: var(--portrait);
+                max-width: var(--portrait);
+                max-height: var(--portrait);
+                background-color: grey;
+            }
         }
 
-        .actions {
-            grid-area: actions;
+        transition: background-color 100ms linear;
+        &.hovered {
+            background-color: grey;
         }
     }
 </style>

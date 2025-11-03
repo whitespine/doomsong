@@ -1,5 +1,5 @@
 <script>
-    let { combat } = $props();
+    let { combat, highlighted } = $props();
 </script>
 
 <div class="flexcol">
@@ -8,7 +8,7 @@
         <!-- svelte-ignore a11y_click_events_have_key_events -->
         <!-- svelte-ignore a11y_no_static_element_interactions -->
         <div
-            class="combatant"
+            class={{combatant: true, hovered: highlighted == combatant.token._id}}
             onclick={() => combatant.ping()}
             oncontextmenu={() => combatant.delete()}
         >
@@ -32,6 +32,11 @@
         span {
             color: black;
             font-size: x-large;
+        }
+
+        transition: background-color 100ms linear;
+        &.hovered {
+            background-color: grey;
         }
     }
 </style>

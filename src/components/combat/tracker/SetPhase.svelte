@@ -1,11 +1,11 @@
 <script>
     import SetPlanner from "./SetPlanner.svelte";
-    let { combat } = $props();
+    let { combat, highlighted } = $props();
 </script>
 
 
 <div class="flexcol">
     {#each combat.combatants.svelte.values() as combatant}
-        <SetPlanner {combat} {combatant}> </SetPlanner>
+        <SetPlanner {combat} {combatant} {highlighted}> </SetPlanner>
     {/each}
 </div>
