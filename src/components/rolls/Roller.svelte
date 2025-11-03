@@ -1,8 +1,15 @@
 <script>
     import { targetedTokens } from "../../utils/target.svelte";
-    import { currentAttackDifficulty, FALLBACK_RESULT_TABLE, formulaFor, resultTables, rollCheck } from "../../utils/roll.svelte";
+    import {
+        currentAttackDifficulty,
+        FALLBACK_RESULT_TABLE,
+        formulaFor,
+        resultTables,
+        rollCheck,
+    } from "../../utils/roll.svelte";
     import { initiateAttack } from "../../apps/dodge_prompt.svelte";
     import Incrementer from "../fields/Incrementer.svelte";
+    import {slide, fade} from "svelte/transition";
 
     /** @import {RollerApp} from "../../apps/roll_app.svelte" */
 
@@ -24,18 +31,23 @@
 
     // Our default choices
     function defaultChoices() {
-        return foundry.utils.mergeObject({
-            Traits: 0,
-            Gear: 0,
-            Conditions: 0,
-            Allies: 0,
-            Extra: 0,
-        }, app.options.roll?.preset_choices ?? {});
+        return foundry.utils.mergeObject(
+            {
+                Traits: 0,
+                Gear: 0,
+                Conditions: 0,
+                Allies: 0,
+                Extra: 0,
+            },
+            app.options.roll?.preset_choices ?? {},
+        );
     }
 
     // Our currently selected options
     let roll_type = $state(app.options.roll?.roll_type ?? "standard"); // Intended to be mutated
-    let result_table = $derived(resultTables()[roll_type] ?? FALLBACK_RESULT_TABLE);
+    let result_table = $derived(
+        resultTables()[roll_type] ?? FALLBACK_RESULT_TABLE,
+    );
     let choices = $state(defaultChoices());
     let difficulty = $derived.by(() => {
         if (roll_type.includes("attack")) {
@@ -43,6 +55,7 @@
         }
         return app.options.roll?.difficulty ?? result_table.defaultDifficulty;
     });
+    let attack = $derived(roll_type.includes("attack"));
 
     // Reset the above two to their default values
     function reset() {
@@ -59,24 +72,21 @@
     async function roll(mode) {
         let total_bonuses = Object.values(choices).reduce((x, y) => x + y, 0);
         app._callback_on_close = false;
-        if (
-            roll_type.includes("attack") &&
-            targetedTokens().length != 0
-        ) {
+        if (roll_type.includes("attack") && targetedTokens().length != 0) {
             let flow = initiateAttack({
-                targets: targetedTokens().map(t => t.document),
+                targets: targetedTokens().map((t) => t.document),
                 attack: {
                     user: game.user.id,
                     attacker: app.actor.uuid,
                     type: roll_type,
                     formula: formulaFor(mode, total_bonuses),
-                }
+                },
             });
-            if(app.callback) app.callback(flow);
+            if (app.callback) app.callback(flow);
         } else {
             let formula = formulaFor(mode, total_bonuses);
-            rollCheck({  roll_type, difficulty, formula }).then(result => {
-                if(app.callback) app.callback(result.message)
+            rollCheck({ roll_type, difficulty, formula }).then((result) => {
+                if (app.callback) app.callback(result.message);
             });
         }
         app.close();
@@ -91,7 +101,13 @@
             {/each}
         </select>
         <span class="elevated difficulty">Difficulty:</span>
-        <Incrementer type="number" name="difficulty" min="0" bind:value={difficulty} width="140px" />
+        <Incrementer
+            type="number"
+            name="difficulty"
+            min="0"
+            bind:value={difficulty}
+            width="140px"
+        />
     </div>
     <div class="roll-options">
         {#each ["Traits", "Gear", "Conditions", "Allies"] as category}
@@ -114,7 +130,10 @@
                             <button
                                 aria-label="Increase extra bonus"
                                 onclick={() =>
-                                    setCategoryBonus("Extra", choices.Extra + 1)}
+                                    setCategoryBonus(
+                                        "Extra",
+                                        choices.Extra + 1,
+                                    )}
                             >
                                 <i class="fas fa-caret-up"></i>
                             </button>
@@ -132,7 +151,10 @@
                             <button
                                 aria-label="Decrease extra bonus"
                                 onclick={() =>
-                                    setCategoryBonus("Extra", choices.Extra - 1)}
+                                    setCategoryBonus(
+                                        "Extra",
+                                        choices.Extra - 1,
+                                    )}
                             >
                                 <i class="fas fa-caret-down"></i>
                             </button>
@@ -142,14 +164,25 @@
             {/each}
         {/each}
     </div>
+    {#if attack}
+        <div class="targets" transition:slide>
+            <span style:margin-right="8px">Targets: </span>
+            {#if targetedTokens().length == 0}
+                <span> Target tokens with T to attack them! </span>
+            {/if}
+            {#each targetedTokens() as tt}
+                <img transition:fade class="target" src={tt.document.actor.img}/>
+            {/each}
+        </div>
+    {/if}
     <div class="roll-buttons">
-        <button onclick={() => roll("hasty")}
-            >{roll_type.includes("attack") ? "Light" : "Hasty"}</button
-        >
+        <button onclick={() => roll("hasty")}>
+            {attack ? "Light" : "Hasty"}
+        </button>
         <button onclick={() => roll("standard")}>Standard</button>
-        <button onclick={() => roll("focused")}
-            >{roll_type.includes("attack") ? "Heavy" : "Focused"}</button
-        >
+        <button onclick={() => roll("focused")}>
+            {attack ? "Heavy" : "Focused"}
+        </button>
     </div>
 </div>
 
@@ -238,6 +271,26 @@
                 color: white;
                 background-color: black;
             }
+        }
+    }
+
+    .targets {
+        --portrait-size: 64px;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        min-height: var(--portrait-size);
+        margin-top: 4px;
+        border-top: 1px solid black;
+
+        img {
+            width: var(--portrait-size);
+            height: var(--portrait-size);
+            margin-left: 8px;
+            margin-right: 8px;
+            background-color: grey;
+            border: none;
         }
     }
 
