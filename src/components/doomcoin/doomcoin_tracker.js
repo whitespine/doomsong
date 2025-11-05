@@ -11,7 +11,7 @@ export function initDoomRenderHook() {
                 let doomed_user_li = element.querySelector(`[data-user-id=${user._id}]`);
                 let doomcoin_elt = document.createElement("img");
                 doomcoin_elt.src = skull;
-                doomcoin_elt.style = "max-width: 32px; max-height: 32px";
+                doomcoin_elt.style = "max-width: 32px; max-height: 32px; background-color: white; border-radius: 16px";
                 doomed_user_li.appendChild(doomcoin_elt);
             }
         }
