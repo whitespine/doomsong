@@ -132,6 +132,10 @@ jobs:
           tag: ${{ github.event.release.tag_name }}
           body: ${{ github.event.release.body }}
 
+      - name: Wait for release files to propagate
+        run: |
+          sleep 30
+
       - name: Publish Module to FoundryVTT Website
         if: ${{ !github.event.release.prerelease }}
         id: publish-to-foundry-website
