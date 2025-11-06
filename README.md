@@ -1,68 +1,76 @@
-![](https://img.shields.io/badge/Foundry-v10-informational)
-<!--- Downloads @ Latest Badge -->
-<!--- replace <user>/<repo> with your username/repository -->
-<!--- ![Latest Release Download Count](https://img.shields.io/github/downloads/<user>/<repo>/latest/system.zip) -->
+# Doomsong RPG for FoundryVTT
 
-<!--- Forge Bazaar Install % Badge -->
-<!--- replace <your-system-name> with the `name` in your manifest -->
-<!--- ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2F<your-system-name>&colorB=4aa94a) -->
+An unofficial system implementation for the [Doomsong RPG](https://caesar.ink/viewproduct/5/doomsong-corebook), by Jack Cæsar / Caesar Ink.
 
+This system is compatible with v13 only, as unfortunately v12's ui code was so painful I just did not want to deal with it.
 
-# How to use this Template to create a versioned Release
+## Recommended Modules
 
-1. Open your repository's releases page.
+- Dice so Nice, for which there is a doomsong specific dice theme which can be found [here](https://foundryvtt.com/packages/doomsong-dice). Thank you snowkeep!
+- Simple Calendar, for which I have implemented the first half of the doomsong expanded calendar! 
+    - Once Foundry's calendar system is finalized we can hopefully have a more generic compatibility!
+      Stay tuned.
 
-![Where to click to open repository releases.](https://user-images.githubusercontent.com/7644614/93409301-9fd25080-f864-11ea-9e0c-bdd09e4418e4.png)
+## Attributions and Acknowledgements
 
-2. Click "Draft a new release"
+This project would not be possible without the Cæsar Ink team themselves, 
+who not only encouraged this fan work, but have been very permissive in what can be included 
+and have even gone so far as to provide various assets so I didn't have to rip everything from the pdf myself.
 
-![Draft a new release button.](https://user-images.githubusercontent.com/7644614/93409364-c1333c80-f864-11ea-89f1-abfcb18a8d9f.png)
+Furthermore, I would like to thank
+- The [FoundryVTT module Template](https://github.com/League-of-Foundry-Developers/FoundryVTT-Module-Template), 
+  which has saved me time and time again from the ordeal of remembering how to make a foundry module.
+- snowkeep, as previously mentioned, has made a lovely dice so nice module
+  which really makes the doomcoin feel _right_.
+- Artaey, who was instrumental in the early stages of making the system look much closer to the books feel.
+- The lovely folks on the Foundy discord who answer my asinine development questions.
 
-3. Fill out the release version as the tag name.
+## Installing
 
-If you want to add details at this stage you can, or you can always come back later and edit them.
+The package will (soon) be available directly via the foundry vtt module installer, under the id `doomsong`.
 
-![Release Creation Form](https://user-images.githubusercontent.com/7644614/93409543-225b1000-f865-11ea-9a19-f1906a724421.png)
+Alternatively, it can be installed via the manifest url:
 
-4. Hit submit.
+```
+https://github.com/whitespine/doomsong/releases/latest/download/system.json
+```
 
-5. Wait a few minutes.
+## Discussion and FAQ
 
-A Github Action will run to populate the `system.json` and `system.zip` with the correct urls that you can then use to distribute this release. You can check on its status in the "Actions" tab.
-
-![Actions Tab](https://user-images.githubusercontent.com/7644614/93409820-c1800780-f865-11ea-8c6b-c3792e35e0c8.png)
-
-6. Grab the system.json url from the release's details page.
-
-![image](https://user-images.githubusercontent.com/7644614/93409960-10c63800-f866-11ea-83f6-270cc5d10b71.png)
-
-This `system.json` will only ever point at this release's `system.zip`, making it useful for sharing a specific version for compatibility purposes.
-
-7. You can use the url `https://github.com/<user>/<repo>/releases/latest/download/system.json` to refer to the manifest.
-
-This is the url you want to use to install the system typically, as it will get updated automatically.
-
-# How to List Your Releases on Package Admin
-
-To request a package listing for your first release, go to the [Package Submission Form](https://foundryvtt.com/packages/submit) (accessible via a link at the bottom of the "[Systems and Modules](https://foundryvtt.com/packages/)" page on the Foundry website).
-
-Fill in the form. "Package Name" must match the name in the system manifest.  Package Title will be the display name for the package.  Package URL should be your repo URL.
-![image](https://user-images.githubusercontent.com/36359784/120664263-b49e5500-c482-11eb-9126-af7006389903.png)
+There is a #doomsong-foundry channel in the official Cæsar Ink discord. 
+Please ask any questions there! 
+I will eventually populate this with more information
 
 
-One of the Foundry staff will typically get back to you with an approval or any further questions within a few days, and give you access to the package admin pages.
+## Contributing
 
-Once you have access to the [system admin page](https://foundryvtt.com/admin/packages/package/), you can release a new version by going into the page for your system, scrolling to the bottom, and filling in a new Package Version.
+The system is still a work in progress, and there are undoubtedly dozens of ways of ways it could be improved!
 
-When listing a new version, Version should be the version number you set above, and the Manifest URL should be the manifest __for that specific version__ (do not use /latest/ here).
-![image](https://user-images.githubusercontent.com/36359784/120664346-c4b63480-c482-11eb-9d8b-731b50d70939.png)
+I welcome merge requests, as well as bug reports via Github Issues or messages within the #. 
+Given the scope of this project there is not yet any formal requirements or formats.
 
-> ### :warning: Important :warning:
-> 
-> It is very important that you use the specific release manifest url, and not the `/latest` url here. For more details about why this is important and how Foundry Installs/Updates packages, read [this wiki article](https://foundryvtt.wiki/en/development/guides/releases-and-history).
+### Development
 
-Clicking "Save" in the bottom right will save the new version, which means that anyone installing your system from within Foundry will get that version, and a post will be generated in the #release-announcements channel on the official Foundry VTT Discord.
+The project can be built and run locally via the following steps.
+1. To link the developer build directory to the 
 
+   `ln -s $(pwd)/dist /path/to/vtt/data/Data/systems/doomsong`
+2. Perform an initial `npm ci` and `npm run build` to populate the dist directory.
+   This will also need to be run to populate any asset files stored in the public directory,
+   if you should ever change those.
+3. Then, to run the vite development server, edit `vite.config.js` to match whatever port you 
+   are running foundry on on your local machine. 
+   While running, all code changes should be hot (or at least lukewarm) reloaded in the vite proxy server.
+   
 
+### Suggested contributions
+!!! HIGH PRIORITY: !!!:
+  - The remaining roll types presented in the core book
+  - A guild sheet
+  - More robust weapon tagging
 
-## Changelog
+!!! Appreciated but no rush: !!!
+- [ ] Compendiums! NPCs and Abilities most welcome, though for now stick to the core book
+- [ ] CSS Styling improvements.
+- [ ] Localizations
+- [ ] Fanmade rollable tables, though these should maybe be their own modules
