@@ -28,9 +28,7 @@
         "categories": [
             "Prayer"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "The Vernal Equinox",
@@ -43,9 +41,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Day of Wagers",
@@ -58,9 +54,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Mother's Moon [2]",
@@ -73,9 +67,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Giving up the Bell",
@@ -88,9 +80,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Mother's Moon [3]",
@@ -103,9 +93,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Bautenmoot",
@@ -210,9 +198,7 @@
         "categories": [
             "Prayer"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "The March",
@@ -225,9 +211,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "The Grutching",
@@ -241,9 +225,7 @@
             "Holiday",
             "Occult"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Day of Murmurs",
@@ -388,9 +370,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Burning Moon",
@@ -403,9 +383,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Artem",
@@ -430,9 +408,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Saint Chrysotaph's Day",
@@ -445,9 +421,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Burning Moon",
@@ -460,9 +434,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "First Saint's Day",
@@ -475,9 +447,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Burning Moon",
@@ -490,9 +460,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Astrologer's Vigil",
@@ -518,9 +486,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "The Sign of Oblivion",
@@ -552,9 +518,7 @@
             "Holiday",
             "Prayer"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Hot Obol Day",
@@ -567,9 +531,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Blackest Night",
@@ -582,9 +544,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Blind Man's Bluff",
@@ -597,9 +557,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Blackest Night",
@@ -612,9 +570,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Tongueless Truths",
@@ -639,9 +595,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "The Fishmonger's Hook",
@@ -654,9 +608,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Blackest Night",
@@ -669,9 +621,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Un-Knowing",
@@ -685,9 +635,7 @@
             "Astrological",
             "Occult"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Blackest Night",
@@ -700,9 +648,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Ecclesiarch's Official Birthday",
@@ -733,9 +679,7 @@
             "Prayer",
             "Ecclesiarch"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "The Summer's Solstice",
@@ -748,9 +692,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Triumph",
@@ -763,9 +705,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "The Stars Return",
@@ -778,9 +718,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Deliverance",
@@ -793,9 +731,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Urchin-Swep",
@@ -808,9 +744,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Investiture",
@@ -824,9 +758,7 @@
             "Holiday",
             "Ecclesiarch"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Ratting Night",
@@ -840,9 +772,7 @@
             "Holiday",
             "Ecclesiarch"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Repentance",
@@ -855,9 +785,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Wyccefire Night",
@@ -870,9 +798,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Obsequies",
@@ -885,9 +811,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Night of Restless Needles",
@@ -901,9 +825,7 @@
             "Holiday",
             "Occult"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "The Sign of Frenzy",
@@ -934,9 +856,7 @@
         "categories": [
             "Prayer"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Death of Joy",
@@ -950,9 +870,7 @@
             "Holiday",
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Joy’s Tears",
@@ -966,9 +884,7 @@
             "Occult",
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Mandatum: Custodore",
@@ -981,9 +897,7 @@
         "categories": [
             "Ecclesiarch"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Ossein Moon",
@@ -996,9 +910,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Mandatum: Opugnare",
@@ -1011,9 +923,7 @@
         "categories": [
             "Ecclesiarch"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Ossein Moon",
@@ -1026,9 +936,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Mandatum: Resistere",
@@ -1041,9 +949,7 @@
         "categories": [
             "Ecclesiarch"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Ossein Moon",
@@ -1056,9 +962,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "The Dancing Eclipse",
@@ -1494,9 +1398,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Blighted Moon",
@@ -1509,9 +1411,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Maker's Day.",
@@ -1549,9 +1449,7 @@
             "Holiday",
             "Ecological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "New Moon (ROT)",
@@ -1578,9 +1476,7 @@
             "Ecological",
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Mass Pontifex - Sanctum Ostentatio.",
@@ -1593,9 +1489,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Duellist's Moon",
@@ -1620,9 +1514,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Offre Men",
@@ -1635,9 +1527,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "The March",
@@ -1662,9 +1552,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Procession of the Forlorn.",
@@ -1701,9 +1589,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Mort-Aux-Rats",
@@ -1716,9 +1602,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Famished Moon",
@@ -1731,9 +1615,7 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Thieves' Banquet",
@@ -1794,9 +1676,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Singing Grindstones",
@@ -1821,9 +1701,7 @@
         "categories": [
             "Holiday"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     },
     {
         "title": "Mother's Moon",
@@ -1836,8 +1714,6 @@
         "categories": [
             "Astrological"
         ],
-        "userVisibility": [
-            "default"
-        ]
+        "visibility": "public"
     }
 ]

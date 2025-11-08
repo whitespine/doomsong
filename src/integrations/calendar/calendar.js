@@ -12,6 +12,8 @@ export async function initCalendar() {
         }
     }
 
+    let gm_ids = game.users.filter(u => u.isGM).map(u => u._id);
+
     // Add every event
     for (let evt of events) {
         let entry = await SimpleCalendar.api.addNote(
@@ -23,7 +25,7 @@ export async function initCalendar() {
             evt.repeats || 3, // Default to repeating yearly
             evt.categories || [], // Default no calendar
             undefined, undefined, 
-            evt.userVisibility ? (Array.isArray(evt.userVisibility) ? evt.userVisibility : [evt.userVisibility]) : [], // Coerce to array. Default to empty. "default" allows players to see too
+            evt.visibility == "public" ? ["default"] : gm_ids, // Coerce to array. Default to empty. "default" allows players to see too
             evt.remindUsers);
         
         entry.update({

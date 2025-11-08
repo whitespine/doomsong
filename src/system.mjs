@@ -68,7 +68,7 @@ Hooks.once("ready", async function () {
 // Setup calendar
 Hooks.once('simple-calendar-ready', async function () {
   let need_init_calendar = !game.settings.get(game.system.id, DOOMSONG.settings.init.calendar);
-  if (need_init_calendar) {
+  if (game.user.isActiveGM && need_init_calendar) {
     await initCalendar().then(async () => {
       await game.settings.set(game.system.id, DOOMSONG.settings.init.calendar, true);
       ui.notifications.info("Initialized calendar");
