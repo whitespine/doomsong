@@ -35,3 +35,6 @@ export async function initCalendar() {
         })
     }
 }
+
+// To force clear calendar
+// SimpleCalendar.api.getNotes().forEach(note => SimpleCalendar.api.removeNote(note._id);) 
