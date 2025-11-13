@@ -71,7 +71,6 @@ Hooks.once('simple-calendar-ready', async function () {
   if (game.user.isActiveGM && need_init_calendar) {
     await initCalendar().then(async () => {
       await game.settings.set(game.system.id, DOOMSONG.settings.init.calendar, true);
-      ui.notifications.info("Initialized calendar");
     });
   }
 });
