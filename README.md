@@ -1,5 +1,7 @@
 # Doomsong RPG for FoundryVTT
 
+**This is an unofficial fan project. All copyrighted material is used with the permission of Caesar Ink.**
+
 An unofficial system implementation for the [Doomsong RPG](https://caesar.ink/viewproduct/5/doomsong-corebook), by Jack Cæsar / Caesar Ink.
 
 This system is compatible with v13 only, as unfortunately v12's ui code was so painful I just did not want to deal with it.
@@ -23,6 +25,7 @@ Furthermore, I would like to thank
 - snowkeep, as previously mentioned, has made a lovely dice so nice module
   which really makes the doomcoin feel _right_.
 - Artaey, who was instrumental in the early stages of making the system look much closer to the books feel.
+- Wilken, who was so kind as to do most of the data entry on the calendar integration.
 - The lovely folks on the Foundy discord who answer my asinine development questions.
 
 ## Installing

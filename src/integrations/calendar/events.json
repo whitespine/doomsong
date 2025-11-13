@@ -1388,6 +1388,32 @@
         ]
     },
     {
+        "title": "The Week’s Prayer.",
+        "content": "To toil is to worship; be cautious whose seeds you sow and whose house you exalt.",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 0
+        },
+        "categories": [
+            "Prayer"
+        ],
+        "visibility": "public"
+    },
+    {
+        "title": "The Autumnal Equinox.",
+        "content": "The first day of autumn; this day and night are exactly the same length.",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 0
+        },
+        "categories": [
+            "Holiday"
+        ],
+        "visibility": "public"
+    },
+    {
         "title": "Troth-Plight.",
         "content": " Troth-Plight. Royal knights must deliver news of all proposed noble betrothals to the Ecclesiarch, in person. Betrothal feasts are held in relevant bordercastles. ",
         "startDate": {
@@ -1402,7 +1428,7 @@
     },
     {
         "title": "Blighted Moon",
-        "content": "Visible for 3 nights during the Sign of Toil. This moon glows corpse grey and sheds tiny flakes of luminescent powder, the rot of stars. Insects emerge in droves to consume this substance. ",
+        "content": "A sickly green moon crests the sky, remaining low to the horizon. Hairline cracks spread across the pale face of Blighted Moon. As it splits, diaphanous flakes fall to the earth and attract hordes of insects.",
         "startDate": {
             "year": 541,
             "month": 8,
@@ -1426,8 +1452,68 @@
         ]
     },
     {
-        "title": "Laceworker Egg Laying",
-        "content": "Laceworker Egg Laying. Glutted on the insects attracted by Blighted Moon, the laceworkers begin laying eggs in earnest. These remain dormant until the following spring. ",
+        "title": "Harvest.",
+        "content": "The harvest season begins in earnest. Villagers often labour in shifts so as to continue the work through the night; any food left in the fields when the sign of Rot rises (46) will be lost.",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 1
+        },
+        "categories": [
+            "Agricultural"
+        ]
+    },
+    {
+        "title": "Blighted Moon.",
+        "content": "The moon rises once more, its cracks widening and deepening. It sheds more readily, flakes of pwdre ser, the rot of stars, floating from the sky like pale skin to be devoured by shrill, clamouring clouds of insects.",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 1
+        },
+        "categories": [
+            "Astrological"
+        ]
+    },
+    {
+        "title": "Harvest.",
+        "content": "The harvest season continues. Children are sent forth with brooms to sweep away dead flakes of Blighted Moon, while adults set about cutting and digging with scythes and spades.",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 2
+        },
+        "categories": [
+            "Agricultural"
+        ]
+    },
+    {
+        "title": "Blighted Moon.",
+        "content": "The corpse moon rises one final time. More fissure than surface now, it sheds in earnest, coating the world below in a thick snow of pwdre ser. As the moon crumbles, the insects enter a feeding frenzy.",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 2
+        },
+        "categories": [
+            "Astrological"
+        ]
+    },
+    {
+        "title": "Harvest.",
+        "content": "The harvest season continues. Childen are once more sent out to sweep away pale cast-offs from Blighted Moon. Cut crops are loaded onto hay wains and transported to nearby barns.",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 3
+        },
+        "categories": [
+            "Agricultural"
+        ]
+    },
+    {
+        "title": "Bloated Laceworkers.",
+        "content": "Having gorged themselves on insects, laceworkers are unable to return to their nests.",
         "startDate": {
             "year": 541,
             "month": 8,
@@ -1438,35 +1524,212 @@
         ]
     },
     {
-        "title": "Sign of Rot.",
-        "content": " Sign of Rot. At dawn, all unharvested crops wither and rot in their fields. Nothing edible remains. Villagers across the land hold a harvest festival to celebrate the end of their labours. ",
+        "title": "Laceworker Egg Laying",
+        "content": "Glutted on the insects attracted to Blighted Moon, the laceworkers begin laying clutches of eggs. These remaining dormant until next spring, when they hatch under the sign of Chance.",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 3
+        },
+        "categories": [
+            "Ecological"
+        ]
+    },
+    {
+        "title": "Harvest.",
+        "content": "The harvest season enters its final full day. All able-bodied villagers make themselves available in some way, working through the night to reap as many crops as possible before dawn.",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 4
+        },
+        "categories": [
+            "Agricultural"
+        ]
+    },
+    {
+        "title": "March of the Chosen.",
+        "content": "In the borderkingdom of Acheron, the Chosen set out towards Castle Acheron for winter.",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 4
+        },
+        "categories": [
+            "Military"
+        ]
+    },
+    {
+        "title": "Harvest Ends.",
+        "content": "As fewer and fewer fields require work, villagers congregate in the the locations that still need helping hands. At dawn, those assembled send up a collective, belligerent cry toward the heavens.",
+        "startDate": {
+            "year": 541,
+            "month": 8,
+            "day": 4
+        },
+        "categories": [
+            "Agricultural"
+        ]
+    },
+    {
+        "title": "The Sign of Rot.",
+        "content": "During this week, wycces of Rot may use their occult powers without increasing their current level of rot. Cultists and husks can wither vegetation with a touch.",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 9,
+            "day": 4
+        },
+        "categories": [
+            "Astrological",
+            "Occult"
+        ]
+    },
+    {
+        "title": "The Week’s Prayer.",
+        "content": "Man makes a mockery of good intent and knowledge makes rot of understanding.",
         "startDate": {
             "year": 541,
             "month": 9,
             "day": 0
         },
         "categories": [
-            "Holiday",
+            "Prayer"
+        ],
+        "visibility": "public"
+    },
+    {
+        "title": "Rot’s Bounty.",
+        "content": "All unharvested crops wither and rot in their fields. Nothing edible remains.",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 0
+        },
+        "categories": [
+            "Agricultural",
             "Ecological"
         ],
         "visibility": "public"
     },
     {
-        "title": "New Moon (ROT)",
-        "content": "As the new moon creeps across the land, bultchlings emerge from putrid crops and plant wendeworts (p. 287) in hollow trees. ",
+        "title": "Harvest Festival.",
+        "content": "Late in the day, villages wake and gather to give thanks for crops they successfully harvested.",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 0
+        },
+        "categories": [
+            "Agricultural",
+            "Ecological",
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Festival Night.",
+        "content": "This celebration always runs late into the night. Grateful farmers light bonfires and open kegs of cider as soon as the sun goes down.",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 0
+        },
+        "categories": [
+            "Agricultural",
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Mevinday.",
+        "content": "With much of Painyme covered in a fug of rotting matter, hungover villagers take the day off. Few shops are open. It is considered rude to visit anyone on this day.",
         "startDate": {
             "year": 541,
             "month": 9,
             "day": 1
         },
         "categories": [
-            "Astrological",
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Wende-creep.",
+        "content": "The darkness of a new moon covers the land. Across the nation, bultchings emerge from the putrid piles of rotted crop-matter. They travel randomly, coaxing wendeworts to life inside hollow trees.",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 1
+        },
+        "categories": [
+            "Astrological", "Ecological"
+        ]
+    },
+    {
+        "title": "Culling.",
+        "content": "Nobles gather up groups of peasants to go out hunting fennig. The villagers act as diggers and crawlers, either digging up the burrows or crawling underground to corner fennig. The nobles sit around drinking port and swapping stories until the very end, at which point they crossbow the proffered fennig at pointblank range.",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 2
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Wende-bloom.",
+        "content": "Until the dawning of Mass Pontifex (51), wendeworts bloom from hollow trees. Any who harvest this fungi tonight must resist [corruption, difficulty 5] or gain the Rotted trait.",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 2
+        },
+        "categories": [
             "Ecological"
         ]
     },
     {
+        "title": "Saint Myrcell’s Day, or Ash Bun Eve.",
+        "content": "Towns fill with the delicious scent of fresh bread. Soft charcoal buns are left to bake over open fires and removed only when thoroughly scorched. Ash Bun Eve celebrates Saint Myrcell, who cured the wracking. She and her work were burnt by a cult of Panic before the cure could be disseminated.",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 3
+        },
+        "categories": [
+            "Holiday", "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "Wende-bulge.",
+        "content": "On this night, wendeworts can be harvested without risk of gaining the Rotted trait. This fungi can be dried or eaten immediately; they are greatly coveted by wycces of Rot.",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 3
+        },
+        "categories": [
+            "Ecological"
+        ]
+    },
+    {
+        "title": "Ash Bun Day.",
+        "content": "The blackened charcoal buns baked on the previous day are shared with friends and loved ones. These buns are eaten in solitude, preferably while contemplating the dangerous, detrimental effects that heresy has upon the glory of Painyme. Only the most devout actually eat these burnt rolls.",
+        "startDate": {
+            "year": 541,
+            "month": 9,
+            "day": 4
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
         "title": "Wende-withers.",
-        "content": " Wende-withers. As the sign of Rot gives way to that of Honour, any unharvested wendeworts begin to shrivel and die. The hollow trees in which they grew begin to disintegrate. ",
+        "content": "As the sign of Rot gives way to that of Honour, any unharvested wendeworts begin to shrivel and die. The hollow trees in which they grew begin to disintegrate.",
         "startDate": {
             "year": 541,
             "month": 9,
@@ -1479,8 +1742,25 @@
         "visibility": "public"
     },
     {
-        "title": "Mass Pontifex - Sanctum Ostentatio.",
-        "content": " Sanctum Ostentatio. The devout meditate on the sin of Lamentation. Saints and martyrs are paraded around a settlement's outer walls, then ceremonially cast out ",
+        "title": "The Sign of Honour.",
+        "content": "During this week, anyone slain by a follower of Honour (wycces, cultists and husks) will become a husk of Honour. Their killer is considered their master.",
+        "startDate": {
+            "year": 541,
+            "month": 10,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 10,
+            "day": 4
+        },
+        "categories": [
+            "Astrological", "Occult"
+        ]
+    },
+    {
+        "title": "Sanctum Ostentatio.",
+        "content": "The devout meditate on the cardinal sin of Lamentation ( ds :157). Saints and martyrs parade around a settlement’s outer walls so as to ‘gather up’ any corrupting, heretical knowledge. They are then ceremonially cast out into the wilderness and only allowed to return on Dies Pontifex of the following week (56).",
         "startDate": {
             "year": 541,
             "month": 10,
@@ -1492,8 +1772,80 @@
         "visibility": "public"
     },
     {
-        "title": "Duellist's Moon",
-        "content": "Visible for 3 nights during the Signs of Honour and Panic. This moon glows the crimson of fresh-spilt blood. There are many theories about the hole at its centre. ",
+        "title": "Winter Leave.",
+        "content": "In camps and barracks across the entire Wealdean front, the army draws lots to determine which soldiers will return home this year. Winter leave is very valuable, but only to other soldiers on active duty.",
+        "startDate": {
+            "year": 541,
+            "month": 10,
+            "day": 0
+        },
+        "categories": [
+            "Military"
+        ]
+    },
+    {
+        "title": "Ironbaun.",
+        "content": "Blacksmiths from smaller villages travel long distances to attend Iron Markets, which are held in any city worth its salt. The deafening clatter of wares bought and sold, the cries of new apprentices saying goodbye to their families, competitive jousting to show off the worth of a weapon: all mix into a festive cacophony.",
+        "startDate": {
+            "year": 541,
+            "month": 10,
+            "day": 1
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Tithe-seekers.",
+        "content": "Under cover of darkness, the beadsmen depart Assartum. They carry with them ledgers, quills and abacuses, ready to determine how much the nation owes its leader. Tithe-seeking ends on Quiet Night (60).",
+        "startDate": {
+            "year": 541,
+            "month": 10,
+            "day": 1
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Bastards’ Birthday.",
+        "content": "All children of unknown provenance celebrate their birthdays on this day. Orphanages, noisy places even under normal circumstances, become unbearable due to collective tension about whether there will be enough honeycakes to go around.",
+        "startDate": {
+            "year": 541,
+            "month": 10,
+            "day": 2
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Martyr’s Mass.",
+        "content": "The Order of Saints and Martyrs assemble for a special midnight mass. In Assartum and larger villages, this begins with a hymns and a candlelit procession leading from the church to the graveyard.",
+        "startDate": {
+            "year": 541,
+            "month": 10,
+            "day": 2
+        },
+        "categories": [
+            "Holiday", "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "Day of Deals.",
+        "content": "Originally known as Honour’s Day, this heretical celebration has been near-fully subsumed into the official calendar of the Ecclesiarchy. Deals struck and promises sealed on this day are believed to be ‘more binding’ due to the sign of Honour in the sky.",
+        "startDate": {
+            "year": 541,
+            "month": 10,
+            "day": 3
+        },
+        "categories": [
+            "Holiday", "Astrological"
+        ]
+    },
+    {
+        "title": "Dueller’s Moon.",
+        "content": "Those who have challenged another person throughout the year to a duel may seek satisfaction beneath the light of this pinpricked moon. The challenger sets the terms.",
         "startDate": {
             "year": 541,
             "month": 10,
@@ -1504,21 +1856,62 @@
         ]
     },
     {
-        "title": "Day of Deals.",
-        "content": " Day of Deals. Both the Ecclesiastical devout and the heretical followers of Honour regard deals and promises made on this day to be \u2018more binding' than on any other. ",
+        "title": "Killing the Mare.",
+        "content": "Practised only in rural villages, this festival involves a child riding a wooden horse from door to door. Every man in the settlement follows, playing instruments and toasting the knight-child. After the last door has been visited, the horse is ‘killed’ on a hillside and brought back to life with splashes of alcohol.",
         "startDate": {
             "year": 541,
             "month": 10,
-            "day": 3
+            "day": 4
         },
         "categories": [
             "Holiday"
-        ],
-        "visibility": "public"
+        ]
+    },
+    {
+        "title": "Dueller’s Moon.",
+        "content": "The hole in the full moon grows visibly larger. Those challenged to a duel on the previous night (and who showed up) may choose to re-stage the duel. This time, they set the terms.",
+        "startDate": {
+            "year": 541,
+            "month": 10,
+            "day": 4
+        },
+        "categories": [
+            "Astrological"
+        ]
+    },
+    {
+        "title": "The Sign of Panic.",
+        "content": "During this week, any and all sources of fire will spread uncontrollably unless carefully maintained. Any person killed by fire will rise as a husk of Panic.",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 11,
+            "day": 4
+        },
+        "categories": [
+            "Astrological",
+            "Occult"
+        ]
+    },
+    {
+        "title": "The Week’s Prayer.",
+        "content": "Crawl on hands and knees through the High Gate; only then will fear abandon you.",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 0
+        },
+        "categories": [
+            "Holiday"
+        ]
     },
     {
         "title": "Offre Men",
-        "content": " Offre Men. Fearful devout construct offre men to put in front of their dwellings. Cults of Panic are so active this week that, sometimes, the only way to save a house is to offer a straw substitute. ",
+        "content": "The fearful devout begin constructing offre men to put in front of their dwellings. Cults of Panic are so active during this week that, sometimes, the only way to save a house is to offer a straw substitute.",
         "startDate": {
             "year": 541,
             "month": 11,
@@ -1530,20 +1923,92 @@
         "visibility": "public"
     },
     {
-        "title": "The March",
-        "content": "The March. Soldiers chosen for winter leave begin the march homewards from Wealdean fronts. All roads leading to Assartum fill with regiments of happy foot soldiers. ",
+        "title": "Dueller’s Moon.",
+        "content": "The hole in the moon begins to bleed. If both participants remain unsatisfied after 2 duels, they meet on the third night. This time, the terms are that it won’t end until at least one combatant lies dead.",
         "startDate": {
             "year": 541,
             "month": 11,
-            "day": 2
+            "day": 0
+        },
+        "categories": [
+            "Astrological"
+        ]
+    },
+    {
+        "title": "The Fleshmonger’s Nose.",
+        "content": "Duels can have fatal consequences. Some butchers are more than willing to help hide inconvenient evidence. Those in search of human flesh will have an easier time of it for the next few weeks; all they need do it look for the pig’s nose chalked onto certain signs.",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 1
         },
         "categories": [
             "Holiday"
         ]
     },
     {
+        "title": "Trial of Youth",
+        "content": "In the borderkingdom of Phlegethon, all children who have reached the age of ten are sent into the dragon marshes. They must survive on their own, in the wild, until Quiet Night (60).",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 1
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "The March",
+        "content": " Soldiers chosen for winter leave begin to march homewards from Wealdean fronts. Long, regimented rows of soldiers can be encountered on roads leading to Assartum. On the way, smaller companies break off to head for villages in the borderkingdoms and Petty Baronies. They aim to arrive by Quiet Night (60).",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 2
+        },
+        "categories": [
+            "Holiday", "Military"
+        ]
+    },
+    {
+        "title": "Trial of Growth.",
+        "content": "In the borderkingdom of Phlegethon, all young people who have reached the age of sixteen are sent into the dragon marshes. They must work together to find and kill a muirslang. They have one night.",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 2
+        },
+        "categories": [
+            "Holiday", "Military"
+        ]
+    },
+    {
+        "title": "Faux Pontifex.",
+        "content": "In anticipation of Panic’s Night, communities gather together in churches. They stockpile pails of water and barricade the doors. Priests will read holy texts throughout the night to keep up moral.",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 3
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "March of the Chosen.",
+        "content": "The Chosen arrive at Castle Acheron, where they will be sealed in by ice for the winter.",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 3
+        },
+        "categories": [
+            "Holiday", "Military"
+        ]
+    },
+    {
         "title": "Panic's Night.",
-        "content": " Panic's Night. Panic makes his influence known in the world; crime and heresy abound. All who are accosted by the authorities say they couldn't help themselves \u2013 Panic made them do it. ",
+        "content": "Panic makes his influence known in the world; crime and heresy abound. All who are accosted by the authorities say they couldn't help themselves \u2013 Panic made them do it. ",
         "startDate": {
             "year": 541,
             "month": 11,
@@ -1555,8 +2020,86 @@
         "visibility": "public"
     },
     {
-        "title": "Procession of the Forlorn.",
-        "content": " Procession of the Forlorn. Followers of Hope ritualistically blind one of their own, believing their hope will bring back the sun. Every year, the sight of the blinded is restored at dawn. ",
+        "title": "Offre Men.",
+        "content": "Any straw offre men that made it through the week are gathered up and piled together in the town square. The village set this alight at midday and use it to roast a pig or goat. This boisterous, gladsome meal doubles as a welcome for soldiers returning for winter leave.",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 4
+        },
+        "categories": [
+            "Holiday", "Military"
+        ]
+    },
+    {
+        "title": "Quiet Night.",
+        "content": "The last moon of autumn wanes to nothing, indicating that winter is about to start in earnest. This evening is traditionally set aside for quiet contemplation beside the fireplace.",
+        "startDate": {
+            "year": 541,
+            "month": 11,
+            "day": 4
+        },
+        "categories": [
+            "Holiday", "Astrological"
+        ]
+    },
+    {
+        "title": "The Sign of Hope",
+        "content": "During this week, followers of Hope (wycces, cultists and husks) may recover D6 toughness every dawn.",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 12,
+            "day": 4
+        },
+        "categories": [
+            "Astrological",
+            "Occult"
+        ]
+    },
+    {
+        "title": "The Week’s Prayer.",
+        "content": "Fall not unto Hope, lest the Pernicious One infiltrate your heart and wreak havoc therein.",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 0
+        },
+        "categories": [
+            "Prayer"
+        ]
+    },
+    {
+        "title": "The Hibernal Solstice.",
+        "content": "The first day of winter. The shortest day and longest night of the entire year.",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 0
+        },
+        "categories": [
+            "Astrological"
+        ]
+    },
+    {
+        "title": "The Hibernal Solstice.",
+        "content": "The first day of winter. The shortest day and longest night of the entire year.",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 0
+        },
+        "categories": [
+            "Astrological"
+        ]
+    },
+    {
+        "title": "Holly Poppet.",
+        "content": "To ward off evil, villagers nail small poppet dollies made of holly and fir to their front doors.",
         "startDate": {
             "year": 541,
             "month": 12,
@@ -1567,8 +2110,56 @@
         ]
     },
     {
+        "title": "Procession of the Forlorn.",
+        "content": "Hope’s followers ritualistically blind a faithful member at midnight, believing their hope will bring back the sun. Every year, the sight of the blinded is restored with the dawning of the new day.",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 0
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Saint Lidwin’s Day.",
+        "content": "This saint journeyed through Death’s Heall and emerged on the other side in Empyrean. She returned with a burnt branch as proof of her pilgrimage, though heretics say she actually brought back a sprig of asphodel. The devout walk barefoot for the rest of the week.",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 1
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Night of Stains.",
+        "content": "Villagers prepare a communal stew of beetroot, aubergine and onion skins, then eat every bite. This is to help reinforce the dangers of Hope, who cannot and will not provide salvation.",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 1
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
         "title": "Feast of Twelve Families",
-        "content": "Feast of Twelve Families. Noble houses lay a table with 12 place settings: 5 are provided with food and drink, 7 are left empty. Nobles are expected to show generosity toward their lessers ",
+        "content": "Held in honour of the twelve royal bloodlines brought into being by the Immortal. Noble houses each lay a table with 12 place settings: 5 are provided with food and drink, 7 are left empty. Traditionally, nobles are expected to show great generosity toward their lessers.",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 2
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Feast of the Twelve Families.",
+        "content": "As the sun sets, heads are bowed in silent prayer. Thoughts turn to the Apocryphal Borderkingdoms and the 7 royal bloodlines lost to the Weald.",
         "startDate": {
             "year": 541,
             "month": 12,
@@ -1580,7 +2171,7 @@
     },
     {
         "title": "Icelorn",
-        "content": "Icelorn. The clans of Acheron toast their Queen and their Chosen, who are by now ice-locked within Castle Acheron. Communal howling continues long into the evening. ",
+        "content": "In the borderkingdom of Acheron, hot drinks and howls are raised by all about to endure a winter. The clans toast their Queen and their Chosen, who are by now ice-locked within Castle Acheron. In turn, the Chosen toast their Queen and their clans. The howling continues long into the night, driving off the weakness of emotion.",
         "startDate": {
             "year": 541,
             "month": 12,
@@ -1592,8 +2183,73 @@
         "visibility": "public"
     },
     {
+        "title": "The Little Want.",
+        "content": "The first wedge of Painyme’s smallest moon peeks out of the darkness. For the rest of the year, the nights are incredibly dark.",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 3
+        },
+        "categories": [
+            "Astrological"
+        ]
+    },
+    {
+        "title": "Axedown Day.",
+        "content": "As the first week of winter draws to a close, the growth of the Weald slows precipitously and it gets too cold for the Woodcutters’ Guild to remain outdoors. They either return to their home villages or spend the season in winter camps. All are expected to report back to their posts by Singing Grindstones (79).",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 4
+        },
+        "categories": [
+            "Holiday", "Ecological"
+        ]
+    },
+    {
+        "title": "Saint Lidwin’s Relief.",
+        "content": "When the sun sets on Dies Quartius, the devout bandage their bleeding feet and once again don their boots. The heretics guarding asphodels take a cutting and gift it to another trusted cult member.",
+        "startDate": {
+            "year": 541,
+            "month": 12,
+            "day": 4
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "The Sign of Voracity.",
+        "content": "During this week, wycces of Voracity do not deplete occult abilities when using them. At the end of the week, they lose all available uses.",
+        "startDate": {
+            "year": 541,
+            "month": 13,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 13,
+            "day": 4
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "The Week’s Prayer.",
+        "content": "Self-fulfilment is a distortion that mars the soul and poisons the flesh.",
+        "startDate": {
+            "year": 541,
+            "month": 13,
+            "day": 0
+        },
+        "categories": [
+            "Prayer"
+        ]
+    },
+    {
         "title": "Mort-Aux-Rats",
-        "content": " Mort-Aux-Rats. A ratcatching holiday. Peasants are given one obol for every rat they kill (as counted in tails) and present to the Ratcatchers' Guild. ",
+        "content": "A ratcatching holiday. Peasants are given one obol for every rat they kill, as counted in tails. These must be submitted to the nearest Ratcatchers’ Guildhall to receive payment.",
         "startDate": {
             "year": 541,
             "month": 13,
@@ -1605,8 +2261,32 @@
         "visibility": "public"
     },
     {
+        "title": "Ratcatcher’s Right",
+        "content": "The Ratcatchers’ Guild take on new apprentices based on performance during Mort-Aux-Rats. This induction can sometimes take the form of midnight kidnappings, depending on local customs.",
+        "startDate": {
+            "year": 541,
+            "month": 13,
+            "day": 0
+        },
+        "categories": [
+            "Astrological"
+        ]
+    },
+    {
+        "title": "Woodmere Haligdæg",
+        "content": "The eotenmutter cease their daily labours in the Weald and instead spend the day catching any living creatures they come across. These unfortunates are brought to their erdboden and sacrificed to the Allurimorn Life. Their blood is smeared about liberally, feeding the black hebene moss that grows there.",
+        "startDate": {
+            "year": 541,
+            "month": 13,
+            "day": 1
+        },
+        "categories": [
+            "Holiday", "Ecological", "Occult"
+        ]
+    },
+    {
         "title": "Famished Moon",
-        "content": "Visible for 3 nights during the Sign of Voracity. This moon is noticably smaller than any other, and consequently much darker. Any who eat under its light will find themselves ever-hungry. ",
+        "content": "On the first night of this full moon, anyone who begins eating cannot stop. The more they consume, the hungrier they become.",
         "startDate": {
             "year": 541,
             "month": 13,
@@ -1618,8 +2298,33 @@
         "visibility": "public"
     },
     {
+        "title": "Saint Oben’s Day",
+        "content": "A day commemorating Saint Oben, a former Stygian prince who discovered a method for forging prayer-steel into weapons that are effective against the Traitor Gods. He put aside his claim to the royal throne in order to found the Templar.",
+        "startDate": {
+            "year": 541,
+            "month": 13,
+            "day": 2
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Famished Moon",
+        "content": "On the second day of this full moon, food turns to ash in the mouth and water stagnates on the tongue. Despite this, anyone who ate on the first night of Famished Moon is compelled to continue eating.",
+        "startDate": {
+            "year": 541,
+            "month": 13,
+            "day": 2
+        },
+        "categories": [
+            "Astrological"
+        ],
+        "visibility": "public"
+    },
+    {
         "title": "Thieves' Banquet",
-        "content": "Thieves' Banquet. Followers of Voracity steal something they do not want or need, only to hide it somewhere they will forget, dotting the countryside with hidden caches of valuables. ",
+        "content": "Followers of Voracity prepare for the final night of the Famished Moon. In honour of the rat, Voracity’s favoured creature, his worshippers steal something they do not want or need, then bury it somewhere they will forget. The hillsides are dotted with valuable caches.",
         "startDate": {
             "year": 541,
             "month": 13,
@@ -1630,20 +2335,86 @@
         ]
     },
     {
-        "title": "Mass Pontifex - Sanctum Profundio",
-        "content": "Sanctum Profundio. The devout meditate on the sin on Woe. The Ecclesiarch prays with the living, then descends to the Sepulchre Reverentia's catacombs and prays with the dead. ",
+        "title": "Famished Moon",
+        "content": "On the final night of the Famished Moon, hunger is overpowering. Villagers will lock up their pantries and tie themselves down. All must resist [corruption, difficulty 4] or else devour D6 days’ worth of rations.",
         "startDate": {
             "year": 541,
-            "month": 14,
-            "day": 0
+            "month": 13,
+            "day": 3
+        },
+        "categories": [
+            "Astrological"
+        ],
+        "visibility": "public"
+    },
+    {
+        "title": "Beneficence",
+        "content": "Villagers participate in a market held at their local church. They bring the fruits of their winter labours so far: tanned hides, patched clothing, spun wool, horseshoes, lanterns and oil. Half the price of each sold item goes into a church fund, managed by the village priest.",
+        "startDate": {
+            "year": 541,
+            "month": 13,
+            "day": 4
         },
         "categories": [
             "Holiday"
         ]
     },
     {
-        "title": "S\u00e9ance of the Sleepless",
-        "content": "S\u00e9ance of the Sleepless. Followers of Languor burn asphodel, synchronising so they can become one with Languor, the long-dead and each other all at the same time. ",
+        "title": "Hewen Hark",
+        "content": "As the heavens enter the House of Death, many folk burn heaps of fragrant herbs in their hearths, stoves and campfires; superstition claims an aromatic welcome will keep Death at bay for another winter.",
+        "startDate": {
+            "year": 541,
+            "month": 13,
+            "day": 4
+        },
+        "categories": [
+            "Holiday", "Astrological"
+        ]
+    },
+    {
+        "title": "The Sign of Languor",
+        "content": "During this week, followers of Languor may travel to any death site and commune with the dead interred there. This is considered a heretical act.",
+        "startDate": {
+            "year": 541,
+            "month": 14,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 14,
+            "day": 4
+        },
+        "categories": [
+            "Astrological"
+        ]
+    },
+    {
+        "title": "Sanctum Profundio",
+        "content": "The devout meditate on the cardinal sin of Woe (ds :157). In Assartum, the Ecclesiarch walks among the living, praying with them for their dearly departed dead. Throughout Painyme, priests take up positions in graveyards, blessing and aiding anyone who would like to pray for the deceased.",
+        "startDate": {
+            "year": 541,
+            "month": 14,
+            "day": 0
+        },
+        "categories": [
+            "Holiday", "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "Sanctum Profundio",
+        "content": "As night falls, the Ecclesiarch descends into the Sepulchre Reverentia’s catacombs and prays with the dead until dawn. The catacombs of this cathedral are the threshold of the Fields of Atonement and Heall.",
+        "startDate": {
+            "year": 541,
+            "month": 14,
+            "day": 0
+        },
+        "categories": [
+            "Holiday", "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "Séance Preparations",
+        "content": "Followers of Languor find stealthy ways to visit the nearest cultkeeper of the asphodel. They are given sprigs of the plant to smuggle back to their dwellings. Wyccefinders are extremely alert today, vigilant for signs of heresy and cult activity.",
         "startDate": {
             "year": 541,
             "month": 14,
@@ -1654,11 +2425,100 @@
         ]
     },
     {
-        "title": "The Ecclesiarch's Largesse",
-        "content": "The Ecclesiarch's Largesse. Each officially recognised Guildhall receives a shipment of goods and supplies from the Ecclesiarch, intended as a thanks for services rendered. ",
+        "title": "S\u00e9ance of the Sleepless",
+        "content": "Followers of Languor burn sprigs of asphodel at the moon’s rising. By synchronising, many hundreds of faithful all become one with Languor, the long dead and each other, all at the same time.",
         "startDate": {
             "year": 541,
             "month": 14,
+            "day": 1
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "The Great Hunt",
+        "content": "In the Weald, the ylfe pile tables high with delectable foods and mouthwatering wines. The day is spent choosing a quarry to pursue and planning the night ahead; for, when night falls, the hunt begins. The Great Hunt can last for weeks at a time and their quarry can be anything from sparrow to human to bautenlobbe.",
+        "startDate": {
+            "year": 541,
+            "month": 14,
+            "day": 2
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Sleeping Orison",
+        "content": "In the dark of Death’s new moon, the walls of Sleep’s prison grow thin; she sends forth truths. On this night, individuals have dreams belonging to other people. They glean secret stories and past lives.",
+        "startDate": {
+            "year": 541,
+            "month": 14,
+            "day": 2
+        },
+        "categories": [
+            "Astrological", "Occult"
+        ]
+    },
+    {
+        "title": "Unvuille",
+        "content": "In the borderkingdom of Styx, villagers living in the Stygian Mountains travel to the mountain springs at the heart of their subterranean settlements. There, every villager lights a candle and places it in wall niches surrounding the water source. This is believed to bless and protect their underground existences.",
+        "startDate": {
+            "year": 541,
+            "month": 14,
+            "day": 3
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Sleeping Benison",
+        "content": "In the dark of Death’s new moon, the walls of Sleep’s prison grow thin; she sends forth delights. Folk awake next to dreamt-of objects and people. These melt to nothingness after the new moon (77).",
+        "startDate": {
+            "year": 541,
+            "month": 14,
+            "day": 3
+        },
+        "categories": [
+            "Astrological", "Occult"
+        ]
+    },
+    {
+        "title": "The Ecclesiarch's Largesse",
+        "content": "Each officially recognised Guildhall receives goods and supplies from the Ecclesiarch, intended as thanks for services rendered. The wyccefinders, ratcatchers and woodcutters receive generous gifts; others receive pitiful amounts or are forgotten altogether.",
+        "startDate": {
+            "year": 541,
+            "month": 14,
+            "day": 4
+        },
+        "categories": [
+            "Holiday", "Ecclesiarch"
+        ]
+    },
+    {
+        "title": "Sleeping Malison",
+        "content": "In the dark of Death’s new moon, the walls of Sleep’s prison grow thin; she sends forth nightmares. Nattmara unspool from cracks and knotholes in the world. They prepare to hunt Sleep’s dreamers.",
+        "startDate": {
+            "year": 541,
+            "month": 14,
+            "day": 4
+        },
+        "categories": [
+            "Astrological", "Occult"
+        ]
+    },
+    {
+        "title": "The Sign of Grimme",
+        "content": "During this week, certain forms of unquiet dead (sefts, lythe and glume) are completely unaffected by metal keys ( ds : 268).",
+        "startDate": {
+            "year": 541,
+            "month": 15,
+            "day": 0
+        },
+        "endDate": {
+            "year": 541,
+            "month": 15,
             "day": 4
         },
         "categories": [
@@ -1666,8 +2526,20 @@
         ]
     },
     {
+        "title": "The Week’s Prayer",
+        "content": "The Immortal made us disgusting, naked and wanting. Contemplate our demise. Repent in vain.",
+        "startDate": {
+            "year": 541,
+            "month": 15,
+            "day": 0
+        },
+        "categories": [
+            "Prayer"
+        ]
+    },
+    {
         "title": "Blessing of the Keys",
-        "content": "Blessing of the Keys. Members of the clergy go house to house in villages, saying prayers over any keys found within. ",
+        "content": "Members of the clergy go house to house in villages, saying prayers over any keys found within. Professions that rely on keys, such as gaolers and the Gravediggers’ Guild, receive special blessings.",
         "startDate": {
             "year": 541,
             "month": 15,
@@ -1679,8 +2551,80 @@
         "visibility": "public"
     },
     {
+        "title": "Sleeping Venison",
+        "content": "In the dark of Death’s new moon, the walls of Sleep’s prison grow thin; she sends forth grief. The nattmara born on Malison (75) begin feeding upon those who received a dream during Death’s new moon.",
+        "startDate": {
+            "year": 541,
+            "month": 15,
+            "day": 0
+        },
+        "categories": [
+            "Astrological", "Occult"
+        ]
+    },
+    {
+        "title": "Winter Market",
+        "content": "Across Painyme, villages set up roadside stalls and sell goods that belonged to those who have perished over winter. The smell of baked goods and hot wine wafts through the air. Winter Market is a bittersweet affair: smiling should be kept to a minimum, laughter will draw indignant looks from passersby.",
+        "startDate": {
+            "year": 541,
+            "month": 15,
+            "day": 1
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Nocte Grimme Tristitia",
+        "content": "Night of silence dedicated to the youngest of the Grimme, the Gilded Widow known as Sorrow. Those who worship this Grimme typically offer up acacia incense and copper items.",
+        "startDate": {
+            "year": 541,
+            "month": 15,
+            "day": 1
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Quire-faire",
+        "content": "Members of the Philosophers’ Guild set up stalls and provide their services for very low prices; this is an act of charity that reduces the Guild’s taxes. Letters are penned, family histories are researched, lead is transformed into gold and vice versa, weapons are shaped with Phlegethene fire.",
+        "startDate": {
+            "year": 541,
+            "month": 15,
+            "day": 2
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Nocte Grimme Anguistia",
+        "content": "Night of silence dedicated to the middle of the Grimme, the Gilded Widow known as Anguish. Those who worship typically offer up cedar incense and silver items.",
+        "startDate": {
+            "year": 541,
+            "month": 15,
+            "day": 2
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
         "title": "Singing Grindstones",
-        "content": "Singing Grindstones. Members of the Woodcutters' Guild return to the Weald. They stop in villages and get their axes sharpened. Blacksmiths do not charge for this service today. ",
+        "content": "With spring just around the corner, members of the Woodcutters’ Guild return to their posts in the Weald. On the way, they will stop in villages and get their axes sharpened. Blacksmiths traditionally do not charge for this service today.",
+        "startDate": {
+            "year": 541,
+            "month": 15,
+            "day": 3
+        },
+        "categories": [
+            "Holiday"
+        ]
+    },
+    {
+        "title": "Nocte Grimme Miseria",
+        "content": "Night of silence dedicated to the eldest of the Grimme, the Gilded Widow known as Misery. Those who worship typically offer up poplar incense and gold items.",
         "startDate": {
             "year": 541,
             "month": 15,
@@ -1692,7 +2636,7 @@
     },
     {
         "title": "New Year's Eve",
-        "content": "New Year's Eve. Throughout the land, all able-bodied villagers enter forests and fields to seek out clutches of laceworker eggs, to destroy them before they can hatch in spring. ",
+        "content": "All able-bodied villagers take to the fields and forests, working together to destroy laceworker eggs. Some groups make sport of trying to get the most; others go about the task with stolid determination.",
         "startDate": {
             "year": 541,
             "month": 15,
@@ -1705,7 +2649,7 @@
     },
     {
         "title": "Mother's Moon",
-        "content": "Visible for 3 nights during the Signs of the Grimme and Chance. This moon glows orange; its caress causes laceworker eggs to begin hatching en masse. ",
+        "content": " The full moon crests the horizon, casting an eerie orange light across the land. Any laceworker eggs touched by the light of Mother’s Moon shiver and thrum with quiet delight; the time of hatching approaches.",
         "startDate": {
             "year": 541,
             "month": 15,
