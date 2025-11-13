@@ -7,6 +7,7 @@ import { targetedTokens } from "./target.svelte";
  * @property {string} roll_type What result table id are we rolling on
  * @property {string} formula The formula for the roll
  * @property {number} difficulty The difficulty of the roll
+ * @property {string} [author] The author to override. 
  */
 
 /**
@@ -47,6 +48,7 @@ export async function rollCheck(check_details) {
     let message = await ChatMessage.create({
         rolls: [roll],
         speaker: speaker ?? ChatMessage.getSpeaker(),
+        author: check_details.author,
         // Doomsong specific sauce
         [`flags.${game.system.id}`]: flags
     });

@@ -33,6 +33,7 @@
             roll_type: app.flow.attack.type,
             difficulty: total_difficulty,
             formula: app.flow.attack.formula,
+            author: app.flow.attack.user
         });
 
         // Deduct the footing!
