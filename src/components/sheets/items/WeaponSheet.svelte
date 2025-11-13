@@ -31,6 +31,7 @@
     </div>
     {@render griddedTextField(weapon, "Name", "name")}
     {@render griddedTextField(weapon, "Tags", "system.tags")}
+    {@render griddedTextField(weapon, "Bulk", "system.bulk")}
     {@render griddedSelect(
         weapon,
         "Damage Type",

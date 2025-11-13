@@ -1,5 +1,6 @@
 <script>
     import DeleteButton from "../fields/DeleteButton.svelte";
+    import EditButton from "../fields/EditButton.svelte";
     import UpdateInput from "../fields/UpdateInput.svelte";
 
     let { gear, edit = false } = $props();
@@ -14,6 +15,7 @@
             path="name"
             type="text"
         />
+        <EditButton doc={gear} />
         <DeleteButton doc={gear} />
     {:else}
         <span>{gear.name}</span>
