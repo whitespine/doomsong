@@ -25,11 +25,11 @@
     // Our default choices
     function defaultChoices() {
         return foundry.utils.mergeObject({
-            Traits: 0,
-            Gear: 0,
-            Conditions: 0,
-            Allies: 0,
-            Extra: 0,
+            traits: 0,
+            gear: 0,
+            conditions: 0,
+            allies: 0,
+            extras: 0,
         }, app.options.roll?.preset_choices ?? {});
     }
 
@@ -57,7 +57,7 @@
 
     // Roll handler
     async function roll(mode) {
-        let total_bonuses = Object.values(choices).reduce((x, y) => x + y, 0);
+        let total_bonuses = choices.traits + choices.gear + choices.conditions + choices.allies + choices.extras;
         app._callback_on_close = false;
         if (
             roll_type.includes("attack") &&
@@ -94,12 +94,12 @@
         <Incrementer type="number" name="difficulty" min="0" bind:value={difficulty} width="140px" />
     </div>
     <div class="roll-options">
-        {#each ["Traits", "Gear", "Conditions", "Allies"] as category}
+        {#each ["traits", "gear", "conditions", "allies"] as category}
             <div>
-                <span>{category}:</span>
+                <span>{game.i18n.localize(`DS.roll.${category}`)}:</span>
             </div>
             {#each [-1, 0, 1, 2, 3] as value}
-                {#if value <= 2 || category == "Traits"}
+                {#if value <= 2 || category == "traits"}
                     <button
                         onclick={() => setCategoryBonus(category, value)}
                         data-tooltip={valueTooltip(value)}
@@ -109,30 +109,31 @@
                     </button>
                 {:else}
                     <!-- Pardon my ugly svelte -->
-                    {#if category == "Gear"}
+                    {#if category == "gear"}
                         <div class="extra top">
                             <button
                                 aria-label="Increase extra bonus"
                                 onclick={() =>
-                                    setCategoryBonus("Extra", choices.Extra + 1)}
+                                    setCategoryBonus("extras", choices.extras + 1)}
                             >
                                 <i class="fas fa-caret-up"></i>
                             </button>
                         </div>
-                    {:else if category == "Conditions"}
+                    {:else if category == "conditions"}
                         <div class="extra mid" data-tooltip="Other bonuses">
                             <span>
-                                Bonus: {choices.Extra > 0
+                                {game.i18n.localize(`DS.roll.extras`)}: 
+                                {choices.extras > 0
                                     ? "+"
-                                    : ""}{choices.Extra}
+                                    : ""}{choices.extras}
                             </span>
                         </div>
-                    {:else if category == "Allies"}
+                    {:else if category == "allies"}
                         <div class="extra bottom">
                             <button
                                 aria-label="Decrease extra bonus"
                                 onclick={() =>
-                                    setCategoryBonus("Extra", choices.Extra - 1)}
+                                    setCategoryBonus("extras", choices.extras - 1)}
                             >
                                 <i class="fas fa-caret-down"></i>
                             </button>

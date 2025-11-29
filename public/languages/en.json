@@ -12,6 +12,13 @@
         }
     },
     "DS": {
+        "roll": {
+            "traits": "Traits",
+            "gear": "Gear",
+            "conditions": "Conditions",
+            "allies": "Allies",
+            "extras": "Bonus"
+        },
         "combat": {
             "phase": {
                 "begin": "Begin Round",
