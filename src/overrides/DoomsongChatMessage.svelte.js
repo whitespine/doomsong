@@ -18,7 +18,9 @@ export class DoomsongChatMessage extends ChatMessage {
             // Instantiate props
             let wrapper =  document.createElement("li")
             this._svelte_wrappers[mode] = wrapper;
-            wrapper.classList.add("chat-message")
+            wrapper.classList.add("chat-message"); // For v13
+            wrapper.classList.add("message"); // For v14
+            wrapper.dataset["messageId"] = this.id;
             this._svelte_components[mode] = mount(component, { props: {
                 message: this
             }, target: wrapper });

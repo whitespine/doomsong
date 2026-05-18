@@ -5,8 +5,8 @@
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": 13,
-    "verified": 13,
-    "maximum": 13
+    "verified": 14,
+    "maximum": 15
   },
   "authors": [
     {
@@ -22,7 +22,8 @@
     "recommends": [
       {
         "id": "doomsong-dice",
-        "type": "module"
+        "type": "module",
+        "manifest": "https://raw.githubusercontent.com/snowkeep/doomsong-dice/refs/heads/trunk/module.json"
       }
     ]
   },
