@@ -1,36 +1,22 @@
 <script>
-    import { onMount, onDestroy } from "svelte";
-    import {resolveDotpath} from "../../utils/paths";
-    let anchor;
+    import { resolveDotpath } from "../../utils/paths";
 
+    let { doc, path, ...restProps } = $props();
+    let content = $derived(resolveDotpath(doc, path));
 
-    // By the way: this doesn't work
-
-    let { document, path } = $props();
-    let content = $derived(resolveDotpath(document, path));
-
-    onMount(async () => {
-        console.error(editor);
-    });
-
-
-	const editorAttachment = (element) => {
-        setTimeout(() => {
-            let editorPromise = TextEditor.implementation.create(
-                {
-                    engine: "prosemirror",
-                    target: element,
-                    document,
-                    fieldName: path
-                },
-                content,
-            );
-        }, 100);
-
-		return () => {
-			console.log('TODO: cleaning up editor');
-		};
-	};
+    function save(e) {
+        doc.update({ [path]: e.target.value });
+    }
 </script>
 
-<div class="editor" {@attach editorAttachment}></div>
+<!-- <div class="editor" {@attach editorAttachment}></div>-->
+<prose-mirror
+    value={content}
+    onsave={save}
+    onclose={close}
+    collaborate
+    data-document-uuid={doc.uuid}
+    name={path}
+    {...restProps}
+></prose-mirror>
+

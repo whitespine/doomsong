@@ -12,6 +12,8 @@ export class NpcModel extends ActorModel {
 
             // Vibes. Just a string, comma separated
             vibes: new fields.StringField({ initial: "" }),
+            wants: new fields.HTMLField({ initial: "What does this npc want?" }),
+            hates: new fields.HTMLField({ initial: "What does this npc hate?" })
         }
     }
 }

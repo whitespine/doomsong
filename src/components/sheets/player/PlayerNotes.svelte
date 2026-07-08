@@ -1,5 +1,6 @@
 <script>
     import { stop } from "../../../utils/handlers";
+    import ProsemirrorField from "../../fields/ProsemirrorField.svelte";
     import UpdateInput from "../../fields/UpdateInput.svelte";
     let { app, context } = $props();
     let actor = $derived(context.actor);
@@ -11,35 +12,25 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <label for="biography">Biography:</label>
-            <UpdateInput
-                name="biography"
-                doc={actor}
-                path="system.biography"
-                type="text"
-                tag="textarea"
-                style="height: 15em"
-            />
+            <h2>Biography</h2>
+            <ProsemirrorField doc={actor} path="system.biography"></ProsemirrorField>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <label for="notes">Notes:</label>
-            <UpdateInput
-                name="notes"
-                doc={actor}
-                path="system.notes"
-                type="text"
-                tag="textarea"
-                style="height: 15em"
-            />
+            <h2>Notes</h2>
+            <ProsemirrorField doc={actor} path="system.notes"></ProsemirrorField>
         </div>
     </div>
 </div>
 
-<style lang="scss">
+<style lang="scss" module>
     .col {
         display: flex;
         flex-direction: column;
+    }
+    
+    prose-mirror {
+        --min-height: 300px;
     }
 </style>

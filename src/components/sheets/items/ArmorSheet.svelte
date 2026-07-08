@@ -1,5 +1,6 @@
 <script>
     import Portrait from "../../fields/Portrait.svelte";
+    import ProsemirrorField from "../../fields/ProsemirrorField.svelte";
     import { griddedTextField } from "../GenericSheetSnippets.svelte";
     let { context, app } = $props();
     let edit = $derived(app.isEditable);
@@ -21,4 +22,11 @@
     </div>
     {@render griddedTextField(armor, "Name", "name")}
     {@render griddedTextField(armor, "Bulk", "system.bulk")}
+
+    <div class="row">
+        <div class="col">
+            <h2>Notes</h2>
+            <ProsemirrorField doc={armor} path="system.notes"></ProsemirrorField>
+        </div>
+    </div>
 </div>

@@ -21,7 +21,9 @@
                 {/each}
             </div>
             {#if edit}
-                <button onclick={(e) => (stop(e), app.toggleEdit())}>Edit</button>
+                <button onclick={(e) => (stop(e), app.toggleEdit())}
+                    >Edit</button
+                >
             {/if}
         </div>
         <Shield {actor} --size="140px" />
@@ -39,6 +41,20 @@
         {/each}
     </div>
     <Moves style="width: 100%" {actor} moves={actor.system.moves} />
+    <div class="bio">
+        <h2>Wants</h2>
+        <div>
+            {@html actor.system.wants}
+        </div>
+        <h2>Hates</h2>
+        <div>
+            {@html actor.system.hates}
+        </div>
+        <h2>Notes</h2>
+        <div>
+            {@html actor.system.notes}
+        </div>
+    </div>
 </div>
 
 <style lang="scss" module>
@@ -84,6 +100,13 @@
             .name {
                 font-weight: bolder;
             }
+        }
+
+        .bio {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
         }
     }
 </style>

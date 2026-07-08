@@ -1,5 +1,6 @@
 <script>
     import Portrait from "../../fields/Portrait.svelte";
+    import ProsemirrorField from "../../fields/ProsemirrorField.svelte";
     import EditAbility from "../../items/EditAbility.svelte";
 
     let { context, app } = $props();
@@ -25,6 +26,12 @@
     <div class="row">
         <div class="col">
             <EditAbility {ability} />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Notes</h2>
+            <ProsemirrorField doc={ability} path="system.notes"></ProsemirrorField>
         </div>
     </div>
 </div>

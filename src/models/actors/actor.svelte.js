@@ -59,7 +59,7 @@ export class ActorModel extends DoomsongDataModel {
     // Migrations :/
     static migrateData(sourceData) {
         // Fix traits to be schema instead of + prefixed data
-        for (let [tk, text] of Object.entries(sourceData.traits)) {
+        for (let [tk, text] of Object.entries(sourceData.traits ?? {})) {
             if (typeof text == "string") {
                 let level = [...text].filter(c => c == "+").length;
                 text = text.replaceAll("+", "");
@@ -69,5 +69,6 @@ export class ActorModel extends DoomsongDataModel {
                 }
             }
         }
+        return sourceData;
     }
 }

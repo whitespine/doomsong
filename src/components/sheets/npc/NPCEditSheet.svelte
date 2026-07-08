@@ -11,6 +11,7 @@
     import Portrait from "../../fields/Portrait.svelte";
     import DeleteButton from "../../fields/DeleteButton.svelte";
     import ViewAbility from "../../items/ViewAbility.svelte";
+    import ProsemirrorField from "../../fields/ProsemirrorField.svelte";
 
     let { app, context } = $props();
     let actor = $derived(context.document);
@@ -202,6 +203,24 @@
                 </div>
             </div>
         {/each}
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Wants</h2>
+            <ProsemirrorField doc={actor} path="system.wants"></ProsemirrorField>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Hates</h2>
+            <ProsemirrorField doc={actor} path="system.hates"></ProsemirrorField>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Notes</h2>
+            <ProsemirrorField doc={actor} path="system.notes"></ProsemirrorField>
+        </div>
     </div>
 </div>
 

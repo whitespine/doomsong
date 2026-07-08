@@ -1,5 +1,6 @@
 <script>
     import Portrait from "../../fields/Portrait.svelte";
+    import ProsemirrorField from "../../fields/ProsemirrorField.svelte";
     import {
         griddedSelect,
         griddedTextField,
@@ -38,4 +39,11 @@
         "system.attack_type",
         attack_types,
     )}
+
+    <div class="row">
+        <div class="col">
+            <h2>Notes</h2>
+            <ProsemirrorField doc={weapon} path="system.notes"></ProsemirrorField>
+        </div>
+    </div>
 </div>
