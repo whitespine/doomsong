@@ -37,6 +37,7 @@
         <nav class="phase-controls">
             <button onclick={() => combat.prevPhase()}>Previous</button>
             <button onclick={() => combat.nextPhase()}>Next</button>
+            <button onclick={() => combat.endCombat()}>End</button>
         </nav>
     {/if}
 </div>
