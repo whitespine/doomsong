@@ -43,7 +43,8 @@ export class ActorModel extends DoomsongDataModel {
             traits: new fields.TypedObjectField(
                 new fields.SchemaField({
                     text: new fields.StringField({ initial: "New Trait" }),
-                    level: new fields.NumberField({ integer: true, initial: 0, min: 0, max: 2 })
+                    level: new fields.NumberField({ integer: true, initial: 0, min: 0, max: 2 }),
+                    notes: new fields.StringField({ initial: "" })
                 }, { nullable: false }),
                 { nullable: false }
             ),

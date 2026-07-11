@@ -2,6 +2,7 @@
     import { stop } from "../../utils/handlers";
     import UpdateInput from "../fields/UpdateInput.svelte";
     import { resolveDotpath } from "../../utils/paths";
+    import ProsemirrorField from "../fields/ProsemirrorField.svelte";
 
     let { doc, path, app } = $props();
 
@@ -35,6 +36,7 @@
         <button class={{invert: level == 2}} onclick={(e) => (stop(e), setLevel(2))} aria-label="Epitome">Epitome</button>
         <button onclick={(e) => (stop(e), remove())} aria-label="Remove">Remove</button>
     </div>
+    <ProsemirrorField {doc} path="{path}.notes"></ProsemirrorField>
 </form>
 
 <style lang="scss">
