@@ -1,13 +1,14 @@
 <script>
     import DeleteButton from "../fields/DeleteButton.svelte";
     import EditButton from "../fields/EditButton.svelte";
+    import Portrait from "../fields/Portrait.svelte";
     import UpdateInput from "../fields/UpdateInput.svelte";
 
     let { gear, edit = false } = $props();
 </script>
 
-<div class="root">
-    <!--<img class="thumbnail" src={gear.img} alt="{gear.name} icon">-->
+<div class="gear">
+    <Portrait doc={gear} {edit} height="var(--gear-portrait-size)" />
     {#if edit}
         <UpdateInput
             name={"name"}
@@ -23,16 +24,16 @@
 </div>
 
 <style lang="scss">
-    .root {
+    .gear {
         border: 1px solid black;
         display: flex;
         flex-direction: row;
         align-items: center;
-        padding: 5px;
 
         span,
         input {
             flex: 1;
         }
+        padding-right: 5px;
     }
 </style>

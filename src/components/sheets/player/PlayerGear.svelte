@@ -1,6 +1,7 @@
 <script>
     import { DoomsongItem } from "../../../documents/item.svelte";
     import { stop } from "../../../utils/handlers";
+    import ViewArmor from "../../items/ViewArmor.svelte";
 
     import ViewGear from "../../items/ViewGear.svelte";
     import ViewWeapon from "../../items/ViewWeapon.svelte";
@@ -54,6 +55,8 @@
         {#snippet child(drag_gear)}
             {#if drag_gear.doc.type == "weapon"}
                 <ViewWeapon weapon={drag_gear.doc} edit />
+            {:else if drag_gear.doc.type == "armor"}
+                <ViewArmor armor={drag_gear.doc} edit />
             {:else}
                 <ViewGear gear={drag_gear.doc} edit />
             {/if}

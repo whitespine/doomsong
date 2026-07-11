@@ -13,11 +13,11 @@
 </script>
 
 <div class="weapon">
-    <Portrait doc={weapon} {edit} height="48px" />
+    <Portrait doc={weapon} {edit} height="var(--gear-portrait-size)" />
     <div class="body">
         <h2>{weapon.name}</h2>
         <p>{table_name}</p>
-        <p class="tags"></p>
+        <p class="tags">{weapon.system.tags}</p>
     </div>
     {#if strike}
         <button

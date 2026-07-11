@@ -21,6 +21,7 @@
         </div>
     </div>
     {@render griddedTextField(armor, "Name", "name")}
+    {@render griddedTextField(armor, "Tags", "system.tags")}
     {@render griddedTextField(armor, "Bulk", "system.bulk")}
 
     <div class="row">
