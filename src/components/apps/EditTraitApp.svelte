@@ -21,10 +21,11 @@
         split_path[split_path.length - 1] =
             `-=${split_path[split_path.length - 1]}`;
         let removal_path = split_path.join(".");
-        doc.update({
-            [removal_path]: null,
+        app.close().then(() => {
+            doc.update({
+                [removal_path]: null,
+            });
         });
-        app.close();
     }
 </script>
 
