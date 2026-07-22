@@ -1,6 +1,6 @@
 import { mount, unmount } from 'svelte';
-import RollMessage from '../components/rolls/RollMessage.svelte'
-
+import RollMessage from '../components/rolls/RollMessage.svelte';
+import ItemMessage from '../components/items/ItemMessage.svelte';
 
 const DOOMSONG_MESSAGE_IDS = new Set();
 
@@ -34,12 +34,18 @@ export class DoomsongChatMessage extends ChatMessage {
         return this.populateAsComponent(RollMessage, mode);
     }
 
+    async getItemHTML(mode) {
+        return this.populateAsComponent(ItemMessage, mode);
+    }
+
     // Override base function
     async renderHTML(options={}) {
         let popup = options.canDelete === false;
         let mode = popup ? "popup" : "message";
         if (this.flags[game.system.id]?.["type"] == "roll") {
             return this.getRollHTML(mode);
+        } else if (this.flags[game.system.id]?.["type"] == "item") {
+            return this.getItemHTML(mode);
         } else {
             return super.renderHTML();
         }

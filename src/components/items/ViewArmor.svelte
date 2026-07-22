@@ -1,10 +1,10 @@
 <script>
-    import { stop } from "../../utils/handlers";
-    let { armor, edit = false, strike = false } = $props();
-    import { resultTables } from "../../utils/roll.svelte";
+    let { armor, edit = false, chat = true } = $props();
     import DeleteButton from "../fields/DeleteButton.svelte";
     import EditButton from "../fields/EditButton.svelte";
     import Portrait from "../fields/Portrait.svelte";
+    import SendToChatButton from "../fields/SendToChatButton.svelte";
+    import ViewButton from "../fields/ViewButton.svelte";
 </script>
 
 <div class="armor">
@@ -13,17 +13,14 @@
         <h2>{armor.name}</h2>
         <p class="tags">{armor.system.tags}</p>
     </div>
-    {#if strike}
-        <button
-            class="elevated"
-            onclick={(e) => (stop(e), armor.system.beginAttack())}
-        >
-            Strike!
-        </button>
-    {/if}
     {#if edit}
         <EditButton doc={armor} />
         <DeleteButton doc={armor} />
+    {:else}
+        <ViewButton doc={armor} />
+    {/if}
+    {#if chat}
+        <SendToChatButton doc={armor} />
     {/if}
 </div>
 

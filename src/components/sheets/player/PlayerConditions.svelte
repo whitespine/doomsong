@@ -16,6 +16,7 @@
             collection: actor.effects,
         }),
     );
+    let edit = $derived(actor.canUserModify(game.user, "update"));
 
     function createCondition(e, type) {
         stop(e);
@@ -31,7 +32,7 @@
 <div class="container">
     <div class="row">
         {#snippet child(drag_effect)}
-            <ViewEffect effect={drag_effect.doc} edit />
+            <ViewEffect effect={drag_effect.doc} {edit} />
         {/snippet}
         <div class="col">
             <h1>Conditions</h1>

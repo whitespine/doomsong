@@ -3,9 +3,10 @@
     import DeleteButton from "../fields/DeleteButton.svelte";
     import EditButton from "../fields/EditButton.svelte";
     import Portrait from "../fields/Portrait.svelte";
+    import SendToChatButton from "../fields/SendToChatButton.svelte";
+    import ViewButton from "../fields/ViewButton.svelte";
 
-    let { ability, edit = false } = $props();
-    console.log(ability);
+    let { ability, edit = false, chat = true } = $props();
 </script>
 
 <div class="ability">
@@ -24,6 +25,11 @@
         {#if edit}
             <EditButton doc={ability} />
             <DeleteButton doc={ability} />
+        {:else}
+            <ViewButton doc={ability} />
+        {/if}
+        {#if chat}
+            <SendToChatButton doc={ability} />
         {/if}
     </div>
 

@@ -1,10 +1,12 @@
 <script>
     import { stop } from "../../utils/handlers";
-    let { weapon, edit = false, strike = false } = $props();
+    let { weapon, edit = false, strike = false, chat = true, view = true} = $props();
     import { resultTables } from "../../utils/roll.svelte";
     import DeleteButton from "../fields/DeleteButton.svelte";
     import EditButton from "../fields/EditButton.svelte";
     import Portrait from "../fields/Portrait.svelte";
+    import SendToChatButton from "../fields/SendToChatButton.svelte";
+    import ViewButton from "../fields/ViewButton.svelte";
 
     let table = $derived(
         resultTables()[weapon.system.attack_type] ?? resultTables()["attack_i"],
@@ -30,6 +32,11 @@
     {#if edit}
         <EditButton doc={weapon} />
         <DeleteButton doc={weapon} />
+    {:else if view}
+        <ViewButton doc={weapon} />
+    {/if}
+    {#if chat}
+        <SendToChatButton doc={weapon} />
     {/if}
 </div>
 
