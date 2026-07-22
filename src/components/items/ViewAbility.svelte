@@ -2,12 +2,22 @@
     import { stop } from "../../utils/handlers";
     import DeleteButton from "../fields/DeleteButton.svelte";
     import EditButton from "../fields/EditButton.svelte";
+    import Portrait from "../fields/Portrait.svelte";
 
     let { ability, edit = false } = $props();
+    console.log(ability);
 </script>
 
 <div class="ability">
     <div class="header">
+        {#if ability.img != ability.constructor.getDefaultArtwork().img}
+            <Portrait
+                height="64px"
+                doc={ability}
+                path="img"
+                edit={false}
+            />
+        {/if}
         <h2>
             {ability.name}
         </h2>
@@ -35,8 +45,10 @@
     .header {
         display: flex;
         flex-direction: row;
+        align-items: center;
 
         h2 {
+            margin-left: 10px;
             margin-right: auto;
         }
     }
