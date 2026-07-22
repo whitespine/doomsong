@@ -16,7 +16,7 @@ import { setupSheets } from './sheets/config';
 import { AttackFlowApp } from './apps/dodge_prompt.svelte';
 import { injectAllCoreDocumentsReactivity, injectEmbeddedCollectionsReactivity } from './utils/reactor.svelte';
 import { initSockets } from './utils/socket.svelte';
-import { initDoomRenderHook } from './components/doomcoin/doomcoin_tracker';
+import { initDoomRenderHook } from './components/doomcoin/doomcoin_tracker.svelte';
 import { setupStatuses } from './documents/effect';
 
 Hooks.once('init', async function () {

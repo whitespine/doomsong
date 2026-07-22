@@ -6,11 +6,13 @@ import { sendSocket } from "../../utils/socket.svelte";
 export function initDoomRenderHook() {
     Hooks.on("renderPlayers", (_players, element, context, _options) => {
         // GM's are never doomed
+        doomed_actor = null;
         for(let user of game.users.contents) {
             if(user.isGM) continue;
-            if(!user.active) continue;
             let doomed = getUserDoomState(user);
             if(doomed) { 
+                doomed_actor = user.character;
+                if(!user.active) continue;
                 let doomed_user_li = element.querySelector(`[data-user-id=${user._id}]`);
                 let doomcoin_elt = document.createElement("img");
                 doomcoin_elt.src = skull;
@@ -36,8 +38,17 @@ export function initDoomRenderHook() {
  * @param {User} user 
  * @returns {boolean} If they are doomed
  */
-function getUserDoomState(user) {
-    return user.character?.effects.some(s => s.statuses.has("doomed")) ?? false;
+export function getUserDoomState(user) {
+    return user.character ? getActorDoomState(user.character) : false;
+}
+
+export function getActorDoomState(actor) {
+    return actor.effects.some(s => s.statuses.has("doomed"));
+}
+
+let doomed_actor = $state(null);
+export function getDoomedActor() {
+    return doomed_actor;
 }
 
 /** Set if a character is doomed
@@ -67,8 +78,9 @@ function setDoomedActor(actor) {
 
 // Get all actors in the game + current scene. I forget if non players can be doomed, bj,
 function allDoomableActors() {
-    let unlinked = canvas.scene.tokens.filter(t => !t.actorLink);
-    return [...game.actors.contents, ...unlinked.map(t => t.actor)];
+    // let unlinked = canvas.scene.tokens.filter(t => !t.actorLink);
+    // return [...game.actors.contents, ...unlinked.map(t => t.actor)];
+    return game.users.map(u => u.character).filter(x => x);
 }
 
 export function onReceiveSetDoom(payload) {

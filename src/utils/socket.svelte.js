@@ -1,7 +1,7 @@
 import { DOOMSONG } from "../consts";
 import { AttackFlowApp } from "../apps/dodge_prompt.svelte";
 import { onReceiveSuspense } from "./suspense.svelte";
-import { onReceiveSetDoom } from "../components/doomcoin/doomcoin_tracker";
+import { onReceiveSetDoom } from "../components/doomcoin/doomcoin_tracker.svelte";
 
 export function initSockets() {
     game.socket.on(`system.${game.system.id}`, (data) => {

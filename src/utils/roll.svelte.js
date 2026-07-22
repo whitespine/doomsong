@@ -358,7 +358,7 @@ function populateResultTables() {
 }
 
 // Populate on startup
-Hooks.on("ready", populateResultTables);
+Hooks.on("init", populateResultTables);
 
 /**
  * @returns {({[key: string]: ResultTable})}
