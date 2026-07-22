@@ -1,13 +1,7 @@
 import { DOOMSONG } from "../consts";
 import { AttackFlowApp } from "../apps/dodge_prompt.svelte";
 import { onReceiveSuspense } from "./suspense.svelte";
-
-/**
- * Setup function for socket events
- */
-export function initNetworkedSuspense() {
-    game.socket.on(`${game.system.id}.${DOOMSONG.socket.suspense}`, onReceiveSuspense);
-}
+import { onReceiveSetDoom } from "../components/doomcoin/doomcoin_tracker";
 
 export function initSockets() {
     game.socket.on(`system.${game.system.id}`, (data) => {
@@ -18,6 +12,9 @@ export function initSockets() {
                 break;
             case DOOMSONG.socket.attack:
                 AttackFlowApp.showFlow(payload)
+                break;
+            case DOOMSONG.socket.doom: 
+                onReceiveSetDoom(payload);
                 break;
             default:
                 ui.notifications.warn(`Unhandled doomsong event type ${type}`);

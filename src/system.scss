@@ -71,6 +71,10 @@
             color: white
         }
 
+        prose-mirror {
+            --min-height: 300px;
+        }
+
         button.invert,
         input.invert,
         textarea.invert,

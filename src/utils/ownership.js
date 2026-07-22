@@ -17,3 +17,9 @@ export function owners(document, level = CONST.DOCUMENT_OWNERSHIP_LEVELS) {
     }
     return result;
 }
+
+export function warnOnNoGM(message) {
+    if(!game.users.some(x => x.active && x.isGM)) {
+        ui.notifications.warn(message);
+    }
+}

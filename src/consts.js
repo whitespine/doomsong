@@ -34,7 +34,8 @@ export const DOOMSONG = {
 
     socket: {
         attack: "UPDATE_ATTACK_FLOW",
-        suspense: "SUSPENSE"
+        suspense: "SUSPENSE",
+        doom: "DOOM"
     },
 
     // Keys for combat status flags

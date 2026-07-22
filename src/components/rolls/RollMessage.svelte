@@ -3,7 +3,7 @@
     import RollingDie from "./RollingDie.svelte";
     import crest from "$assets/icons/crest.png";
     import skull from "$assets/icons/skull.png";
-    import { setDoomedUser } from "../doomcoin/doomcoin_tracker";
+    import { broadcastSetDoom } from "../doomcoin/doomcoin_tracker";
     import {
         FALLBACK_RESULT_TABLE,
         resultTables,
@@ -66,7 +66,11 @@
             [`flags.${game.system.id}.coin_result`]: flip_value,
             [`flags.${game.system.id}.coin_suspense`]: suspense(doomcoin),
         });
-        setDoomedUser(game.user.isGM ? null : game.user);
+        if(game.user.isGM) {
+            broadcastSetDoom(null); // The DM flipping the doomcoin implicitly undooms players
+        } else {
+            broadcastSetDoom(message.speakerActor ?? null);
+        }
     }
 </script>
 

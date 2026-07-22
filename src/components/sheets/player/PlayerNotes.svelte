@@ -29,8 +29,4 @@
         display: flex;
         flex-direction: column;
     }
-    
-    prose-mirror {
-        --min-height: 300px;
-    }
 </style>

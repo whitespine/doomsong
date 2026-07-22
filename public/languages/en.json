@@ -12,6 +12,9 @@
         }
     },
     "DS": {
+        "status": {
+            "doomed": "Doomed!"
+        },
         "roll": {
             "traits": "Traits",
             "gear": "Gear",

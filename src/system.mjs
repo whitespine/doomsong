@@ -17,6 +17,7 @@ import { AttackFlowApp } from './apps/dodge_prompt.svelte';
 import { injectAllCoreDocumentsReactivity, injectEmbeddedCollectionsReactivity } from './utils/reactor.svelte';
 import { initSockets } from './utils/socket.svelte';
 import { initDoomRenderHook } from './components/doomcoin/doomcoin_tracker';
+import { setupStatuses } from './documents/effect';
 
 Hooks.once('init', async function () {
   console.log("Initializing DOOMSONG RPG")
@@ -26,6 +27,7 @@ Hooks.once('init', async function () {
   setupModels();
   setupSettings();
   setupSheets();
+  setupStatuses();
   initDoomRenderHook();
   CONFIG.ui.combat = DoomsongCombatTracker;
   // CONFIG.debug.hooks = true;
