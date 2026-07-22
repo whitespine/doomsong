@@ -3,7 +3,8 @@
 
 @layer system {
 
-    .doomsong, #dnd-action-dragged-el {
+    .doomsong,
+    #dnd-action-dragged-el {
         --color-text-primary: black;
         --color-text-emphatic: black;
         --color-light-1: black;
@@ -188,5 +189,22 @@
             }
 
         }
+    }
+
+    .glow {
+        --glow-primary: #f5282f;
+        // --glow-secondary: #F7AF95;
+        --glow-secondary: #5f1713;
+        animation: glow 1s ease-in-out infinite alternate;
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px var(--glow-primary), 0 0 10px var(--glow-primary), 0 0 15px var(--glow-secondary), 0 0 20px var(--glow-secondary), 0 0 25px var(--glow-secondary), 0 0 30px var(--glow-secondary), 0 0 35px var(--glow-secondary);
+    }
+
+    to {
+        text-shadow: 0 0 10px var(--glow-primary), 0 0 20px var(--glow-primary), 0 0 30px var(--glow-secondary), 0 0 40px var(--glow-secondary), 0 0 50px var(--glow-secondary), 0 0 60px var(--glow-secondary), 0 0 70px var(--glow-secondary);
     }
 }

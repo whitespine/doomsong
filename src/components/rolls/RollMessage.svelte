@@ -3,12 +3,17 @@
     import RollingDie from "./RollingDie.svelte";
     import crest from "$assets/icons/crest.png";
     import skull from "$assets/icons/skull.png";
-    import { broadcastSetDoom } from "../doomcoin/doomcoin_tracker";
+    import {
+        broadcastSetDoom,
+        getDoomedActor,
+    } from "../doomcoin/doomcoin_tracker.svelte";
     import {
         FALLBACK_RESULT_TABLE,
         resultTables,
     } from "../../utils/roll.svelte";
     import { suspense, inSuspense } from "../../utils/suspense.svelte";
+    import Coin from "./Coin.svelte";
+    import SpinningCoin from "./SpinningCoin.svelte";
     /** @import { RollMessageData, ResultEntry } from "../../utils/roll.svelte" */
 
     let { message } = $props();
@@ -47,7 +52,7 @@
         ),
     );
 
-    /** @type {Array<[string, ResultEntry]>*/
+    /** @type {Array<[string, ResultEntry]>}*/
     let entries_to_show = $derived.by(() => {
         let neighbors = result_table.neighborEntries(base_result_key);
         return [
@@ -56,6 +61,11 @@
             neighbors.above,
         ].filter((x) => x);
     });
+
+    // Entice the gm to punish poor fools with a flip of the coin
+    let glow_doom = $derived(
+        game.user.isGM && message.speakerActor == getDoomedActor(),
+    );
 
     // Modify this roll to have a flipped doomcoin. DSN integrated
     async function flipDoomcoin() {
@@ -66,7 +76,7 @@
             [`flags.${game.system.id}.coin_result`]: flip_value,
             [`flags.${game.system.id}.coin_suspense`]: suspense(doomcoin),
         });
-        if(game.user.isGM) {
+        if (game.user.isGM) {
             broadcastSetDoom(null); // The DM flipping the doomcoin implicitly undooms players
         } else {
             broadcastSetDoom(message.speakerActor ?? null);
@@ -74,129 +84,124 @@
     }
 </script>
 
-<h2 class="doomsong">
-    <span>{result_table.label} - {message.speakerActor?.name ?? "???"}</span>
-    {#if roll_data.coin_result == 0}
-        <a
-            class="doomcoin unflipped"
-            onclick={flipDoomcoin}
-            aria-label="Flip Doomcoin"
-        >
-            <i class="fas fa-coin"></i>
-        </a>
-    {:else if roll_data.coin_result == 1}
-        <img class="doomcoin flipped" src={crest} alt="Crest" />
-    {:else if roll_data.coin_result == -1}
-        <img class="doomcoin flipped" src={skull} alt="Skull" />
-    {/if}
-</h2>
-<div class="doomsong dice">
-    {#each die_results as die}
-        {#if inSuspense(roll_data.roll_suspense)}
-            <RollingDie />
+<div class="roll-message">
+    <h2 class="doomsong">
+        <span>{result_table.label} - {message.speakerActor?.name ?? "???"}</span>
+        {#if inSuspense(roll_data.coin_suspense)}
+            <SpinningCoin />
+        {:else if roll_data.coin_result === 0}
+            <Coin onclick={flipDoomcoin} class={glow_doom ? "glow" : ""} />
         {:else}
-            <Die value={die.result} discarded={die.discarded} />
+            <Coin value={roll_data.coin_result} />
         {/if}
-    {/each}
-    <span>+</span>
-    <span>{modifiers}</span>
-    <span>→</span>
-    <span class={["result", { rolling: inSuspense(roll_data.roll_suspense) }]}> {roll.total} </span>
-</div>
-{#if !inSuspense(roll_data.roll_suspense)}
-    <div class="doomsong results">
-        {#each entries_to_show as [result_key, result_entry]}
-            <div class="result-key">
-                {#if result_key == "crest"}
-                    <img class="critical" src={crest} alt="Crest" />
-                {:else if result_key == "skull"}
-                    <img class="critical" src={skull} alt="Skull" />
-                {:else}
-                    <span>
-                        {result_key.toLocaleUpperCase()}
-                    </span>
-                {/if}
-            </div>
-            <div class={{ chosen: (final_result_key == result_key) && !inSuspense(roll_data.coin_suspense) }}>
-                <p>
-                    <span class="label">{result_entry.label}.</span>
-                    <span>{result_entry.text}</span>
-                </p>
-            </div>
+    </h2>
+    <div class="doomsong dice">
+        {#each die_results as die}
+            {#if inSuspense(roll_data.roll_suspense)}
+                <RollingDie />
+            {:else}
+                <Die value={die.result} discarded={die.discarded} />
+            {/if}
         {/each}
+        <span>+</span>
+        <span>{modifiers}</span>
+        <span>→</span>
+        <span
+            class={["result", { rolling: inSuspense(roll_data.roll_suspense) }]}
+        >
+            {roll.total}
+        </span>
     </div>
-{/if}
+    {#if !inSuspense(roll_data.roll_suspense)}
+        <div class="doomsong results">
+            {#each entries_to_show as [result_key, result_entry]}
+                <div class="result-key">
+                    {#if result_key == "crest"}
+                        <img class="critical" src={crest} alt="Crest" />
+                    {:else if result_key == "skull"}
+                        <img class="critical" src={skull} alt="Skull" />
+                    {:else}
+                        <span>
+                            {result_key.toLocaleUpperCase()}
+                        </span>
+                    {/if}
+                </div>
+                <div
+                    class={{
+                        chosen:
+                            final_result_key == result_key &&
+                            !inSuspense(roll_data.coin_suspense),
+                    }}
+                >
+                    <p>
+                        <span class="label">{result_entry.label}.</span>
+                        <span>{result_entry.text}</span>
+                    </p>
+                </div>
+            {/each}
+        </div>
+    {/if}
+</div>
 
-<style lang="scss">
-    h2 {
-        display: flex;
-        flex-direction: row;
-
-        span {
-            flex: 1;
-        }
-
-        .doomcoin {
-            justify-self: flex-end;
-
-            &.unflipped {
-                cursor: pointer;
-            }
-
-            &.flipped {
-                width: 1em;
-                height: 1em;
-            }
-        }
-    }
-
-    .dice {
-        display: flex;
-        flex-direction: row;
-
-        .rolling.result {
-            opacity: 0%;
-        }
-
-        span {
-            font-size: x-large;
-            font-weight: bold;
-            padding-inline: 5px;
-        }
-    }
-
-    .results {
-        display: grid;
-        grid-template: 1fr / 70px 1fr;
-        //align-items: center;
-        align-content: center;
-        background-color: black;
-        gap: 1px;
-
-        // Force critical icons to be centered
-        div {
-            height: 100%;
-            width: 100%;
-            background-color: white;
-            padding: 5px;
+<style lang="scss" module>
+    .roll-message {
+        h2 {
             display: flex;
-            align-items: center;
-            &.result-key {
-                justify-content: center;
-            }
+            flex-direction: row;
 
-            .label {
-                font-weight: bold;
-            }
-
-            .critical {
-                width: 2em;
-                height: 2em;
+            span {
+                flex: 1;
             }
         }
 
-        .chosen {
-            background-color: gray;
+        .dice {
+            display: flex;
+            flex-direction: row;
+
+            .rolling.result {
+                opacity: 0%;
+            }
+
+            span {
+                font-size: x-large;
+                font-weight: bold;
+                padding-inline: 5px;
+            }
+        }
+
+        .results {
+            display: grid;
+            grid-template: 1fr / 70px 1fr;
+            //align-items: center;
+            align-content: center;
+            background-color: black;
+            gap: 1px;
+
+            // Force critical icons to be centered
+            div {
+                height: 100%;
+                width: 100%;
+                background-color: white;
+                padding: 5px;
+                display: flex;
+                align-items: center;
+                &.result-key {
+                    justify-content: center;
+                }
+
+                .label {
+                    font-weight: bold;
+                }
+
+                .critical {
+                    width: 2em;
+                    height: 2em;
+                }
+            }
+
+            .chosen {
+                background-color: gray;
+            }
         }
     }
 </style>

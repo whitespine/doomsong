@@ -19,23 +19,22 @@ export function fixStyle(style) {
 }
 
 // Converts any format of classes into a svelte style hash
-export function fixClasses() {
-    if (typeof style == "string") {
-        let segments = style.split(/\S+/);
-        let result = {};
-        for (let seg of segments) {
-            result[seg] = true;
+export function fixClasses(...classes) {
+    let all_classes = {};
+    for (let c of classes) {
+        if (typeof c == "string") {
+            let segments = c.split(/\s+/);
+            segments.forEach(element => {
+                all_classes[element] = true;
+            });
+        } else if (typeof c == "object" && Array.isArray(c)) {
+            let sub_results = fixClasses(...c);
+            Object.assign(all_classes, sub_results);
+        } else if (typeof c == "object") {
+            Object.assign(all_classes, c);
+        } else {
+            continue;
         }
-        return result;
-    } else if (typeof style == "object" && Array.isArray(style)) {
-        let result = {};
-        for (let seg of style) {
-            result[seg] = true;
-        }
-        return result;
-    } else if (typeof style == "object") {
-        return style;
-    } else {
-        return {};
     }
+    return all_classes;
 }
