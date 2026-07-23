@@ -241,7 +241,12 @@ export class DoomsongCombatant extends Combatant {
     randomDice(count = 1) {
         let dice = [];
         // Create an array of [action_count, act]. Need to know action_count to filter empty acts
-        let act_move_counts = Object.fromEntries([1, 2, 3, 4, 5, 6].map((act) => [act, Object.keys(this.actor.system.moves[act]).length]));
+        let act_move_counts;
+        if(this.actor) {
+            act_move_counts = Object.fromEntries([1, 2, 3, 4, 5, 6].map((act) => [act, Object.keys(this.actor.system.moves[act]).length]));
+        } else {
+            act_move_counts = Object.fromEntries([1,2,3,4,5,6].map(x => [x, 0]));
+        }
         while (dice.length < count) {
             let remaining_valid_acts = Object.entries(act_move_counts).filter(([_act, count]) => count > 0).map(([act, _count]) => act);
             if (remaining_valid_acts.length == 0) {
@@ -279,6 +284,7 @@ export class DoomsongCombatant extends Combatant {
 
     // Easy check if we have any moves defined
     get hasMovesDefined() {
+        if(!this.actor) return false;
         return [1,2,3,4,5,6].some(act => this.actor.system.moves[act].length != 0);
     }
 
@@ -344,7 +350,7 @@ export class DoomsongCombatant extends Combatant {
 
     // Generates html for a tooltip describing the moves available for a dice in a given act - but only if you can see them!
     actTooltip(act) {
-        if (this.observer || this.friendly) {
+        if (this.actor && (this.observer || this.friendly)) {
             let moves = Object.values(this.actor.system.moves[act]);
             let items = moves.map(move => `<li>${move.name}: ${move.text}</li>`);
             return `<ul>${items.join("")}</ul>`;
