@@ -7,5 +7,5 @@ const DOOM = {
 }
 
 export function setupStatuses() {
-    CONFIG.statusEffects["doomed"] = DOOM;
+    CONFIG.statusEffects.push(DOOM);
 }
