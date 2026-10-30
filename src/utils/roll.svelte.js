@@ -251,13 +251,14 @@ export class ResultTable {
 
     /**
      * Get the result from this table based on roll + coin result.
-     * If over, combines the closest over result (if numeric over results specified) or uses the base over result if no numeric over results specified
      * @param {number} rollResult 
      * @param {number} difficulty 
      * @param {-1 | 0 | 1} coinResult The current flipped coin result
+     * @param {boolean} isHeavy Whether the attack is Heavy ("focused")
+     * @param {boolean} isLarger Whether the attacker is larger than the defender
      * @returns {[string, ResultEntry]} The result key and corresponding entry
      */
-    resultFor(rollResult, difficulty, coinResult = null) {
+    resultFor(rollResult, difficulty, coinResult = null, isHeavy = false, isLarger = false) {
         let result;
         if (rollResult < difficulty) {
             result = "under";
@@ -265,15 +266,21 @@ export class ResultTable {
             result = "equal"
         } else {
             if(this.#max_over) {
-                // Find closest defined that is <= delta
                 let over = rollResult - difficulty;
-                while(!this.#over_entries[over]) over--;
+                
+                if (this.raw_table.id.startsWith("attack") && !isHeavy && !isLarger) {
+                    over = Math.min(over, 3);
+                }
+
+                // Find the closest defined <= delta (safely stopping at 1)
+                while(!this.#over_entries[over] && over > 1) over--;
                 result = ResultTable.#overToKey(over);
             } else {
                 result = `over`;
             }
         }
 
+        // The Doomcoin is applied AFTER the base mathematical cap
         if (coinResult == 1) {
             return this.crest(result) ?? this.resultEntry(result);
         } else if (coinResult == -1) {

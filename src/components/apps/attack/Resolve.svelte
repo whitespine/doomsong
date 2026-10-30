@@ -21,7 +21,12 @@
         let roll_result = message?.rolls[0].total ?? -1;
         let coin = message?.doomsong.coin_result;
         let table = resultTables()[flow.attack.type] ?? FALLBACK_RESULT_TABLE;
-        return table.resultFor(roll_result, flow.final_target, coin); // TODO support coin
+        
+        let formula = message?.rolls[0].formula ?? "";
+        let isHeavy = formula.includes("kh1");
+        let isLarger = false; 
+
+        return table.resultFor(roll_result, flow.final_target, coin, isHeavy, isLarger); 
     });
     let attacker_consequences = $derived(entry.penalties ?? []);
     let defender_consequences = $derived(entry.target_penalties ?? []);

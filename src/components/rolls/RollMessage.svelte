@@ -41,14 +41,23 @@
         resultTables()[roll_data.roll_type] ?? FALLBACK_RESULT_TABLE,
     );
 
+    // A heavy attack uses "Keep Highest" (kh1) in its formula
+    let isHeavy = $derived(roll.formula.includes("kh1"));
+    
+    // NOTE: isLarger should be deduced by comparing target and attacker sizes.
+    // Defaulting to false until size checks are implemented.
+    let isLarger = false; 
+
     let [base_result_key, base_result] = $derived(
-        result_table.resultFor(roll.total, roll_data.difficulty, null),
+        result_table.resultFor(roll.total, roll_data.difficulty, null, isHeavy, isLarger),
     );
     let [final_result_key, _] = $derived(
         result_table.resultFor(
             roll.total,
             roll_data.difficulty,
             roll_data.coin_result,
+            isHeavy,
+            isLarger
         ),
     );
 
@@ -61,7 +70,6 @@
             neighbors.above,
         ].filter((x) => x);
     });
-
     // Entice the gm to punish poor fools with a flip of the coin
     let glow_doom = $derived(
         game.user.isGM && message.speakerActor == getDoomedActor(),
